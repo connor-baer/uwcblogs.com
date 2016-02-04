@@ -1,8 +1,8 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1454615683,
-    'checksum' => 'ad2c2727bd0c3ba1a4ff09fa0598be18',
+    'timestamp' => 1454616012,
+    'checksum' => '60d0936b70c17a0b882bf5500e973a22',
     'files' => [
         'user/config' => [
             'security' => [
@@ -15,7 +15,7 @@ return [
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1452252772
+                'modified' => 1454615861
             ]
         ],
         'system/config' => [
@@ -37,9 +37,25 @@ return [
             ]
         ],
         'user/plugins' => [
+            'plugins/admin' => [
+                'file' => 'user/plugins/admin/admin.yaml',
+                'modified' => 1454615861
+            ],
+            'plugins/email' => [
+                'file' => 'user/plugins/email/email.yaml',
+                'modified' => 1454615848
+            ],
             'plugins/error' => [
                 'file' => 'user/plugins/error/error.yaml',
                 'modified' => 1452252772
+            ],
+            'plugins/form' => [
+                'file' => 'user/plugins/form/form.yaml',
+                'modified' => 1454615839
+            ],
+            'plugins/login' => [
+                'file' => 'user/plugins/login/login.yaml',
+                'modified' => 1454615852
             ],
             'plugins/problems' => [
                 'file' => 'user/plugins/problems/problems.yaml',
@@ -49,10 +65,151 @@ return [
     ],
     'data' => [
         'plugins' => [
+            'admin' => [
+                'enabled' => true,
+                'route' => '/admin',
+                'theme' => 'grav',
+                'dashboard' => [
+                    'days_of_stats' => 7
+                ],
+                'session' => [
+                    'timeout' => 1800
+                ],
+                'warnings' => [
+                    'delete_page' => true
+                ],
+                'edit_mode' => 'normal',
+                'show_github_msg' => true,
+                'google_fonts' => true,
+                'enable_auto_updates_check' => true,
+                'popularity' => [
+                    'enabled' => true,
+                    'ignore' => [
+                        0 => '/test*',
+                        1 => '/modular'
+                    ],
+                    'history' => [
+                        'daily' => 30,
+                        'monthly' => 12,
+                        'visitors' => 20
+                    ]
+                ]
+            ],
+            'email' => [
+                'enabled' => true,
+                'from' => NULL,
+                'from_name' => NULL,
+                'to' => NULL,
+                'to_name' => NULL,
+                'mailer' => [
+                    'engine' => 'mail',
+                    'smtp' => [
+                        'server' => 'localhost',
+                        'port' => 25,
+                        'encryption' => 'none',
+                        'user' => '',
+                        'password' => ''
+                    ],
+                    'sendmail' => [
+                        'bin' => '/usr/sbin/sendmail'
+                    ]
+                ],
+                'content_type' => 'text/html'
+            ],
             'error' => [
                 'enabled' => true,
                 'routes' => [
                     404 => '/error'
+                ]
+            ],
+            'form' => [
+                'enabled' => true,
+                'files' => [
+                    'multiple' => false,
+                    'destination' => '@self',
+                    'accept' => [
+                        0 => 'image/*'
+                    ]
+                ]
+            ],
+            'login' => [
+                'enabled' => true,
+                'built_in_css' => true,
+                'route' => false,
+                'route_register' => false,
+                'route_activate' => '/activate_user',
+                'route_forgot' => '/forgot_password',
+                'route_reset' => '/reset_password',
+                'redirect' => NULL,
+                'parent_acl' => false,
+                'user_registration' => [
+                    'enabled' => true,
+                    'fields' => [
+                        0 => 'username',
+                        1 => 'password',
+                        2 => 'email',
+                        3 => 'fullname',
+                        4 => 'title',
+                        5 => 'access',
+                        6 => 'state'
+                    ],
+                    'additional_params' => [
+                        'access' => 'site.login'
+                    ],
+                    'options' => [
+                        'validate_password1_and_password2' => true,
+                        'set_user_disabled' => false,
+                        'login_after_registration' => true,
+                        'send_activation_email' => false,
+                        'send_notification_email' => false,
+                        'send_welcome_email' => false
+                    ]
+                ],
+                'rememberme' => [
+                    'enabled' => true,
+                    'timeout' => 1800,
+                    'name' => 'grav-rememberme'
+                ],
+                'oauth' => [
+                    'enabled' => false,
+                    'user' => [
+                        'autocreate' => false,
+                        'access' => [
+                            'site' => [
+                                'login' => true
+                            ]
+                        ]
+                    ],
+                    'providers' => [
+                        'Facebook' => [
+                            'enabled' => false,
+                            'credentials' => [
+                                'key' => NULL,
+                                'secret' => NULL
+                            ]
+                        ],
+                        'Google' => [
+                            'enabled' => false,
+                            'credentials' => [
+                                'key' => NULL,
+                                'secret' => NULL
+                            ]
+                        ],
+                        'GitHub' => [
+                            'enabled' => false,
+                            'credentials' => [
+                                'key' => NULL,
+                                'secret' => NULL
+                            ]
+                        ],
+                        'Twitter' => [
+                            'enabled' => false,
+                            'credentials' => [
+                                'key' => NULL,
+                                'secret' => NULL
+                            ]
+                        ]
+                    ]
                 ]
             ],
             'problems' => [

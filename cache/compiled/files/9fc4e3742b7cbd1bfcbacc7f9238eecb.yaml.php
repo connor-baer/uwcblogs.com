@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => '/Users/connorbaer/GitHub/uwc-bloglist/user/config/system.yaml',
-    'modified' => 1452252772,
+    'modified' => 1454615861,
     'data' => [
         'absolute_urls' => false,
         'home' => [
