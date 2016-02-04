@@ -1,9 +1,15 @@
 <?php
 return [
     '@class' => 'Grav\\Common\\Config\\CompiledConfig',
-    'timestamp' => 1454616012,
-    'checksum' => '60d0936b70c17a0b882bf5500e973a22',
+    'timestamp' => 1454617608,
+    'checksum' => '9cae02790e715ac4e07e2f94f705b1db',
     'files' => [
+        'user/localhost/config' => [
+            'security' => [
+                'file' => 'user/localhost/config/security.yaml',
+                'modified' => 1454617581
+            ]
+        ],
         'user/config' => [
             'security' => [
                 'file' => 'user/config/security.yaml',
@@ -11,11 +17,11 @@ return [
             ],
             'site' => [
                 'file' => 'user/config/site.yaml',
-                'modified' => 1452252772
+                'modified' => 1454617008
             ],
             'system' => [
                 'file' => 'user/config/system.yaml',
-                'modified' => 1454615861
+                'modified' => 1454617581
             ]
         ],
         'system/config' => [
@@ -460,17 +466,17 @@ return [
             ]
         ],
         'site' => [
-            'title' => 'Grav',
+            'title' => 'UWC Bloglist',
             'author' => [
-                'name' => 'Joe Bloggs',
-                'email' => 'joe@test.com'
+                'name' => 'Connor Bär',
+                'email' => 'connor.baer@me.com'
             ],
             'taxonomies' => [
                 0 => 'category',
                 1 => 'tag'
             ],
             'metadata' => [
-                'description' => 'Grav is an easy to use, yet powerful, open source flat-file CMS'
+                'description' => 'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
             ],
             'summary' => [
                 'enabled' => true,
@@ -663,7 +669,7 @@ return [
             ]
         ],
         'security' => [
-            'salt' => '61ZkbgDh8ucLa5'
+            'salt' => 'rwoyCLTuS5cxN2'
         ]
     ]
 ];
