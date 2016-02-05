@@ -13,3 +13,8 @@ ehthumbs.db
 Icon?
 Thumbs.db
 *.swp
+
+# Security
+.well-known/*
+__github-updater.php
+___github-log.txt
