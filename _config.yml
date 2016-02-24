@@ -1,0 +1,41 @@
+# Dependencies
+markdown:             kramdown
+highlighter:          rouge
+
+
+# Gems
+gems:
+  - jekyll-sitemap
+
+
+# Settings
+exclude:              [CNAME, README.md, .gitignore]
+sass:
+  style:              compressed
+
+
+# Site meta
+title:                Skye
+tagline:              'A Jekyll theme'
+keywords:             'skye, jekyll, template, github, project, single page, one page'
+description:          'A one-page, two-column Jekyll theme that pairs a prominent sidebar with uncomplicated content. Adapted by @connor_baer.'
+url:                  http://skye.connorbaer.io
+baseurl:              /
+
+## replace analytics key below to enable tracking, leave blank to disable
+google_analytics_key: UA-37412525-4 
+
+author:
+  name:               'Connor Bär'
+  url:                'http://connorbaer.io'
+  medium:             https://twitter.com/connor_baer
+  github:             https://github.com/connor-baer
+  twitter:            https://twitter.com/connor_baer
+  facebook:           
+  instagram:          https://instagram.com/connor_baer
+  snapchat:           
+
+version:              0.9.0-beta
+
+github:
+  repo:               https://github.com/connor-baer/skye

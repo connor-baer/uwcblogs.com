@@ -1,0 +1,51 @@
+<div id="sidebar">
+  <div class="sidecontainer">
+    <div class="sidebar-logo">
+      <a href="{{ site.baseurl }}"><div class="logo"></div></a>
+    </div>
+    <div class="container sidebar-sticky">
+      <div class="sidebar-about">
+        <h1>
+          <a href="{{ site.baseurl }}">
+            {{ site.title }}
+          </a>
+        </h1>
+        <p class="lead">{{ site.description }}</p>
+      </div>
+      <div class="social unstyle">
+        <ul>
+          {% if site.author.medium %}
+          <li>
+            <a href="{{ site.author.medium }}">Medium</a>
+          </li>
+          {% endif %}
+          {% if site.author.github %}
+          <li>
+            <a href="{{ site.author.github }}">Github</a>
+          </li>
+          {% endif %}
+          {% if site.author.twitter %}
+          <li>
+            <a href="{{ site.author.twitter }}">Twitter</a>
+          </li>
+          {% endif %}
+          {% if site.author.facebook %}
+          <li>
+            <a href="{{ site.author.facebook }}">Facebook</a>
+          </li>
+          {% endif %}
+          {% if site.author.instagram %}
+          <li>
+            <a href="{{ site.author.instagram }}">Instagram</a>
+          </li>
+          {% endif %}
+          {% if site.author.snapchat %}
+          <li>
+            <a href="{{ site.author.snapchat }}">Snapchat</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,20 +1,42 @@
-# Grav Specific
-.sass-cache
-composer.lock
-cache/*
-assets/*
-logs/*
-images/*
-user/data/*
+# General
+NOTES.md
+gulpfile.js
+.well-known/*
+.htaccess
 
-# OS Generated
-.DS_Store*
+
+# Ignore docs files
+_gh_pages
+_site
+.ruby-version
+
+
+# OS or Editor folders
+.DS_Store
+._*
 ehthumbs.db
 Icon?
 Thumbs.db
-*.swp
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+.idea
 
-# Security
-.well-known/*
-__github-updater.php
-___github-log.txt
+
+# Komodo
+*.komodoproject
+.komodotools
+
+
+# grunt-html-validation
+validation-status.json
+validation-report.json
+
+
+# Folders to ignore
+node_modules
