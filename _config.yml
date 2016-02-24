@@ -20,7 +20,7 @@ tagline:              'A Jekyll theme'
 keywords:             'skye, jekyll, template, github, project, single page, one page'
 description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
 url:                  http://uwcblogs.com
-baseurl:              /
+baseurl:              /uwc-bloglist/
 
 ## replace analytics key below to enable tracking, leave blank to disable
 google_analytics_key: 
