@@ -6,36 +6,59 @@ highlighter:          rouge
 # Gems
 gems:
   - jekyll-sitemap
+  - jekyll-gist
 
 
 # Settings
-exclude:              [CNAME, README.md, .gitignore]
+navigation:           true
+headroom:             true
+color:                '#ad1644'
+exclude:              [CNAME, README.md, NOTES.md, .gitignore, js, sass, .gulpfile, node_modules]
 sass:
   style:              compressed
 
 
 # Site meta
 title:                UWC Bloglist
-tagline:              'A Jekyll theme'
-keywords:             'skye, jekyll, template, github, project, single page, one page'
+keywords:             'uwc, blog, blogs, bloglist, list, collection'
 description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
+image:                /assets/main.jpg
+logo:                 /assets/logo.png
 url:                  http://uwcblogs.com
-baseurl:              /uwc-bloglist/
+baseurl:              ''
 
 ## replace analytics key below to enable tracking, leave blank to disable
-google_analytics_key: 
+google_analytics_key: UA-37412525-3
 
 author:
-  name:               'Connor Bär'
-  url:                'http://connorbaer.io'
-  medium:             https://twitter.com/connor_baer
+  name:               Connor Bär
+  url:                http://connorbaer.io
+  email:              hello@connorbaer.io
+  twitter:            connor_baer
+
+## outputs the social links in the sidebar, leave url blank to omit a social network, re-arrange to change order
+social:
+  medium:             https://medium.com/@connor_baer
   github:             https://github.com/connor-baer
   twitter:            https://twitter.com/connor_baer
   facebook:           
   instagram:          https://instagram.com/connor_baer
   snapchat:           
 
-version:              0.9.0-beta
+version:              2.0.0
 
 github:
-  repo:               https://github.com/connor-baer/uwcblogs
+  repo:               https://github.com/connor-baer/uwc-bloglist
+
+
+# /* Predefined theme colors */
+# $red: #ac4142;
+# $orange: #d28445;
+# $yellow: #f4bf75;
+# $green: #90a959;
+# $cyan: #75b5aa;
+# $blue: #268bd2;
+# // $blue: #6a9fb5;
+# $brown: #8f5536;
+
+# /* Set your colors here. You can use the predefined colors from above. */

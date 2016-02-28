@@ -1,0 +1,31 @@
+{
+  "name": "UWC Bloglist",
+  "version": "2.0.0",
+  "description": "A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connor-baer/uwc-bloglist.git"
+  },
+  "keywords": [
+    "uwc",
+    "blog",
+    "blogs",
+    "list"
+  ],
+  "author": "Connor Bär",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connor-baer/uwc-bloglist/issues"
+  },
+  "homepage": "https://uwcblogs.com",
+  "devDependencies": {
+    "browser-sync": "^2.11.1",
+    "gulp": "^3.9.1",
+    "gulp-shell": "^0.5.2",
+    "gulp-watch": "^4.3.5"
+  }
+}

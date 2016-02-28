@@ -1,21 +1,24 @@
-# General
-NOTES.md
-gulpfile.js
-.well-known/*
-.htaccess
-
-
 # Ignore docs files
 _gh_pages
 _site
 .ruby-version
+.sass-cache
 
+# Numerous always-ignore extensions
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
 
 # OS or Editor folders
 .DS_Store
 ._*
-ehthumbs.db
-Icon?
 Thumbs.db
 .cache
 .project
@@ -27,16 +30,13 @@ nbproject
 *.sublime-workspace
 .idea
 
-
 # Komodo
 *.komodoproject
 .komodotools
 
-
 # grunt-html-validation
 validation-status.json
 validation-report.json
-
 
 # Folders to ignore
 node_modules

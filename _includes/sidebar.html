@@ -1,49 +1,35 @@
-<div id="sidebar">
+<div id="sidebar" style="background-image: url({{site.baseurl}}{{site.image}});">
   <div class="sidecontainer">
+    {% if site.logo %}
     <div class="sidebar-logo">
-      <a href="{{ site.baseurl }}"><div class="logo"></div></a>
+      <a href="http://connorbaer.io/"><div class="logo" style="background-image: url({{site.baseurl}}{{site.logo}});
+"></div></a>
     </div>
-    <div class="container sidebar-sticky">
+    {% endif %}
+    <div class="sidebar-sticky">
       <div class="sidebar-about">
         <h1>
-          <a href="{{ site.baseurl }}">
+          <a href="{{ site.url }}">
             {{ site.title }}
           </a>
         </h1>
         <p class="lead">{{ site.description }}</p>
       </div>
-      <div class="social unstyle">
+      <div id="social" class="unstyle">
         <ul>
-          {% if site.author.medium %}
-          <li>
-            <a href="{{ site.author.medium }}">Medium</a>
-          </li>
-          {% endif %}
-          {% if site.author.github %}
-          <li>
-            <a href="{{ site.author.github }}">Github</a>
-          </li>
-          {% endif %}
-          {% if site.author.twitter %}
-          <li>
-            <a href="{{ site.author.twitter }}">Twitter</a>
-          </li>
-          {% endif %}
-          {% if site.author.facebook %}
-          <li>
-            <a href="{{ site.author.facebook }}">Facebook</a>
-          </li>
-          {% endif %}
-          {% if site.author.instagram %}
-          <li>
-            <a href="{{ site.author.instagram }}">Instagram</a>
-          </li>
-          {% endif %}
-          {% if site.author.snapchat %}
-          <li>
-            <a href="{{ site.author.snapchat }}">Snapchat</a>
-          </li>
-          {% endif %}
+          {% comment %}
+            The code below dynamically generates a links to your social media 
+            profiles that you have specified in the config file. See readme for usage.
+          {% endcomment %}
+
+          {% for s in site.social %}
+            {% if s[1] %}
+              <li>
+                <a href="{{ s[1] }}">{{s[0]}}</a>
+              </li>
+              <li class="social-separator">|</li>
+            {% endif %}
+          {% endfor %}
         </ul>
       </div>
     </div>
