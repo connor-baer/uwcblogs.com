@@ -24,7 +24,7 @@ keywords:             'uwc, blog, blogs, bloglist, list, collection'
 description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
 image:                /assets/main.jpg
 logo:                 /assets/logo.png
-url:                  http://uwcblogs.com
+url:                  http://connorbaer.io/uwc-bloglist
 baseurl:              '/uwc-bloglist'
 
 ## replace analytics key below to enable tracking, leave blank to disable
