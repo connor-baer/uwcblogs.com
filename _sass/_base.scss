@@ -18,6 +18,7 @@ html {
   font-family: $root-font-family;
   font-size: $root-font-size;
   line-height: $root-line-height;
+  font-weight: $normal;
 
   @media (min-width: $phone) {
     font-size: $large-font-size;
