@@ -25,7 +25,7 @@ description:          'A collection of over 300 blogs in 20 languages written by
 image:                /assets/main.jpg
 logo:                 /assets/logo.png
 url:                  http://connorbaer.io/uwc-bloglist
-baseurl:              '/uwc-bloglist'
+baseurl:              ''
 
 ## replace analytics key below to enable tracking, leave blank to disable
 google_analytics_key: UA-37412525-3

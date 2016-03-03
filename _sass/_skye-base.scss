@@ -57,7 +57,7 @@ $sidebar-overlay: darken($sidebar-bg, 18%);
  */
 
 html {
-  font-family: $serif;
+  font-family: $body;
 }
 @media (min-width: 48em) {
   html {
@@ -109,6 +109,7 @@ html {
   background-color: rgba($sidebar-overlay, 0.4);
   z-index: 88888;
   text-shadow: 0 0 0.1em $gray-4;
+  font-family: $header;
 }
 @media (min-width: 48em) {
   #sidebar, .sidecontainer {
@@ -149,15 +150,15 @@ html {
 /* About section */
 .sidebar-about h1 {
   margin-top: 0;
-  font-family: $sans;
+  font-family: $header;
   font-size: 3rem;
 }
 
 /* Social links */
 #social li {
-  font-family: $mono;
+  font-family: $header;
   font-size: 0.7rem;
-  text-transform: capitalize;;
+  text-transform: capitalize;
 }
 
 .social-separator:last-child {
@@ -212,15 +213,15 @@ html {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: $sans;
+  font-family: $header;
 }
-/* Body text */
-p, li {
-  font-size: 1.1rem;
+
+p, li, .message {
+  font-size: 1.05rem;
 }
 
 footer {
-  font-family: $mono;
+  font-family: $header;
   font-size: 0.7rem;
   line-height: 1.2rem;
   margin-bottom: 0;
