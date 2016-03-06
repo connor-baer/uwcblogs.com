@@ -23,12 +23,10 @@
           {% endcomment %}
 
           {% for s in site.social %}
-            {% if s[1] %}
-              <li>
-                <a href="{{ s[1] }}">{{s[0]}}</a>
-              </li>
-              <li class="social-separator">|</li>
-            {% endif %}
+            <li>
+              <a href="{{ s[1] }}">{{s[0]}}</a>
+            </li>
+            <li class="social-separator">|</li>
           {% endfor %}
         </ul>
       </div>

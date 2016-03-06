@@ -84,6 +84,14 @@ html {
   overflow: hidden;
 }
 
+h1:before, h2:before, h3:before, h4:before { 
+  display: block; 
+  content: " "; 
+  margin-top: -120px; 
+  height: 120px;
+  visibility: hidden; 
+}
+
 
 
 /*
