@@ -16,6 +16,7 @@ color:                '#ad1644'
 exclude:              [CNAME, README.md, NOTES.md, .gitignore, js, sass, .gulpfile, node_modules]
 sass:
   style:              compressed
+permalink:            /:title/
 
 
 # Site meta
@@ -25,7 +26,7 @@ description:          'A collection of over 300 blogs in 20 languages written by
 image:                /assets/main.jpg
 logo:                 /assets/logo.png
 url:                  http://connorbaer.io/uwc-bloglist
-baseurl:              '/uwc-bloglist'
+baseurl:              ''
 
 ## replace analytics key below to enable tracking, leave blank to disable
 google_analytics_key: UA-37412525-3
@@ -41,9 +42,7 @@ social:
   medium:             https://medium.com/@connor_baer
   github:             https://github.com/connor-baer
   twitter:            https://twitter.com/connor_baer
-  facebook:           
   instagram:          https://instagram.com/connor_baer
-  snapchat:           
 
 version:              2.0.0
 

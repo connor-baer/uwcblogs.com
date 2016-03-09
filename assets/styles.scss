@@ -23,7 +23,8 @@
 
 $primary: {{ site.color }};
 
-@import url(https://fonts.googleapis.com/css?family=Tinos:400,700|Titillium+Web:400,700);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400|Titillium+Web:400,700);
+@import "normalize";
 @import "variables";
 @import "base";
 @import "type";
@@ -40,3 +41,78 @@ $primary: {{ site.color }};
 {% unless site.navigation == false %}
 @import "skye-navigation";
 {% endunless %}
+
+
+
+// Add custom styles below
+
+html {
+ 	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: $sphone) {
+	.cols2 {
+		-webkit-column-count: 2;
+		-webkit-column-gap: 2em;
+		-moz-column-count: 2;
+		-moz-column-gap: 2em;
+		column-count: 2;
+		column-gap: 2em;
+	}
+}
+
+h1:before, h2:before { 
+	display: block; 
+	content: " "; 
+	margin-top: -120px; 
+	height: 120px;
+	visibility: hidden; 
+}
+
+label {
+	display: block;
+	margin-top: 1.25em;
+	font-size: 0.9em;
+}
+
+input {
+	padding: 0.4em 0.8em;
+	border: 1px solid $gray-2;
+	background-color: $gray-1;
+	font-family: $header;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	margin: 0.3em 0;
+	width: 100%;
+	text-align: left;
+	outline: none;
+	width: 100%;
+	resize: none;
+	transition: border 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+input:focus, input:active {
+	border: 1px solid $primary;
+}
+
+button {
+	display: block;
+	margin-top: 2em;
+	outline: none;
+	font-size: 0.83em;
+	font-family: $header;
+	font-weight: $bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.12em;
+	padding: 0.75em 1.75em;
+	border: 3px solid $primary;
+	color: $primary;
+	background-color: #fff;
+	transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1), color 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+button:hover, button:focus, button:active {
+	color: #fff;
+	background-color: $primary;
+}
