@@ -5,7 +5,7 @@ title: Submit a blog
 
 319 blogs and counting! This wouldn't be possible without you. Use the form below to submit a blog and I'll add it as soon as possible. 
 <br>
-<form action="//formspree.io/hello@uwcblog.com"
+<form action="//formspree.io/hello@uwcblogs.com"
       method="POST">
     <label for="firstname">What's your first name?</label>
     <input type="text" name="firstname" placeholder="Jane" required="true" autofocus="true">
