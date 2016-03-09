@@ -36,7 +36,7 @@ title: Add a blog
     <label for="year">What year will/did you finish UWC?</label>
     <input type="number" name="year" placeholder="e.g. 2017" required="true">
     <input type="hidden" name="_subject" value="New UWC Blog Submission" />
-    <input type="hidden" name="_next" value="//connorbaer.io/success.html" />
+    <input type="hidden" name="_next" value="//uwcblogs.com/success.html" />
     <input type="text" name="_gotcha" style="display:none" />
     <button type="submit">Submit and feel accomplished!</button>
 </form>
