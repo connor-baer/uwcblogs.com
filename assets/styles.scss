@@ -1,0 +1,118 @@
+---
+# Use a comment to ensure Jekyll reads the file to be transformed into CSS later
+# only main files contain this front matter, not partials.
+---
+
+//
+//
+//          888                      
+//          888                      
+//          888                      
+//  .d8888b 888  888888  888 .d88b.  
+//  88K     888 .88P888  888d8P  Y8b 
+//  "Y8888b.888888K 888  88888888888 
+//       X88888 "88bY88b 888Y8b.     
+//   88888P'888  888 "Y88888 "Y8888  
+//                       888         
+//                  Y8b d88P         
+//                   "Y88P"
+//
+// Designed, built, and released under MIT license by @mdo. Learn more at
+// https://github.com/poole/poole.
+
+
+$primary: {{ site.color }};
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400|Titillium+Web:400,700);
+@import "normalize";
+@import "variables";
+@import "base";
+@import "type";
+@import "syntax";
+@import "code";
+@import "layout";
+/*@import "masthead";*/
+@import "posts";
+/*@import "pagination";*/
+@import "message";
+
+// Skye files
+@import "skye-base";
+{% unless site.navigation == false %}
+@import "skye-navigation";
+{% endunless %}
+
+
+
+// Add custom styles below
+
+html {
+ 	font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+}
+
+@media (min-width: $sphone) {
+	.cols2 {
+		-webkit-column-count: 2;
+		-webkit-column-gap: 2em;
+		-moz-column-count: 2;
+		-moz-column-gap: 2em;
+		column-count: 2;
+		column-gap: 2em;
+	}
+}
+
+h1:before, h2:before { 
+	display: block; 
+	content: " "; 
+	margin-top: -120px; 
+	height: 120px;
+	visibility: hidden; 
+}
+
+label {
+	display: block;
+	margin-top: 1.25em;
+	font-size: 0.9em;
+}
+
+input {
+	padding: 0.4em 0.8em;
+	border: 1px solid $gray-2;
+	background-color: $gray-1;
+	font-family: $header;
+	font-size: 0.9em;
+	line-height: 1.5em;
+	margin: 0.3em 0;
+	width: 100%;
+	text-align: left;
+	outline: none;
+	width: 100%;
+	resize: none;
+	transition: border 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+input:focus, input:active {
+	border: 1px solid $primary;
+}
+
+button {
+	display: block;
+	margin-top: 2em;
+	outline: none;
+	font-size: 0.83em;
+	font-family: $header;
+	font-weight: $bold;
+	text-transform: uppercase;
+	text-decoration: none;
+	letter-spacing: 0.12em;
+	padding: 0.75em 1.75em;
+	border: 3px solid $primary;
+	color: $primary;
+	background-color: #fff;
+	transition: background-color 0.2s cubic-bezier(0, 0, 0.2, 1), color 0.2s cubic-bezier(0, 0, 0.2, 1);
+}
+
+button:hover, button:focus, button:active {
+	color: #fff;
+	background-color: $primary;
+}
