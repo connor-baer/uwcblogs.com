@@ -39,5 +39,5 @@ title: Submit a blog!
     <input type="hidden" name="_subject" value="New UWC Blog Submission" />
     <input type="hidden" name="_next" value="//uwcblogs.com/success.html" />
     <input type="text" name="_gotcha" style="display:none" />
-    <button type="submit">Submit and feel accomplished!</button>
+    <input type="submit">Submit and feel accomplished!</input>
 </form>
