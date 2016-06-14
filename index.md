@@ -28,7 +28,7 @@ image: '/assets/main.jpg'
   <h3>About</h3>
   <h1>{{ site.tagline }}</h1>
   <h4>{{ site.description }}</h4>
-  <a class="link-large" href="/#submit">Submit your blog →</a>
+  <a class="link-large" href="/#submit">Submit a blog →</a>
 </section>
 
 <section id="bloglist" class="section ctnr-golden">
