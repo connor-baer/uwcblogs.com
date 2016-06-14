@@ -13,11 +13,7 @@ gems:
 
 
 # Settings
-color:                
-  primary:            '#11DD88'
-  primary-darker:     '#0EBE75'
-  primary-lighter:    '#2EEF9F'
-  primary-lighterer:  '#54F2B0'
+color:                '#1F1F1F'
 exclude:              [CNAME, README.md, NOTES.md, .gitignore, js, sass, .gulpfile, node_modules]
 sass:
   sass_dir:           _sass
@@ -32,7 +28,7 @@ keywords:             'uwc, blog, blogs, bloglist, list, collection'
 description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
 url:                  http://uwcblogs.com
 baseurl:              ''
-logo:                 /assets/apple-icon-144x144.png
+logo:                 /assets/icons/apple-icon-144x144.png
 twitter:
   username:           connor_baer
 facebook:
@@ -48,11 +44,13 @@ author:
   email:              hello@connorbaer.io
   twitter:            connor_baer
 
-## Outputs the social links in the navigation. Re-arrange to change order.
-nav_items:
-  Medium:             https://medium.com/@connor_baer
-  Twitter:            https://twitter.com/connor_baer
-  Github:             https://github.com/connor-baer
+nav:
+  about:              '/#about'
+  bloglist:           '/#bloglist'
+  submit:             '/#submit'
+
+mobile: 
+  bloglist:           '/#bloglist'
 
 version:              3.0.0
 

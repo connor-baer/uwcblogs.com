@@ -1,0 +1,46 @@
+.section {
+	margin-bottom: 3rem;
+	margin-top: 3rem;
+}
+
+.section-inputs {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+}
+
+.section-input {
+	width: 100%;
+}
+
+.section-beta {
+	letter-spacing: 0.05rem;
+	display: inline-block;
+}
+
+.section-search {
+	border: 1px solid $primary-4;
+	margin-bottom: 2.5rem;
+}
+
+.section-blogs {
+	margin-bottom: 5rem;
+}
+
+@media (min-width: $phone) {
+	.section {
+		margin-top: 6rem;
+		margin-bottom: 6rem
+	}
+}
+
+@media (min-width: $tablet) {
+	.section-input {
+		width: 47%;
+	}
+
+	.section-columns {
+		columns: 2;
+	}
+}

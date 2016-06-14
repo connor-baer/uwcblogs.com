@@ -1,14 +1,15 @@
 label {
 	display: block;
 	margin-top: 1.25em;
-	font-family: $sans;
 }
 
 input, textarea {
-	padding: 0.4em 0.8em;
-	border: 1px solid $gray-70;
-	background-color: $gray-5;
-	font-family: $sans;
+	padding: 0.5rem 1rem;
+	border: 1px solid $gray-1;
+	background-color: #fff;
+  	font-family: $serif;
+  	font-size: 1.0625rem;
+  	font-weight: $serif-normal;
 	line-height: 1.5em;
 	outline: none;
 	margin: 0.3em 0;
@@ -16,10 +17,15 @@ input, textarea {
 	text-align: left;
 	width: 100%;
 	resize: none;
-	transition: border 0.15s ease-in-out;
+	transition: border 0.15s ease-in-out, box-shadow 0.1s ease-out;
+	&:focus,
+	&:active,
+	&:hover {
+		border: 1px solid $primary-4;
+	}
 	&:focus,
 	&:active {
-		border: 1px solid $primary;
+		box-shadow: 0px 0px 5px 1px $primary-1;
 	}
 }
 
@@ -31,38 +37,35 @@ input[type="submit"].button,
 button.button {
 	display: block;
 	outline: none;
-	font-size: 0.83rem;
+	font-size: .825rem;
 	font-family: $sans;
 	font-weight: $sans-bold;
 	text-transform: uppercase;
 	text-decoration: none;
-	letter-spacing: 0.1rem;
-	padding: 0.75rem 1.75rem;
-	border: 3px solid $primary;
-	color: $gray-80;
+	letter-spacing: 0.12rem;
+	padding: .4rem .9rem;
+	margin-top: 1rem;
+	border: 2px solid $secondary-7;
+	color: $secondary-7;
 	background-color: #fff;
 	transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 	&:hover,
 	&:focus,
 	&:active {
 		color: #fff;
-		background-color: $primary;
+		background-color: $secondary-7;
 		cursor: pointer;
 	}
 }
 
-input[type="submit"].button-text, 
-button.button-text, 
-a.button-text {
-	display: block;
-	outline: none;
-	font-family: $sans;
-	font-size: 1.25rem;
-	letter-spacing: -0.003em;
-	text-transform: capitalize;
-	border: none;
-	text-decoration: none;
-	color: $primary;
-	background-color: #fff;
-	cursor: pointer;
+@media (min-width: $phone) {
+	input, textarea {
+	  	font-size: 1.375rem;
+	}
+
+	input[type="submit"].button, 
+	button.button {
+		font-size: 1.125rem;
+		border: 3px solid $secondary-7;
+	}
 }

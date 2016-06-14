@@ -1,70 +1,64 @@
 // Typography
 /* Headings, body text, lists, and other misc typographic elements. */
 
-h1, h2, h3, h4, h5 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  line-height: 1.1;
+h1, .h1, h2, .h2, h3, .h3, h5, .h5, h6, .h6 {
+  margin-top: 1rem;
+  margin-bottom: .5rem;
+  line-height: 1.25;
   font-family: $sans;
+  font-weight: $sans-bold;
 }
 
 h1 {
-  font-size: 2.606rem;
-  color: $primary;
-  font-weight: $sans-bold;
+  font-size: 2rem;
+  color: $gray-7;
 }
 
-h2 {
-  font-size: 2.085rem;
-  color: $primary;
-  font-weight: $sans-normal;
+h2, .h2 {
+  font-size: 1.5rem;
+  color: $gray-6;
+  display: block;
 }
 
 h3 {
-  font-size: 1.805rem;
-  color: $gray-90;
-  font-weight: $sans-bold;
+  font-size: .825rem;
+  color: $primary-7;
+  text-transform: uppercase;
+  letter-spacing: 0.12rem;
+  margin-bottom: 0;
 }
 
 h4 {
-  font-size: 1.444rem;
-  color: $gray-90;
-  font-weight: $sans-normal;
+  font-size: 1.1875rem;
+  font-family: $serif;
+  color: $gray-6;
+  font-weight: $serif-normal;
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
-h5 {
-  font-size: 1.25rem;
-  text-align: center;
-  color: $gray-80;
-  line-height: 1.5;
-  font-weight: $sans-bold;
+h5, label {
+  font-size: .825rem;
+  color: $gray-6;
 }
 
 h6 {
-  font-size: 1rem;
-  text-align: center;
-  color: $gray-70;
-  line-height: 1.5;
-  font-family: $serif;
-  font-style: italic;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  font-weight: $serif-bold;
+  font-size: 0.5rem;
+  color: $gray-7;
 }
 
 p {
   margin-top: 0;
   margin-bottom: 1rem;
   font-family: $serif;
-  font-size: 1.25rem;
+  font-size: 1.0625rem;
   line-height: 1.75;
-  letter-spacing: -0.003em;
   font-weight: $serif-normal;
 }
 
 .caps:before { 
   float: left; 
-  color: $primary; 
+  color: $primary-4; 
   font-size: 4.4rem; 
   line-height: 1; 
   padding: 0 0.5rem 0 0.25rem; 
@@ -74,9 +68,92 @@ p {
 
 a {
   text-decoration: none;
-  color: $primary;
+  color: inherit;
+}
+
+a.link, 
+a.link-large {
+  color: $secondary-7;
+  position: relative;
+  z-index: 1;
+  strong {
+    color: inherit;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    background-color: $secondary-7;
+    visibility: hidden;
+    transform: translate(0px,2px);
+    opacity: 0;
+    backface-visibility: hidden;
+    transition: all .15s ease-in-out;
+  }
+  &:hover:before,
+  &:focus:before {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(0px,0);
+  }
+}
+
+a.link-large {
+  font-size: 1.0625rem;
+  font-family: $sans;
+  font-weight: $sans-normal;  
 }
 
 strong, .strong {
-  font-weight: $sans-bold;
+  font-weight: $serif-bold;
+}
+
+@media (min-width: $phone) {
+  h1, h2, h3, h5, h6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+  }
+
+  h3 {
+    font-size: 1.125rem;
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  h5, label {
+    font-size: 1.125rem;
+  }
+
+  h6 {
+    font-size: 0.5rem;
+  }
+
+  p {
+    font-size: 1.375rem;
+    line-height: 1.75;
+  }
+
+  .caps:before { 
+    font-size: 4.4rem; 
+    line-height: 1; 
+    padding: 0 0.5rem 0 0.25rem; 
+  }
+
+  a.link-large {
+    font-size: 1.375rem;
+  }
 }

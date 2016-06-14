@@ -1,10 +1,8 @@
-<div class="navigation">
-    <ul class="navigation-links">
-		{% for post in site.posts %}
-            <li class="navigation-item"><a data-scroll href="{{ site.baseurl }}{{ site.url }}/#{{ post.url | remove: '/' }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+<ul class="nav-large">
+	{% for page in site.nav %}{% assign anchor = page[1] | slice: 1 %}<li class="nav-item"><a {% if anchor == '#' %}data-scroll{% endif %} class="nav-link" href="{{ site.baseurl }}{{ page[1] }}">{{ page[0] }}</a></li>{% endfor %}
+</ul>
+<div class="nav-small">
+    {% for mobile in site.mobile %}
+    <a data-scroll class="nav-link" href="{{ site.baseurl }}{{ mobile[1] }}">{{ mobile[0] }} →</a>
+    {% endfor %}
 </div>
-
-
-    

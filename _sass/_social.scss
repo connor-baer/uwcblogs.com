@@ -1,7 +1,14 @@
 .social {
-	padding: 1.25rem 1.75rem;
-	background-color: #fff;
+	padding: 1.5rem 1.75rem;
 	width: 100%;
+	max-width: 90rem;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	z-index: 9999;
+	margin: 0 auto;
+	background-color: transparent;
 }
 
 .social-logo {
@@ -20,36 +27,32 @@
 .social-print, .social-icon {
 	width: 2.5rem;
 	height: 2.5rem;
-	transition: transform 0.15s ease-in-out, fill 0.15s ease-in-out;
-	fill: $gray-70;
+	transition: all 0.15s ease-in-out;
+	fill: $navigation-color;
 	&:hover, &:focus {
 	    transform: scale(1.25);
-	    fill: $primary;
 	}
 }
 
 .headroom .social {
-  position: fixed;
-  left: 0;
-  top: 0;
-  z-index: 99999999;
-  transition: transform 0.2s ease-in-out;
+  	position: fixed;
+  	transition: transform 0.2s ease-in-out, padding 0.2s ease-in-out, background-color 0.2s ease-in-out;
 }
 
 .headroom--not-top .social {
-  border-bottom: 1px solid $gray-5;
+  	padding: 0.75rem 1.75rem;
+  	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.headroom--not-top .social-print,
+.headroom--not-top .social-icon {
+	fill: $gray-6;
 }
 
 .headroom--pinned .social, .headroom--unpinned.headroom--bottom .social {
-  transform: translateY(0%);
+  	transform: translateY(0%);
 }
 
 .headroom--unpinned .social {
-  transform: translateY(-100%);
-}
-
-@media (min-width: $tablet) {
-	.headroom .social {
-		max-width: 50vw;
-	}
+  	transform: translateY(-100%);
 }
