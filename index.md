@@ -63,31 +63,31 @@ image: '/assets/main.jpg'
     <div class="section-inputs">
       <div class="section-input">
         <label for="name">What’s your name?</label>
-        <input type="text" name="name" placeholder="Jane" required="true">
+        <input type="text" name="name" placeholder="Jane" required>
       </div>
       <div class="section-input">
         <label for="_replyto">What’s your email address?</label>
-        <input type="email" name="_replyto" placeholder="jane@example.com" required="true">
+        <input type="email" name="_replyto" placeholder="jane@example.com" required>
       </div>
       <div class="section-input">
         <label for="country">Which country are you from?</label>
-        <input type="text" name="country" placeholder="Germany" required="true">
+        <input type="text" name="country" placeholder="Germany" required>
       </div>
       <div class="section-input">
         <label for="language">Which language do you blog in?</label>
-        <input type="text" name="language" placeholder="English & German" required="true">
+        <input type="text" name="language" placeholder="English & German" required>
       </div>
       <div class="section-input">
         <label for="link">What's the link to your blog?</label>
-        <input type="url" name="link" placeholder="http://connorbaer.io/" required="true">
+        <input type="url" name="link" placeholder="http://connorbaer.io/" required>
       </div>
       <div class="section-input">
         <label for="college">Which UWC do/did you attend?</label>
-        <input type="text" name="college" placeholder="UWC Changshu" required="true">
+        <input type="text" name="college" placeholder="UWC Changshu" required>
       </div>
       <div class="section-input">
         <label for="year">When will/did you finish UWC?</label>
-        <input type="text" name="year" placeholder="2015" required="true">
+        <input type="text" name="year" placeholder="2015" required>
       </div>
     </div>
     <input type="hidden" name="_subject" value="Someone submitted a blog." />
