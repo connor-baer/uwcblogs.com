@@ -28,7 +28,7 @@ image: '/assets/main.jpg'
   <h3>About</h3>
   <h1>{{ site.tagline }}</h1>
   <h4>{{ site.description }}</h4>
-  <a class="link-large" href="/#submit">Submit a blog →</a>
+  <a class="link-large" data-scroll href="#submit">Submit a blog →</a>
 </section>
 
 <section id="bloglist" class="section ctnr-golden">
@@ -91,7 +91,7 @@ image: '/assets/main.jpg'
       </div>
     </div>
     <input type="hidden" name="_subject" value="Someone submitted a blog." />
-    <input type="hidden" name="_next" value="//uwcblogs.com/success/" />
+    <input type="hidden" name="_next" value="//uwcblogs.com/success" />
     <input type="text" name="_gotcha" style="display:none" />
     <button class="button" type="submit">Submit your blog</button>
   </form>
