@@ -41,7 +41,7 @@ image: '/assets/main.jpg'
   <h1>{{ college[0] | replace: '_', ' ' }}</h1>
   <p class="section-columns">
   {% assign years = college[1] | sort: year[0] %}
-  {% for year in college[1] reversed %}
+  {% for year in years reversed %}
     <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
       <span class="h2">{{ year[0] }}</span>
       <span class="list">
