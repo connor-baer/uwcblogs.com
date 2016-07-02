@@ -35,12 +35,13 @@ image: '/assets/main.jpg'
 <label for="js-search"><h3 class="section-beta">search is in beta</h3> Enter a country, language, year or name.</label>
 <input id="js-search" class="section-search" placeholder="Search for a blog..." />
 <h3>Bloglist</h3>  
-{% assign colleges = site.data %}
+{% assign colleges = site.data | sort: college[0] %}
 {% for college in colleges %}
 <div class="section-blogs">
   <h1>{{ college[0] | replace: '_', ' ' }}</h1>
   <p class="section-columns">
-  {% for year in college[1] %}
+  {% assign years = college[1] | sort: year[0] %}
+  {% for year in college[1] reversed %}
     <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
       <span class="h2">{{ year[0] }}</span>
       <span class="list">
