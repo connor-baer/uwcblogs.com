@@ -92,7 +92,7 @@ image: '/assets/main.jpg'
       </div>
     </div>
     <input type="hidden" name="_subject" value="Someone submitted a blog." />
-    <input type="hidden" name="_next" value="//uwcblogs.com/success/" />
+    <input type="hidden" name="_next" value="{{ site.baseurl }}success/" />
     <input type="text" name="_gotcha" style="display:none" />
     <button class="button" type="submit">Submit your blog</button>
   </form>
