@@ -44,6 +44,15 @@ author:
   email:              hello@connorbaer.io
   twitter:            connor_baer
 
+social:
+  name:               Connor Bär
+  links:              
+    - https://twitter.com/connor_baer
+    - https://instagram.com/connor_baer
+    - https://github.com/connor-baer
+    - https://medium.com/@connor_baer
+    - https://www.snapchat.com/add/connor_baer
+
 nav:
   about:              '/#about'
   bloglist:           '/#bloglist'
