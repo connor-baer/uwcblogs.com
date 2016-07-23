@@ -101,7 +101,6 @@ image: '/assets/main.jpg'
             <option value="UWC Red Cross Nordic">UWC Red Cross Nordic</option>
             <option value="UWC Robert Bosch College">UWC Robert Bosch College</option>
             <option value="UWC South East Asia">UWC South East Asia</option>
-            <option value="UWC South East Asia">UWC South East Asia</option>
             <option value="UWC Thailand">UWC Thailand</option>
             <option value="UWC USA">UWC USA</option>
             <option value="UWC Waterford Kamhlaba">UWC Waterford Kamhlaba</option>
