@@ -47,7 +47,7 @@ image: '/assets/main.jpg'
       <span class="list">
         {% assign blogs = year[1] | sort: 'firstname' %}
         {% for blog in blogs  %}
-          <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span> - <span class="language">{{ blog.language }}</span></span><br>
+          <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span><br>
         {% endfor %}
       </span>
     </span>
