@@ -20,12 +20,3 @@ body {
   min-height: 100vh;
   min-width: 100vw;
 }
-
-::-moz-selection {
-    color: $gray-7;
-    background: $primary-1;
-}
-::selection {
-    color: $gray-7; 
-    background: $primary-1;
-}

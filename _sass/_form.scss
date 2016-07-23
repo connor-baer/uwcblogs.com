@@ -13,7 +13,6 @@ input, textarea {
 	line-height: 1.5em;
 	outline: none;
 	margin: 0.3em 0;
-	width: 100%;
 	text-align: left;
 	width: 100%;
 	resize: none;
@@ -33,39 +32,48 @@ textarea {
 	resize: vertical;
 }
 
-input[type="submit"].button, 
-button.button {
+select {
+	border: 1px solid $gray-1;
+	border-radius: 5px;
+	background: #fff;
+	padding: 0.5rem 0.5rem;
+	font-family: $serif;
+  	font-size: 1.0625rem;
+  	font-weight: $serif-normal;
+  	line-height: 1.5em;
+  	display: block;
+  	margin: 0.3rem 0;
+  	height: 2rem;
+  	outline: none;
+  	&:focus,
+	&:active {
+		box-shadow: 0px 0px 5px 1px $primary-1;
+
+	}
+}
+
+.button {
 	display: block;
 	outline: none;
-	font-size: .825rem;
+	border: none;
 	font-family: $sans;
-	font-weight: $sans-bold;
-	text-transform: uppercase;
+	padding: 0;
 	text-decoration: none;
-	letter-spacing: 0.12rem;
-	padding: .4rem .9rem;
-	margin-top: 1rem;
-	border: 2px solid $secondary-7;
-	color: $secondary-7;
 	background-color: #fff;
-	transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
-	&:hover,
+	&:focus,
+	&:active,
+	&:hover {
+		border: none;
+	}
 	&:focus,
 	&:active {
-		color: #fff;
-		background-color: $secondary-7;
-		cursor: pointer;
+		box-shadow: none;
 	}
 }
 
 @media (min-width: $phone) {
 	input, textarea {
 	  	font-size: 1.375rem;
-	}
-
-	input[type="submit"].button, 
-	button.button {
-		font-size: 1.125rem;
-		border: 3px solid $secondary-7;
+	  	width: 61.8%;
 	}
 }

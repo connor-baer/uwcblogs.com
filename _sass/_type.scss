@@ -72,12 +72,17 @@ a {
 }
 
 a.link, 
-a.link-large {
+a.link-large,
+.button {
   color: $secondary-7;
   position: relative;
   z-index: 1;
   strong {
     color: inherit;
+  }
+  &:hover,
+  &:focus {
+    cursor: pointer;
   }
   &:before {
     content: "";
