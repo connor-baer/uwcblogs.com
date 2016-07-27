@@ -11,7 +11,7 @@ title: "Success! Blog successfully submitted."
  	<h4>Thanks a lot for your help! I will add the blog you submitted as soon as possible. Please understand that it might take a few days.</h4>
 </article>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- UWCblogs -->
+<!-- UWCxBlogs -->
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-client="ca-pub-4242118293341339"

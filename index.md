@@ -37,23 +37,36 @@ image: '/assets/main.jpg'
 <h3>Bloglist</h3>  
 {% assign colleges = site.data | sort: college[0] %}
 {% for college in colleges %}
-<div class="section-blogs">
-  <h1>{{ college[0] | replace: '_', ' ' }}</h1>
-  <p class="section-columns">
-  {% assign years = college[1] | sort: year[0] %}
-  {% for year in years reversed %}
-    <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
-      <span class="h2">{{ year[0] }}</span>
-      <span class="list">
-        {% assign blogs = year[1] | sort: 'firstname' %}
-        {% for blog in blogs  %}
-          <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span><br>
-        {% endfor %}
+  <div class="section-blogs">
+    <h1>{{ college[0] | replace: '_', ' ' }}</h1>
+    <p class="section-columns">
+    {% assign years = college[1] | sort: year[0] %}
+    {% for year in years reversed %}
+      <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
+        <span class="h2">{{ year[0] }}</span>
+        <span class="list">
+          {% assign blogs = year[1] | sort: 'firstname' %}
+          {% for blog in blogs  %}
+            <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span><br>
+          {% endfor %}
+        </span>
       </span>
-    </span>
-  {% endfor %}
-  </p>
-</div>
+    {% endfor %}
+    </p>
+  </div>
+  {% assign mod = forloop.index | modulo: 3 %}
+  {% if mod == 0 %}
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <!-- UWCxBlogs -->
+    <ins class="adsbygoogle"
+         style="display:block"
+         data-ad-client="ca-pub-4242118293341339"
+         data-ad-slot="6920232204"
+         data-ad-format="auto"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  {% endif %}
 {% endfor %}
 
 </section>
