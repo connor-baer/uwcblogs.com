@@ -31,6 +31,6 @@
     "gulp-shell": "^0.5.2",
     "gulp-uglify": "^2.0.0",
     "gulp-watch": "^4.3.5",
-    "jshint": "^2.9.2"
+    "jshint": "^2.9.3"
   }
 }
