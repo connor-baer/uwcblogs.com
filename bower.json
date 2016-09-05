@@ -1,0 +1,33 @@
+{
+  "name": "uwcblogs",
+  "description": "A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.",
+  "main": "index.html",
+  "authors": [
+    "Connor Bär"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "uwc",
+    "blog",
+    "blogs",
+    "list"
+  ],
+  "homepage": "http://uwcblogs.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "typi": "^2.3.0",
+    "modular-scale": "^2.1.3",
+    "mappy-breakpoints": "^0.2.3",
+    "html5shiv": "^3.7.3",
+    "smooth-scroll": "https://github.com/cferdinandi/smooth-scroll.git#^9.1.4",
+    "headroom.js": "https://npmcdn.com/headroom.js/bower.zip",
+    "normalize-css": "^4.1.1"
+  }
+}
