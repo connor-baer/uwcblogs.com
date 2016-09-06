@@ -2,12 +2,14 @@
 layout: default
 title: UWCxBlogs
 image: '/assets/main.jpg'
+metabar: light
 ---
+
 <nav>
   {% include navigation.html %}
 </nav>
-<header>
-  <div class="header" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
+<header class="header">
+  <div class="header-background" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
     <svg class="header-large" viewBox="0 0 330 75">
       <defs>
         <g id="text-large">
@@ -24,26 +26,31 @@ image: '/assets/main.jpg'
   </div>
 </header>
 
-<section id="about" class="section ctnr-golden">
-  <h3>About</h3>
-  <h1>{{ site.tagline }}</h1>
-  <h4>{{ site.description }}</h4>
-  <a class="link-large" data-scroll href="#submit">Submit a blog →</a>
+<section id="about" class="section">
+  <h2 class="section-title">About</h2>
+  <h1 class="section-header">{{ site.tagline }}</h1>
+  <p class="section-body -large">{{ site.description }}</p>
+  <a class="section-link -large" href="#submit" data-scroll>Submit a blog</a>
 </section>
 
-<section id="bloglist" class="section ctnr-golden">
-<label for="js-search"><h3 class="section-beta">search is in beta</h3> Enter a country, language, year or name.</label>
-<input id="js-search" class="section-search" placeholder="Search for a blog..." />
-<h3>Bloglist</h3>  
+<section id="bloglist" class="section">
+<h2 class="section-title">Search for a blog</h2>
+<div class="form-group">
+  <input class="form-input" type="search" name="js-search" id="js-search" placeholder=" " autocomplete="off" required/>
+  <span class="form-highlight"></span>
+  <span class="form-underline"></span>
+  <label class="form-label" for="js-search">Enter a country, language, year or name...</label>
+</div>
+<h2 class="section-title">Bloglist</h2>
 {% assign colleges = site.data | sort: college[0] %}
 {% for college in colleges %}
   <div class="section-blogs">
-    <h1>{{ college[0] | replace: '_', ' ' }}</h1>
-    <p class="section-columns">
+    <h3 class="section-header">{{ college[0] | replace: '_', ' ' }}</h3>
+    <p class="section-body section-columns">
     {% assign years = college[1] | sort: year[0] %}
     {% for year in years reversed %}
       <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
-        <span class="h2">{{ year[0] }}</span>
+        <span class="section-year">{{ year[0] }}</span>
         <span class="list">
           {% assign blogs = year[1] | sort: 'firstname' %}
           {% for blog in blogs  %}
@@ -71,31 +78,41 @@ image: '/assets/main.jpg'
 
 </section>
 
-<section class="section ctnr-golden">
-  <h3 id="submit">submit</h3>
+<section id="submit" class="section">
+  <h2 class="section-title">submit</h2>
   <!-- Begin MailChimp Signup Form -->
   <div id="mc_embed_signup">
     <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=7a0d71349c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
       <div id="mc_embed_signup_scroll" class="section-inputs">
-        <div class="mc-field-group">
-          <label for="mce-FNAME">What's your name?</label>
-          <input type="text" value="" name="FNAME" class="required" id="mce-FNAME" placeholder="Jane">
+        <div class="mc-field-group form-group">
+          <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-FNAME">What's your name?</label>
         </div>
-        <div class="mc-field-group">
-          <label for="mce-EMAIL">What’s your email address?</label>
-          <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="jane@example.com">
+        <div class="mc-field-group form-group">
+          <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-EMAIL">What’s your email address?</label>
         </div>
-        <div class="mc-field-group">
-          <label for="mce-MCOUNTRY">Which country are you from?</label>
-          <input type="text" value="" name="MCOUNTRY" class="required" id="mce-MCOUNTRY" placeholder="Germany">
+        <div class="mc-field-group form-group">
+          <input type="text" value="" name="MCOUNTRY" class="required form-input" id="mce-MCOUNTRY" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-MCOUNTRY">Which country are you from?</label>
         </div>
-        <div class="mc-field-group">
-          <label for="mce-MLANGUAGE">Which language do you blog in?</label>
-          <input type="text" value="" name="MLANGUAGE" class="required" id="mce-MLANGUAGE" placeholder="English & German">
+        <div class="mc-field-group form-group">
+          <input type="text" value="" name="MLANGUAGE" class="required form-input" id="mce-MLANGUAGE" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-MLANGUAGE">Which language do you blog in?</label>
         </div>
-        <div class="mc-field-group">
-          <label for="mce-MLINK">What's the link to your blog?</label>
-          <input type="url" value="" name="MLINK" class="required url" id="mce-MLINK" placeholder="http://connorbaer.io/" >
+        <div class="mc-field-group form-group">
+          <input type="url" value="" name="MLINK" class="required url form-input" id="mce-MLINK" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-MLINK">What's the link to your blog?</label>
         </div>
         <div class="mc-field-group">
           <label for="mce-MCOLLEGE">Which UWC do/did you attend?</label>
@@ -119,16 +136,18 @@ image: '/assets/main.jpg'
             <option value="UWC Waterford Kamhlaba">UWC Waterford Kamhlaba</option>
           </select>
         </div>
-        <div class="mc-field-group size1of2">
-          <label for="mce-MYEAR">When will/did you finish UWC?</label>
-          <input type="number" name="MYEAR" class="required" value="" id="mce-MYEAR" placeholder="2015">
+        <div class="mc-field-group size1of2 form-group">
+          <input type="number" name="MYEAR" class="required form-input" value="" id="mce-MYEAR" placeholder=" " required>
+          <span class="form-highlight"></span>
+          <span class="form-underline"></span>
+          <label class="form-label" for="mce-MYEAR">When will/did you finish UWC?</label>
         </div>
         <div id="mce-responses" class="clear">
           <div class="response" id="mce-error-response" style="display:none"></div>
           <div class="response" id="mce-success-response" style="display:none"></div>
         </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
         <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_7a0d71349c" tabindex="-1" value=""></div>
-        <div class="clear section-button"><input type="submit" value="Submit your blog →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        <input type="submit" value="Submit your blog →" name="subscribe" id="mc-embedded-subscribe" class="button">
       </div>
     </form>
   </div>

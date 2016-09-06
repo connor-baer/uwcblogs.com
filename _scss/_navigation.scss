@@ -1,0 +1,73 @@
+// ==== NAVIGATION ==== //
+
+/* Style the navigation here. */
+
+/* 
+ * 1. 
+ */
+
+
+
+.nav-large {
+	display: none;
+}
+
+.nav-small {
+	display: block;
+	position: absolute;
+	left: vr(1);
+	height: 21px;
+	bottom: 9rem;
+	transform: rotate(90deg);
+	transform-origin: left bottom;
+	z-index: 100;
+}
+
+.nav-link {
+	@include font(header3);
+	color: palette(gray, dark);
+	transition: $short;
+	&:hover {
+		color: palette(pink);
+	}
+}
+
+@include mappy-bp(small) {
+	.nav-small {
+		display: none;
+	}
+	.nav-large {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		padding: 12px 0 16px;
+		display: block;
+		margin: 0 auto;
+		list-style: none;
+		text-align: center;
+		width: 100vw;
+		box-shadow: 0 0 1px 0 transparent;
+	}
+	.nav-item {
+		margin: 0 vr(.75);
+		padding: 0;
+		display: inline-block;
+	}
+	.headroom .nav-large {
+		z-index: 9999;
+		transition: transform $long, padding $long, background-color $long;
+	}
+
+	.headroom--not-top .nav-large {
+		box-shadow: 0 0 1px 0 palette(gray, light);
+		background-color: palette(white);
+	}
+
+	.headroom--pinned .nav-large {
+		transform: translateY(0%);
+	}
+
+	.headroom--unpinned .nav-large {
+		transform: translateY(100%);
+	}
+}

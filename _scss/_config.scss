@@ -1,0 +1,126 @@
+// ==== CONFIGURATION ==== //
+
+/* Set all configuration variables here. */
+
+/* 
+ * 1. Breakpoints
+ * 2. Typography
+ * 3. Colors
+ * 4. Transition
+ */
+
+
+
+// 1. Breakpoints //
+
+$breakpoints: (
+  small: 576px,
+  medium: 769px,
+  large: 1025px,
+  x-large: 1441px,
+);
+
+/* You can use any valid arguments inserted into mappy-bp as the map values. Any of the following would do. */
+$mappy-queries: (
+  phone: mappy-bp(max-width small),
+  tablet: mappy-bp(small medium),
+  desktop: mappy-bp(medium),
+  desktop-large: mappy-bp(large),
+);
+
+
+
+// 2. Typography //
+
+$sans: 'freight-sans-pro', 'Freight Sans Pro', 'PT Sans', Arial, sans-serif;
+$sans-normal: 500;
+$sans-bold: 700;
+$serif: 'freight-text-pro', 'Freight Text Pro', 'Times New Roman', Times, serif;
+$serif-normal: 400;
+$serif-bold: 700;
+$code: 'Courier New', Courier, monospace;
+
+$ms-base: 1rem;
+$ms-ratio: 1.2;
+
+$typi: (
+  null: (18px, 1.3),
+  medium: (21px, 1.5),
+  x-large: (28px),
+);
+
+
+
+// 3. Colors //
+
+$base-blue: #007ACC;
+$base-turquoise: #21A7Ac;
+
+$base-purple: #741669;
+$base-pink: #DA1884;
+$base-orange: #FF512F;
+
+$factor-lighter: 49%;
+$factor-light: 7%;
+$factor-dark: 5%;
+$factor-darker: 28%;
+
+/*
+ * Sass map for the color palette; see `_library.scss` for the palette() function. 
+ */
+$_palettes: (
+    blue: (
+        lighter: lighten($base-blue, $factor-lighter),
+        base:  $base-blue,
+        light: lighten($base-blue, $factor-light),
+        dark:  darken($base-blue, $factor-dark),
+        darker: darken($base-blue, $factor-darker)
+    ),
+    turquoise: (
+        lighter: lighten($base-turquoise, $factor-lighter),
+        base:  $base-turquoise,
+        light: lighten($base-turquoise, $factor-light),
+        dark:  darken($base-turquoise, $factor-dark),
+        darker: darken($base-turquoise, $factor-darker)
+    ),
+    purple: (
+        lighter: lighten($base-purple, $factor-lighter),
+        base:  $base-purple,
+        light: lighten($base-purple, $factor-light),
+        dark:  darken($base-purple, $factor-dark),
+        darker: darken($base-purple, $factor-darker)
+    ),
+    pink: (
+        base:  $base-pink,
+        lighter: lighten($base-pink, $factor-lighter),
+        light: lighten($base-pink, $factor-light),
+        dark:  darken($base-pink, $factor-dark),
+        darker: darken($base-pink, $factor-darker)
+    ),
+    orange: (
+        lighter: lighten($base-orange, $factor-lighter),
+        base:  $base-orange,
+        light: lighten($base-orange, $factor-light),
+        dark:  darken($base-orange, $factor-dark),
+        darker: darken($base-orange, $factor-darker)
+    ),
+    gray: (
+        base:    #666,
+        lighter: #FAFAFA,
+        light:   #CCC,
+        dark:    #333,
+        darker:  #1A1A1A
+    ),
+    white: (
+        base:    #fff,
+        light:   #fff,
+        dark:    #fff
+    )
+);
+
+
+
+// 4. Transitions //
+
+$short: .15s cubic-bezier(0,0,.2,1);
+$long: .3s cubic-bezier(0,0,.2,1);

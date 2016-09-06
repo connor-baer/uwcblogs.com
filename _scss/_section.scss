@@ -1,0 +1,80 @@
+// ==== SECTION ==== //
+
+/* Style the homepage sections here. */
+
+/* 
+ * 1. General
+ */
+
+
+
+// 1. General //
+
+.section {
+	@include ctnr(golden);
+	margin-bottom: vr(3);
+}
+
+.section-title {
+	@include font(header3);
+	color: palette(turquoise);
+}
+
+.section-header {
+	@include font(header1);
+}
+
+.section-body {
+	@include font(body);
+}
+
+.section-columns {
+	@include font(body);
+}
+
+.section-year {
+	@include font(header2);
+	display: block;
+	color: palette(gray);
+}
+
+.section-link {
+	@include link-underline();
+	color: palette(blue);
+	&:after {
+		background-color: palette(blue);
+	}
+	&:hover:after {
+		background-color: palette(turquoise);
+	}
+	&.-large {
+      font-size: ms(1);
+    }
+}
+
+@include mappy-bp(small) {
+	.section {
+		margin-bottom: vr(4);
+	}
+}
+
+
+
+
+.section-blogs,
+.adsbygoogle {
+	margin-bottom: 5rem;
+}
+
+@include mappy-bp(small) {
+	.section {
+		margin-top: 6rem;
+		margin-bottom: 6rem
+	}
+}
+
+@include mappy-bp(medium) {
+	.section-columns {
+		columns: 2;
+	}
+}

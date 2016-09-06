@@ -1,0 +1,171 @@
+// ==== TYPOGRAPHY ==== //
+
+/* Define all global font styles here. */
+
+/* 
+ * 1. font()
+ * 2. Global styles
+ */
+
+
+
+// 1. font() //
+
+/* 
+ * The font() function accepts a style parameter.
+ * It is intended to promote consistency in the typography, 
+ * therefore the number of styles should be kept to a minimum.
+ * Attributes which change between instances should not be defined here (e.g. color). 
+ */
+@mixin font($style: null) {
+  @if $style == null {
+    @warn "Mixin font() received no input! Please provide a style.";
+    font-size: ms(10);
+    color: red;
+  }
+  @else if $style == 'title' {
+    font-family: $sans;
+    font-weight: $sans-bold;
+    font-size: ms(5);
+    line-height: 1.2;
+  }
+  @else if $style == 'header1' {
+    font-family: $sans;
+    font-weight: $sans-bold;
+    font-size: ms(4);
+    color: palette(gray, darker);
+    line-height: 1.2;
+    margin-top: vr(.75);
+    margin-bottom: vr(.5);
+  }
+  @else if $style == 'header2' {
+    font-family: $sans;
+    font-weight: $sans-bold;
+    font-size: ms(2);
+    color: palette(gray, darker);
+    line-height: 1.2;
+    margin-top: vr(.5);
+    margin-bottom: vr(.25);
+  }
+  @else if $style == 'header3' {
+    font-family: $sans;
+    font-size: ms(-1);
+    font-weight: $sans-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+  }
+  @else if $style == 'body' {
+    font-family: $serif;
+    font-weight: $serif-normal;
+    font-size: ms(0);
+    line-height: 1.75;
+    margin-top: 0;
+    margin-bottom: vr(.5);
+    &.-large {
+      font-size: ms(1);
+    }
+    a {
+      color: palette(blue);
+      @include link-underline();
+      &:after {
+        bottom: 2px;
+        background-color: transparent;
+      }
+      &:hover:after {
+        background-color: palette(turquoise);
+      }
+    }
+  }
+  @else if $style == 'app' {
+    font-family: $sans;
+    font-weight: $sans-normal;
+    font-size: ms(0);
+    &.-large {
+      font-size: ms(1);
+    }
+    a {
+      color: palette(orange);
+      @include link-underline();
+    }
+  }
+  @else {
+    @warn "Mixin font() received invalid input! This style does not exist.";
+    font-size: ms(10);
+    color: red;
+  }
+}
+
+
+
+// 2. Global styles //
+
+a {
+  border: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+strong,
+.strong {
+  font-weight: $serif-bold;
+}
+
+dfn,
+i,
+em,
+.em {
+  font-style: italic;
+}
+
+code,
+kbd,
+tt,
+var,
+samp,
+pre {
+  font-family: $code;
+}
+
+pre {
+  border: 1px solid palette(gray, light);
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.3125;
+  margin: 0 0 1.75em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.75em;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+code {
+  background-color: palette(gray, light);
+  padding: 0.125em 0.25em;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted palette(gray, light);
+  cursor: help;
+}
+
+mark,
+ins {
+  background: palette(orange, light);
+  color: #fff;
+  padding: 0.125em 0.25em;
+  text-decoration: none;
+}
+
+big {
+  font-size: 125%;
+}
+
+hr {
+  background-color: palette(gray, light);
+  border: 0;
+  height: 1px;
+  margin: 0 0 vr(1);
+}
