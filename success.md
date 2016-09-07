@@ -1,14 +1,14 @@
 ---
 layout: default
-title: "Success! Blog successfully submitted."
+title: "Confirmation successfull"
 ---
 
-<header class="content-header ctnr-golden">
-	<svg class="header-icon" width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1366A9" /><stop offset="100%" stop-color="#21A7AC" /></linearGradient></defs><path d="M4,8L12,13L20,8V8L12,3L4,8V8M22,8V18A2,2 0 0,1 20,20H4A2,2 0 0,1 2,18V8C2,7.27 2.39,6.64 2.97,6.29L12,0.64L21.03,6.29C21.61,6.64 22,7.27 22,8Z" /></svg>
+<header class="content-header">
+	<svg class="content-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><defs><linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="gray" /><stop offset="100%" stop-color="gray" /></linearGradient></defs><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
 </header>
-<article class="ctnr-golden" style="margin-bottom:4rem">
- 	<h1>You've successfully submitted your blog!</h1>
- 	<h4>Thanks a lot for your help! I will add the blog you submitted as soon as possible. Please understand that it might take a few days.</h4>
+<article class="content">
+ 	<h1>Blog submission confirmed!</h1>
+ 	<p class="-large">Thanks a lot for your help! I will add the blog you submitted as soon as possible. Please understand that it might take a few days.</p>
 </article>
 <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- UWCxBlogs -->

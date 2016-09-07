@@ -2,17 +2,22 @@
 
 /* Style the navigation here. */
 
-/* 
- * 1. 
+/**
+ * 1. Container
+ * 2. Elements
+ * 3. Themes
+ * 4. Headroom
  */
 
 
 
-.nav-large {
+// 1. Container //
+
+.navigation-large {
 	display: none;
 }
 
-.nav-small {
+.navigation-small {
 	display: block;
 	position: absolute;
 	left: vr(1);
@@ -23,20 +28,13 @@
 	z-index: 100;
 }
 
-.nav-link {
-	@include font(header3);
-	color: palette(gray, dark);
-	transition: $short;
-	&:hover {
-		color: palette(pink);
-	}
-}
-
 @include mappy-bp(small) {
-	.nav-small {
+
+	.navigation-small {
 		display: none;
 	}
-	.nav-large {
+
+	.navigation-large {
 		position: fixed;
 		bottom: 0;
 		left: 0;
@@ -48,26 +46,77 @@
 		width: 100vw;
 		box-shadow: 0 0 1px 0 transparent;
 	}
-	.nav-item {
+}
+
+
+
+// 2. Elements //
+
+.navigation-link {
+	@include font(header3);
+	@include link-underline();
+	
+	color: palette(gray, dark);
+	transition: $short;
+
+	&:after {
+		height: 3px;
+        background-color: transparent;
+	}
+
+	&:hover {
+		color: palette(gray, dark);
+	}
+
+	&:hover:after {
+		background-color: palette(gray, dark);
+	}
+}
+
+@include mappy-bp(small) {
+
+	.navigation-item {
 		margin: 0 vr(.75);
 		padding: 0;
 		display: inline-block;
 	}
-	.headroom .nav-large {
+}
+
+
+
+// 3. Themes //
+
+/* Light theme */
+
+.headroom--top #navigation.-light .navigation-link {
+	color: palette(white);
+
+	&:hover:after {
+		background-color: palette(white);
+	}
+}
+
+
+
+// 4. Headroom //
+
+@include mappy-bp(small) {
+
+	.headroom .navigation-large {
 		z-index: 9999;
 		transition: transform $long, padding $long, background-color $long;
 	}
 
-	.headroom--not-top .nav-large {
+	.headroom--not-top .navigation-large {
 		box-shadow: 0 0 1px 0 palette(gray, light);
 		background-color: palette(white);
 	}
 
-	.headroom--pinned .nav-large {
+	.headroom--pinned .navigation-large {
 		transform: translateY(0%);
 	}
 
-	.headroom--unpinned .nav-large {
+	.headroom--unpinned .navigation-large {
 		transform: translateY(100%);
 	}
 }

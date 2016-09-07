@@ -14,10 +14,7 @@ gems:
 
 # Settings
 color:                '#1F1F1F'
-exclude:              [CNAME, README.md, NOTES.md, .gitignore, js, sass, .gulpfile, node_modules]
-sass:
-  sass_dir:           _sass
-  style:              compressed
+exclude:              [CNAME, README.md, NOTES.md, LICENSE.md, .gitignore, package.json, bower.json, _js, _scss, gulpfile.js, gulpconfig.js, node_modules, bower_components, gemfile]
 permalink:            /:title/
 
 

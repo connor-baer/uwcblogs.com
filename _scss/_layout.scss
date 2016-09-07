@@ -3,37 +3,47 @@
 /* Define all global layouts and layout styles here. */
 
 /* 
- * 1. Clearfix
- * 2. Layouts
+ * 1. Breakpoints
+ * 2. ctnr()
  * 3. Helpers
  */
 
 
 
-// 1. Clearfix //
+// 1. Breakpoints //
 
-@mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-}
+$breakpoints: (
+  small: 576px,
+  medium: 769px,
+  large: 1025px,
+  x-large: 1441px,
+);
+
+/* You can use any valid arguments inserted into mappy-bp as the map values. Any of the following would do. */
+$mappy-queries: (
+  phone: mappy-bp(max-width small),
+  tablet: mappy-bp(small medium),
+  desktop: mappy-bp(medium),
+  desktop-large: mappy-bp(large),
+);
 
 
 
-// 2. Layouts //
+// 2. ctnr() //
 
 /* Content can take on three different widths: full, wide and golden. */
 @mixin ctnr($width: null) {
+
   @if $width == null {
     @warn "Mixin ctnr() received no input! Please provide a width.";
   }
+
   @else if $width == 'golden' {
     width: auto;
     padding-right: vr(1);
     padding-left: vr(1);
     display: block;
+
     @include mappy-query(desktop) {
       width: 38rem;
       max-width: 100%;
@@ -41,11 +51,13 @@
       margin-left: auto;
     }
   }
+
   @else if $width == 'wide' {
     width: 100%;
     padding-right: vr(1);
     padding-left: vr(1);
     display: block;
+
     @include mappy-query(desktop) {
       width: 56rem;
       max-width: 100%;
@@ -53,11 +65,13 @@
       margin-left: auto;
     }
   }
+
   @else if $width == 'full' {
     display: block;
     width: 100vw;
     max-width: 100%;
   }
+  
   @else {
     @warn "Mixin ctnr() received invalid input! This width does not exist.";
   }
@@ -71,4 +85,12 @@
 .site {
   max-width: 72rem;
   margin: 0 auto;
+}
+
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }

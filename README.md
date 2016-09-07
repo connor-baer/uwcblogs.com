@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/uwc/uwcblogs.svg?branch=master)](https://travis-ci.org/uwc/uwcblogs)
+
 # UWC Bloglist
 
 _A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges._

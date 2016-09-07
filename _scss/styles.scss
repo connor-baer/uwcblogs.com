@@ -21,12 +21,6 @@
 /* Mappy Breakpoints: a breakpoint mixin that uses Sass maps, from https://github.com/zellwk/mappy-breakpoints */
 @import "mappy-breakpoints/mappy-breakpoints";
 
-/* Configuration variables and settings. */
-@import "config";
-
-/* Library: basic mixins, functions, etc. specific to this theme. */
-@import "library";
-
 
 // 2. Dependencies //
 
@@ -39,9 +33,10 @@
 
 // 3. Authored dependencies //
 
-@import "base";
 @import "layout";
+@import "color";
 @import "type";
+@import "animation";
 
 
 // 4. Patters //

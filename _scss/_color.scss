@@ -1,57 +1,17 @@
-// ==== CONFIGURATION ==== //
-
-/* Set all configuration variables here. */
+// ==== COLORS ==== //
 
 /* 
- * 1. Breakpoints
- * 2. Typography
- * 3. Colors
- * 4. Transition
+ * Set all colors related things here.
+ */
+
+/* 
+ * 1. Base colors
+ * 2. Color transformations
+ * 3. palette()
  */
 
 
-
-// 1. Breakpoints //
-
-$breakpoints: (
-  small: 576px,
-  medium: 769px,
-  large: 1025px,
-  x-large: 1441px,
-);
-
-/* You can use any valid arguments inserted into mappy-bp as the map values. Any of the following would do. */
-$mappy-queries: (
-  phone: mappy-bp(max-width small),
-  tablet: mappy-bp(small medium),
-  desktop: mappy-bp(medium),
-  desktop-large: mappy-bp(large),
-);
-
-
-
-// 2. Typography //
-
-$sans: 'freight-sans-pro', 'Freight Sans Pro', 'PT Sans', Arial, sans-serif;
-$sans-normal: 500;
-$sans-bold: 700;
-$serif: 'freight-text-pro', 'Freight Text Pro', 'Times New Roman', Times, serif;
-$serif-normal: 400;
-$serif-bold: 700;
-$code: 'Courier New', Courier, monospace;
-
-$ms-base: 1rem;
-$ms-ratio: 1.2;
-
-$typi: (
-  null: (18px, 1.3),
-  medium: (21px, 1.5),
-  x-large: (28px),
-);
-
-
-
-// 3. Colors //
+// 1. Base colors //
 
 $base-blue: #007ACC;
 $base-turquoise: #21A7Ac;
@@ -64,6 +24,13 @@ $factor-lighter: 49%;
 $factor-light: 7%;
 $factor-dark: 5%;
 $factor-darker: 28%;
+
+$primary: blue;
+$secondary: turquoise;
+
+
+
+// 2. Color transformations //
 
 /*
  * Sass map for the color palette; see `_library.scss` for the palette() function. 
@@ -120,7 +87,12 @@ $_palettes: (
 
 
 
-// 4. Transitions //
+// 3. palette() //
 
-$short: .15s cubic-bezier(0,0,.2,1);
-$long: .3s cubic-bezier(0,0,.2,1);
+/* 
+ * A simple function to retrieve a color from the palette.
+ * Adapted from http://erskinedesign.com/blog/friendlier-colour-names-sass-maps/ 
+ */
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($_palettes, $palette), $tone);
+}

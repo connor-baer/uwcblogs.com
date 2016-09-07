@@ -1,13 +1,11 @@
 ---
 layout: default
-title: UWCxBlogs
+title: A collection of UWC blogs
 image: '/assets/main.jpg'
-metabar: light
+theme: light
 ---
 
-<nav>
-  {% include navigation.html %}
-</nav>
+{% include navigation.html theme=page.theme %}
 <header class="header">
   <div class="header-background" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
     <svg class="header-large" viewBox="0 0 330 75">
@@ -34,18 +32,19 @@ metabar: light
 </section>
 
 <section id="bloglist" class="section">
-<h2 class="section-title">Search for a blog</h2>
+<h2 class="section-title">Bloglist</h2>
 <div class="form-group">
   <input class="form-input" type="search" name="js-search" id="js-search" placeholder=" " autocomplete="off" required/>
   <span class="form-highlight"></span>
   <span class="form-underline"></span>
-  <label class="form-label" for="js-search">Enter a country, language, year or name...</label>
+  <label class="form-label" for="js-search">Search for a blog...</label>
 </div>
-<h2 class="section-title">Bloglist</h2>
+<p>Enter a country, language, year or name...</p>
+
 {% assign colleges = site.data | sort: college[0] %}
 {% for college in colleges %}
   <div class="section-blogs">
-    <h3 class="section-header">{{ college[0] | replace: '_', ' ' }}</h3>
+    <h3 class="section-header js-college">{{ college[0] | replace: '_', ' ' }}</h3>
     <p class="section-body section-columns">
     {% assign years = college[1] | sort: year[0] %}
     {% for year in years reversed %}
@@ -54,7 +53,7 @@ metabar: light
         <span class="list">
           {% assign blogs = year[1] | sort: 'firstname' %}
           {% for blog in blogs  %}
-            <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" rel="noopener noreferrer" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span><br>
+            <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" rel="noopener noreferrer" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span>
           {% endfor %}
         </span>
       </span>
