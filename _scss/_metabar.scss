@@ -90,12 +90,12 @@
 
 	stop:first-child {
 		transition: stop-color $short;
-		stop-color: palette(pink);
+		stop-color: palette($primary);
 	}
 
 	stop:last-child {
 		transition: stop-color $short;
-		stop-color: palette(orange);
+		stop-color: palette($secondary);
 	}
 
 	@include mappy-query(tablet) {

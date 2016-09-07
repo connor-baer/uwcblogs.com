@@ -147,6 +147,10 @@ select {
 
 	/* Error state */
 
+	&:not(:focus):not(:placeholder-shown):invalid ~ .form-label {
+		color: palette(red);
+	}
+
 	&:not(:focus):not(:placeholder-shown):invalid ~ .form-error {
 		display: inline-block;
 	}
@@ -159,6 +163,9 @@ select {
 		font-size: ms(-1);
 		left: 0;
 		top: -#{vr(1)};
+	}
+	&:not(:placeholder-shown):not(:focus) ~ .form-label {
+		color: palette(gray);
 	}
 }
 
