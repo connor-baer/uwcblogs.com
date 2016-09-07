@@ -55,6 +55,7 @@ for ( var i = 0; i < lists.length; ++i ) {
 var searchInput = document.getElementById( 'js-search' );
 
 function searchAll() {
+
     // Get search value.
     var searchValue = searchInput.value;
 
@@ -78,7 +79,7 @@ function searchAll() {
         var empty = 0;
 
         for ( var m = 0; m < yearsInCollege.length; ++m ) {
-            if ( yearsInCollege[m].style.display == 'none' ) {
+            if ( 'none' == yearsInCollege[m].style.display ) {
                 empty++;
             }
         }
