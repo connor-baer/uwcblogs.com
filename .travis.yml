@@ -37,9 +37,7 @@ before_script:
 # the `install` step will run `bundle install` by default.
 script: 
     #!/usr/bin/env bash
-
-    # halt script on error
-    - set -e 
+    
     # Build the website.
     - bundle exec jekyll build
     # Run the website through htmlproofer.

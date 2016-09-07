@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uwc/bloglist.git"
+    "url": "git+https://github.com/uwc/uwcblogs.git"
   },
   "keywords": [
     "uwc",
@@ -19,7 +19,7 @@
   "author": "Connor Bär",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/uwc/bloglist/issues"
+    "url": "https://github.com/uwc/uwcblogs/issues"
   },
   "homepage": "https://uwcblogs.com",
   "devDependencies": {

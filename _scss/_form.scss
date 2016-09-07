@@ -78,10 +78,10 @@ select {
 	border: 1px solid palette(gray);
 	border-radius: 5px;
 	background: #fff;
-	padding: 0.5rem 0.5rem;
+	padding: vr(.5);
   	display: block;
-  	margin: 0.3rem 0;
-  	height: 2rem;
+  	margin: vr(.25) 0;
+  	height: vr(1.25);
   	outline: none;
 
   	&:focus,
