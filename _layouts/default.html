@@ -3,12 +3,13 @@
 {% include head.html %}
 	<body>
 		<div class="body-wrapper">
-		    {% include social.html %}
-		    <article>
-				{{ content }}
-			</article>
+		    {% include metabar.html theme=page.theme %}
+
+			{{ content }}
+
 			{% include footer.html %}
 	    </div>
+
 	    {% include scripts.html %}
 	</body>
 </html>

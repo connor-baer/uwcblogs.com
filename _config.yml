@@ -14,16 +14,13 @@ gems:
 
 # Settings
 color:                '#1F1F1F'
-exclude:              [CNAME, README.md, NOTES.md, .gitignore, js, sass, .gulpfile, node_modules]
-sass:
-  sass_dir:           _sass
-  style:              compressed
+exclude:              [CNAME, README.md, NOTES.md, LICENSE.md, .gitignore, package.json, bower.json, _js, _scss, gulpfile.js, gulpconfig.js, node_modules, bower_components, gemfile]
 permalink:            /:title/
 
 
 # Site meta
 title:                UWCxBlogs
-tagline:              'A collection of UWC blogs.'
+tagline:              'A Collection of UWC Blogs.'
 keywords:             'uwc, blog, blogs, bloglist, list, collection'
 description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
 url:                  http://uwcblogs.com
@@ -64,4 +61,4 @@ mobile:
 version:              3.0.0
 
 github:
-  repo:               https://github.com/uwc/bloglist
+  repo:               https://github.com/uwc/uwcblogs

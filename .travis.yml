@@ -37,17 +37,15 @@ before_script:
 # the `install` step will run `bundle install` by default.
 script: 
     #!/usr/bin/env bash
-
-    # halt script on error
-    - set -e 
+    
     # Build the website.
     - bundle exec jekyll build
-    # Run the website through htmlproofer.
-    - bundle exec htmlproofer ./_site --only-4xx --check-favicon --check-html
     # Run the website through JSHint.
     - jshint ./_js
     # Run the website through JavaScript Code Style checker.
     - jscs ./_js
+    # Run the website through htmlproofer.
+    - bundle exec htmlproofer ./_site --only-4xx --check-favicon --check-html
 
 env:
     global:
