@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Success! Blog successfully submitted."
+theme:
 ---
 
 <header class="content-header">

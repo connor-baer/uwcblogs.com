@@ -1,7 +1,7 @@
 ---
 layout: default
 title: A collection of UWC blogs
-image: '/assets/main.jpg'
+image: 'main'
 theme: light
 ---
 
@@ -9,7 +9,7 @@ theme: light
 
 <article>
 <header class="header">
-  <div class="header-background" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
+  <div class="header-background" style="background-image: url('{{ site.baseurl }}/img/{{ page.image }}.jpg')">
     <svg class="header-large" viewBox="0 0 330 75">
       <defs>
         <g id="text-large">
@@ -62,19 +62,6 @@ theme: light
     {% endfor %}
     </p>
   </div>
-  {% assign mod = forloop.index | modulo: 3 %}
-  {% if mod == 0 %}
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <!-- UWCxBlogs -->
-    <ins class="adsbygoogle"
-         style="display:block"
-         data-ad-client="ca-pub-4242118293341339"
-         data-ad-slot="6920232204"
-         data-ad-format="auto"></ins>
-    <script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
-  {% endif %}
 {% endfor %}
 
 </section>

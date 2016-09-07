@@ -23,7 +23,7 @@
   },
   "homepage": "https://uwcblogs.com",
   "devDependencies": {
-    "browser-sync": "^2.14.3",
+    "browser-sync": "^2.15.0",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-changed": "^1.3.2",

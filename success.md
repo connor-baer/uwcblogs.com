@@ -1,6 +1,7 @@
 ---
 layout: default
 title: "Confirmation successfull"
+theme: 
 ---
 
 <header class="content-header">
