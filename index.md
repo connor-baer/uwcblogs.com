@@ -6,6 +6,8 @@ theme: light
 ---
 
 {% include navigation.html theme=page.theme %}
+
+<article>
 <header class="header">
   <div class="header-background" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
     <svg class="header-large" viewBox="0 0 330 75">
@@ -33,24 +35,24 @@ theme: light
 
 <section id="bloglist" class="section">
 <h2 class="section-title">Bloglist</h2>
-<div class="form-group">
+<div class="form-group section-blogs">
   <input class="form-input" type="search" name="js-search" id="js-search" placeholder=" " autocomplete="off" required/>
   <span class="form-highlight"></span>
   <span class="form-underline"></span>
-  <label class="form-label" for="js-search">Search for a blog...</label>
+  <label class="form-label" for="js-search">Filter the blogs...</label>
+  <p class="section-hint">Enter a country, language, year or name in the field above to filter the blogs.</p>
 </div>
-<p>Enter a country, language, year or name...</p>
 
 {% assign colleges = site.data | sort: college[0] %}
 {% for college in colleges %}
-  <div class="section-blogs">
-    <h3 class="section-header js-college">{{ college[0] | replace: '_', ' ' }}</h3>
+  <div class="section-blogs js-college">
+    <h3 class="section-header">{{ college[0] | replace: '_', ' ' }}</h3>
     <p class="section-body section-columns">
     {% assign years = college[1] | sort: year[0] %}
     {% for year in years reversed %}
       <span class="js-list" id="{{ college[0] }}-{{ year[0] }}">
-        <span class="section-year">{{ year[0] }}</span>
-        <span class="list">
+        <span class="section-year js-year">{{ year[0] }}</span>
+        <span class="list js-years">
           {% assign blogs = year[1] | sort: 'firstname' %}
           {% for blog in blogs  %}
             <span data-year="{{ blog.year }}" class="section-blog"><a href="http://{{ blog.link }}" target="_blank" rel="noopener noreferrer" class="link"><span class="name">{{ blog.firstname }}</span></a> | <span class="country">{{ blog.country }}</span>{% if blog.country and blog.language %} - {% endif %}<span class="language">{{ blog.language }}</span></span>
@@ -79,6 +81,8 @@ theme: light
 
 <section id="submit" class="section">
   <h2 class="section-title">submit</h2>
+    <h1 class="section-header">Submit your blog!</h1>
+    <p class="section-body -large">Share your experiences with the world and get more readers! Fill out the form below to add your blog to the bloglist.</p>
   <!-- Begin MailChimp Signup Form -->
   <div id="mc_embed_signup">
     <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=7a0d71349c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
@@ -152,3 +156,4 @@ theme: light
   </div>
   <!--End mc_embed_signup-->
 </section>
+</article>

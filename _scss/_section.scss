@@ -65,6 +65,13 @@
     }
 }
 
+.section-hint {
+	@include font(app);
+
+	font-size: ms(-1);
+	margin-top: vr(.5);
+}
+
 .section-blogs,
 .adsbygoogle {
 	margin-bottom: vr(3);

@@ -19,11 +19,11 @@
 	fill: url(#icon-gradient);
 
 	stop:first-child {
-		stop-color: $primary;
+		stop-color: palette($primary);
 	}
 	
 	stop:last-child {
-		stop-color: $secondary;
+		stop-color: palette($secondary);
 	}
 }
 

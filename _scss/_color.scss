@@ -19,6 +19,7 @@ $base-turquoise: #21A7Ac;
 $base-purple: #741669;
 $base-pink: #DA1884;
 $base-orange: #FF512F;
+$base-red: red;
 
 $factor-lighter: 49%;
 $factor-light: 7%;
@@ -70,6 +71,13 @@ $_palettes: (
         light: lighten($base-orange, $factor-light),
         dark:  darken($base-orange, $factor-dark),
         darker: darken($base-orange, $factor-darker)
+    ),
+    red: (
+        lighter: lighten($base-red, $factor-lighter),
+        base:  $base-red,
+        light: lighten($base-red, $factor-light),
+        dark:  darken($base-red, $factor-dark),
+        darker: darken($base-red, $factor-darker)
     ),
     gray: (
         base:    #666,
