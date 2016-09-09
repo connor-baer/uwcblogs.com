@@ -69,7 +69,7 @@ theme: light
 <section id="submit" class="section">
   <h2 class="section-title">submit</h2>
     <h1 class="section-header">Submit your blog!</h1>
-    <p class="section-body -large">Share your experiences with the world and get more readers! Fill out the form below to add your blog to the list of blogs.</p>
+    <p class="section-body -large">Share your UWC experience with the world and get more readers! Fill out the form below to add your blog to the list of blogs.</p>
   <!-- Begin MailChimp Signup Form -->
   <div id="mc_embed_signup">
     <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=7a0d71349c" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
