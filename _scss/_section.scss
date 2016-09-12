@@ -97,3 +97,44 @@
 		}
 	}
 }
+
+
+// 2. Newsletter //
+
+.section-post {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+}
+
+.post-body {
+	width: 80%;
+	order: 2;
+}
+
+.post-image {
+	width: 15%;
+	padding-bottom: 15%;
+	height: 100%;
+	background: 50% 50% / cover;
+	order: 3;
+}
+
+.post-medium {
+	margin-top: vr(.75);
+	display: inline-block;
+}
+
+@include mappy-query(phone) {
+	.post-body {
+		width: 100%;
+	}
+
+	.post-image {
+		width: 100%;
+		height: vr(6);
+		margin: vr(.5) 0 vr(1);
+		order: 1;
+	}
+}
