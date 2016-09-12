@@ -1,7 +1,7 @@
 ---
 layout: default
 title: A collection of UWC blogs
-image: 'main'
+image: '/img/main.jpg'
 theme: light
 ---
 
@@ -9,7 +9,7 @@ theme: light
 
 <article>
 <header class="header">
-  <div class="header-background" style="background-image: url('{{ site.baseurl }}/img/{{ page.image }}.jpg')">
+  <div class="header-background" style="background-image: url('{{ site.baseurl }}{{ page.image }}')">
     <svg class="header-large" viewBox="0 0 330 75">
       <defs>
         <g id="text-large">
