@@ -22,7 +22,7 @@ permalink:            /:title/
 title:                UWCxBlogs
 tagline:              'A Collection of UWC Blogs.'
 keywords:             'uwc, blog, blogs, bloglist, list, collection'
-description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.'
+description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 16 United World Colleges.'
 url:                  http://uwcblogs.com
 baseurl:              ''
 logo:                 /assets/icons/apple-icon-144x144.png
@@ -50,6 +50,13 @@ social:
     - https://medium.com/@connor_baer
     - https://www.snapchat.com/add/connor_baer
 
+version:              3.1.0
+
+github:
+  repo:               https://github.com/uwc/uwcblogs
+
+
+# Content
 nav:
   about:              '/#about'
   bloglist:           '/#bloglist'
@@ -58,7 +65,10 @@ nav:
 mobile: 
   bloglist:           '/#bloglist'
 
-version:              3.0.0
-
-github:
-  repo:               https://github.com/uwc/uwcblogs
+defaults:
+  - scope:
+      path: ''
+      type: posts
+    values:
+      layout: post
+      permalink: /newsletter/:title/
