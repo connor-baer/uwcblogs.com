@@ -1,6 +1,6 @@
 ---
 layout: default
-title: A collection of UWC blogs
+title: A Collection of UWC Blogs
 image: '/img/main.jpg'
 theme: light
 ---
