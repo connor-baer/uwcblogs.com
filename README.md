@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/uwc/uwcblogs.svg?branch=beta)](https://travis-ci.org/uwc/uwcblogs)
+[![Build Status](https://travis-ci.org/uwc/uwcxblogs.svg?branch=beta)](https://travis-ci.org/uwc/uwcxblogs)
 
 # UWCxBlogs
 
