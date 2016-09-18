@@ -36,7 +36,7 @@ var searchOptions = {
   valueNames: [
     "name",
     "country",
-    'language',
+    "language",
     { data: [ "year" ] }
     ]
 };
