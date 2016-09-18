@@ -1,5 +1,5 @@
 {
-    "preset": "wordpress"
+    "preset": "airbnb"
   , "fileExtensions": [ ".js" ]
   , "excludeFiles": [
     	"js/**.min.js",

@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/uwc/uwcxblogs.svg?branch=beta)](https://travis-ci.org/uwc/uwcxblogs)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eeb52160932646a2b42c14cc5eacc6a3)](https://www.codacy.com/app/connor_baer/uwcxblogs)
 
 # UWCxBlogs
 
