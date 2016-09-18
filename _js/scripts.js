@@ -24,7 +24,7 @@ headroom.init();
 smoothScroll.init({
 
 	// Easing pattern to use.
-	easing: 'easeInOutCubic',
+	easing: "easeInOutCubic",
 
 	// How far to offset the scrolling anchor location in pixels.
 	offset: 70
@@ -34,16 +34,16 @@ smoothScroll.init({
 
 var searchOptions = {
   valueNames: [
-    'name',
-    'country',
+    "name",
+    "country",
     'language',
-    { data: [ 'year' ] }
+    { data: [ "year" ] }
     ]
 };
 
-var lists = document.getElementsByClassName( 'js-list' );
-var colleges = document.getElementsByClassName( 'js-college' );
-var years = document.getElementsByClassName( 'js-years' );
+var lists = document.getElementsByClassName( "js-list" );
+var colleges = document.getElementsByClassName( "js-college" );
+var years = document.getElementsByClassName( "js-years" );
 
 var data = [];
 
@@ -52,7 +52,7 @@ for ( var i = 0; i < lists.length; ++i ) {
     data[i] = new List( listId, searchOptions );
 }
 
-var searchInput = document.getElementById( 'js-search' );
+var searchInput = document.getElementById( "js-search" );
 
 function searchAll() {
 
@@ -67,29 +67,29 @@ function searchAll() {
     // Hide all year numbers without blogs.
     for ( var j = 0; j < years.length; ++j ) {
         if ( years[j].hasChildNodes() ) {
-            years[j].parentNode.style.display = 'block';
+            years[j].parentNode.style.display = "block";
         } else {
-            years[j].parentNode.style.display = 'none';
+            years[j].parentNode.style.display = "none";
         }
     }
 
     // Hide all college names with all years hidden.
     for ( var k = 0; k < colleges.length; ++k ) {
-        var yearsInCollege = colleges[k].getElementsByClassName( 'js-list' );
+        var yearsInCollege = colleges[k].getElementsByClassName( "js-list" );
         var empty = 0;
 
         for ( var m = 0; m < yearsInCollege.length; ++m ) {
-            if ( 'none' == yearsInCollege[m].style.display ) {
+            if ( "none" === yearsInCollege[m].style.display ) {
                 empty++;
             }
         }
 
         if ( empty === yearsInCollege.length ) {
-            colleges[k].style.display = 'none';
+            colleges[k].style.display = "none";
         } else {
-            colleges[k].style.display = 'block';
+            colleges[k].style.display = "block";
         }
     }
 }
 
-searchInput.addEventListener( 'keyup', searchAll );
+searchInput.addEventListener( "keyup", searchAll );
