@@ -41,9 +41,9 @@ script:
     # Build the website.
     - bundle exec jekyll build
     # Run the website through JSHint.
-    - jshint
+    - jshint .
     # Run the website through JavaScript Code Style checker.
-    - jscs
+    - jscs .
     # Run the website through htmlproofer.
     - bundle exec htmlproofer ./_site --check-favicon --check-html
 
