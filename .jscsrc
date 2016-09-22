@@ -2,7 +2,8 @@
   "preset": "airbnb",
   "fileExtensions": [".js"],
   "excludeFiles": [
-    "js/**.min.js",
+    "assets/",
+    "site/",
     "gulpconfig.js",
     "gulpfile.js/"
   ],

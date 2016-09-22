@@ -14,7 +14,7 @@ theme: light
   <article>
   <h1 class="section-header">Problem solving is my passion.</h1>
   <p class="section-body -large">{{ site.tagline }}</p>
-  <a class="section-link -large" href="" data-scroll="">Let's create solutions together</a>
+  <a class="section-link -large" href="/" data-scroll="">Let's create solutions together</a>
 </article>
 </section>
 
