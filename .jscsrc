@@ -1,10 +1,10 @@
 {
-    "preset": "airbnb"
-  , "fileExtensions": [ ".js" ]
-  , "excludeFiles": [
-    	"js/**.min.js",
-    	"gulpconfig.js",
-		"gulpfile.js/"
-    ]
-  , "requireVarDeclFirst": false
+  "preset": "airbnb",
+  "fileExtensions": [".js"],
+  "excludeFiles": [
+    "js/**.min.js",
+    "gulpconfig.js",
+    "gulpfile.js/"
+  ],
+  "requireVarDeclFirst": false
 }

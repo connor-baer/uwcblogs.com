@@ -43,7 +43,7 @@ author:
 
 social:
   name:               Connor Bär
-  links:              
+  links:
     - https://twitter.com/connor_baer
     - https://instagram.com/connor_baer
     - https://github.com/connor-baer
@@ -62,7 +62,7 @@ nav:
   bloglist:           '/#bloglist'
   submit:             '/#submit'
 
-mobile: 
+mobile:
   bloglist:           '/#bloglist'
 
 defaults:
