@@ -1,3 +1,6 @@
+# Ignore minified files
+assets/
+
 # Ignore built site
 _site/
 
