@@ -12,8 +12,8 @@ var headroom = new Headroom(hrBody, {
   // Scroll tolerance in px before state changes for up/down scroll.
   tolerance: {
     up: 10,
-    down: 5
-  }
+    down: 5,
+  },
 });
 
 // Initialise.
@@ -27,7 +27,7 @@ smoothScroll.init({
   easing: 'easeInOutCubic',
 
   // How far to offset the scrolling anchor location in pixels.
-  offset: 70
+  offset: 70,
 });
 
 // LISTJS //
@@ -38,9 +38,9 @@ var searchOptions = {
     'country',
     'language',
     {
-      data: ['year']
-    }
-  ]
+      data: ['year'],
+    },
+  ],
 };
 
 var lists = document.getElementsByClassName('js-list');
@@ -81,17 +81,17 @@ function searchAll() {
     var empty = 0;
 
     for (var m = 0; m < yearsInCollege.length; ++m) {
-      if (yearsInCollege[m ].style.display === 'none' ) {
+      if (yearsInCollege[m].style.display === 'none') {
         empty++;
       }
     }
 
-    if ( empty === yearsInCollege.length ) {
-      colleges[ k ].style.display = 'none';
+    if (empty === yearsInCollege.length) {
+      colleges[k].style.display = 'none';
     } else {
-      colleges[ k ].style.display = 'block';
+      colleges[k].style.display = 'block';
     }
   }
 }
 
-searchInput.addEventListener( 'keyup', searchAll );
+searchInput.addEventListener('keyup', searchAll);

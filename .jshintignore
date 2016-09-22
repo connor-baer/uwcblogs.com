@@ -1,5 +1,5 @@
-# Ignore minified files
-assets/**.js
+# Ignore built site
+_site/
 
 # Ignore gulp configuration
 gulpconfig.js

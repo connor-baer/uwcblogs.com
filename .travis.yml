@@ -28,9 +28,6 @@ before_script:
     # Install JSHint, a JavaScript Code Quality Tool.
     # @link http://jshint.com/docs/
     - npm install -g jshint
-    # Install sass-hint, a JavaScript Code Quality Tool.
-    # @link http://jshint.com/docs/
-    - npm install -g sass-lint
 
 # Run test script commands.
 # Default is specific to project language.
@@ -38,26 +35,26 @@ before_script:
 
 # Assume bundler is being used, therefore
 # the `install` step will run `bundle install` by default.
-script: 
+script:
     #!/usr/bin/env bash
-    
+
     # Build the website.
     - bundle exec jekyll build
     # Run the website through JSHint.
-    - jshint ./_js
+    - jshint
     # Run the website through JavaScript Code Style checker.
-    - jscs ./_js
+    - jscs
     # Run the website through htmlproofer.
     - bundle exec htmlproofer ./_site --check-favicon --check-html
 
 env:
     global:
         # speeds up installation of html-proofer
-        - NOKOGIRI_USE_SYSTEM_LIBRARIES=true 
+        - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
 # Receive notifications for build results.
 # @link http://docs.travis-ci.com/user/notifications/#Email-notifications
 notifications:
-    email: 
+    email:
         email:
             - admin@uwcblogs.com
