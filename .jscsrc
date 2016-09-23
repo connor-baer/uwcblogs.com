@@ -3,7 +3,7 @@
   "fileExtensions": [".js"],
   "excludeFiles": [
     "assets/",
-    "site/",
+    "_site/",
     "gulpconfig.js",
     "gulpfile.js/"
   ],
