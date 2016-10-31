@@ -1,0 +1,92 @@
+// ==== SECTION ==== //
+
+// Style the homepage sections here.
+
+// 1. General
+// 2. Blogs
+// 3. Search
+
+// 1. General //
+
+.section {
+  @include clearfix;
+
+  display: block;
+  margin-top: 4rem;
+}
+
+.section-title {
+  @include ctnr(one);
+
+  @include font(header1);
+
+  margin-top: 1rem;
+}
+
+.section-body {
+  @include ctnr(two);
+
+  @include font(body);
+
+  margin: 1rem 0;
+  clear: right;
+
+  @include mappy-query(desktop-large) {
+    columns: 2;
+    column-gap: 2rem;
+
+    span {
+      display: block;
+
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// 2. Blogs //
+
+.section-year {
+  @include font(header3);
+
+  display: block;
+  width: 100%;
+}
+
+.section-blog {
+  display: block;
+  width: 100%;
+}
+
+// 3. Search //
+
+.section-search {
+  input {
+    padding-left: 2.5rem;
+    border-width: 2px;
+
+    &:focus ~ .search-icon {
+      fill: palette($primary);
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: .75rem;
+    left: 1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    fill: palette(gray);
+  }
+
+  .form-highlight {
+    left: 2.5rem;
+  }
+}
+
+.section-hint {
+  @include font(app);
+
+  margin-top: 1rem;
+}

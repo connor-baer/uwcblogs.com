@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-	{% include head.html %}
+	{% include core/head.html %}
 
-	<body>
+	<body class="{{ layout.font }}">
 		<div class="body-wrapper">
-			{% include metabar.html theme=page.theme %} {{ content }} {% include footer.html %}
+			{% include core/metabar.html theme=page.theme %} {{ content }} {% include core/footer.html %}
 		</div>
 
-		{% include scripts.html %}
+		{% include core/scripts.html %}
 	</body>
 
 </html>

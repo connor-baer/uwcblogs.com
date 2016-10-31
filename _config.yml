@@ -5,7 +5,6 @@ highlighter:          rouge
 
 # Gems
 gems:
-  - jekyll-sitemap
   - jekyll-feed
   - jekyll-gist
   - jekyll-redirect-from
@@ -14,46 +13,49 @@ gems:
 
 # Settings
 color:                '#1F1F1F'
-exclude:              [CNAME, README.md, NOTES.md, LICENSE.md, .gitignore, package.json, bower.json, _js, _scss, gulpfile.js, gulpconfig.js, node_modules, bower_components, gemfile]
+exclude:              [CNAME, README.md, NOTES.md, LICENSE.md, .gitignore, package.json, bower.json, _js, _scss, _images, gulpfile.js, gulpconfig.js, node_modules, bower_components, gemfile, Gemfile.lock]
 permalink:            /:title/
 
 
 # Site meta
 title:                UWCxBlogs
 tagline:              'A Collection of UWC Blogs.'
+description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 16 <a href="http://uwc.org/">United World Colleges</a>.'
 keywords:             'uwc, blog, blogs, bloglist, list, collection'
-description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 16 United World Colleges.'
 url:                  http://uwcblogs.com
 baseurl:              ''
+assets:               /assets
+images:               /images/
 logo:                 /assets/icons/apple-icon-144x144.png
-twitter:
-  username:           connor_baer
-facebook:
-  app_id:             169140053203395
-
-## replace analytics key below to enable tracking, leave blank to disable
-google_analytics_key: UA-37412525-3
-google_site_verification: Z-pc_HPc4XNBz8xg1fgtxO2MSIYLirZc2jWTNq0bJyM
 
 author:
   name:               Connor Bär
+  bio:                Hi, I'm Connor, the author of this blog. Nice to meet you!
+  image:              author
   url:                http://connorbaer.io
   email:              hello@connorbaer.io
   twitter:            connor_baer
 
 social:
-  name:               Connor Bär
-  links:
-    - https://twitter.com/connor_baer
-    - https://instagram.com/connor_baer
-    - https://github.com/connor-baer
-    - https://medium.com/@connor_baer
-    - https://www.snapchat.com/add/connor_baer
+  twitter:            https://twitter.com/connor_baer
+  instagram:          https://instagram.com/connor_baer
+  github:             https://github.com/connor-baer/change
+  medium:             https://blog.connorbaer.io
 
-version:              3.1.0
+version:              3.1
 
 github:
-  repo:               https://github.com/uwc/uwcblogs
+  repo:               https://github.com/uwc/uwcxblogs
+
+
+# Integrations
+typekit:              rnf3gir
+
+google_analytics_key: UA-37412525-3
+google_site_verification: Z-pc_HPc4XNBz8xg1fgtxO2MSIYLirZc2jWTNq0bJyM
+
+facebook:
+  app_id:             169140053203395
 
 
 # Content
