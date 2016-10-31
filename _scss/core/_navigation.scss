@@ -1,0 +1,67 @@
+// ==== NAVIGATION ==== //
+
+// Style the navigation here.
+
+// 1. Container
+// 2. Elements
+// 3. Turbolinks
+
+// 1. Container //
+
+.nav {
+  list-style: none;
+}
+
+// 2. Elements //
+
+.nav-link {
+  @include font(app);
+
+  a {
+    color: palette(gray);
+
+    &:hover,
+    &:focus {
+      color: palette($primary);
+    }
+  }
+}
+
+.nav-active {
+  color: palette(gray, darker);
+}
+
+// 3. Metabar //
+
+.metabar {
+  .nav {
+    display: block;
+    list-style: none;
+    text-align: right;
+  }
+
+  .nav-link {
+    display: inline-block;
+    height: 40px;
+    margin-left: 2rem;
+    padding: 0;
+    vertical-align: bottom;
+  }
+
+  // Light theme
+  &.-light .nav-link {
+    color: palette(white);
+
+    &:hover,
+    &:focus {
+      color: palette($primary);
+    }
+  }
+}
+
+// 4. Turbolinks //
+
+.turbolinks-progress-bar {
+  height: 4px;
+  background-color: palette($primary);
+}
