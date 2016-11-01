@@ -2,17 +2,15 @@
 layout: default
 lang: en
 ref: index
-image: true
+title: UWCxBlogs
 ---
 
 <article class="content page">
   <header class="header">
     <h1 class="header-title">{{ site.description }}</h1>
-    {% include core/share.html %}
     {% if page.image %}
-      <div class="header-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )">
+      <div class="header-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></div>
     {% endif %}
-    </div>
   </header>
 
   <div class="content-style">
@@ -46,5 +44,6 @@ image: true
       </p>
     </section>
     {% endfor %}
+    {% include core/share.html %}
   </div>
 </article>
