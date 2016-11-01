@@ -62,6 +62,12 @@
 // 3. Search //
 
 .section-search {
+  margin-top: 4rem;
+
+  @include mappy-query(tablet) {
+    margin-top: 6rem;
+  }
+
   input {
     padding-left: 2.5rem;
     border-width: 2px;
