@@ -5,6 +5,7 @@
 // 1. General
 // 2. Blogs
 // 3. Search
+// 4. Writing
 
 // 1. General //
 
@@ -95,4 +96,59 @@
   @include font(app);
 
   margin-top: 1rem;
+}
+
+// 4. Writing //
+
+.section-signup {
+  @include ctnr(one);
+
+  @include mappy-query(tablet) {
+    float: right;
+  }
+}
+
+.section-writing {
+  @include clearfix;
+
+  @include mappy-query(tablet) {
+    width: 70%;
+    max-width: 35rem;
+    padding-right: 2rem;
+    float: left;
+  }
+}
+
+.writing-title {
+  @include font(header1);
+}
+
+.writing-header {
+  @include font(header2);
+
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: .25rem;
+}
+
+.writing-image {
+  display: block;
+  width: 100%;
+  height: 8rem;
+  margin: 1rem 0;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.writing-body {
+  @include font(body);
+
+  margin-top: .5rem;
+  margin-bottom: 4rem;
+  transition: color $short;
+
+  a &:hover,
+  a &:focus {
+    color: palette(gray, dark);
+  }
 }

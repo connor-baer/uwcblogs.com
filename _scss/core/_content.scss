@@ -61,7 +61,10 @@
 
   margin: 3rem 0 4rem;
 
-  > h1,
+  > h1 {
+    @include ctnr(one);
+  }
+
   > h2,
   > h3,
   > h4,
