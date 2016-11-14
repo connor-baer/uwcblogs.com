@@ -25,10 +25,11 @@
       color: palette($primary);
     }
   }
-}
 
-.nav-active {
-  color: palette(gray, darker);
+  .nav-active {
+    color: palette(gray, darker);
+    font-weight: $sans-bold;
+  }
 }
 
 // 3. Metabar //

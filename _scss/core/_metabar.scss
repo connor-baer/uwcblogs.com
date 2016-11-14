@@ -50,13 +50,14 @@
   svg {
     width: 40px;
     height: 40px;
-    transition: fill $short;
+    transition: fill $short, transform $short;
     vertical-align: middle;
     fill: palette(gray, darker);
 
     &:hover,
     &:focus {
-      fill: palette(red);
+      transform: scale(1.1);
+      fill: #26d07c;
     }
   }
 }
