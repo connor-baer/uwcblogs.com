@@ -1,7 +1,7 @@
 ---
 -
   firstname: Rose
-  link: roseesf.wordpress.com/
+  link: roseesf.wordpress.com
   country: Sweden
   language: English
   year: 2018
@@ -9,5 +9,11 @@
   firstname: Vanessa
   link: chanwanhei.wordpress.com
   country: Hong Kong
+  language: English
+  year: 2018
+-
+  firstname: Yash
+  link: poeticreads.wordpress.com
+  country: UAE
   language: English
   year: 2018

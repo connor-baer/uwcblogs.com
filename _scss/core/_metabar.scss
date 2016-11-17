@@ -28,7 +28,7 @@
 
   padding-top: 40px;
 
-  @include mappy-query(tablet) {
+  @include mappy-query(desktop) {
     padding-top: 60px;
   }
 }
@@ -57,7 +57,7 @@
     &:hover,
     &:focus {
       transform: scale(1.1);
-      fill: #26d07c;
+      fill: palette(red);
     }
   }
 }

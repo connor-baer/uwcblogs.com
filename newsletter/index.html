@@ -1,0 +1,48 @@
+---
+layout: page
+font: serif
+lang: en
+ref: newsletter
+title: Newsletter
+description: Each month I handpick a post from a blog on UWCxBlogs and share it with you in this newsletter.
+order: 2
+---
+
+<!-- Begin MailChimp Signup Form -->
+<aside id="mc_embed_signup" class="sidebar">
+  <h4>Subscribe!</h4>
+  <p class="message">Get an insight into life at UWC! One post a month, absolutely no spam.</p>
+  <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=ace6c7cedf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+    <div id="mc_embed_signup_scroll" class="section-inputs">
+
+      <div class="mc-field-group form-group section-form-group">
+        <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder="First Name" required="">
+        <span class="form-highlight"></span>
+      </div>
+
+      <div class="mc-field-group form-group section-form-group">
+        <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder="Email Address" required="">
+        <span class="form-highlight"></span>
+      </div>
+
+      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_ace6c7cedf" tabindex="-1" value=""></div>
+      <div class="clear"><input type="submit" value="Subscribe →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+  </form>
+</aside>
+<!--End mc_embed_signup-->
+
+<div class="section-writing">
+  {% assign posts = site.posts | sort: 'date' | where: "lang", page.lang | reverse %}
+  {% for page in posts %}
+  <article>
+    <h3 class="writing-header"><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h3>
+    {% include core/date.html %}
+    {% if page.image %}
+    <a class="writing-image" href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></a>
+    {% endif %}
+    <p class="writing-body">{{ page.content | strip_html | truncatewords: 36 }}</p>
+  </article>
+  {% endfor %}
+</div>

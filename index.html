@@ -5,11 +5,11 @@ ref: index
 ---
 
 <article class="content page">
-  <header class="header">
-    <h1 class="header-title">{{ site.description }}</h1>
+  <header class="hero">
+    <h1 class="hero-title">{{ site.description }}</h1>
     {% include core/share.html %}
     {% if page.image %}
-      <div class="header-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></div>
+      <div class="hero-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></div>
     {% endif %}
   </header>
 
@@ -27,7 +27,7 @@ ref: index
     {% assign colleges = site.data | sort: college[0] %}
     {% for college in colleges %}
     <section class="section js-college">
-      <h1 class="section-title">{{ college[0] | replace: '_', ' ' }}</h1>
+      <h1 id="{{ college[0] | downcase | replace: '_', '+' | url_escape }}" class="section-title">{{ college[0] | replace: '_', ' ' }}</h1>
       <p class="section-body">
         {% assign years = college[1] | sort: year[0] %}
         {% for year in years reversed %}
