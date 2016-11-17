@@ -20,7 +20,7 @@ permalink:            /:title/
 # Site meta
 title:                UWCxBlogs
 tagline:              'A Collection of UWC Blogs.'
-description:          'A collection of over 300 blogs in 20 languages written by UWC students from more than 55 countries at the 16 <a href="http://uwc.org/">United World Colleges</a>.'
+description:          'A collection of over 350 blogs in 20 languages written by UWC students from more than 55 countries at the 16 <a href="http://uwc.org/">United World Colleges</a>.'
 keywords:             'uwc, blog, blogs, bloglist, list, collection'
 url:                  http://uwcblogs.com
 baseurl:              ''
@@ -42,7 +42,7 @@ social:
   github:             https://github.com/connor-baer/change
   medium:             https://blog.connorbaer.io
 
-version:              3.1
+version:              3.2.0
 
 github:
   repo:               https://github.com/uwc/uwcxblogs

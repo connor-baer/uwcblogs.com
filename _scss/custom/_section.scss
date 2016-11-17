@@ -100,23 +100,12 @@
 
 // 4. Writing //
 
-.section-signup {
-  @include ctnr(one);
-
-  @include mappy-query(tablet) {
-    float: right;
-  }
+.section-form-group {
+  margin: 1rem 0 0;
 }
 
 .section-writing {
-  @include clearfix;
-
-  @include mappy-query(tablet) {
-    width: 70%;
-    max-width: 35rem;
-    padding-right: 2rem;
-    float: left;
-  }
+  margin-top: 1.5rem;
 }
 
 .writing-title {

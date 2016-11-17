@@ -61,10 +61,7 @@
 
   margin: 3rem 0 4rem;
 
-  > h1 {
-    @include ctnr(one);
-  }
-
+  > h1,
   > h2,
   > h3,
   > h4,
@@ -222,11 +219,11 @@
     @include ctnr(two);
   }
 
-  > div.full {
+  > section {
     @include ctnr(full);
   }
 
-  > div.sidebar {
+  > aside {
     @include ctnr(one);
 
     padding-top: 1.5rem;
@@ -257,13 +254,13 @@
   position: absolute;
   bottom: 1rem;
   padding-right: 2rem;
-}
 
-.next-header {
-  @include font(app);
+  .next-header {
+    @include font(app);
 
-  display: block;
-  margin-bottom: .5rem;
+    display: block;
+    margin-bottom: .5rem;
+  }
 }
 
 .next-image {
@@ -275,7 +272,7 @@
 .next-title a {
   @include font(header3);
 
-  @include underline;
+  @include underline();
 
   font-family: $sans;
   font-weight: $sans-bold;

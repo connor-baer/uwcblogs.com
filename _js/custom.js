@@ -17,18 +17,24 @@ document.addEventListener('turbolinks:load', function () {
     ],
   };
 
+  var searchInput = document.getElementById('js-search');
+
   var lists = document.getElementsByClassName('js-list');
   var colleges = document.getElementsByClassName('js-college');
   var years = document.getElementsByClassName('js-years');
 
   var data = [];
+  var blogs = 0;
 
   for (var i = 0; i < lists.length; ++i) {
     var listId = lists[i].id;
+
     data[i] = new List(listId, searchOptions);
+    blogs += data[i].items.length;
   }
 
-  var searchInput = document.getElementById('js-search');
+  console.log(blogs + ' blogs and counting. Woohoo! Add yours: http://uwcblogs.com/submissions/');
+  console.log('For developers: found a bug or want to contribute? Visit the GitHub repo: https://github.com/uwc/uwcxblogs.');
 
   function searchAll() {
 
@@ -68,5 +74,7 @@ document.addEventListener('turbolinks:load', function () {
     }
   }
 
-  searchInput.addEventListener('keyup', searchAll);
+  if (searchInput) {
+    searchInput.addEventListener('keyup', searchAll);
+  }
 });
