@@ -20,7 +20,7 @@
 
 var pkg   = require('./package.json'), // Allows access to the project metadata from the package.json file.
   project = pkg.name, // The name of the project, pulled from the package.json.
-  src     = 'source', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
+  src     = 'source/', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
   dist    = 'public/', // The distribution package that you'll be uploading to your server; delete it anytime.
   assets  = 'assets/', // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet).
   bower   = 'bower_components/', // Bower packages.
@@ -33,11 +33,9 @@ module.exports = {
   // 2. BrowserSync
 
   browsersync: {
-    server: {
-      baseDir: dist,
-    },
     files: [dist + '**/*', 'craft/templates/**/*'],
-    port: 4000, // Port number for the live version of the site; jekyll default: 4000
+    port: 80, // Port number for the live version of the site.
+    proxy: 'http://local.' + project + '/', // We need to use a proxy instead of the built-in server because WordPress has to do some server-side rendering for the theme to work.
     notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
     ui: false, // Set to false if you don't need the browsersync UI
     open: false, // Set to false if you don't like the browser window opening automatically
@@ -85,7 +83,7 @@ module.exports = {
 
   styles: {
     build: {
-      src: src + '_scss/**/*.scss',
+      src: src + 'scss/**/*.scss',
       dest: dist + assets,
     },
     cssnano: {

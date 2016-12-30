@@ -35,8 +35,7 @@ gulp.task('build', function(callback) {
   runSequence('clean',
   [
     'styles',
-    'scripts',
-    'jekyll'
+    'scripts'
   ],
   callback);
 });

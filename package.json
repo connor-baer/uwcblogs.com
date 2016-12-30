@@ -30,7 +30,7 @@
     "open-color": "^1.4.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "turbolinks": "^5.0.0",
-    "typi": "^3.0.0-alpha.1"
+    "typi": "^2.3.0"
   },
   "devDependencies": {
     "browser-sync": "^2.14.3",
