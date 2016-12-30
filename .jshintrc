@@ -19,7 +19,6 @@
     "_": false,
     "Backbone": false,
     "jQuery": false,
-    "JSON": false,
-    "wp": false
+    "JSON": false
   }
 }

@@ -2,10 +2,9 @@
   "preset": "airbnb",
   "fileExtensions": [".js"],
   "excludeFiles": [
-    "assets/",
-    "_site/",
-    "gulpconfig.js",
-    "gulpfile.js/"
+    "node_modules/",
+    "bower_components/",
+    "public/"
   ],
   "requireVarDeclFirst": false
 }

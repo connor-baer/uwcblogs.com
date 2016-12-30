@@ -1,0 +1,21 @@
+{% set image = block.image.first() %}
+{% set transformedImages = craft.imager.transformImage(image,
+    [
+        { width: 1200, ratio: 2/1 },
+        { width: 1024, ratio: 2/1 },
+        { width: 768, ratio: 4/3, jpegQuality: 65 },
+    ],
+    {
+        format: 'jpg',
+        allowUpscale: false,
+        mode: 'crop',
+        jpegQuality: 80,
+        position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+        interlace: true
+    }
+) %}
+<img class="scale-with-grid"
+     src="{{ transformedImages[1].url }}"
+     sizes="100vw"
+     srcset="{{ craft.imager.srcset(transformedImages) }}"
+     alt="{{ image.title }}">

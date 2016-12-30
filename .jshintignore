@@ -1,9 +1,6 @@
-# Ignore minified files
-assets/
+# Ignore packages
+node_modules/
+bower_components/
 
 # Ignore built site
-_site/
-
-# Ignore gulp configuration
-gulpconfig.js
-gulpfile.js/
+public/
