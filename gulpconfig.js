@@ -34,7 +34,7 @@ module.exports = {
 
   browsersync: {
     files: [dist + '**/*', 'craft/templates/**/*'],
-    port: 80, // Port number for the live version of the site.
+    port: 4000, // Port number for the live version of the site.
     proxy: 'http://local.' + project + '/', // We need to use a proxy instead of the built-in server because WordPress has to do some server-side rendering for the theme to work.
     notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
     ui: false, // Set to false if you don't need the browsersync UI
@@ -60,10 +60,10 @@ module.exports = {
   update: {
     // Copies dependencies from package managers to `_scss` and renames them to allow for them to be imported as a Sass file.
     src: [
-      modules + 'normalize-css/normalize.css',
+      modules + 'normalize.css/normalize.css',
       modules + 'open-color/open-color.scss',
     ],
-    dest: src + 'scss/core',
+    dest: src + 'scss/core/',
     rename: {
       prefix: '_',
       extname: '.scss',
@@ -84,7 +84,7 @@ module.exports = {
   styles: {
     build: {
       src: src + 'scss/**/*.scss',
-      dest: dist + assets,
+      dest: dist + assets + 'css/',
     },
     cssnano: {
       autoprefixer: {
@@ -118,14 +118,14 @@ module.exports = {
         modules + 'turbolinks/dist/turbolinks.js',
       ],
     },
-    dest: dist + assets,// Where the scripts end up in your theme.
+    dest: dist + assets + 'js/', // Where the scripts end up in your theme.
     lint: {
       src: [src + 'js/**/*.js'], // Linting checks the quality of the code; we only lint custom scripts, not those under the various modules, so we're relying on the original authors to ship quality code.
     },
     minify: {
-      src: src + 'js/**/*.js',
+      src: dist + assets + 'js/**/*.js',
       uglify: {}, // Default options.
-      dest: dist + assets,
+      dest: dist + assets + 'js/',
     },
   },
 
@@ -138,7 +138,7 @@ module.exports = {
       appName: pkg.name,
       appDescription: pkg.description,
       developerName: pkg.author,
-      background: '#f9423a',
+      background: '#000',
       path: src + 'icons/',
       url: pkg.homepage,
       display: 'standalone',
@@ -148,29 +148,28 @@ module.exports = {
       logging: false,
       online: false,
       replace: true,
-      html: src + '_includes/core/icons.html',
+      html: 'craft/templates/_includes/core/icons.html',
       pipeHTML: true,
       icons: {
-        android: true,              // Create Android homescreen icon. `boolean`
-        appleIcon: true,            // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
-        appleStartup: false,         // Create Apple startup images. `boolean`
-        coast: { offset: 15 },      // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
-        favicons: true,             // Create regular favicons. `boolean`
-        firefox: true,              // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
-        windows: true,              // Create Windows 8 tile icons. `boolean`
-        yandex: false,                // Create Yandex browser icon. `boolean`
+        android: true,         // Create Android homescreen icon. `boolean`
+        appleIcon: true,       // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
+        appleStartup: false,   // Create Apple startup images. `boolean`
+        coast: { offset: 15 }, // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
+        favicons: true,        // Create regular favicons. `boolean`
+        firefox: true,         // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
+        windows: true,         // Create Windows 8 tile icons. `boolean`
+        yandex: false,         // Create Yandex browser icon. `boolean`
       },
     },
-    destHtml: src,
+    destHtml: '',
     dest: dist + assets + 'icons/',
   },
 
 
   // 9. Craft //
 
-  jekyll: {
+  craft: {
     src:    src,
     dest:   dist,
-    config: '_config.yml',
   },
 };
