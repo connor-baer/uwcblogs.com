@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+    <title>{{ siteName }}</title>
+    <link href="{{ siteUrl }}"/>
+    <link type="application/atom+xml" rel="self" href="{{ craft.request.url }}"/>
+    <updated>{{ now.atom }}</updated>
+    <id>{{ craft.request.url }}</id>
+    <author>
+        {% set siteAuthor = globals.siteAuthor.first() %}
+        {% if siteAuthor %}
+            <name>{{ siteAuthor.friendlyName }}</name>
+            <email>{{ siteAuthor.email }}</email>
+        {% endif %}
+    </author>
+
+    {% for entry in craft.entries.section('news').find() %}
+        <entry>
+            <id>{{ entry.url }}</id>
+            <link type="text/html" rel="alternate" href="{{ entry.url }}"/>
+            <title>{{ entry.title }}</title>
+            <published>{{ entry.postDate.atom }}</published>
+            <updated>{{ entry.dateUpdated.atom }}</updated>
+            <author>
+                <name>{{ entry.author.fullName }}</name>
+                <uri>{{ siteUrl }}</uri>
+            </author>
+
+            {% set image = entry.image.first() %}
+            {% if image %}
+                <media:thumbnail xmlns:atom="http://www.w3.org/2005/Atom" url="{{ image.url }}"/>
+            {% endif %}
+            <content type="html">
+                <![CDATA[
+                {{ entry.body }}
+            ]]>
+            </content>
+        </entry>
+    {% endfor %}
+</feed>

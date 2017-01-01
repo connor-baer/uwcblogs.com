@@ -23,6 +23,7 @@
   },
   "homepage": "https://uwcblogs.com",
   "dependencies": {
+    "lazysizes": "^3.0.0-rc2",
     "list.js": "^1.2.0",
     "mappy-breakpoints": "^0.2.3",
     "modularscale-sass": "^2.1.1",

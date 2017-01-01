@@ -116,6 +116,7 @@ module.exports = {
       navigation: [
         modules + 'smooth-scroll/dist/js/smooth-scroll.js',
         modules + 'turbolinks/dist/turbolinks.js',
+        modules + 'lazysizes/lazysizes.min.js'
       ],
     },
     dest: dist + assets + 'js/', // Where the scripts end up in your theme.
@@ -133,13 +134,13 @@ module.exports = {
   // 8. Icons //
 
   icons: {
-    src: [src + 'icons/*(*.png|*.jpg|*.jpeg)'],
+    src: src + 'favicons/*(*.png|*.jpg|*.jpeg)',
     favicons: {
       appName: pkg.name,
       appDescription: pkg.description,
       developerName: pkg.author,
-      background: '#000',
-      path: src + 'icons/',
+      background: '#000000',
+      path: '/favicons/',
       url: pkg.homepage,
       display: 'standalone',
       orientation: 'portrait',
@@ -148,13 +149,13 @@ module.exports = {
       logging: false,
       online: false,
       replace: true,
-      html: 'craft/templates/_includes/core/icons.html',
+      html: 'craft/templates/_includes/icons.html',
       pipeHTML: true,
       icons: {
         android: true,         // Create Android homescreen icon. `boolean`
         appleIcon: true,       // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
         appleStartup: false,   // Create Apple startup images. `boolean`
-        coast: { offset: 15 }, // Create Opera Coast icon with offset 25%. `boolean` or `{ offset: offsetInPercentage }`
+        coast: { offset: 15 }, // Create Opera Coast icon with offset 15%. `boolean` or `{ offset: offsetInPercentage }`
         favicons: true,        // Create regular favicons. `boolean`
         firefox: true,         // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
         windows: true,         // Create Windows 8 tile icons. `boolean`
@@ -162,7 +163,7 @@ module.exports = {
       },
     },
     destHtml: '',
-    dest: dist + assets + 'icons/',
+    dest: dist + 'favicons/',
   },
 
 

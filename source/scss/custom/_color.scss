@@ -6,34 +6,29 @@
 // 2. Color transformations
 // 3. palette()
 
-// 1. Base colors
 
-$primary: brand;
-$secondary: blue;
+// 1. Base colors //
+
+$primary: red;
+$secondary: orange;
 
 $black: #000;
 $white: #fff;
+
 
 // 2. Color transformations //
 
 // Sass map for the color palette; see `_library.scss` for the palette() function.
 $_palettes: (
-  brand: (
-    lighter: $oc-blue-2,
-    light:   $oc-blue-4,
-    base:    #007acc,
-    dark:    $oc-blue-8,
-    darker:  $oc-blue-9
-  ),
   black: (
-    base:  $black,
+    base: $black,
     light: $black,
-    dark:  $black
+    dark: $black
   ),
   white: (
-    base:  $white,
+    base: $white,
     light: $white,
-    dark:  $white
+    dark: $white
   ),
   gray: (
     lighter: $oc-gray-1,
@@ -127,6 +122,7 @@ $_palettes: (
     darker:  $oc-orange-9
   )
 );
+
 
 // 3. palette() //
 

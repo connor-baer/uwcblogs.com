@@ -18,13 +18,13 @@ use Guzzle\Http\Client;
 use Guzzle\Http\Message\EntityEnclosingRequest;
 use Guzzle\Http\Exception\RequestException;
 
-class Placid_RequestsService extends PlacidService
+class Placid_RequestsService extends BaseApplicationComponent
 {
   /**
    * Placid plugin settings
    * @var Array
    */
-  protected $placid_settings;
+  protected $settings;
 
   /**
    * Placid request config
@@ -40,12 +40,8 @@ class Placid_RequestsService extends PlacidService
 
   public function __construct()
   {
-
-    parent::__construct();
-    $this->model = new Placid_RequestsModel;
-    $this->record = new Placid_RequestsRecord();
     // Get the plugin settings
-    $this->placid_settings = $this->settings;
+    $this->settings = craft()->plugins->getPlugin('placid')->getSettings();
   }
 
   /**
@@ -79,8 +75,13 @@ class Placid_RequestsService extends PlacidService
       $config
     );
 
-    // Handle any changes to api gracefully
-    $this->_swapDeprecatedConfig('path', 'segments');
+    // if(isset($config['segments']))
+    
+    if(isset($this->config['segments']))
+    {
+      $model->url = $this->parseSegments($model->url, $this->config['segments']);
+    }
+
     $this->_swapDeprecatedConfig('query', 'params');
 
     // Create a new guzzle client
@@ -129,6 +130,30 @@ class Placid_RequestsService extends PlacidService
 
   }
 
+  public function getDataFromResponse($response)
+  {
+    $responseBody = $response->getBody();
+
+    $contentType = preg_match('/.+?(?=;)/', $responseBody->getContentType(), $matches);
+
+    $contentType = implode($matches, '');
+    
+    try {   
+      if($contentType == 'text/xml')
+      {
+        $output = $response->xml();
+      }
+      else
+      {
+        $output = $response->json();
+      }
+    } catch (\Guzzle\Common\Exception\RuntimeException $e) {
+      PlacidPlugin::log($e->getMessage(), LogLevel::Error);
+      $output = null;
+    }
+
+    return $output;
+  }
   /**
   * Create a new model object of a request
   *
@@ -150,41 +175,6 @@ class Placid_RequestsService extends PlacidService
     // Return the Placid_RequestsModel model
     return $model;
   }
-
-  /**
-   * Get all placid requests
-   *
-   * @deprecated Deprecated in 1.3. Use {@link AppBehavior::getBuild() craft()->placid_requests->getAll()} instead. All these sort of methods are being combined for a more streamlined, DRY API.
-   *
-   * @return requests model object
-   */
-
-  public function getAllRequests()
-  {
-    $args = array('order' => 't.id');
-    $records = $this->record->findAll($args);
-    return Placid_RequestsModel::populateModels($records, 'id');
-  }
-
-  /**
-  * Find request by ID
-  *
-  * @param string $id
-  *
-  * @deprecated Deprecated in 1.3. Use {@link AppBehavior::getBuild() craft()->placid_requests->getById()} instead. All these sort of methods are being combined for a more streamlined, DRY API.
-  *
-  * @return request model object
-  */
-  public function findRequestById($id)
-  {
-
-   // Determine if there is a request record and return it
-   // -----------------------------------------------------------------------------
-   if($record = $this->record->findByPk($id))
-   {
-     return Placid_RequestsModel::populateModel($record);
-   }
- }
 
   /**
   * Return the request
@@ -240,7 +230,7 @@ class Placid_RequestsService extends PlacidService
 
     if($id = $model->getAttribute('id'))
     {
-      $record = $this->record->findByPk($id);
+      $record = Placid_RequestsRecord::model()->findByPk($id);
     }
     else
     {
@@ -268,6 +258,21 @@ class Placid_RequestsService extends PlacidService
     }
   }
 
+  public function findAllRequests()
+  {
+    $args = array('order' => 't.id');
+    $records = Placid_RequestsRecord::model()->findAll($args);
+    return Placid_RequestsModel::populateModels($records, 'id');
+  }
+
+  public function getRequestById($id)
+  {
+    if($record = Placid_RequestsRecord::model()->findByPk($id))
+    {
+        return Placid_RequestsModel::populateModel($record);
+    }
+    return null;
+  }
   /**
    * Delete a request from the database.
    *
@@ -278,7 +283,7 @@ class Placid_RequestsService extends PlacidService
   {
     // Get all a users widgets
     $this->_deleteWidgetsByRecord($id);
-    return $this->record->deleteByPk($id);
+    return Placid_RequestsRecord::model()->deleteByPk($id);
   }
 
   // Events
@@ -323,9 +328,9 @@ class Placid_RequestsService extends PlacidService
       $this->config['url'] = $recordUrl;
     }
 
-    $this->cacheId = $this->config['url'];
-
     $request = $client->createRequest($this->config['method'], $this->config['url']);
+
+    $this->cacheId = $request->getUrl();
 
     if(array_key_exists('body', $this->config))
     {
@@ -397,13 +402,25 @@ class Placid_RequestsService extends PlacidService
       $this->_authenticate($request,$provider);
     }
 
+
     // Has the request got an access token we need to attach?
     if($tokenId = $record->getAttribute('tokenId'))
     {
+      
       $tokenModel = craft()->placid_token->findTokenById($tokenId);
-      $request->addHeader('Authorization', 'Bearer ' . $tokenModel->encoded_token);
+
+      if(!$tokenModel->forceQuery)
+      {
+        $request->addHeader('Authorization', 'Bearer ' . $tokenModel->encoded_token);
+      }
+      else
+      {
+        $query->set('access_token', $tokenModel->encoded_token);
+      }
+
     }
 
+    
     return $request;
   }
 
@@ -420,55 +437,26 @@ class Placid_RequestsService extends PlacidService
     try {
       $response = $client->send($request);
     } catch(RequestException $e) {
-
       PlacidPlugin::log($e->getMessage(), LogLevel::Error);
 
       $message = array('failed' => true);
+
+      $response = null;
 
       if(method_exists($e, 'getResponse'))
       {
         $response = $e->getResponse();
         $message['statusCode'] = $response->getStatusCode();
       }
-
-      if(craft()->request->isAjaxRequest())
-      {
-        return $message;
-      }
-      else {
-        return null;
-      }
+      
+      return $response;
     }
-
-    $contentType = preg_match('/.+?(?=;)/', $response->getContentType(), $matches);
-
-    $contentType = implode($matches, '');
-
-    if($contentType == 'text/xml')
-    {
-      try {
-        $output = $response->xml();
-      } catch (\Guzzle\Common\Exception\RuntimeException $e) {
-        PlacidPlugin::log($e->getMessage(), LogLevel::Error);
-        $output = null;
-      }
-    }
-    else
-    {
-      try {
-        $output = $response->json();
-      } catch (\Guzzle\Common\Exception\RuntimeException $e) {
-        PlacidPlugin::log($e->getMessage(), LogLevel::Error);
-        $output = null;
-      }
-    }
-
+    
     if($this->config['cache'])
     {
-      craft()->placid_cache->set($this->_getCacheId(), $output, $this->config['duration']);
+      craft()->placid_cache->set($this->_getCacheId(), $response, $this->config['duration']);
     }
-
-    return $output;
+    return $response;
   }
 
   /**
@@ -484,8 +472,7 @@ class Placid_RequestsService extends PlacidService
 
     $token = craft()->placid_oAuth->getToken($auth);
 
-    $provider->setToken($token);
-    $subscriber = $provider->getSubscriber();
+    $subscriber = $provider->getSubscriber($token);
 
     $client->addSubscriber($subscriber);
   }
@@ -517,7 +504,7 @@ class Placid_RequestsService extends PlacidService
    */
   private function _deleteWidgetsByRecord($id)
   {
-    $record = $this->record->findByPk($id);
+    $record = Placid_RequestsRecord::model()->findByPk($id);
 
     $currentWidgets = craft()->dashboard->getUserWidgets();
 
@@ -542,5 +529,15 @@ class Placid_RequestsService extends PlacidService
   private function _getCacheId()
   {
     return base64_encode(urlencode($this->cacheId));
+  }
+
+  private function parseSegments($str, $segments)
+  {
+    foreach ($segments as $key => $value)
+    {
+      $str = str_replace('{'.$key.'}', $value, $str);
+    }
+
+    return $str;
   }
 }

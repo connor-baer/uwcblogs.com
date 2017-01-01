@@ -9,16 +9,54 @@
  # When this template is loaded, it will already have an ‘entry’
  # variable, set to the requested News entry.
  #
- # See this page for more details on how Craft routes requests:
+ # See this entry for more details on how Craft routes requests:
  # http://craftcms.com/docs/routing
  #}
 
 {% extends "_layouts/base" %}
 
 {% block content %}
-	<article>
-		<h1>{{ entry.title }}</h1>
-		<p>Posted on {{ entry.postDate.format('F d, Y') }}</p>
-		{{ entry.body }}
-	</article>
+
+  <article class="content post serif">
+    <header class="hero">
+      <h1 class="hero-title">{{ entry.title }}</h1>
+      {% include('./_includes/date.html') %}
+
+      {{ entry.heroImage | raw }}
+
+    </header>
+
+    <div class="content-style">
+      {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
+      {% if author %}
+      <aside class="content-author">
+        <a href="mailto:{{ author.email }}" aria-label="Send {{ author.name }} a message.">
+          <div class="author-image" style="background-image: url('{{ author.photoUrl }}')"></div>
+        </a>
+        <div class="author-text">
+          <h4><a href="mailto:{{ author.email }}" aria-label="Send {{ author.name }} a message.">{{ author.name }}</a></h4>
+          <p>{{ globals.siteDescription }}</p>
+        </div>
+      </aside>
+      {% endif %}
+
+      {{ entry.body }}
+
+      {% include('./_includes/share.html') %}
+
+      {% if entry.next %}
+      <aside class="content-next">
+        <article class="next-post">
+          <h4 class="next-header">Next Post</h4>
+          {% if entry.next.image %}
+          <div class="next-image" style="background-image: url('{{ entry.next.image.first().url }}')"></div>
+          {% endif %}
+          <h5 class="next-title"><a href="{{ entry.next.url }}">{{ entry.next.title }}</a></h5>
+        </article>
+      </aside>
+      {% endif %}
+
+    </div>
+  </article>
+
 {% endblock %}

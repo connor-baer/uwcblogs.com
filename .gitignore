@@ -5,6 +5,9 @@ craft/storage/
 craft/config/license.key
 craft/config/db.php
 
+public/uploads/
+public/imager/
+
 # Install by running `bower install`
 bower_components/
 

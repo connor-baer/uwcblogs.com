@@ -1,0 +1,36 @@
+{% extends "_layouts/cp" %}
+
+{% set crumbs = [
+    { label: "Import"|t, url: url('import') },
+    { label: "Import history"|t, url: url('import/history/' ~ historyId) }
+] %}
+
+{% set title = "Import"|t %}
+
+{% set tabs = {
+    overview: { label: "Import"|t, url: url('import') },
+    history:  { label: "History"|t, url: url('import/history') },
+} %}
+
+{% set selectedTab = 'history' %}
+
+{% set content %}
+
+    <table class="data fullwidth">
+        <thead>
+            <tr>
+                <th scope="col" data-attribute="line" style="width: 10%">{{ "Line"|t }}</th>
+                <th scope="col" data-attribute="errors">{{ "Errors"|t }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for line, errors in craft.import.log(historyId) %}
+            <tr>
+                <td data-title="{{ 'Line'|t }}">{{ line }}</td>
+                <td data-title="{{ 'Errors'|t }}">{% for field, error in errors %}{{ error | join(', ') }}{% if not loop.last %}, {% endif %}{% endfor %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endset %}

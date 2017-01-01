@@ -1,4 +1,9 @@
-{{ forms.textField({
+    {{ forms.hidden({
+      name: craft.config.csrfTokenName,
+      value: craft.request.csrfToken
+    }) }}
+
+    {{ forms.textField({
       label: 'Name'|t,
       id : 'name',
       required: true,
@@ -21,12 +26,13 @@
     {{ forms.textField({
       label: 'URL'|t,
       required: true,
+      instructions: 'You can also parse [{dynamicSegments}](https://github.com/alecritson/Placid/wiki/Making-requests) in your url',
       id: 'query',
       name: 'requestUrl',
       value: request ? request.url : null,
       errors: request ? request.errors('url') : null
     }) }}
-  
+
     {{ forms.editableTableField({
       label: 'Query String',
       instructions : 'Define your query string.',

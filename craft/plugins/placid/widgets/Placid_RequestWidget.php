@@ -31,7 +31,8 @@ class Placid_RequestWidget extends BaseWidget
         $variables = array();
 
         try {
-          $variables['response'] = craft()->placid_requests->request($settings->request);
+          $response = craft()->placid_requests->request($settings->request);
+          $variables['response'] = new Placid_ResponseVariable($response);
         } catch (Exception $e) {
           PlacidPlugin::log($e->getMessage(), LogLevel::Error);
           $variables['response'] = null;
@@ -68,7 +69,7 @@ class Placid_RequestWidget extends BaseWidget
         $pluginSettings = craft()->plugins->getPlugin('placid')->getSettings();
 
         // Get placid requests and send them to the widget settings
-        $requests = craft()->placid_requests->getAll();
+        $requests = craft()->placid_requests->findAllRequests();
 
         $requestsArray = array('' => 'No request selected');
 

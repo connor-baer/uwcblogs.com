@@ -12,14 +12,14 @@ return array(
 		'defaultWeekStartDay' => 1,
 		'omitScriptNameInUrls' => true,
 		'environmentVariables' => array(
-			'assetsBaseUrl' => '/assets',
-			'assetsBasePath' => './assets',
+			'baseAssetsPath' => './uploads/',
+			'baseAssetsUrl' => '/uploads/',
 		),
+		'siteUrl' => "http://{$_SERVER['SERVER_NAME']}/",
 	),
 
-	'local.' => array(
+	'local' => array(
 		'devMode' => true,
-		'siteUrl' => "http://{$_SERVER['SERVER_NAME']}/",
 		'testToEmailAddress' => 'madebyconnor@icloud.com',
 	),
 
