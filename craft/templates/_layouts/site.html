@@ -1,0 +1,108 @@
+{#
+
+ # The site layout template
+ # ------------------------
+ #
+ # This layout template extends the _layouts/base.html layout, and defines the
+ # main site layout: the header, footer, and main content area.
+ #
+ # It’s never accessed directly. Instead it is extended by all of our main site
+ # templates.
+ #
+ # This template defines one block region, `main`, which should be extended by
+ # child templates to define the main contents for the page.
+-#}
+
+{% extends "_layouts/base" %}
+
+{# Define the footer navigation #}
+{% set footerNav = {
+  "Creating": "https://connorbaer.co/creating",
+  "Writing":  "https://connorbaer.co/writing",
+  "Eating":   "https://connorbaer.co/eating"
+} %}
+
+{# Set the `bodyClass` variable to the entry's section handle if there is one,
+   or the first URI segment (this is used by the parent template) #}
+{% if bodyClass is not defined %}
+  {% set bodyClass = entry is defined ? entry.section.handle : craft.request.firstSegment %}
+{% endif %}
+
+{# Set the `title` variable to the nav item that matches the first segment #}
+{% if nav[bodyClass] is defined %}
+  {% set title %}{% if title is defined %}{{ title }} - {% endif %}{{ nav[bodyClass].title }}{% endset %}
+{% endif %}
+
+
+{% block body %}
+  {% block metabar %}
+    <aside id="metabar" class="metabar">
+      <div class="metabar-wrapper">
+        <div class="metabar-left">
+          <a class="metabar-logo" href="http://madebyconnor.io/#" {% if craft.request.url == 'http://madebyconnor.io/' %}data-scroll{% else %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Visit 'Made by Connor'" title="Made by Connor">
+            {% include('./_includes/site/logo.svg') %}
+          </a>
+          <span class="metabar-spacer"></span>
+          <a class="metabar-title" href="{{ siteUrl }}{% if craft.request.path == '' %}#" data-scroll{% else %}"{% endif %} aria-label="Visit the homepage." title="Visit the homepage.">{{ siteName }}</a>
+        </div>
+        <div class="metabar-right">
+          <button id="js-navOpen" class="nav-open">Menu</button>
+          <nav id="js-metabarNav" class="metabar-nav">
+            <button id="js-navClose" class="nav-close">Close</button>
+            {% include('./_includes/site/navigation.html') %}
+          </nav>
+        </div>
+      </div>
+    </aside>
+  {% endblock %}
+
+
+  <main id="main" role="main">
+
+
+    {% block main %}{% endblock %}
+
+
+  </main>
+
+{% endblock %}
+
+{% block foot %}
+  <footer id="footer" class="footer">
+    <div class="footer-wrapper">
+      <div class="footer-logo">
+        <a class="metabar-logo" href="http://madebyconnor.io/#" {% if craft.request.url == 'http://madebyconnor.io' %}data-scroll{% else %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Visit 'Made by Connor'" title="Made by Connor">
+        {% include('./_includes/site/logo.svg') %}
+        </a>
+      </div>
+      <div class="footer-navigation">
+        <div class="footer-links">
+          <h4 class="footer-title">{{ siteName }}</h4>
+          <nav>
+
+            {% include('./_includes/site/navigation.html') %}
+
+          </nav>
+        </div>
+        <div class="footer-links">
+          <h4 class="footer-title">More by Connor</h4>
+          <nav>
+            <ul class="nav">
+
+              {% for item, url in footerNav %}
+                <li class="nav-link">
+                  <a href="{{ url(url) }}" target="_blank" rel="noopener noreferrer" aria-label="{{ item }}">{{ item }}</a>
+                </li>
+              {% endfor %}
+
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      {% set siteAuthor = globals.siteAuthor.first() %}
+
+      <h6 class="footer-text">© {{ now.year }} <a href="https://twitter.com/{{ globals.siteTwitter }}" aria-label="Follow {{ siteAuthor.fullName }} on Twitter.">{{ siteAuthor.fullName }}</a>. All rights reserved.</h6>
+    </div>
+  </footer>
+{% endblock %}

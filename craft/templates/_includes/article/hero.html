@@ -1,0 +1,28 @@
+{#
+ # Article Hero include template
+ # --------------------------------
+ #
+ # This template is used to output HTML for the "Title" and "Image" fields.
+ #
+ # An `entry` variable is expected to be defined.
+-#}
+
+{% block hero %}
+  <header class="hero">
+    <h1 class="hero-title">{{ entry.title }}</h1>
+
+    {% if subheading %}
+      {% include '_includes/snippets/' ~ subheading %}
+    {% endif %}
+
+    {% if not craft.request.isLivePreview and entry.heroImage %}
+      {{ entry.heroImage | raw }}
+    {% elseif entry.image.first() %}
+      {% set image = entry.image.first() %}
+      <img class="hero-image"
+           src="{{ image.url }}"
+           alt="{{ image.title }}">
+    {% endif %}
+
+  </header>
+{% endblock %}

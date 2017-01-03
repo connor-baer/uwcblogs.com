@@ -1,12 +1,18 @@
 ---
-layout: page
 font: serif
-lang: en
-ref: newsletter
-title: Newsletter
 description: Each month I handpick a post from a blog on UWCxBlogs and share it with you in this newsletter.
 order: 2
 ---
+
+<article class="content page">
+  <header class="hero">
+    <h1 class="hero-title">{% if entry.description %}{{ entry.description }}{% else %}{{ entry.title }}{% endif %}</h1>
+    {% if entry.image %}
+      <div class="hero-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}-large.jpg') 2x )"></div>
+    {% endif %}
+  </header>
+
+  <div class="content-style">
 
 <!-- Begin MailChimp Signup Form -->
 <aside id="mc_embed_signup" class="sidebar">
@@ -38,7 +44,7 @@ order: 2
   {% for page in posts %}
   <article>
     <h3 class="writing-header"><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h3>
-    {% include core/date.html %}
+    {% include core/snippets/date.html %}
     {% if page.image %}
     <a class="writing-image" href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></a>
     {% endif %}
@@ -46,3 +52,7 @@ order: 2
   </article>
   {% endfor %}
 </div>
+
+{% include('./_includes/snippets/share.html') %}
+</div>
+</article>

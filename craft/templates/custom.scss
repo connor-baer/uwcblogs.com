@@ -1,0 +1,82 @@
+// ==== HOMEPAGE ==== //
+
+@import "../../source/scss/dependencies/import";
+
+
+// Custom styles for the homepage.
+
+// 1. General
+// 2. Blogs
+// 3. Search
+// 4. Writing
+
+// 1. General //
+
+.section {
+  @include clearfix;
+
+  display: block;
+  margin-top: 4rem;
+}
+
+.section-title {
+  @include ctnr(one);
+
+  @include font(header1);
+
+  margin-top: 1rem;
+}
+
+.section-body {
+  @include ctnr(two);
+
+  @include font(body);
+
+  margin: 1rem 0;
+  clear: right;
+
+  @include mappy-query(desktop-large) {
+    columns: 2;
+    column-gap: 2rem;
+
+    span {
+      display: block;
+
+      span {
+        display: inline-block;
+      }
+    }
+  }
+}
+
+// 2. Blogs //
+
+.section-year {
+  @include font(header3);
+
+  display: block;
+  width: 100%;
+}
+
+.section-blog {
+  display: block;
+  width: 100%;
+}
+
+// 3. Search //
+
+.section-search {
+  margin-top: 4rem;
+
+  @include mappy-query(tablet) {
+    margin-top: 6rem;
+  }
+
+  input {
+    padding-left: 2.5rem;
+  }
+
+  .form-highlight {
+    left: 2.5rem;
+  }
+}

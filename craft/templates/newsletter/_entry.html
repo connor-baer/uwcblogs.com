@@ -20,7 +20,7 @@
   <article class="content post serif">
     <header class="hero">
       <h1 class="hero-title">{{ entry.title }}</h1>
-      {% include('./_includes/date.html') %}
+      {% include('./_includes/snippets/date.html') %}
 
       {{ entry.heroImage | raw }}
 
@@ -42,7 +42,7 @@
 
       {{ entry.body }}
 
-      {% include('./_includes/share.html') %}
+      {% include('./_includes/snippets/share.html') %}
 
       {% if entry.next %}
       <aside class="content-next">

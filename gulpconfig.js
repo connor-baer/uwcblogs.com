@@ -49,9 +49,8 @@ module.exports = {
   // 3. Watch //
 
   watch: {
-    styles:  src + 'scss/**/*.scss',
+    styles:  [src + 'scss/**/*.scss', 'craft/templates/**/*.scss'],
     scripts: src + 'js/*.js',
-    craft:   'craft/templates/**/*',
   },
 
 
@@ -63,7 +62,7 @@ module.exports = {
       modules + 'normalize.css/normalize.css',
       modules + 'open-color/open-color.scss',
     ],
-    dest: src + 'scss/core/',
+    dest: src + 'scss/dependencies/',
     rename: {
       prefix: '_',
       extname: '.scss',
@@ -75,17 +74,23 @@ module.exports = {
 
   clean: {
     tidy: [dist + '**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array.
-    wipe: [dist + assets], // Clean this out before creating a new distribution copy.
+    wipe: [dist + assets, 'craft/templates/**/*{*.css, *.css.map}'], // Clean this out before creating a new distribution copy.
   },
 
 
   // 6. Styles //
 
   styles: {
-    build: {
-      src: src + 'scss/**/*.scss',
-      dest: dist + assets + 'css/',
-    },
+    builds: [
+      {
+        src:  src + 'scss/**/*.scss',
+        dest: dist + assets + 'css/',
+      },
+      {
+        src:  'craft/templates/**/*.scss',
+        dest: 'craft/templates/',
+      }
+    ],
     cssnano: {
       autoprefixer: {
         add: true, browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
@@ -105,7 +110,7 @@ module.exports = {
 
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
-      scripts: ['navigation', 'core'],
+      scripts: ['navigation', 'search', 'core'],
     },
     chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here.
@@ -117,6 +122,9 @@ module.exports = {
         modules + 'smooth-scroll/dist/js/smooth-scroll.js',
         modules + 'turbolinks/dist/turbolinks.js',
         modules + 'lazysizes/lazysizes.min.js'
+      ],
+      search: [
+        modules + 'list.js/dist/list.min.js',
       ],
     },
     dest: dist + assets + 'js/', // Where the scripts end up in your theme.

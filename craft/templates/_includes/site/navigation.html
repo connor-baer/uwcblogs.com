@@ -1,0 +1,13 @@
+{% block navigation %}
+
+<ul class="nav">
+
+  {% for block in navigation.navItems %}
+    <li class="nav-link">
+      <a href="{{ block.navEntry.first().url }}" {% if craft.request.firstSegment == block.navEntry.first().slug %}class="nav-active"{% endif %} title="{{ block.navTitle }}">{{ block.navTitle }}</a>
+    </li>
+  {% endfor %}
+
+</ul>
+
+{% endblock %}

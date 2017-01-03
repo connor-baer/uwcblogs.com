@@ -17,17 +17,60 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/base" %}
+{% extends "_layouts/site" %}
 
-{% block content %}
-	<h1>{{ entry.title }}</h1>
+{% block styles %}
+  {{ parent() }}
 
-	{{ entry.body }}
+  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/custom.css" data-turbolinks-track="reload">
+{% endblock %}
 
-	<h2>Recent News</h2>
-	<ul>
-		{% for entry in craft.entries.section('news').limit(5).find() %}
-			<li><a href="{{ entry.url }}">{{ entry.title }}</a></li>
-		{% endfor %}
-	</ul>
+{% block main %}
+  <article class="content page">
+
+    {% include '_includes/article/hero' with { subheading: 'share' } %}
+
+    <div class="content-style">
+      <div class="section-search form-group full">
+        <input class="form-input" type="search" name="js-search" id="js-search" placeholder="Filter the blogs..." autocomplete="off" required>
+        <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+        </svg>
+        <span class="form-highlight"></span>
+        <p class="form-hint">Enter a country, language, year or name in the field above to filter the blogs.</p>
+      </div>
+
+
+      {% set allBlogs = craft.entries.section('blogs').order('blogCollege asc').limit(null) %}
+      {% set allBlogsByCollege = allBlogs | group('blogCollege.label') %}
+
+
+      {% for blogCollege, blogsByCollege in allBlogsByCollege %}
+        <section class="section js-college">
+          <h1 id="{{ blogCollege | lower | url_encode }}" class="section-title">{{ blogCollege }}</h1>
+
+          <p class="section-body">
+
+            {% set allBlogsByYear = blogsByCollege | group('blogYear.year') %}
+
+            {% for blogYear, blogsByYear in allBlogsByYear %}
+              <span class="js-list" id="{{ blogCollege }}-{{ blogYear }}">
+                <span class="section-year js-year">{{ blogYear }}</span>
+                <span class="list js-years">
+
+                {% for blog in blogsByYear|sort %}
+                  <span data-year="{{ blog.blogYear }}" class="section-blog">
+                    <span class="name"><a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link">{{ blog.blogFirstName }}</a></span> | <span class="country">{{ blog.blogCountry }}</span>{% if blog.blogCountry and blog.blogLanguage %} - {% endif %}<span class="language">{{ blog.blogLanguage }}</span>
+                  </span>
+                {% endfor %}
+              </span>
+            {% endfor %}
+          </p>
+        </section>
+      {% endfor %}
+
+      {% include('_includes/snippets/share.html') %}
+    </div>
+  </article>
+
 {% endblock %}
