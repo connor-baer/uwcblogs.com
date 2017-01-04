@@ -17,8 +17,7 @@
   color: palette(gray);
   font-family: $sans;
   font-size: ms(-1);
-  font-weight: $sans-semibold;
-  letter-spacing: 0.25px;
+  letter-spacing: .5px;
 
   a {
     transition: color $short;
@@ -32,7 +31,7 @@
 
   .nav-active {
     color: palette(gray, dark);
-    font-weight: $sans-bold;
+    font-weight: $sans-semibold;
   }
 }
 

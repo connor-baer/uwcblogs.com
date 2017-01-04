@@ -13,22 +13,21 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/base" %}
+{% extends "_layouts/site" %}
 
-{% block content %}
+{% set title = entry.title %}
+{% set description = entry.description %}
+{% set image = entry.image.first() %}
+
+{% block main %}
 
   <article class="content page sans">
-    <header class="hero">
-      <h1 class="hero-title">{{ entry.title }}</h1>
-
-      {{ entry.heroImage | raw }}
-
-    </header>
+    {% include '_includes/article/hero' %}
 
     <div class="content-style">
       {{ entry.body }}
 
-      {% include('./_includes/snippets/share.html') %}
+      {% include '_includes/snippets/share' %}
     </div>
   </article>
 

@@ -8,11 +8,15 @@
 -#}
 
 {% block hero %}
-  <header class="hero">
-    <h1 class="hero-title">{{ entry.title }}</h1>
+  {% set heroTitle = description is defined ? description : title %}
 
-    {% if subheading %}
-      {% include '_includes/snippets/' ~ subheading %}
+  <header class="hero">
+    <h1 class="hero-title">{{ heroTitle }}</h1>
+
+    {% if sub is defined and date is defined %}
+      {% include '_includes/snippets/' ~ sub with date %}
+    {% elseif sub is defined %}
+      {% include '_includes/snippets/' ~ sub %}
     {% endif %}
 
     {% if not craft.request.isLivePreview and entry.heroImage %}

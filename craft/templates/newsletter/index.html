@@ -1,58 +1,102 @@
----
-font: serif
-description: Each month I handpick a post from a blog on UWCxBlogs and share it with you in this newsletter.
-order: 2
----
+{#
+ # Newsletter index template
+ # -------------------
+ #
+ # This template is loaded whenever http://example.com/newsletter is
+ # requested, because it is located at newsletter/index.html
+ # in your craft/templates/ folder.
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
 
-<article class="content page">
-  <header class="hero">
-    <h1 class="hero-title">{% if entry.description %}{{ entry.description }}{% else %}{{ entry.title }}{% endif %}</h1>
-    {% if entry.image %}
-      <div class="hero-image" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ entry.ref }}-large.jpg') 2x )"></div>
-    {% endif %}
-  </header>
+{% extends "_layouts/site" %}
 
-  <div class="content-style">
+{% set title = entry.title %}
+{% set description = entry.description %}
+{% set image = entry.image.first() %}
 
-<!-- Begin MailChimp Signup Form -->
-<aside id="mc_embed_signup" class="sidebar">
-  <h4>Subscribe!</h4>
-  <p class="message">Get an insight into life at UWC! One post a month, absolutely no spam.</p>
-  <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=ace6c7cedf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
-    <div id="mc_embed_signup_scroll" class="section-inputs">
 
-      <div class="mc-field-group form-group section-form-group">
-        <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder="First Name" required="">
-        <span class="form-highlight"></span>
-      </div>
+{% block styles %}
+  {{ parent() }}
 
-      <div class="mc-field-group form-group section-form-group">
-        <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder="Email Address" required="">
-        <span class="form-highlight"></span>
-      </div>
+  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/newsletter.css" data-turbolinks-track="reload">
+{% endblock %}
 
-      <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-      <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_ace6c7cedf" tabindex="-1" value=""></div>
-      <div class="clear"><input type="submit" value="Subscribe →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+
+{% block main %}
+  <article class="content page">
+
+    {% include '_includes/article/hero' %}
+
+    <div class="content-style">
+
+    <!-- Begin MailChimp Signup Form -->
+    <aside id="mc_embed_signup" class="sidebar">
+      <h4>Subscribe!</h4>
+      <p class="message">Get an insight into life at UWC! One post a month, absolutely no spam.</p>
+      <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=ace6c7cedf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+        <div id="mc_embed_signup_scroll" class="section-inputs">
+
+          <div class="mc-field-group form-group section-form-group">
+            <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder="First Name" required="">
+            <span class="form-highlight"></span>
+          </div>
+
+          <div class="mc-field-group form-group section-form-group">
+            <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder="Email Address" required="">
+            <span class="form-highlight"></span>
+          </div>
+
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_ace6c7cedf" tabindex="-1" value=""></div>
+          <div class="clear"><input type="submit" value="Subscribe →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+      </form>
+    </aside>
+    <!--End mc_embed_signup-->
+
+    <div class="section-writing">
+      {% for post in craft.entries.section('newsletterPosts').find() %}
+      <article>
+        <h3 class="newsletter-header"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
+
+        {% include '_includes/snippets/date' with { date: post.postDate} %}
+
+        {% set image = post.image.first() %}
+
+        {% if image %}
+          {% set transformedImages = craft.imager.transformImage(image,
+              [
+                { width: 2000, ratio: 3/1 },
+                { width: 1000, ratio: 5/2, jpegQuality: 66 },
+              ],
+              {
+                format: 'jpg',
+                allowUpscale: false,
+                mode: 'crop',
+                jpegQuality: 80,
+                position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+                interlace: true
+              }
+          ) %}
+
+          <a href="{{ post.url }}" title="{{ post.title }}">
+            <img class="newsletter-image lazyload"
+                 src="{{ craft.imager.base64Pixel(2,1) }}"
+                 data-sizes="100vw"
+                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+                 alt="{{ image.title }}">
+          </a>
+        {% endif %}
+
+
+        <p class="newsletter-body">{{ post.description | striptags }}</p>
+      </article>
+      {% endfor %}
+
+
+
     </div>
-  </form>
-</aside>
-<!--End mc_embed_signup-->
-
-<div class="section-writing">
-  {% assign posts = site.posts | sort: 'date' | where: "lang", page.lang | reverse %}
-  {% for page in posts %}
-  <article>
-    <h3 class="writing-header"><a href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}">{{ page.title }}</a></h3>
-    {% include core/snippets/date.html %}
-    {% if page.image %}
-    <a class="writing-image" href="{{ site.baseurl }}{{ page.url }}" title="{{ page.title }}" style="background-image: url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg'); background-image: -webkit-image-set( url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}.jpg') 1x, url('{{ site.baseurl }}{{ site.assets }}{{ site.images }}{{ page.ref }}-large.jpg') 2x )"></a>
-    {% endif %}
-    <p class="writing-body">{{ page.content | strip_html | truncatewords: 36 }}</p>
   </article>
-  {% endfor %}
-</div>
-
-{% include('./_includes/snippets/share.html') %}
-</div>
-</article>
+{% endblock %}

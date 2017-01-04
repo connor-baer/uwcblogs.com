@@ -19,16 +19,21 @@
 
 {% extends "_layouts/site" %}
 
+{% set title = entry.title %}
+{% set description = entry.description %}
+{% set image = entry.image.first() %}
+
+
 {% block styles %}
   {{ parent() }}
 
-  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/custom.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/index.css" data-turbolinks-track="reload">
 {% endblock %}
 
 {% block main %}
   <article class="content page">
 
-    {% include '_includes/article/hero' with { subheading: 'share' } %}
+    {% include '_includes/article/hero' with { sub: 'share' } %}
 
     <div class="content-style">
       <div class="section-search form-group full">
@@ -40,34 +45,43 @@
         <p class="form-hint">Enter a country, language, year or name in the field above to filter the blogs.</p>
       </div>
 
+      {% cache %}
 
-      {% set allBlogs = craft.entries.section('blogs').order('blogCollege asc').limit(null) %}
-      {% set allBlogsByCollege = allBlogs | group('blogCollege.label') %}
+        {# Get the categories related to my "blogs" entries in structure order. #}
+        {% set blogs = craft.entries.section('blogs').limit(null) %}
+        {% set colleges = craft.categories.relatedTo(blogs) %}
 
+        {# Loop the colleges. #}
+        {% for college in colleges %}
 
-      {% for blogCollege, blogsByCollege in allBlogsByCollege %}
         <section class="section js-college">
-          <h1 id="{{ blogCollege | lower | url_encode }}" class="section-title">{{ blogCollege }}</h1>
+          <h1 id="{{ college.title | lower | url_encode }}" class="section-title">{{ college.title }}</h1>
 
           <p class="section-body">
 
-            {% set allBlogsByYear = blogsByCollege | group('blogYear.year') %}
+          {# Get and loop through blogs related to this college. #}
+          {% set allBlogsInCollege = craft.entries.relatedTo(college).order('blogYear desc') | group('blogYear') %}
+          {% for year, allBlogsInYear in allBlogsInCollege %}
+          <span class="js-list" id="{{ college }}-{{ year }}">
+            <span class="section-year js-year">{{ year }}</span>
+            <span class="list js-years">
 
-            {% for blogYear, blogsByYear in allBlogsByYear %}
-              <span class="js-list" id="{{ blogCollege }}-{{ blogYear }}">
-                <span class="section-year js-year">{{ blogYear }}</span>
-                <span class="list js-years">
-
-                {% for blog in blogsByYear|sort %}
-                  <span data-year="{{ blog.blogYear }}" class="section-blog">
-                    <span class="name"><a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link">{{ blog.blogFirstName }}</a></span> | <span class="country">{{ blog.blogCountry }}</span>{% if blog.blogCountry and blog.blogLanguage %} - {% endif %}<span class="language">{{ blog.blogLanguage }}</span>
-                  </span>
-                {% endfor %}
+            {% for blog in allBlogsInYear %}
+              <span data-year="{{ blog.blogYear }}" class="section-blog">
+                <span class="name"><a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link">{{ blog.blogFirstName }}</a></span> | <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+                {% if blog.blogCountries.total() and blog.blogLanguages.total() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
               </span>
             {% endfor %}
+
+            </span>
+          </span>
+          {% endfor %}
+
           </p>
         </section>
-      {% endfor %}
+        {% endfor %}
+
+      {% endcache %}
 
       {% include('_includes/snippets/share.html') %}
     </div>

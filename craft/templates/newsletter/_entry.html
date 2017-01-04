@@ -13,18 +13,13 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/base" %}
+{% extends "_layouts/site" %}
 
-{% block content %}
+{% block main %}
 
   <article class="content post serif">
-    <header class="hero">
-      <h1 class="hero-title">{{ entry.title }}</h1>
-      {% include('./_includes/snippets/date.html') %}
 
-      {{ entry.heroImage | raw }}
-
-    </header>
+    {% include '_includes/article/hero' with { sub: 'date' } %}
 
     <div class="content-style">
       {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
@@ -42,7 +37,7 @@
 
       {{ entry.body }}
 
-      {% include('./_includes/snippets/share.html') %}
+      {% include '_includes/snippets/share' %}
 
       {% if entry.next %}
       <aside class="content-next">

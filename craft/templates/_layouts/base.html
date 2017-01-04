@@ -61,8 +61,7 @@
 
     <link rel="home" href="{{ siteUrl }}" />
 
-		<title>{% if title is defined %}{{ title }} · {% endif %}{{ siteName }}</title>
-
+    {% include '_includes/site/seo' %}
 
   	{% block styles %}
       <link rel="stylesheet" type="text/css" href="{{ siteUrl }}assets/css/styles.css">
@@ -82,12 +81,11 @@
   	{% endblock %}
 
 
-    {% include('./_includes/site/icons.html') %}
+    {% include '_includes/site/icons' %}
 
-  	{% include('./_includes/site/seo.html') %}
 
-    {% for block in navigation.navItems %}
-      <link rel="prefetch" href="{{ block.navEntry.first().url }}">
+    {% for item in navigation.siteNav %}
+      <link rel="prefetch" href="{{ item.navEntry.first().url }}">
     {% endfor %}
 
   	<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">

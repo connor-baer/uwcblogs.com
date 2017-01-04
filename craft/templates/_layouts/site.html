@@ -28,9 +28,9 @@
   {% set bodyClass = entry is defined ? entry.section.handle : craft.request.firstSegment %}
 {% endif %}
 
-{# Set the `title` variable to the nav item that matches the first segment #}
-{% if nav[bodyClass] is defined %}
-  {% set title %}{% if title is defined %}{{ title }} - {% endif %}{{ nav[bodyClass].title }}{% endset %}
+{# Set the `title` variable to the entry title #}
+{% if entry is defined %}
+  {% set title = entry.title %}
 {% endif %}
 
 
@@ -40,7 +40,7 @@
       <div class="metabar-wrapper">
         <div class="metabar-left">
           <a class="metabar-logo" href="http://madebyconnor.io/#" {% if craft.request.url == 'http://madebyconnor.io/' %}data-scroll{% else %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Visit 'Made by Connor'" title="Made by Connor">
-            {% include('./_includes/site/logo.svg') %}
+            {% include '_includes/site/logo.svg' %}
           </a>
           <span class="metabar-spacer"></span>
           <a class="metabar-title" href="{{ siteUrl }}{% if craft.request.path == '' %}#" data-scroll{% else %}"{% endif %} aria-label="Visit the homepage." title="Visit the homepage.">{{ siteName }}</a>
@@ -49,7 +49,7 @@
           <button id="js-navOpen" class="nav-open">Menu</button>
           <nav id="js-metabarNav" class="metabar-nav">
             <button id="js-navClose" class="nav-close">Close</button>
-            {% include('./_includes/site/navigation.html') %}
+            {% include '_includes/site/navigation' %}
           </nav>
         </div>
       </div>
@@ -72,7 +72,7 @@
     <div class="footer-wrapper">
       <div class="footer-logo">
         <a class="metabar-logo" href="http://madebyconnor.io/#" {% if craft.request.url == 'http://madebyconnor.io' %}data-scroll{% else %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Visit 'Made by Connor'" title="Made by Connor">
-        {% include('./_includes/site/logo.svg') %}
+        {% include '_includes/site/logo.svg' %}
         </a>
       </div>
       <div class="footer-navigation">
@@ -80,7 +80,7 @@
           <h4 class="footer-title">{{ siteName }}</h4>
           <nav>
 
-            {% include('./_includes/site/navigation.html') %}
+            {% include '_includes/site/navigation' %}
 
           </nav>
         </div>

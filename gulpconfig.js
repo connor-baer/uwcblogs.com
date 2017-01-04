@@ -157,7 +157,7 @@ module.exports = {
       logging: false,
       online: false,
       replace: true,
-      html: 'craft/templates/_includes/icons.html',
+      html: 'craft/templates/_includes/site/icons.html',
       pipeHTML: true,
       icons: {
         android: true,         // Create Android homescreen icon. `boolean`

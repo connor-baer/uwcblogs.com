@@ -4,18 +4,13 @@
 
 
 .hero {
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-
-  @include mappy-query(tablet) {
-    padding-top: 6rem;
-  }
+  margin-top: 4rem;
 }
 
 .hero-title {
   @include font(title);
 
-  margin-bottom: 1rem;
+  margin-bottom: .5rem;
 }
 
 .hero-icon {
@@ -36,11 +31,7 @@
 
 .hero-image {
   width: 100%;
-  margin-top: 2rem;
-
-  @include mappy-query(tablet) {
-    margin-top: 3rem;
-  }
+  margin-top: 3rem;
 }
 
 .hero-svg {
