@@ -39,8 +39,8 @@ document.addEventListener('turbolinks:load', function () {
     blogs += data[i].items.length;
   }
 
-  console.log(blogs + ' blogs and counting. Woohoo! Add yours: http://uwcblogs.com/submissions/');
-  console.log('For developers: found a bug or want to contribute? Visit the GitHub repo: https://github.com/uwc/uwcxblogs.');
+  console.log(blogs + ' blogs and counting. Woohoo! Add yours: http://uwcblogs.com/submit/');
+  console.log('For developers: found a bug or want to contribute? Visit the GitHub repo: https://github.com/uwc/uwcblogs.');
 
   function searchAll() {
 
