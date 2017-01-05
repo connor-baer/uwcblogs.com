@@ -33,13 +33,13 @@
   {# Facebook #}
   <meta property="og:site_name" content="{{ siteName }}" />
   <meta property="og:title" content="{% if title is defined %}{{ title }} · {% endif %}{{ siteName }}" />
-  <meta property="og:url" content="{{ craft.request.getPath() }}" />
+  <meta property="og:url" content="{{ siteUrl }}{{ craft.request.getPath() }}" />
   {% if seoImage %}
     <meta property="og:image" content="{{ seoImage.url }}" />
   {% endif %}
   {% if seoDescription %}
     <meta property="og:description" content="{{ seoDescription }}" />
   {% endif %}
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="website" />
 
 {% endblock %}
