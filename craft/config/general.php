@@ -6,6 +6,11 @@
  * You can see a list of the default settings in craft/app/etc/config/defaults/general.php
  */
 
+// Ensure our urls have the right scheme.
+define( 'URI_SCHEME', ( isset( $_SERVER['HTTPS'] ) ) ? "https://" : "http://" );
+
+// The site url.
+define( 'SITE_URL',   URI_SCHEME . $_SERVER['SERVER_NAME'] . '/' );
 
 return array(
 	'*' => array(
@@ -15,7 +20,7 @@ return array(
 			'baseAssetsPath' => './uploads/',
 			'baseAssetsUrl' => '/uploads/',
 		),
-		'siteUrl' => "http://{$_SERVER['SERVER_NAME']}/",
+		'siteUrl' => SITE_URL,
 	),
 
 	'local' => array(
