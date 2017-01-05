@@ -67,7 +67,7 @@
 
             {% for blog in allBlogsInYear %}
               <span class="college-blog" data-year="{{ blog.blogYear }}">
-                <a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link name">{{ blog.blogFirstName }}</a> | <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+                <a href="{{ blog.blogLink }}" target="_blank" rel="noopener noreferrer" class="link name">{{ blog.blogFirstName }}</a> | <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
                 {% if blog.blogCountries.total() and blog.blogLanguages.total() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
               </span>
             {% endfor %}

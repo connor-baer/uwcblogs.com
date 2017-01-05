@@ -84,7 +84,7 @@
     {% include '_includes/site/icons' %}
 
 
-    {% for item in navigation.siteNavigation %}
+    {% for block in navigation.siteNavigation %}
       {% if block.type == "navSingle" or block.type == "navSection" %}
         {% set navLink = block.navEntry.first().url %}
       {% elseif block.type == "navExternal" %}
