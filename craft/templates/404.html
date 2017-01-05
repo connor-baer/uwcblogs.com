@@ -16,11 +16,15 @@
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/base" %}
+{% extends "_layouts/site" %}
 {% set title = "404" %}
 
-{% block content %}
-	<h1>Page not found</h1>
+{% block main %}
+	<div class="content">
+		<header class="hero">
+			<h1 class="hero-title">Page not found</h1>
+		</header>
 
-	<p>What’s worse, a hilarious 404 page can’t be found either.</p>
+		<p>What’s worse, a hilarious 404 page can’t be found either.</p>
+	</div>
 {% endblock %}

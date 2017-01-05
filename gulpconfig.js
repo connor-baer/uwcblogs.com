@@ -34,7 +34,7 @@ module.exports = {
 
   browsersync: {
     files: [dist + '**/*', 'craft/templates/**/*'],
-    port: 4000, // Port number for the live version of the site.
+    port: 6000, // Port number for the live version of the site.
     proxy: 'http://local.' + project + '/', // We need to use a proxy instead of the built-in server because WordPress has to do some server-side rendering for the theme to work.
     notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
     ui: false, // Set to false if you don't need the browsersync UI
@@ -74,7 +74,7 @@ module.exports = {
 
   clean: {
     tidy: [dist + '**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array.
-    wipe: [dist + assets, 'craft/templates/**/*{*.css, *.css.map}'], // Clean this out before creating a new distribution copy.
+    wipe: [dist + assets, 'craft/templates/**/*(*.css, *.css.map)'], // Clean this out before creating a new distribution copy.
   },
 
 

@@ -57,11 +57,13 @@
     <!--End mc_embed_signup-->
 
     <div class="section-writing">
-      {% for post in craft.entries.section('newsletterItems').find() %}
+      {% for post in craft.entries.section('postsItems').find() %}
       <article>
-        <h3 class="newsletter-header"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
+        <h3 class="newsletter-header"><a href="{{ post.postEntryLink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 
-        {% include '_includes/snippets/date' with { date: post.postDate} %}
+        <div class="meta">
+          {% if post.postAuthor %}<a href="{{ post.postSourceLink }}" rel="author">{{ post.postAuthor }}</a> · {% endif %}<time class="meta-text" datetime="{{ entry.postDate.w3c }}">{{ entry.postDate | date("F d, Y") }}</time>
+        </div>
 
         {% set image = post.image.first() %}
 
@@ -89,7 +91,6 @@
                  alt="{{ image.title }}">
           </a>
         {% endif %}
-
 
         <p class="newsletter-body">{{ post.description | striptags }}</p>
       </article>

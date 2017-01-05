@@ -1,0 +1,57 @@
+{#
+ # News entry template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the News section’s Template setting is
+ # set to “news/_entry”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested News entry.
+ #
+ # See this entry for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/site" %}
+
+{% block main %}
+
+  <article class="content post serif">
+
+    {% include '_includes/article/hero' with { sub: 'date' } %}
+
+    <div class="content-style">
+      {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
+      {% if author %}
+      <aside class="content-author">
+        <a href="mailto:{{ author.email }}" aria-label="Send {{ author.name }} a message.">
+          <div class="author-image" style="background-image: url('{{ author.photoUrl }}')"></div>
+        </a>
+        <div class="author-text">
+          <h4><a href="mailto:{{ author.email }}" aria-label="Send {{ author.name }} a message.">{{ author.name }}</a></h4>
+          <p>{{ globals.siteDescription }}</p>
+        </div>
+      </aside>
+      {% endif %}
+
+      {{ entry.body }}
+
+      {% include '_includes/snippets/share' %}
+
+      {% if entry.next %}
+      <aside class="content-next">
+        <article class="next-post">
+          <h4 class="next-header">Next Post</h4>
+          {% if entry.next.image %}
+          <div class="next-image" style="background-image: url('{{ entry.next.image.first().url }}')"></div>
+          {% endif %}
+          <h5 class="next-title"><a href="{{ entry.next.url }}">{{ entry.next.title }}</a></h5>
+        </article>
+      </aside>
+      {% endif %}
+
+    </div>
+  </article>
+
+{% endblock %}

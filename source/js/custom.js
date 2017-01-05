@@ -4,6 +4,14 @@
 
 document.addEventListener('turbolinks:load', function () {
 
+  // SMOOTHSCROLL //
+
+  var searchInput = document.getElementById('js-search');
+
+  searchInput.addEventListener('focus', function () {
+    smoothScroll.animateScroll(searchInput);
+  });
+
   // LISTJS //
 
   var searchOptions = {
@@ -16,8 +24,6 @@ document.addEventListener('turbolinks:load', function () {
       },
     ],
   };
-
-  var searchInput = document.getElementById('js-search');
 
   var lists = document.getElementsByClassName('js-list');
   var colleges = document.getElementsByClassName('js-college');

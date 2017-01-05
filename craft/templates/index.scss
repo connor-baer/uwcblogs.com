@@ -5,28 +5,47 @@
 
 // Custom styles for the homepage.
 
-// 1. General
+// 1. Search
 // 2. Blogs
-// 3. Search
 
-// 1. General //
 
-.section {
+// 1. Search //
+
+.search {
+  margin-top: 4rem;
+
+  @include mappy-query(tablet) {
+    margin-top: 6rem;
+  }
+
+  input {
+    padding-left: 2.5rem;
+  }
+
+  .form-highlight {
+    left: 2.5rem;
+  }
+}
+
+
+// 2. Blogs //
+
+.college {
   @include clearfix;
 
   display: block;
   margin-top: 4rem;
 }
 
-.section-title {
+.college-title {
   @include ctnr(one);
 
   @include font(header1);
 
-  margin-top: 1rem;
+  margin-top: 2rem;
 }
 
-.section-body {
+.college-body {
   @include ctnr(two);
 
   @include font(body);
@@ -48,34 +67,15 @@
   }
 }
 
-// 2. Blogs //
-
-.section-year {
+.college-year {
   @include font(header3);
 
   display: block;
   width: 100%;
+  margin-top: 1rem;
 }
 
-.section-blog {
+.college-blog {
   display: block;
   width: 100%;
-}
-
-// 3. Search //
-
-.section-search {
-  margin-top: 4rem;
-
-  @include mappy-query(tablet) {
-    margin-top: 6rem;
-  }
-
-  input {
-    padding-left: 2.5rem;
-  }
-
-  .form-highlight {
-    left: 2.5rem;
-  }
 }

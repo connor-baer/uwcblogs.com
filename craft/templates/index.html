@@ -36,13 +36,12 @@
     {% include '_includes/article/hero' with { sub: 'share' } %}
 
     <div class="content-style">
-      <div class="section-search form-group full">
-        <input class="form-input" type="search" name="js-search" id="js-search" placeholder="Filter the blogs..." autocomplete="off" required>
+      <div class="search form-group full">
+        <input class="form-input" type="search" name="js-search" id="js-search" placeholder="Search to filter the blogs..." autocomplete="off" required>
         <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
         </svg>
         <span class="form-highlight"></span>
-        <p class="form-hint">Enter a country, language, year or name in the field above to filter the blogs.</p>
       </div>
 
       {% cache %}
@@ -54,21 +53,21 @@
         {# Loop the colleges. #}
         {% for college in colleges %}
 
-        <section class="section js-college">
-          <h1 id="{{ college.title | lower | url_encode }}" class="section-title">{{ college.title }}</h1>
+        <section class="college js-college">
+          <h1 id="{{ college.title | lower | replace(' ', '-') }}" class="college-title">{{ college.title }}</h1>
 
-          <p class="section-body">
+          <p class="college-body">
 
           {# Get and loop through blogs related to this college. #}
           {% set allBlogsInCollege = craft.entries.relatedTo(college).order('blogYear desc') | group('blogYear') %}
           {% for year, allBlogsInYear in allBlogsInCollege %}
-          <span class="js-list" id="{{ college }}-{{ year }}">
-            <span class="section-year js-year">{{ year }}</span>
+          <span class="js-list" id="{{ college.title | lower | replace(' ', '-') }}-{{ year }}">
+            <span class="college-year js-year">{{ year }}</span>
             <span class="list js-years">
 
             {% for blog in allBlogsInYear %}
-              <span data-year="{{ blog.blogYear }}" class="section-blog">
-                <span class="name"><a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link">{{ blog.blogFirstName }}</a></span> | <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+              <span class="college-blog" data-year="{{ blog.blogYear }}">
+                <a href="{{ blog.blogUrl }}" target="_blank" rel="noopener noreferrer" class="link name">{{ blog.blogFirstName }}</a> | <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
                 {% if blog.blogCountries.total() and blog.blogLanguages.total() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
               </span>
             {% endfor %}

@@ -3,9 +3,17 @@
 <ul class="nav">
 
   {% for block in navigation.siteNav %}
+
+    {% if block.type == "navSingle" or block.type == "navSection" %}
+      {% set navTitle = block.navEntry.first().title %}
+    {% elseif block.type == "navExternal" %}
+      {% set navTitle = block.navTitle %}
+    {% endif %}
+
     <li class="nav-link">
-      <a href="{{ block.navEntry.first().url }}" {% if craft.request.firstSegment == block.navEntry.first().slug %}class="nav-active"{% endif %} title="{{ block.navTitle }}">{{ block.navTitle }}</a>
+      <a href="{{ block.navEntry.first().url }}" {% if craft.request.firstSegment == block.navEntry.first().slug %}class="nav-active"{% endif %} title="{{ navTitle }}">{{ navTitle }}</a>
     </li>
+
   {% endfor %}
 
 </ul>
