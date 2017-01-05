@@ -84,8 +84,14 @@
     {% include '_includes/site/icons' %}
 
 
-    {% for item in navigation.siteNav %}
-      <link rel="prefetch" href="{{ item.navEntry.first().url }}">
+    {% for item in navigation.siteNavigation %}
+      {% if block.type == "navSingle" or block.type == "navSection" %}
+        {% set navLink = block.navEntry.first().url %}
+      {% elseif block.type == "navExternal" %}
+        {% set navLink = block.navLink %}
+      {% endif %}
+
+      <link rel="prefetch" href="{{ navLink }}">
     {% endfor %}
 
   	<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
@@ -107,7 +113,7 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', '{{ globals.siteGaKey }}', 'auto');
+		ga('create', '{{ globals.siteGoogleAnalyticsKey }}', 'auto');
 		ga('require', 'linkid');
 		ga('send', 'pageview');
 	{% endset %}
