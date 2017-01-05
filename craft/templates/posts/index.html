@@ -57,7 +57,7 @@
     <!--End mc_embed_signup-->
 
     <div class="section-writing">
-      {% for post in craft.entries.section('postsItems').find() %}
+      {% for post in craft.entries.section('posts').find() %}
       <article>
         <h3 class="newsletter-header"><a href="{{ post.postEntryLink }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 
