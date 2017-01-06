@@ -1,7 +1,7 @@
 {
   "name": "uwcblogs",
   "short_name": "uwcblogs",
-  "description": "A collection of over 350 blogs in 20 languages written by UWC students from more than 55 countries at the 15 United World Colleges.",
+  "description": "A collection of over 350 blogs written by UWC students in 28 languages from 76 countries at the 17 United World Colleges.",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",

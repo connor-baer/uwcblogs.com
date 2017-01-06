@@ -5,6 +5,10 @@
 
 .hero {
   margin-top: 4rem;
+
+  @include mappy-query(tablet) {
+    margin-top: 6rem;
+  }
 }
 
 .hero-title {
