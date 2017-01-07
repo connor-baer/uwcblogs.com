@@ -1,5 +1,9 @@
 // ==== CLEAN ==== //
 
+/* jshint -W117 */
+/* jshint -W098 */
+/* jshint -W070 */
+
 var gulp   = require('gulp'),
     del    = require('del'),
     config = require('../../gulpconfig').clean
@@ -7,15 +11,14 @@ var gulp   = require('gulp'),
 
 
 // Totally wipe the contents of the directory to prepare for a clean build.
-gulp.task('clean-wipe', function() {
+gulp.task('clean-wipe', function () {
   return del(config.wipe);
 });
 
 
 // Clean out junk files after build.
-gulp.task('clean-tidy', ['clean-wipe'], function() {
+gulp.task('clean-tidy', ['clean-wipe'], function () {
   return del(config.tidy);
 });
-
 
 gulp.task('clean', ['clean-tidy']);

@@ -12,21 +12,7 @@ document.addEventListener('turbolinks:load', function () {
     easing: 'easeInOutCubic',
 
     // How far to offset the scrolling anchor location in pixels.
-    offset: 64,
-  });
-
-  // MOBILE MENU //
-
-  var menuOpen = document.getElementById('js-navOpen');
-  var menuClose = document.getElementById('js-navClose');
-  var metabarNav = document.getElementById('js-metabarNav');
-
-  menuOpen.addEventListener('click', function () {
-    metabarNav.classList.add('open');
-  });
-
-  menuClose.addEventListener('click', function () {
-    metabarNav.classList.remove('open');
+    offset: 40,
   });
 
   // EMBEDLY //

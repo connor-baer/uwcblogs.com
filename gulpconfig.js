@@ -13,7 +13,7 @@
 // 6. Styles
 // 7. Scripts
 // 8. Icons
-// 9. Craft
+// 9. AMP
 
 
 // 1. Variables //
@@ -21,8 +21,9 @@
 var pkg   = require('./package.json'), // Allows access to the project metadata from the package.json file.
   project = pkg.name, // The name of the project, pulled from the package.json.
   src     = 'source/', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
-  dist    = 'public/', // The distribution package that you'll be uploading to your server; delete it anytime.
-  assets  = 'assets/', // A staging area for assets that require processing before landing in the source folder (example: icons before being added to a sprite sheet).
+  dist    = 'public/', // The webroot directory that will be accessible on your server.
+  assets  = 'assets/', // A folder for your assets in the source and/or distribution directory.
+  tmplts  = 'craft/templates/', // The CraftCMS template folder.
   bower   = 'bower_components/', // Bower packages.
   modules = 'node_modules/' // NPM packages.
 ;
@@ -33,7 +34,7 @@ module.exports = {
   // 2. BrowserSync
 
   browsersync: {
-    files: [dist + '**/*', 'craft/templates/**/*'],
+    files: [dist + '**/*', tmplts + '**/*'],
     port: 6000, // Port number for the live version of the site.
     proxy: 'http://local.' + project + '/', // We need to use a proxy instead of the built-in server because WordPress has to do some server-side rendering for the theme to work.
     notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
@@ -49,7 +50,7 @@ module.exports = {
   // 3. Watch //
 
   watch: {
-    styles:  [src + 'scss/**/*.scss', 'craft/templates/**/*.scss'],
+    styles:  [src + 'scss/**/*.scss', tmplts + '**/*.scss'],
     scripts: src + 'js/*.js',
   },
 
@@ -74,7 +75,7 @@ module.exports = {
 
   clean: {
     tidy: [dist + '**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array.
-    wipe: [dist + assets, 'craft/templates/**/*(*.css, *.css.map)'], // Clean this out before creating a new distribution copy.
+    wipe: [dist + assets, tmplts + '**/*(*.css, *.css.map)'], // Clean this out before creating a new distribution copy.
   },
 
 
@@ -87,8 +88,8 @@ module.exports = {
         dest: dist + assets + 'css/',
       },
       {
-        src:  'craft/templates/**/*.scss',
-        dest: 'craft/templates/',
+        src:  tmplts + '**/*.scss',
+        dest: tmplts,
       }
     ],
     cssnano: {
@@ -157,7 +158,7 @@ module.exports = {
       logging: false,
       online: false,
       replace: true,
-      html: 'craft/templates/_includes/site/icons.html',
+      html: tmplts + '_includes/site/icons.html',
       pipeHTML: true,
       icons: {
         android: true,         // Create Android homescreen icon. `boolean`
@@ -175,10 +176,11 @@ module.exports = {
   },
 
 
-  // 9. Craft //
+  // 9. AMP //
 
-  craft: {
-    src:    src,
-    dest:   dist,
+  amp: {
+    src:    tmplts + '_amp/base-unstyled.html',
+    dest:   tmplts + '_amp/',
+    css:    tmplts + '_amp/amp.css',
   },
 };

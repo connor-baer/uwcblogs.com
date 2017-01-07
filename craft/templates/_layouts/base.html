@@ -49,7 +49,7 @@
  #             Child templates can use this to include Javascript files, etc.
 -#}
 
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.locale }}">
 <head>
   {% block head %}
@@ -93,6 +93,9 @@
 
       <link rel="prefetch" href="{{ navLink }}">
     {% endfor %}
+
+    <link rel="canonical" href="{{ entry.url }}">
+    <link rel="amphtml" href="{{ entry.url }}/amp">
 
   	<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
   {% endblock %}

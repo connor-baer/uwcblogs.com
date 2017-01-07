@@ -1,0 +1,60 @@
+{#
+ # News AMP template
+ # -------------------
+ #
+ # This template gets loaded whenever a News entry’s URL is
+ # requested. That’s because the Newsletter section’s Template setting is
+ # set to “newsletter/_amp”, the path to this template.
+ #
+ # When this template is loaded, it will already have an ‘entry’
+ # variable, set to the requested Newsletter entry.
+ #
+ # See this entry for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_amp/site" %}
+
+{% set entry = craft.entries.section('newsletter').slug(slug)[0] %}
+
+{% block main %}
+
+  <article class="content post serif">
+
+    {% block hero %}
+      {% set heroTitle = description is defined ? description : title %}
+
+      <header class="hero">
+        <h1 class="hero-title">{{ heroTitle }}</h1>
+
+        <div class="meta">
+        	<time class="meta-text" datetime="{{ entry.postDate.w3c }}">{{ entry.postDate | date("F d, Y") }}</time>
+        </div>
+
+        {{ entry.ampImage | raw }}
+
+      </header>
+    {% endblock %}
+
+    <div class="content-style">
+
+      {{ entry.body | amplify | raw }}
+
+      {% include '_includes/snippets/share' %}
+
+      {% if entry.next %}
+      <aside class="content-next">
+        <article class="next-post">
+          <h4 class="next-header">Next Post</h4>
+          {% if entry.next.image %}
+          <div class="next-image" style="background-image: url('{{ entry.next.image.first().url }}')"></div>
+          {% endif %}
+          <h5 class="next-title"><a href="{{ entry.next.url }}">{{ entry.next.title }}</a></h5>
+        </article>
+      </aside>
+      {% endif %}
+
+    </div>
+  </article>
+
+{% endblock %}

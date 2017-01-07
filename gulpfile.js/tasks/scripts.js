@@ -1,5 +1,9 @@
 // ==== SCRIPTS ==== //
 
+/* jshint -W117 */
+/* jshint -W098 */
+/* jshint -W070 */
+
 var gulp  = require('gulp'),
     merge   = require('merge-stream'),
     plugins = require('gulp-load-plugins')({ camelize: true }),

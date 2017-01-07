@@ -1,5 +1,9 @@
 // ==== DEFAULT ==== //
 
+/* jshint -W117 */
+/* jshint -W098 */
+/* jshint -W070 */
+
 var gulp        = require('gulp'),
     runSequence = require('run-sequence')
 ;
@@ -37,5 +41,6 @@ gulp.task('build', function(callback) {
     'styles',
     'scripts'
   ],
+  'amp',
   callback);
 });

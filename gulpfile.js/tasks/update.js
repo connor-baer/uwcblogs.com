@@ -1,5 +1,9 @@
 // ==== UPDATE ==== //
 
+/* jshint -W117 */
+/* jshint -W098 */
+/* jshint -W070 */
+
 var gulp    = require('gulp'),
     plugins = require('gulp-load-plugins')({ camelize: true }),
     config  = require('../../gulpconfig').update
