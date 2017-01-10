@@ -67,21 +67,7 @@
 </style>
 
 
-  {% block schema %}
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "NewsArticle",
-      "headline": "{% if title is defined %}{{ title }} · {% endif %}{{ siteName }}",
-      "datePublished": "{{ entry.postDate.w3c }}",
-      {% if image is defined %}
-      "image": [
-        "{{ image }}"
-      ]
-      {% endif %}
-    }
-  </script>
-  {% endblock %}
+  {% block schema %}{% endblock %}
 
 
   {% include '_includes/site/seo' %}
