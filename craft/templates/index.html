@@ -88,6 +88,13 @@
 {% endblock %}
 
 
+{% block links %}
+  {{ parent() }}
+
+  <meta name="msvalidate.01" content="B9F4E5A6EB3F584936548E454FA92129" />
+{% endblock %}
+
+
 {% block main %}
   {% cache %}
   {% minify %}
