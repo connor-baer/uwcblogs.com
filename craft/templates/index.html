@@ -30,8 +30,16 @@
 {% block styles %}
   {{ parent() }}
 
-  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/index.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/index.css') }}">
 {% endblock %}
+
+
+{% block scripts %}
+  {{ parent() }}
+
+  <script defer src="{{ siteUrl ~ rev('js/index.js') }}" data-turbolinks-track="reload"></script>
+{% endblock %}
+
 
 {% block main %}
   <article class="content page">
@@ -48,6 +56,7 @@
       </div>
 
       {% cache %}
+      {% minify %}
 
         {# Get the categories related to my "blogs" entries in structure order. #}
         {% set blogs = craft.entries.section('blogs').limit(null) %}
@@ -83,6 +92,7 @@
         </section>
         {% endfor %}
 
+      {% endminify %}
       {% endcache %}
 
       {% include('_includes/snippets/share.html') %}

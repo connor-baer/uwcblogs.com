@@ -1,0 +1,51 @@
+// ==== NEWSLETTER ==== //
+
+@import "dependencies/import";
+
+
+// Custom styles for the newsletter.
+
+// 1. General
+// 2. Blogs
+// 3. Search
+
+.section-form-group {
+  margin: 1rem 0 0;
+}
+
+.section-writing {
+  margin-top: 1.5rem;
+}
+
+.newsletter-title {
+  @include font(header1);
+}
+
+.newsletter-header {
+  @include font(header2);
+
+  display: block;
+  margin-top: 2rem;
+  margin-bottom: .25rem;
+}
+
+.newsletter-image {
+  display: block;
+  width: 100%;
+  height: 8rem;
+  margin: 1rem 0;
+  background-position: 50% 50%;
+  background-size: cover;
+}
+
+.newsletter-body {
+  @include font(body);
+
+  margin-bottom: 2rem;
+  transition: color $short;
+
+  a &:hover,
+  a &:focus {
+    color: palette(gray, dark);
+  }
+}

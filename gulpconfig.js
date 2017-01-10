@@ -13,7 +13,8 @@
 // 6. Styles
 // 7. Scripts
 // 8. Icons
-// 9. AMP
+// 9. Revisions
+// 10. AMP
 
 
 // 1. Variables //
@@ -50,7 +51,7 @@ module.exports = {
   // 3. Watch //
 
   watch: {
-    styles:  [src + 'scss/**/*.scss', tmplts + '**/*.scss'],
+    styles:  [src + 'css/**/*.scss'],
     scripts: src + 'js/*.js',
   },
 
@@ -75,30 +76,23 @@ module.exports = {
 
   clean: {
     tidy: [dist + '**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array.
-    wipe: [dist + assets, tmplts + '**/*(*.css, *.css.map)'], // Clean this out before creating a new distribution copy.
+    wipe: [dist + assets], // Clean this out before creating a new distribution copy.
   },
 
 
   // 6. Styles //
 
   styles: {
-    builds: [
-      {
-        src:  src + 'scss/**/*.scss',
-        dest: dist + assets + 'css/',
-      },
-      {
-        src:  tmplts + '**/*.scss',
-        dest: tmplts,
-      }
-    ],
+    src:  src + '**/**/*.scss',
+    dest: dist + assets,
     cssnano: {
       autoprefixer: {
-        add: true, browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
+        add: true,
+        browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
       },
     },
     libsass: { // Requires the libsass implementation of Sass (included in this package)
-      includePaths: [bower, modules], // Adds Bower and npm directories to the load path so you can @import directly
+      includePaths: [bower, modules, src + 'css/'], // Adds Bower and npm directories to the load path so you can @import directly
       precision: 6,
       onError: function (err) {
         return console.log(err);
@@ -111,21 +105,24 @@ module.exports = {
 
   scripts: {
     bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
-      scripts: ['navigation', 'search', 'core'],
+      scripts: ['navigation', 'core'],
+      index: ['search', 'index'],
     },
     chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
       // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here.
       core: [
         src + 'js/core.js',
-        src + 'js/custom.js',
       ],
       navigation: [
         modules + 'smooth-scroll/dist/js/smooth-scroll.js',
         modules + 'turbolinks/dist/turbolinks.js',
-        modules + 'lazysizes/lazysizes.min.js'
+        modules + 'lazysizes/lazysizes.min.js',
       ],
       search: [
         modules + 'list.js/dist/list.min.js',
+      ],
+      index: [
+        src + 'js/index.js',
       ],
     },
     dest: dist + assets + 'js/', // Where the scripts end up in your theme.
@@ -133,9 +130,9 @@ module.exports = {
       src: [src + 'js/**/*.js'], // Linting checks the quality of the code; we only lint custom scripts, not those under the various modules, so we're relying on the original authors to ship quality code.
     },
     minify: {
-      src: dist + assets + 'js/**/*.js',
+      src: dist + assets + '**/**/*.js',
       uglify: {}, // Default options.
-      dest: dist + assets + 'js/',
+      dest: dist + assets,
     },
   },
 
@@ -176,11 +173,23 @@ module.exports = {
   },
 
 
-  // 9. AMP //
+  // 9. Revisions //
+
+  revisions: {
+    manifest: 'revisions.json',
+    path: dist + assets,
+    options: {
+      base: dist + assets,
+      merge: true,
+    },
+  },
+
+
+  // 10. AMP //
 
   amp: {
     src:    tmplts + '_amp/base-unstyled.html',
     dest:   tmplts + '_amp/',
-    css:    tmplts + '_amp/amp.css',
+    css:    dist + assets + 'css/amp.css',
   },
 };

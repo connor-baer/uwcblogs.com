@@ -15,6 +15,12 @@
 
 {% extends "_layouts/site" %}
 
+{% block head %}
+  {{ parent() }}
+
+  <link rel="amphtml" href="{{ entry.url }}/amp">
+{% endblock %}
+
 {% block main %}
 
   <article class="content post serif">

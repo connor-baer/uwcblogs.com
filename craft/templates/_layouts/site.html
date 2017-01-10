@@ -36,6 +36,8 @@
 
 {% block body %}
   {% block metabar %}
+  {% cache %}
+  {% minify %}
     <aside id="metabar" class="metabar">
       <div class="metabar-wrapper">
         <div class="metabar-left">
@@ -54,6 +56,8 @@
         </div>
       </div>
     </aside>
+  {% endminify %}
+  {% endcache %}
   {% endblock %}
 
 
@@ -68,6 +72,8 @@
 {% endblock %}
 
 {% block foot %}
+{% cache %}
+{% minify %}
   <footer id="footer" class="footer">
     <div class="footer-wrapper">
       <div class="footer-logo">
@@ -105,4 +111,6 @@
       <h6 class="footer-text">© {{ now.year }} <a href="https://twitter.com/{{ globals.siteTwitter }}" aria-label="Follow {{ siteAuthor.fullName }} on Twitter.">{{ siteAuthor.fullName }}</a>. All rights reserved.</h6>
     </div>
   </footer>
+{% endminify %}
+{% endcache %}
 {% endblock %}

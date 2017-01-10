@@ -13,7 +13,7 @@
     {% endif %}
 
     <li class="nav-link">
-      <a href="{{ navLink }}" {% if craft.request.firstSegment == block.navEntry.first().slug %}class="nav-active"{% endif %} title="{{ navTitle }}">{{ navTitle }}</a>
+      <a href="{{ navLink }}" {% if craft.request.firstSegment == block.navEntry.first().uri %}class="nav-active"{% endif %} title="{{ navTitle }}">{{ navTitle }}</a>
     </li>
 
   {% endfor %}

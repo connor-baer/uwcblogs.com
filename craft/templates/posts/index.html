@@ -22,7 +22,7 @@
 {% block styles %}
   {{ parent() }}
 
-  <link rel="stylesheet" type="text/css" href="{{ craft.request.path }}/posts.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/posts.css') }}">
 {% endblock %}
 
 

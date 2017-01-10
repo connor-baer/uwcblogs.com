@@ -1,0 +1,41 @@
+// ==== AMP ==== //
+
+// Custom styles for accelerated mobile pages.
+
+
+// 1. SCSS Helpers //
+
+@import "dependencies/import";
+
+@mixin underline($bg-color: white, $bg-shade: base, $txt-color: $primary) {
+  color: palette($txt-color);
+
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+  }
+}
+
+
+// 2. Dependencies //
+
+// Normalize: make browsers render things more consistently, from https://necolas.github.io/normalize.css/.
+@import "dependencies/normalize";
+
+// Reset: a reset stylesheet to reduce browser inconsistencies, from http://meyerweb.com/eric/tools/css/reset/.
+@import "dependencies/reset";
+
+
+// 3. Patters //
+
+@import "patterns/base";
+
+
+// 4. Elements //
+
+@import "elements/metabar";
+@import "elements/navigation";
+@import "elements/hero";
+@import "elements/content";
+@import "elements/meta";
+@import "elements/footer";
