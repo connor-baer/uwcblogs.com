@@ -1,7 +1,7 @@
 {% block seo %}
 
   {% set seoDescription = globals.siteDescription %}
-  {% set seoImage = globals.siteImage.first() %}
+  {% set seoImage = globals.siteLogo.first() %}
   {% set seoTwitter = globals.siteTwitter %}
 
   {% if description is defined %}

@@ -50,62 +50,67 @@
 -#}
 
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ craft.locale }}">
+<html lang="{{ craft.locale }}">
+
+{% cache %}
+{% minify %}
 <head>
-  {% block head %}
-    {% minify %}
-  	<meta charset="utf-8" />
-  	<meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-    <link href="http://gmpg.org/xfn/11" rel="profile">
-
-    <link rel="home" href="{{ siteUrl }}" />
-
-    {% include '_includes/site/seo' %}
-
-  	{% block styles %}
-      <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/styles.css') }}">
-  	{% endblock %}
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 
-  	{% block typography %}
-  	  {# Typekit #}
-  	  <script src="https://use.typekit.net/rnf3gir.js"></script>
-  	  <script>
-  	    try {
-  	      Typekit.load({
-  	        async: true
-  	      });
-  	    } catch (e) {}
-  	  </script>
-  	{% endblock %}
+	{% block styles %}
+    <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/styles.css') }}">
+	{% endblock %}
 
 
-    {% block scripts %}
-      <script defer src="{{ siteUrl ~ rev('js/scripts.js') }}"></script>
-    {% endblock %}
+	{% block typography %}
+	  {# Typekit #}
+	  <script src="https://use.typekit.net/{{ globals.siteTypekitKey }}.js"></script>
+	  <script>
+	    try {
+	      Typekit.load({
+	        async: true
+	      });
+	    } catch (e) {}
+	  </script>
+	{% endblock %}
 
 
-    {% include '_includes/site/icons' %}
-
-
-    {% for block in navigation.siteNavigation %}
-      {% if block.type == "navSingle" or block.type == "navSection" %}
-        {% set navLink = block.navEntry.first().url %}
-      {% elseif block.type == "navExternal" %}
-        {% set navLink = block.navLink %}
-      {% endif %}
-
-      <link rel="prefetch" href="{{ navLink }}">
-    {% endfor %}
-
-    <link rel="canonical" href="{{ entry.url }}">
-
-  	<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
-    {% endminify %}
+  {% block scripts %}
+    <script defer src="{{ siteUrl ~ rev('js/scripts.js') }}"></script>
   {% endblock %}
+
+
+  {% block schema %}{% endblock %}
+
+
+  {% include '_includes/site/seo' %}
+
+  {% include '_includes/site/icons' %}
+
+
+  {% for block in navigation.siteNavigation %}
+    {% if block.type == "navSingle" or block.type == "navSection" %}
+      {% set navLink = block.navEntry.first().url %}
+    {% elseif block.type == "navExternal" %}
+      {% set navLink = block.navLink %}
+    {% endif %}
+
+    <link rel="prefetch" href="{{ navLink }}">
+  {% endfor %}
+
+
+	{% block links %}
+	  <link rel="canonical" href="{{ entry.url }}">
+		<link rel="home" href="{{ siteUrl }}" />
+		<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
+	{% endblock %}
+
+
 </head>
+{% endminify %}
+{% endcache %}
 
 <body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
 

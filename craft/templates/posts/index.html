@@ -19,6 +19,57 @@
 {% endif %}
 
 
+{% block schema %}
+  {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
+  {% set logo = globals.siteLogo.first %}
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Blog",
+      "@id": "{{ url(entry.url) }}",
+      "headline": "{% if title is defined %}{{ title }} · {% endif %}{{ siteName }}",
+      "description": "{{ entry.description | striptags }}",
+      "datePublished": "{{ entry.postDate.w3c }}",
+      "dateModified": "{{ entry.dateUpdated.w3c }}",
+      {% if image %}
+      "image": {
+        "@type": "ImageObject",
+        "author": "{{ author.name }}",
+        "contentUrl": "{{ image.url }}",
+        "url": "{{ siteUrl }}{{ image.url }}",
+        "datePublished": "{{ image.dateCreated.w3c }}",
+        "name": "{{ image.title }}",
+        "height": "{{ image.height }}",
+        "width": "{{ image.width }}"
+      },
+      {% endif %}
+      "author": {
+        "@type": "Person",
+        "name": "{{ author.name }}",
+        "givenName": "{{ author.firstName }}",
+        "familyName": "{{ author.lastName }}",
+        "email": "{{ author.email }}"{% if author.photoUrl %},
+        "image": "{{ url(author.photoUrl) }}"{% endif %}
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ siteName }}",
+        "description": "{{ globals.siteDescription }}",
+        "logo": {
+          "@type": "ImageObject",
+          "author": "{{ globals.siteAuthor.first().name }}",
+          "contentUrl": "{{ logo.url }}",
+          "url": "{{ siteUrl }}{{ logo.url }}",
+          "datePublished": "{{ logo.dateCreated.w3c }}",
+          "name": "{{ logo.title }}"
+        }
+      }
+    }
+  </script>
+{% endblock %}
+
+
 {% block styles %}
   {{ parent() }}
 

@@ -13,15 +13,15 @@ var gulp    = require('gulp'),
 
 // Inject accelerated mobile pages CSS into the HTML head.
 gulp.task('amp-css', function () {
-  return gulp.src(config.css)
+  return gulp.src(config.cssSrc)
   .pipe(plugins.injectString.replace('@charset "UTF-8";', ''))
-  .pipe(gulp.dest(config.dest));
+  .pipe(gulp.dest(config.cssDest));
 });
 
 
 // Inject accelerated mobile pages CSS into the HTML head.
 gulp.task('amp', ['amp-css'], function () {
-  var ampCSS = fs.readFileSync(config.css, 'utf8');
+  var ampCSS = fs.readFileSync(config.cssSrc, 'utf8');
 
   return gulp.src(config.src)
   .pipe(plugins.injectString.after('style amp-custom>', ampCSS))

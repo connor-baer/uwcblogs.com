@@ -188,8 +188,9 @@ module.exports = {
   // 10. AMP //
 
   amp: {
-    src:    tmplts + '_amp/base-unstyled.html',
-    dest:   tmplts + '_amp/',
-    css:    dist + assets + 'css/amp.css',
+    src:     tmplts + '_amp/base-unstyled.html',
+    dest:    tmplts + '_amp/',
+    cssSrc:  dist + assets + 'css/amp.css',
+    cssDest: dist + assets + 'css/',
   },
 };
