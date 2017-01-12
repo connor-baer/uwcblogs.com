@@ -140,8 +140,8 @@ class FeedMe_ProcessService extends BaseApplicationComponent
 
         // Prepare Element Type model - this sets all Element Type attributes (Title, slug, etc).
         // Run once to setup defaults, second time for actual data from feed
-        $element = $this->_service->prepForElementModel($element, $feed['fieldDefaults'], $feed);
-        $element = $this->_service->prepForElementModel($element, $fieldData, $feed);
+        $element = $this->_service->prepForElementModel($element, $feed['fieldDefaults'], $feed, $additionalOptions);
+        $element = $this->_service->prepForElementModel($element, $fieldData, $feed, $additionalOptions);
 
         // Allow field types to modify content once an element has been properly setup and identified
         foreach ($data as $handle => $preppedData) {
@@ -358,6 +358,12 @@ class FeedMe_ProcessService extends BaseApplicationComponent
         $cur = $value;
     }
 
+    private function _multiExplode($delimiters, $string) {
+        $ready = str_replace($delimiters, '/', $string);
+        $launch = explode('/', $ready);
+        return $launch;
+    }
+
     private function _getAdditionalFieldOptions($fields, $feedData)
     {
         $array = array();
@@ -394,9 +400,9 @@ class FeedMe_ProcessService extends BaseApplicationComponent
             if (strstr($handle, '-fields-')) {
                 $data = $this->_getValueFromKeyPath($feedData, $feedHandle);
 
-                $subFields = explode('-fields-', $handle);
+                $fieldHandles = $this->_multiExplode(array('--', '-fields-', '-'), $handle);
 
-                $this->_arraySetFromPath($array['fields'], $subFields, $data);
+                $this->_arraySetFromPath($array['fields'], $fieldHandles, $data);
             }
         }
 

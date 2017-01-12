@@ -8,7 +8,7 @@
 -#}
 
 {% block hero %}
-  {% set heroTitle = description is defined ? description : title %}
+  {% set heroTitle = title is defined ? description : title %}
 
   <header class="hero">
     <h1 class="hero-title">{{ heroTitle }}</h1>

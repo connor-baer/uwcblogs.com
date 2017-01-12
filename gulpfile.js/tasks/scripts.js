@@ -12,47 +12,47 @@ var gulp  = require('gulp'),
 ;
 
 
-// Check core scripts for errors
+// Check core scripts for errors.
 gulp.task('scripts-lint', function() {
   return gulp.src(config.lint.src)
   .pipe(plugins.jshint())
-  .pipe(plugins.jshint.reporter('default')); // No need to pipe this anywhere
+  .pipe(plugins.jshint.reporter('default')); // No need to pipe this anywhere.
 });
 
 
-// Generate script bundles as defined in the configuration file
+// Generate script bundles as defined in the configuration file.
 // Adapted from https://github.com/gulpjs/gulp/blob/master/docs/recipes/running-task-steps-per-folder.md
-gulp.task('scripts-bundle', ['scripts-lint'], function(){
+gulp.task('scripts-bundle', ['scripts-lint', 'clean-wipe-js'], function(){
   var bundles = [];
 
-  // Iterate through all bundles defined in the configuration
+  // Iterate through all bundles defined in the configuration.
   for (var bundle in config.bundles) {
     if (config.bundles.hasOwnProperty(bundle)) {
       var chunks = [];
 
-      // Iterate through each bundle and mash the chunks together
+      // Iterate through each bundle and mash the chunks together.
       config.bundles[bundle].forEach(function(chunk) {
         chunks = chunks.concat(config.chunks[chunk]);
       });
 
-      // Push the results to the bundles array
+      // Push the results to the bundles array.
       bundles.push([bundle, chunks]);
     }
   }
 
-  // Iterate through each bundle in the bundles array
+  // Iterate through each bundle in the bundles array.
   var tasks = bundles.map(function(bundle) {
-    return gulp.src(bundle[1]) // bundle[1]: the list of source files
-    .pipe(plugins.concat(bundle[0].replace(/_/g, '-') + '.js')) // bundle[0]: the nice name of the script; underscores are replaced with hyphens
+    return gulp.src(bundle[1]) // bundle[1]: the list of source files.
+    .pipe(plugins.concat(bundle[0].replace(/_/g, '-') + '.js')) // bundle[0]: the nice name of the script; underscores are replaced with hyphens.
     .pipe(gulp.dest(config.dest));
   });
 
-  // Cross the streams ;)
+  // Cross the streams. ;)
   return merge(tasks);
 });
 
 
-// Minify scripts in place
+// Minify scripts in place.
 gulp.task('scripts-minify', ['scripts-bundle'], function(){
   return gulp.src(config.minify.src)
   .pipe(plugins.sourcemaps.init())
@@ -65,5 +65,5 @@ gulp.task('scripts-minify', ['scripts-bundle'], function(){
 });
 
 
-// Master script task; lint -> bundle -> minify
+// Master script task; lint -> bundle -> minify.
 gulp.task('scripts', ['scripts-minify']);
