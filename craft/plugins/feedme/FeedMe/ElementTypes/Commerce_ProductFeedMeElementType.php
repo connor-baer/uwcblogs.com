@@ -99,7 +99,7 @@ class Commerce_ProductFeedMeElementType extends BaseFeedMeElementType
         return $return;
     }
     
-    public function prepForElementModel(BaseElementModel $element, array &$data, $settings)
+    public function prepForElementModel(BaseElementModel $element, array &$data, $settings, $options)
     {
         if (isset($settings['locale'])) {
             $element->localeEnabled = true;
@@ -138,7 +138,7 @@ class Commerce_ProductFeedMeElementType extends BaseFeedMeElementType
             $data[$handle] = $element->$handle;
         }
 
-        $this->_populateProductVariantModels($element, $data);
+        $this->_populateProductVariantModels($element, $data, $settings, $options);
 
         return $element;
     }
@@ -173,7 +173,7 @@ class Commerce_ProductFeedMeElementType extends BaseFeedMeElementType
         
     }
 
-    private function _populateProductVariantModels(Commerce_ProductModel &$product, $data)
+    private function _populateProductVariantModels(Commerce_ProductModel &$product, $data, $settings, $options)
     {
         $variants = [];
         $count = 1;
@@ -194,6 +194,15 @@ class Commerce_ProductFeedMeElementType extends BaseFeedMeElementType
             }
 
             $variantModel->setProduct($product);
+
+            // Check for our default data (if any provided, and if not already set in 'real' data)
+            foreach ($settings['fieldDefaults'] as $defaultsHandle => $defaultsValue) {
+                if ($defaultsValue) {
+                    $variantPreppedHandle = str_replace('variants--', '', $defaultsHandle);
+
+                    $variant[$variantPreppedHandle] = $defaultsValue;
+                }
+            }
 
             $variantModel->enabled = $this->_hasValue($variant, 'enabled') ? $variant['enabled'] : 1;
             $variantModel->isDefault = $this->_hasValue($variant, 'isDefault') ? $variant['isDefault'] : 0;
@@ -219,7 +228,13 @@ class Commerce_ProductFeedMeElementType extends BaseFeedMeElementType
                     $data = $variant[$field->handle];
                     $handle = $field->handle;
 
-                    $content = craft()->feedMe_fields->prepForFieldType($variantModel, $data, $handle, null);
+                    // Grab any additional options for this field
+                    $fieldOpts = array();
+                    if (isset($options['variants']['options'][$handle])) {
+                        $fieldOpts['options'] = $options['variants']['options'][$handle];
+                    }
+
+                    $content = craft()->feedMe_fields->prepForFieldType($variantModel, $data, $handle, $fieldOpts);
                     $variantContent[$handle] = $content;
                 }
             }

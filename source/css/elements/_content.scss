@@ -240,6 +240,12 @@
 
     padding-top: 1.5rem;
     padding-bottom: 1rem;
+
+    p {
+      @include font(app);
+
+      margin-top: .5rem;
+    }
   }
 
   table {

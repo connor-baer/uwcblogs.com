@@ -33,24 +33,31 @@ class FeedMe_License
         $this->_endpoint = $endpoint;
         $userEmail = craft()->userSession->getUser() ? craft()->userSession->getUser()->email : '';
 
-        $this->_model = new FeedMe_LicenseModel(array(
+        // Cater for pre-Craft 2.6.2951
+        if (version_compare(craft()->getVersion(), '2.6.2951', '<')) {
+            $version = craft()->getVersion() . '.' . craft()->getBuild();
+        } else {
+            $version = craft()->getVersion();
+        }
+
+        $attributes = array(
             'requestUrl'  => craft()->request->getHostInfo() . craft()->request->getUrl(),
             'requestIp'   => craft()->request->getIpAddress(),
             'requestTime' => DateTimeHelper::currentTimeStamp(),
             'requestPort' => craft()->request->getPort(),
 
-            'craftBuild'   => craft()->getBuild(),
-            'craftVersion' => craft()->getVersion(),
+            'craftVersion' => $version,
             'craftEdition' => craft()->getEdition(),
-            'craftTrack'   => craft()->getTrack(),
             'userEmail'    => $userEmail,
 
             'requestProduct' => $this->requestProduct,
             'requestVersion' => $this->requestVersion,
             'licenseKey'     => $licenseKey
-        ));
+        );
 
-        $this->_userAgent = 'Craft/' . craft()->getVersion() . '.' . craft()->getBuild();
+        $this->_model = new FeedMe_LicenseModel($attributes);
+        
+        $this->_userAgent = 'Craft/' . $version;
     }
 
     /**

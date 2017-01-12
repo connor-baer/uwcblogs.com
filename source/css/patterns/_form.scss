@@ -16,7 +16,7 @@
   display: inline-block;
   margin: 1rem 0;
   padding: .25rem .75rem;
-  transition: $short;
+  transition: background-color $short, color $short;
   border: 3px solid palette($primary);
   border-radius: .5rem;
   outline: none;
@@ -61,12 +61,10 @@
     ~ .form-icon {
       fill: palette($primary);
     }
-  }
 
-  // Error state
-
-  &:not(:focus):not(:placeholder-shown):invalid {
-    background-color: palette(red, lighter);
+    ~ .form-label {
+      color: palette($primary);
+    }
   }
 }
 
@@ -105,7 +103,7 @@ textarea {
 
 .form-group {
   position: relative;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   margin-bottom: 1rem;
 }
 
@@ -127,72 +125,18 @@ textarea {
 .form-error {
   @include font(app);
 
-  max-height: 0;
-  transition: $short;
-  color: red;
-  overflow: hidden;
+  color: palette(red);
 
-  svg {
-    width: 18px;
-    height: 18px;
-    margin-right: 6px;
-    vertical-align: middle;
-    fill: currentColor;
+  + .form-input {
+    border-color: palette(red);
   }
 }
 
 .form-label {
-  @include font(body);
+  @include font(app);
 
   position: absolute;
-  top: .125rem;
-  left: .75rem;
-  transition: $short;
-  color: palette(gray);
-  font-family: $sans;
-  pointer-events: none;
-}
-
-.form-input {
-  &:focus ~ .form-label,
-  &:valid ~ .form-label {
-    @include font(app);
-
-    top: -1.25rem;
-    left: 0;
-    color: palette($primary);
-    font-size: ms(-1);
-  }
-
-  // Valid state
-
-  &:not(:focus) ~ .form-label {
-    color: palette(gray);
-  }
-
-  // Error state
-
-  &:not(:focus):not(:placeholder-shown):invalid ~ .form-label {
-    color: palette(red);
-  }
-
-  &:not(:focus):not(:placeholder-shown):invalid ~ .form-error {
-    max-height: 1.5rem;
-  }
-}
-
-// Separated to help Firefox ignore :placeholder-shown
-.form-input {
-  &:not(:placeholder-shown) ~ .form-label {
-    @include font(app);
-    top: -1.5rem;
-    left: 0;
-    color: palette($primary);
-  }
-
-  &:not(:placeholder-shown):not(:focus) ~ .form-label {
-    color: palette(gray);
-  }
+  top: 0;
 }
 
 
@@ -200,7 +144,7 @@ textarea {
 
 .form-highlight {
   position: absolute;
-  top: .5rem;
+  bottom: .5rem;
   left: 1rem;
   width: 33%;
   height: 1.25rem;
