@@ -3,12 +3,6 @@ namespace Craft;
 
 class FeedMe_LogsController extends BaseController
 {
-    // Properties
-    // =========================================================================
-
-    private $_currentLogFileName = 'feedme.log';
-
-
     // Public Methods
     // =========================================================================
 
@@ -20,13 +14,14 @@ class FeedMe_LogsController extends BaseController
             $dateTimePattern = '/^[0-9]{4}\/[0-9]{2}\/[0-9]{2} [0-9]{2}:[0-9]{2}:[0-9]{2}/';
 
             $logEntries = array();
+            $currentLogFileName = 'feedme.log';
 
-            $currentFullPath = craft()->path->getLogPath().$this->_currentLogFileName;
+            $currentFullPath = craft()->path->getLogPath().$currentLogFileName;
 
             if (IOHelper::fileExists($currentFullPath)) {
                 // Split the log file's contents up into arrays of individual logs, where each item is an array of
                 // the lines of that log.
-                $contents = IOHelper::getFileContents(craft()->path->getLogPath().$this->_currentLogFileName);
+                $contents = IOHelper::getFileContents(craft()->path->getLogPath().$currentLogFileName);
 
                 $requests = explode('******************************************************************************************************', $contents);
 
@@ -65,13 +60,5 @@ class FeedMe_LogsController extends BaseController
                 'logEntries' => $logEntries,
             ));
         }
-    }
-
-    public function actionClear()
-    {
-        $currentFullPath = craft()->path->getLogPath() . $this->_currentLogFileName;
-        IOHelper::deleteFile($currentFullPath, true);
-
-        craft()->request->redirect(craft()->request->urlReferrer);
     }
 }

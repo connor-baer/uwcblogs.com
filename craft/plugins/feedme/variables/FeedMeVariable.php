@@ -10,12 +10,12 @@ class FeedMeVariable
 
     public function getPluginUrl()
     {
-        return $this->getPlugin('feedMe')->getPluginUrl();
+        return $this->getPlugin()->getPluginUrl();
     }
 
     public function getPluginName()
     {
-        return $this->getPlugin('feedMe')->getName();
+        return $this->getPlugin()->getName();
     }
 
     public function getPluginVersion()
@@ -23,57 +23,71 @@ class FeedMeVariable
         return $this->getPlugin()->getVersion();
     }
 
-    public function getSelectOptions($options, $label = 'name', $index = 'id', $includeNone = true) {
-        $values = array();
+    public function getCpTabs()
+    {
+        $settings = $this->getPlugin()->settings;
+        $tabs = array();
 
-        if ($includeNone) {
-            $values[''] = 'None';
-        }
+        if ($settings['enabledTabs']) {
+            if (in_array('feeds', (array)$settings['enabledTabs']) || $settings['enabledTabs'] == '*') {
+                $tabs['feeds'] = array(
+                    'label' => Craft::t('Feeds'),
+                    'url' => UrlHelper::getUrl('feedme'),
+                );
+            }
 
-        if (is_array($options)) {
-            foreach ($options as $key => $value) {
-                $values[$value[$index]] = $value[$label];
+            if (in_array('logs', (array)$settings['enabledTabs']) || $settings['enabledTabs'] == '*') {
+                $tabs['logs'] = array(
+                    'label' => Craft::t('Logs'),
+                    'url' => UrlHelper::getUrl('feedme/logs'),
+                );
+            }
+
+            if (in_array('help', (array)$settings['enabledTabs']) || $settings['enabledTabs'] == '*') {
+                $tabs['help'] = array(
+                    'label' => Craft::t('Help'),
+                    'url' => UrlHelper::getUrl('feedme/help'),
+                );
+            }
+
+            if (in_array('settings', (array)$settings['enabledTabs']) || $settings['enabledTabs'] == '*') {
+                $tabs['settings'] = array(
+                    'label' => Craft::t('Settings'),
+                    'url' => UrlHelper::getUrl('settings/plugins/feedme'),
+                );
             }
         }
 
+        return $tabs;
+    }
+
+    public function getSelectOptions($options, $includeNull = true) {
+        if ($includeNull) { $values[null] = 'None'; }
+
+        foreach($options as $key => $value) {
+            $values[$value['id']] = $value['name'];
+        }
         return $values;
     }
 
-    public function getElementTypeGroups($elementType)
+    public function getGroups()
     {
-        if ($service = craft()->feedMe->getElementTypeService($elementType)) {
-            return $service->getGroups();
-        }
-
-        return false;
+        return craft()->feedMe_entry->getGroups();
     }
 
-    public function getElementTypeGroupsTemplate($elementType)
+    public function logs()
     {
-        if ($service = craft()->feedMe->getElementTypeService($elementType)) {
-            return $service->getGroupsTemplate();
-        }
-
-        return false;
+        return craft()->feedMe_logs->show();
     }
 
-    public function getElementTypeColumnTemplate($elementType)
+    public function log($logs)
     {
-        if ($service = craft()->feedMe->getElementTypeService($elementType)) {
-            return $service->getColumnTemplate();
-        }
-
-        return false;
-    }
-
-    public function getEntryTypeById($entryTypeId)
-    {
-        return craft()->sections->getEntryTypeById($entryTypeId);
+        return craft()->feedMe_logs->showLog($logs);
     }
 
     public function feed($options = array())
     {
-        return craft()->feedMe_data->getFeedForTemplate($options);
+        return craft()->feedMe_feeds->getFeedForTemplate($options);
     }
 
     public function getFeeds()
@@ -89,25 +103,10 @@ class FeedMeVariable
         return $result;
     }
 
-    public function isProEdition()
+    public function customOption($fieldHandle)
     {
-        return craft()->feedMe_license->isProEdition();
+        return craft()->feedMe_fields->getCustomOption($fieldHandle);
     }
-
-    //
-    // Fields + Field Mapping
-    //
-
-    public function getFieldMapping($fieldHandle)
-    {
-        return craft()->feedMe_fields->getFieldMapping($fieldHandle);
-    }
-
-    public function formatDateTime($dateTime)
-    {
-        return DateTime::createFromString($dateTime, craft()->getTimeZone());
-    }
-
 
 
     // Helper function for handling Matrix fields
@@ -115,43 +114,6 @@ class FeedMeVariable
     {
         return craft()->matrix->getBlockTypesByFieldId($fieldId);
     }
-
-    // Commerce doesn't have a getProductTypeById() function
-    public function getProductTypeById($productTypeId)
-    {
-        return craft()->commerce_productTypes->getProductTypeById($productTypeId);
-    }
-
-
-    // Helper functions for element fields in getting their inner-element field layouts
-    public function getAssetFieldLayout($settings)
-    {
-        if (empty($settings['useSingleFolder'])) {
-            $folderSourceId = $settings['defaultUploadLocationSource'];
-        } else {
-            $folderSourceId = $settings['singleUploadLocationSource'];
-        }
-
-        $layoutId = craft()->assetSources->getSourceById($folderSourceId)->fieldLayoutId;
-        return craft()->fields->getLayoutById($layoutId);
-    }
-
-    public function getCategoriesFieldLayout($categoryGroup)
-    {
-        $id = str_replace('group:', '', $categoryGroup);
-        $layoutId = craft()->categories->getGroupById($id)->fieldLayoutId;
-        return craft()->fields->getLayoutById($layoutId);
-    }
-
-    public function getTagsFieldLayout($tagGroup)
-    {
-        $id = str_replace('taggroup:', '', $tagGroup);
-        $layoutId = craft()->tags->getTagGroupById($id)->fieldLayoutId;
-        return craft()->fields->getLayoutById($layoutId);
-    }
-
-
-
 
 
 
