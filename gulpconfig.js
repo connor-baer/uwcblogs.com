@@ -185,12 +185,14 @@ module.exports = {
   // 9. Revisions //
 
   revisions: {
+    css: dist + assets + '**/*.css',
+    js: dist + assets + '**/*.js',
+    dest: dist + assets,
     manifest: 'revisions.json',
-    path: dist + assets,
     options: {
       base: dist + assets,
       merge: true,
-    },
+    }
   },
 
 
