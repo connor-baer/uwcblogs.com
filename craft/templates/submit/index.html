@@ -75,7 +75,7 @@
 
             <div class="form-group">
               {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogEmail')) }}
+                {{ errorList(submission.getErrors('blogEmailAddress')) }}
               {% endif %}
               <input id="email" type="email" name="fields[blogEmail]" class="form-input" placeholder="jane@example.com" required>
               <span class="form-highlight"></span>
