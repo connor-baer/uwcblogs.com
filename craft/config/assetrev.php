@@ -2,7 +2,7 @@
 return array(
 		'*' => array(
 				'manifestPath' => '../public/assets/revisions.json',
-				'assetsBasePath' => 'assets/',
+				'assetsBasePath' => '../public/assets/',
 				'assetUrlPrefix' => 'assets/',
 		),
 );

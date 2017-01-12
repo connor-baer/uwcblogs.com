@@ -33,12 +33,21 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
   <article class="content page">
 
-    {% include '_includes/article/hero' %}
 
-    <div class="content-style">
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+
+        {{ macros.heroImage(image, entry.heroImage) }}
+
+      </header>
+    {% endblock %}
+
+
+    <div class="content content-style">
       <aside>
         <h4>Submit Your Blog</h4>
         {{ entry.body }}
@@ -118,8 +127,8 @@
               {% if submission is defined %}
                 {{ errorList(submission.getErrors('blogCollege')) }}
               {% endif %}
-              <select id="college" name="fields[blogCollege][]" class="form-control" placeholder="Which UWC do/did you attend?" one required>
-                <option selected disabled>Select a college...</option>
+              <select id="college" name="fields[blogCollege][]" class="form-control" placeholder="Which UWC do/did you attend?" required>
+                <option value="" selected disabled>Select a college...</option>
                 {% for college in craft.categories.group('colleges') %}
                 <option value="{{ college.id }}">{{ college.title }}</option>
                 {% endfor %}

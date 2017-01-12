@@ -19,9 +19,5 @@ gulp.task('styles', function () {
   .pipe(plugins.sass(config.libsass))
   .pipe(plugins.cssnano(config.cssnano))
   .pipe(plugins.sourcemaps.write('./'))
-  .pipe(gulp.dest(config.dest))
-  .pipe(plugins.rev())
-  .pipe(gulp.dest(config.dest))
-  .pipe(plugins.rev.manifest(revs.path + revs.manifest, revs.options))
-  .pipe(gulp.dest(revs.path));
+  .pipe(gulp.dest(config.dest));
 });

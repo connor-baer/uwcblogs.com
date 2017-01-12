@@ -77,79 +77,86 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
   <article class="content page">
 
-    {% include '_includes/article/hero' %}
 
-    <div class="content-style">
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
 
-    <!-- Begin MailChimp Signup Form -->
-    <aside id="mc_embed_signup" class="sidebar">
-      <h4>Subscribe!</h4>
-      <p class="message">Get an insight into life at UWC! One post a month, absolutely no spam.</p>
-      <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=ace6c7cedf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
-        <div id="mc_embed_signup_scroll" class="section-inputs">
+        {{ macros.heroImage(image, entry.heroImage) }}
 
-          <div class="mc-field-group form-group section-form-group">
-            <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder="First Name" required="">
-            <span class="form-highlight"></span>
+      </header>
+    {% endblock %}
+
+
+    <div class="content content-style">
+
+      <!-- Begin MailChimp Signup Form -->
+      <aside id="mc_embed_signup" class="sidebar">
+        <h4>Subscribe!</h4>
+        <p class="message">Get an insight into life at UWC! One post a month, absolutely no spam.</p>
+        <form action="//connor-baer.us7.list-manage.com/subscribe/post?u=b1caba133f37d9e536b7ee6c6&amp;id=ace6c7cedf" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate="">
+          <div id="mc_embed_signup_scroll" class="section-inputs">
+
+            <div class="mc-field-group form-group section-form-group">
+              <input type="text" value="" name="FNAME" class="required form-input" id="mce-FNAME" placeholder="First Name" required="">
+              <span class="form-highlight"></span>
+            </div>
+
+            <div class="mc-field-group form-group section-form-group">
+              <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder="Email Address" required="">
+              <span class="form-highlight"></span>
+            </div>
+
+            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+            <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_ace6c7cedf" tabindex="-1" value=""></div>
+            <div class="clear"><input type="submit" value="Subscribe →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
           </div>
+        </form>
+      </aside>
+      <!--End mc_embed_signup-->
 
-          <div class="mc-field-group form-group section-form-group">
-            <input type="email" value="" name="EMAIL" class="required email form-input" id="mce-EMAIL" placeholder="Email Address" required="">
-            <span class="form-highlight"></span>
-          </div>
+      <div class="section-writing">
+        {% for post in craft.entries.section('newsletter').find() %}
+        <article>
+          <h3 class="newsletter-header"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 
-          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_b1caba133f37d9e536b7ee6c6_ace6c7cedf" tabindex="-1" value=""></div>
-          <div class="clear"><input type="submit" value="Subscribe →" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-        </div>
-      </form>
-    </aside>
-    <!--End mc_embed_signup-->
+          {{ macros.date(post.postDate) }}
 
-    <div class="section-writing">
-      {% for post in craft.entries.section('newsletter').find() %}
-      <article>
-        <h3 class="newsletter-header"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
+          {% set image = post.image.first() %}
 
-        {% include '_includes/snippets/date' with { date: post.postDate} %}
+          {% if image %}
+            {% set transformedImages = craft.imager.transformImage(image,
+                [
+                  { width: 2000, ratio: 3/1 },
+                  { width: 1000, ratio: 5/2, jpegQuality: 66 },
+                ],
+                {
+                  format: 'jpg',
+                  allowUpscale: false,
+                  mode: 'crop',
+                  jpegQuality: 80,
+                  position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
+                  interlace: true
+                }
+            ) %}
 
-        {% set image = post.image.first() %}
+            <a href="{{ post.url }}" title="{{ post.title }}">
+              <img class="newsletter-image lazyload"
+                   src="{{ craft.imager.base64Pixel(2,1) }}"
+                   data-sizes="100vw"
+                   data-srcset="{{ craft.imager.srcset(transformedImages) }}"
+                   alt="{{ image.title }}">
+            </a>
+          {% endif %}
 
-        {% if image %}
-          {% set transformedImages = craft.imager.transformImage(image,
-              [
-                { width: 2000, ratio: 3/1 },
-                { width: 1000, ratio: 5/2, jpegQuality: 66 },
-              ],
-              {
-                format: 'jpg',
-                allowUpscale: false,
-                mode: 'crop',
-                jpegQuality: 80,
-                position: image.focusPctX ~ '% ' ~ image.focusPctY ~ '%',
-                interlace: true
-              }
-          ) %}
+          <p class="newsletter-body">{{ post.description | striptags }}</p>
+        </article>
+        {% endfor %}
 
-          <a href="{{ post.url }}" title="{{ post.title }}">
-            <img class="newsletter-image lazyload"
-                 src="{{ craft.imager.base64Pixel(2,1) }}"
-                 data-sizes="100vw"
-                 data-srcset="{{ craft.imager.srcset(transformedImages) }}"
-                 alt="{{ image.title }}">
-          </a>
-        {% endif %}
-
-
-        <p class="newsletter-body">{{ post.description | striptags }}</p>
-      </article>
-      {% endfor %}
-
-
-
+      </div>
     </div>
   </article>
 {% endblock %}

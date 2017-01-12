@@ -19,15 +19,22 @@
 {% set description = entry.description %}
 {% set image = entry.image.first() %}
 
-{% block main %}
+{% block body %}
 
   <article class="content page sans">
-    {% include '_includes/article/hero' %}
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
 
-    <div class="content-style">
+        {{ macros.heroImage(image, entry.heroImage) }}
+
+      </header>
+    {% endblock %}
+
+    <div class="content content-style">
       {{ entry.body }}
 
-      {% include '_includes/snippets/share' %}
+      {{ macros.share(title) }}
     </div>
   </article>
 

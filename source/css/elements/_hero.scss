@@ -4,10 +4,12 @@
 
 
 .hero {
-  margin-top: 4rem;
+  @include ctnr(three);
+
+  padding-top: 8rem;
 
   @include mappy-query(tablet) {
-    margin-top: 6rem;
+    padding-top: 10rem;
   }
 }
 

@@ -1,0 +1,37 @@
+{#
+ # Site Metabar include template
+ # --------------------------------
+ #
+ # This template is used to output HTML for the site metabar.
+ #
+ # An `entry` variable is expected to be defined.
+-#}
+
+{% block metabar %}
+{% cache %}
+{% minify %}
+  <aside id="metabar" class="metabar">
+    <div class="metabar-wrapper">
+      <div class="metabar-left">
+        <a class="metabar-logo" href="http://madebyconnor.io/#" {% if craft.request.url == 'http://madebyconnor.io/' %}data-scroll{% else %}target="_blank" rel="noopener noreferrer"{% endif %} aria-label="Visit 'Made by Connor'" title="Made by Connor">
+
+          {% include '_includes/site/logo.svg' %}
+
+        </a>
+        <span class="metabar-spacer"></span>
+        <a class="metabar-title" href="{{ siteUrl }}" aria-label="Visit the homepage." title="Visit the homepage.">{{ siteName }}</a>
+      </div>
+      <div class="metabar-right">
+        <input type="checkbox" id="metabar-toggle" class="metabar-toggle"/>
+        <label for="metabar-toggle" class="metabar-label"><span></span></label>
+        <nav class="metabar-nav">
+
+          {% include '_includes/site/navigation' %}
+
+        </nav>
+      </div>
+    </div>
+  </aside>
+{% endminify %}
+{% endcache %}
+{% endblock %}

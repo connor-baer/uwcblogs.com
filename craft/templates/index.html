@@ -95,14 +95,25 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
   {% cache %}
   {% minify %}
   <article class="content page">
 
-    {% include '_includes/article/hero' with { sub: 'share' } %}
 
-    <div class="content-style">
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+
+        {{ macros.share(title) }}
+
+        {{ macros.heroImage(image, entry.heroImage) }}
+
+      </header>
+    {% endblock %}
+
+
+    <div class="content content-style">
       <div class="search form-group full">
         <input class="form-input" type="search" name="js-search" id="js-search" placeholder="Search to filter the blogs..." autocomplete="off" required>
         <svg class="form-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -119,7 +130,7 @@
         {% for college in colleges %}
 
         <section class="college js-college">
-          <h1 id="{{ college.title | lower | replace(' ', '-') }}" class="college-title">{{ college.title }}</h1>
+          <h2 id="{{ college.title | lower | replace(' ', '-') }}" class="college-title">{{ college.title }}</h1>
 
           <p class="college-body">
 
@@ -145,7 +156,7 @@
         </section>
         {% endfor %}
 
-      {% include('_includes/snippets/share.html') %}
+      {{ macros.share(title) }}
 
     </div>
   </article>

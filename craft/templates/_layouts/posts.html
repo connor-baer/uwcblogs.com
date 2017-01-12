@@ -80,13 +80,24 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
 
   <article class="content post serif">
 
-    {% include '_includes/article/hero' with { sub: 'date' } %}
 
-    <div class="content-style">
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ title }}</h1>
+
+        {{ macros.date(entry.postDate) }}
+
+        {{ macros.heroImage(image, entry.heroImage) }}
+
+      </header>
+    {% endblock %}
+
+
+    <div class="content content-style">
       {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
       {% if author %}
       <aside class="content-author">
@@ -102,7 +113,7 @@
 
       {{ entry.body }}
 
-      {% include '_includes/snippets/share' %}
+      {{ macros.share(title) }}
 
       {% if entry.next %}
       <aside class="content-next">

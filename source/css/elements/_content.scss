@@ -3,21 +3,16 @@
 // Style the page and post content here.
 
 
-// 1. Header
-// 2. Body styles
-// 3. Next post
+// 1. Content styles
+// 2. Next post
+// 3. Author
 // 4. Related posts
 
 
-// 1. Header //
+// 1. Body styles //
 
 .content {
   @include ctnr(three);
-
-  &.serif {
-    font-family: $serif;
-    font-weight: $serif-normal;
-  }
 }
 
 .content-header {
@@ -27,48 +22,15 @@
   padding-bottom: 2rem;
 }
 
-.content-icon {
-  display: block;
-  width: 8rem;
-  height: 8rem;
-  fill: palette($primary);
-}
-
-.author-image {
-  width: 2rem;
-  height: 2rem;
-  margin-top: .5rem;
-  margin-right: 1rem;
-  float: left;
-  border-radius: 50%;
-  background: 50% 50% / cover;
-}
-
-.author-text {
-  width: calc(100% - 3rem);
-  float: left;
-
-  h4 {
-    @include font(header3);
-
-    font-family: $sans;
-    font-size: ms(0);
-    font-weight: $sans-bold;
-  }
-
-  p {
-    @include font(app);
-  }
-}
-
-
-// 2. Body styles //
-
 .content-style {
   @include clearfix;
 
-  margin-top: 3rem;
+  margin-top: 1rem;
   margin-bottom: 4rem;
+
+  @include mappy-query(tablet) {
+    margin-top: 2rem;
+  }
 
   > h1,
   > h2,
@@ -101,7 +63,7 @@
   h4 {
     @include font(header3);
 
-    color: palette($primary);
+    color: palette(gray, dark);
   }
 
   p:not(.message) {
@@ -278,7 +240,7 @@
   }
 
 
-  // 3. Next post //
+  // 2. Next post //
 
   .content-next {
     @include ctnr(one);
@@ -318,6 +280,36 @@
 
     font-family: $sans;
     font-weight: $sans-bold;
+  }
+}
+
+
+// 3. Author //
+
+.author-image {
+  width: 2rem;
+  height: 2rem;
+  margin-top: .5rem;
+  margin-right: 1rem;
+  float: left;
+  border-radius: 50%;
+  background: 50% 50% / cover;
+}
+
+.author-text {
+  width: calc(100% - 3rem);
+  float: left;
+
+  h4 {
+    @include font(header3);
+
+    font-family: $sans;
+    font-size: ms(0);
+    font-weight: $sans-bold;
+  }
+
+  p {
+    @include font(app);
   }
 }
 

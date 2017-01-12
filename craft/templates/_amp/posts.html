@@ -76,30 +76,28 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
 
   <article class="content post serif">
 
+
     {% block hero %}
-      {% set heroTitle = description is defined ? description : title %}
-
       <header class="hero">
-        <h1 class="hero-title">{{ heroTitle }}</h1>
+        <h1 class="hero-title">{{ title }}</h1>
 
-        <div class="meta">
-        	<time class="meta-text" datetime="{{ entry.postDate.w3c }}">{{ entry.postDate | date("F d, Y") }}</time>
-        </div>
+        {{ macros.date(entry.postDate) }}
 
-        {{ entry.ampImage | raw }}
+        {{ macros.heroImage(image, entry.ampImage) }}
 
       </header>
     {% endblock %}
 
-    <div class="content-style">
+
+    <div class="content content-style">
 
       {{ entry.body | amplify | raw }}
 
-      {% include '_includes/snippets/share' %}
+      {{ macros.share(title) }}
 
       {% if entry.next %}
       <aside class="content-next">

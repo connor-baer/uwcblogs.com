@@ -35,14 +35,14 @@
 
   display: block;
   margin-top: 4rem;
-}
 
-.college-title {
-  @include ctnr(one);
+  .college-title {
+    @include ctnr(one);
 
-  @include font(header1);
+    @include font(header1);
 
-  margin-top: 2rem;
+    margin-top: 1.25rem;
+  }
 }
 
 .college-body {

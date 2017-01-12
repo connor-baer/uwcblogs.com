@@ -77,12 +77,21 @@
 {% endblock %}
 
 
-{% block main %}
+{% block body %}
   <article class="content page">
 
-    {% include '_includes/article/hero' %}
 
-    <div class="content-style">
+    {% block hero %}
+      <header class="hero">
+        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+
+        {{ macros.heroImage(image, entry.heroImage) }}
+
+      </header>
+    {% endblock %}
+
+
+    <div class="content content-style">
 
     <!-- Begin MailChimp Signup Form -->
     <aside id="mc_embed_signup" class="sidebar">

@@ -12,6 +12,7 @@ var gulp        = require('gulp'),
 // 1. Default
 // 2. Setup
 // 3. Build
+// 4. Dist
 
 
 // 1. Default //
@@ -22,7 +23,7 @@ gulp.task('default', ['watch']);
 
 // 2. Setup //
 
-// Setup task chain: update -> icons.
+// Setup task chain: update -> icons -> default.
 gulp.task('setup', function(callback) {
   runSequence('update', 'icons',
   [
@@ -42,5 +43,17 @@ gulp.task('build', function(callback) {
     'scripts'
   ],
   'amp',
+  callback);
+});
+
+
+// 4. Dist //
+
+// Dist task chain: setup -> default -> built -> revisions.
+gulp.task('dist', function(callback) {
+  runSequence('setup',
+  [
+    'revisions'
+  ],
   callback);
 });

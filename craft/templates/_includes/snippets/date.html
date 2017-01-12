@@ -1,5 +1,0 @@
-{% set metaDate = date is defined ? date : entry.postDate %}
-
-<div class="meta">
-	<time class="meta-text" datetime="{{ metaDate.w3c }}">{{ metaDate | date("F d, Y") }}</time>
-</div>

@@ -22,6 +22,7 @@ html {
 }
 
 body {
+  position: relative;
   min-width: 100vw;
   min-height: 100vh;
   background-color: palette(white);
@@ -36,6 +37,11 @@ body {
 .site {
   max-width: 100rem;
   margin: 0 auto;
+}
+
+.serif {
+  font-family: $serif;
+  font-weight: $serif-normal;
 }
 
 a {

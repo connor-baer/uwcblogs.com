@@ -70,7 +70,6 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     font-size: ms(10);
   }
   @else if $style == "title" {
-    color: palette(gray, dark);
     font-size: ms(4);
     font-weight: $sans-bold;
     line-height: 1.4;
@@ -109,6 +108,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     display: inline;
     margin-top: .5rem;
     margin-bottom: .25rem;
+    color: palette(gray, dark);
     font-size: ms(2);
     font-weight: $sans-bold;
     line-height: 1.25;

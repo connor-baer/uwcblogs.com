@@ -10,7 +10,7 @@
 .metabar {
   @include ctnr(full);
 
-  position: relative;
+  position: absolute;
   background-color: transparent;
   box-shadow: 0 0 1px 0 transparent;
   z-index: 9999;
@@ -79,14 +79,14 @@
   svg {
     width: 40px;
     height: 40px;
-    transition: fill $short, transform $short;
+    transition: fill $short, transform $long;
     vertical-align: middle;
     fill: palette(gray, darker);
 
     &:hover,
     &:focus {
-      transform: scale(1.1);
-      fill: palette(red);
+      transform: rotate(360deg);
+      fill: palette(madebyconnor);
     }
   }
 }

@@ -20,6 +20,9 @@ $white: #fff;
 
 // Sass map for the color palette; see `_library.scss` for the palette() function.
 $_palettes: (
+  madebyconnor: (
+    base: #f9423a,
+  ),
   black: (
     base: $black,
     light: $black,
@@ -34,7 +37,7 @@ $_palettes: (
     lighter: $oc-gray-1,
     light:   $oc-gray-3,
     base:    $oc-gray-6,
-    dark:    $oc-gray-8,
+    dark:    $oc-gray-7,
     darker:  $oc-gray-9
   ),
   red: (
