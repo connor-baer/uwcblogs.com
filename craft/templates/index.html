@@ -97,17 +97,17 @@
 
 {% block body %}
   {% cache %}
-  {% minify %}
-  <article class="content page">
+  {% spaceless %}
+  <article class="page">
 
 
     {% block hero %}
       <header class="hero">
-        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+        <h1 class="hero-title">{{ helpers.striptags(description) }}</h1>
 
-        {{ macros.share(title) }}
+        {{ elements.share(title) }}
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+        {{ elements.heroImage(image, entry.heroImage) }}
 
       </header>
     {% endblock %}
@@ -156,10 +156,10 @@
         </section>
         {% endfor %}
 
-      {{ macros.share(title) }}
+      {{ elements.share(title) }}
 
     </div>
   </article>
-  {% endminify %}
+  {% endspaceless %}
   {% endcache %}
 {% endblock %}

@@ -1,0 +1,138 @@
+{% extends "_layouts/cp" %}
+
+{% set title = "Export"|t %}
+
+{% includeJsResource 'export/js/export.js' %}
+
+{% import "_includes/forms" as forms %}
+
+{% set content %}
+    <form method="post" action="" class="centered" accept-charset="UTF-8" enctype="multipart/form-data">
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="export/map">
+
+        {% set elementTypes = {} %}
+        {% for elementType in craft.elements.getAllElementTypes if craft.export.getGroups(elementType.getClassHandle()) %}
+            {% set elementTypes = elementTypes|merge([elementType]) %}
+        {% endfor %}
+
+        <table class="data">
+            <thead class="exportType">
+                <tr>
+                    <td>
+                        <div class="field">
+                            <div class="heading">
+                                <label>{{ "Element type"|t }}</label>
+                                <div class="instructions">
+                                    <p>{{ "Choose the element type you want to export from."|t }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <div class="input">
+                                <div class="select">
+                                    <select name="export[type]" id="types">
+                                    {% for elementType in elementTypes %}
+                                        <option value="{{ elementType.getClassHandle() }}" {{ craft.request.param('elementType') == elementType.getClassHandle() ? 'selected' }}>{{ elementType.getName() }}</option>
+                                    {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </thead>
+
+            {% for elementType in elementTypes %}
+                {% include craft.export.getTemplate(elementType.getClassHandle()) %}
+            {% endfor %}
+
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="field">
+                            <div class="heading">
+                                <label>{{ "Sort"|t }}</label>
+                                <div class="instructions">
+                                    <p>{{ "Choose how you want to sort (by ID)."|t }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <div class="input">
+                                <div class="select">
+                                    <select name="export[sort]" id="sort">
+                                        <option value="asc">{{ "Ascending"|t }}</option>
+                                        <option value="desc">{{ "Descending"|t }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field">
+                            <div class="heading">
+                                <label>{{ "Row offset"|t }}</label>
+                                <div class="instructions">
+                                    <p>{{ "Leave empty if not applicable"|t }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <input type="text" class="text" size="5" name="export[offset]" value="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="field">
+                            <div class="heading">
+                                <label>{{ "Row limit"|t }}</label>
+                                <div class="instructions">
+                                    <p>{{ "Leave empty if not applicable"|t }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="field">
+                            <input type="text" class="text" size="5" name="export[limit]" value="">
+                        </div>
+                    </td>
+                </tr>
+                {% if currentUser.can('reset') %}
+                <tr>
+                    <td>
+                        <div class="field">
+                            <div class="heading">
+                                <label>{{ "Reset export map"|t }}</label>
+                                <div class="instructions">
+                                    <p>{{ "Check this if you want to reset your fields and column labels."|t }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        {{ forms.checkboxField({
+                            name: "reset",
+                            value: 1
+                        }) }}
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <td colspan="2" style="border-bottom: none"><input type="submit" class="btn submit" value="{{ 'Next'|t }}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </form>
+{% endset %}

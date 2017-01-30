@@ -304,7 +304,7 @@
     @include font(header3);
 
     font-family: $sans;
-    font-size: ms(0);
+    font-size: $fs-0;
     font-weight: $sans-bold;
   }
 

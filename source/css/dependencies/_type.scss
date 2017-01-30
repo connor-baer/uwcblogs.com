@@ -7,22 +7,33 @@
 
 // 1. Variables //
 
+// Sans-serif
 $sans: "freight-sans-pro", "FreightSans Pro", "PT Sans", Arial, sans-serif;
 $sans-normal: 500;
 $sans-semibold: 600;
 $sans-bold: 700;
 
+// Serif
 $serif: "freight-text-pro", "FreightText Pro", "Times New Roman", Times, serif;
 $serif-normal: 500;
 $serif-semibold: 700;
 $serif-bold: 900;
 
+// Mono
 $code: "Courier New", Courier, monospace;
 
-$ms-base: 1rem;
-$ms-ratio: 1.25;
+// Font-sizes
+$typi: (null: (14px, 2), x-small: 16px, medium: 18px, x-large: 21px);
 
-$typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
+$fs-6: 6rem;
+$fs-5: 5rem;
+$fs-4: 3rem;
+$fs-3: 2.25rem;
+$fs-2: 1.5rem;
+$fs-1: 1.25rem;
+$fs-0: 1rem;
+$fs--1: .875rem;
+
 
 // 2. underline() //
 
@@ -67,10 +78,10 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     @warn "Mixin font() received no input! Please provide a style.";
 
     color: red;
-    font-size: ms(10);
+    font-size: $fs-6;
   }
   @else if $style == "title" {
-    font-size: ms(4);
+    font-size: $fs-3;
     font-weight: $sans-bold;
     line-height: 1.4;
 
@@ -86,7 +97,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     margin-top: .1rem;
     margin-bottom: .5rem;
     clear: right;
-    font-size: ms(3);
+    font-size: $fs-2;
     font-weight: $sans-bold;
     line-height: 1.25;
 
@@ -109,7 +120,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     margin-top: .5rem;
     margin-bottom: .25rem;
     color: palette(gray, dark);
-    font-size: ms(2);
+    font-size: $fs-1;
     font-weight: $sans-bold;
     line-height: 1.25;
 
@@ -126,7 +137,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     margin-top: .5rem;
     margin-bottom: .25rem;
     color: palette(gray, dark);
-    font-size: ms(1);
+    font-size: $fs-1;
     font-weight: $sans-bold;
     line-height: 1.25;
 
@@ -145,7 +156,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
   }
   @else if $style == "quote" {
     color: palette(gray, dark);
-    font-size: ms(4);
+    font-size: $fs-4;
     line-height: 1.4;
 
     a {
@@ -160,7 +171,7 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
   @else if $style == "app" {
     color: palette(gray);
     font-family: $sans;
-    font-size: ms(-1);
+    font-size: $fs--1;
     letter-spacing: 0.25px;
     line-height: 1.5;
   }
@@ -168,6 +179,6 @@ $typi: (null: (12px, 2), x-small: 16px, medium: 20px, x-large: 24px);
     @warn "Mixin font() received invalid input! This style does not exist.";
 
     color: red;
-    font-size: ms(10);
+    font-size: $fs-6;
   }
 }

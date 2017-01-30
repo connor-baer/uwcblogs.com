@@ -15,15 +15,7 @@ document.addEventListener('turbolinks:load', function () {
     offset: 40,
   });
 
-  // EMBEDLY //
+  // TWEMOJI //
 
-  var embeds = document.getElementsByClassName('embedly-card');
-
-  // Set default options for Embedly cards.
-  for (var i = 0; i < embeds.length; i++) {
-    embeds[i].setAttribute('data-card-controls', '0');
-    embeds[i].setAttribute('data-card-align', 'left');
-    embeds[i].setAttribute('data-card-recommend', '0');
-    embeds[i].setAttribute('data-card-chrome', '0');
-  }
+  twemoji.parse(document.body);
 });

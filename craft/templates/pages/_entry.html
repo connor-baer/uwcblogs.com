@@ -21,12 +21,12 @@
 
 {% block body %}
 
-  <article class="content page sans">
+  <article class="page sans">
     {% block hero %}
       <header class="hero">
-        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+        <h1 class="hero-title">{{ helpers.striptags(description) }}</h1>
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+        {{ elements.heroImage(image, entry.heroImage) }}
 
       </header>
     {% endblock %}
@@ -34,7 +34,7 @@
     <div class="content content-style">
       {{ entry.body }}
 
-      {{ macros.share(title) }}
+      {{ elements.share(title) }}
     </div>
   </article>
 

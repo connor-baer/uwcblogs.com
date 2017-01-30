@@ -2,9 +2,9 @@
 
 @import "dependencies/import";
 
-$choices-font-size-lg: ms(0);
-$choices-font-size-md: ms(0);
-$choices-font-size-sm: ms(-1);
+$choices-font-size-lg: $fs-0;
+$choices-font-size-md: $fs-0;
+$choices-font-size-sm: $fs--1;
 $choices-guttering: 1rem;
 $choices-border-radius: .5rem;
 $choices-border-radius-item: .5rem;

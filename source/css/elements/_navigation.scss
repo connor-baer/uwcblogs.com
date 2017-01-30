@@ -16,7 +16,7 @@
 .nav-link {
   color: palette(gray);
   font-family: $sans;
-  font-size: ms(-1);
+  font-size: $fs--1;
   font-weight: $sans-semibold;
   letter-spacing: .5px;
 
@@ -66,7 +66,7 @@
       &::before {
         @include font(app);
 
-        font-size: ms(0);
+        font-size: $fs-0;
         letter-spacing: 1px;
         text-transform: uppercase;
         content: "Menu";

@@ -115,7 +115,6 @@ module.exports = {
       // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here.
       navigation: [
         modules + 'smooth-scroll/dist/js/smooth-scroll.js',
-        modules + 'turbolinks/dist/turbolinks.js',
         modules + 'lazysizes/lazysizes.min.js',
       ],
       search: [
@@ -132,7 +131,7 @@ module.exports = {
       ],
       submit: [
         src + 'js/submit.js',
-      ]
+      ],
     },
     dest: dist + assets + 'js/', // Where the scripts end up in your theme.
     lint: {
@@ -192,7 +191,7 @@ module.exports = {
     options: {
       base: dist + assets,
       merge: true,
-    }
+    },
   },
 
 

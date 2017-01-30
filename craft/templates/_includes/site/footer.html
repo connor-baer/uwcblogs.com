@@ -10,7 +10,7 @@
 
 {% block footer %}
 {% cache %}
-{% minify %}
+{% spaceless %}
 
   {# Define the footer navigation #}
   {% set footerNav = {
@@ -56,6 +56,6 @@
       <h6 class="footer-text">© {{ now.year }} <a href="https://twitter.com/{{ globals.siteTwitter }}" aria-label="Follow {{ siteAuthor.fullName }} on Twitter.">{{ siteAuthor.fullName }}</a>. All rights reserved.</h6>
     </div>
   </footer>
-{% endminify %}
+{% endspaceless %}
 {% endcache %}
 {% endblock %}

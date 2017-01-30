@@ -1,0 +1,29 @@
+{#
+ # Macro Helpers
+ # -----------------------------
+ #
+ # These macros are used to transform inputs.
+-#}
+
+
+{#
+ # 1. Strip Tags
+ # 2. Position
+-#}
+
+
+{# 1. Strip Tags #}
+
+{% macro striptags(input) %}
+	{{ input | striptags('<a><br><strong><em>') | raw }}
+{% endmacro %}
+
+
+{# 2. Position #}
+
+{% macro position(input) %}
+	{% spaceless %}
+		{% set positionedTypes = ['text', 'image', 'quote'] %}
+		{{ block.type.handle in positionedTypes and block.position ? block.position : 'center' }}
+	{% endspaceless %}
+{% endmacro %}

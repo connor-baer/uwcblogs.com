@@ -78,14 +78,14 @@
 
 
 {% block body %}
-  <article class="content page">
+  <article class="page">
 
 
     {% block hero %}
       <header class="hero">
-        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+        <h1 class="hero-title">{{ helpers.striptags(description) }}</h1>
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+        {{ elements.heroImage(image, entry.heroImage) }}
 
       </header>
     {% endblock %}
@@ -123,7 +123,7 @@
         <article>
           <h3 class="newsletter-header"><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></h3>
 
-          {{ macros.date(post.postDate) }}
+          {{ elements.date(post.postDate) }}
 
           {% set image = post.image.first() %}
 
@@ -152,7 +152,7 @@
             </a>
           {% endif %}
 
-          <p class="newsletter-body">{{ post.description | striptags }}</p>
+          <p class="newsletter-body">{{ helpers.striptags(post.description) }}</p>
         </article>
         {% endfor %}
 

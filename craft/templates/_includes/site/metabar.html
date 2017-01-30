@@ -9,7 +9,7 @@
 
 {% block metabar %}
 {% cache %}
-{% minify %}
+{% spaceless %}
   <aside id="metabar" class="metabar">
     <div class="metabar-wrapper">
       <div class="metabar-left">
@@ -32,6 +32,6 @@
       </div>
     </div>
   </aside>
-{% endminify %}
+{% endspaceless %}
 {% endcache %}
 {% endblock %}

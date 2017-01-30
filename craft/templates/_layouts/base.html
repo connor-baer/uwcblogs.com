@@ -49,13 +49,14 @@
  #             Child templates can use this to include Javascript files, etc.
 -#}
 
-{% import '_includes/macros' as macros %}
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
 
 <!doctype html>
 <html lang="{{ craft.locale }}">
 
 {% cache %}
-{% minify %}
+{% spaceless %}
 <head>
 	<meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
@@ -68,6 +69,7 @@
 
 	{% block typography %}
 	  {# Typekit #}
+		{% if globals.siteTypekitKey %}
 	  <script src="https://use.typekit.net/{{ globals.siteTypekitKey }}.js"></script>
 	  <script>
 	    try {
@@ -76,11 +78,13 @@
 	      });
 	    } catch (e) {}
 	  </script>
+		{% endif %}
 	{% endblock %}
 
 
   {% block scripts %}
-    <script defer src="{{ siteUrl ~ rev('js/scripts.js') }}"></script>
+		<script defer src="https://twemoji.maxcdn.com/2/twemoji.min.js"></script>
+		<script defer src="{{ siteUrl ~ rev('js/scripts.js') }}"></script>
   {% endblock %}
 
 
@@ -111,7 +115,7 @@
 
 
 </head>
-{% endminify %}
+{% endspaceless %}
 {% endcache %}
 
 <body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>
