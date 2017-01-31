@@ -7,9 +7,7 @@ craft/config/db.php
 
 public/uploads/
 public/imager/
-
-public/_github-webhook.php
-public/_github-log.txt
+public/github-log.txt
 
 # Install by running `bower install`
 bower_components/
