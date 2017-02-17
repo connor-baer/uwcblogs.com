@@ -1,22 +1,24 @@
 # CraftCMS specific
 
-craft/app/
-craft/storage/
-craft/config/license.key
-craft/config/db.php
+/craft/app/
+/craft/storage/
+/craft/config/license.key
+/craft/config/db.php
 
-public/uploads/
-public/imager/
-public/github-log.txt
+/scripts/.env.sh
+
+/public/uploads/
+/public/imager/
+/public/github-log.txt
 
 # Install by running `bower install`
-bower_components/
+/bower_components/
 
 # Install by running `npm install`
-node_modules/
+/node_modules/
 
 # Install by running `./composer.phar update`
-vendor/
+/vendor/
 
 # Compiled source #
 ###################

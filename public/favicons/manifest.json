@@ -1,13 +1,14 @@
 {
-  "name": "uwcblogs",
-  "short_name": "uwcblogs",
+  "name": "UWC Blogs",
+  "short_name": "UWC Blogs",
   "description": "A collection of over 350 blogs written by UWC students in 28 languages from 76 countries at the 17 United World Colleges.",
   "dir": "auto",
   "lang": "en-US",
   "display": "standalone",
   "orientation": "portrait",
-  "start_url": "/index.html",
-  "background_color": "#000000",
+  "start_url": "/?utm_source=web_app_manifest",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "/favicons/android-chrome-36x36.png",

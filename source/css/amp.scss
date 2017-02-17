@@ -1,41 +1,38 @@
-// ==== AMP ==== //
+/*
+  AMP
 
-// Custom styles for accelerated mobile pages.
+  Dependencies
+  Base
+  Patterns
+  Elements
+*/
 
-
-// 1. SCSS Helpers //
-
-@import "dependencies/import";
-
-@mixin underline($bg-color: white, $bg-shade: base, $txt-color: $primary) {
-  color: palette($txt-color);
-
-  &:hover,
-  &:focus {
-    text-decoration: underline;
-  }
-}
-
-
-// 2. Dependencies //
+// Dependencies //
 
 // Normalize: make browsers render things more consistently, from https://necolas.github.io/normalize.css/.
 @import "dependencies/normalize";
-
-// Reset: a reset stylesheet to reduce browser inconsistencies, from http://meyerweb.com/eric/tools/css/reset/.
-@import "dependencies/reset";
-
-
-// 3. Patters //
-
-@import "patterns/base";
+// Open Color: an open-source color scheme, from https://yeun.github.io/open-color/.
+@import "dependencies/open-color";
+// Prism: a lightweight, extensible syntax highlighter, from http://prismjs.com/.
+@import "dependencies/prism";
 
 
-// 4. Elements //
+// Base //
 
-@import "elements/metabar";
+@import "base/variables";
+@import "base/reset";
+
+
+// Patterns //
+
+@import "patterns/type";
+@import "patterns/layout";
+@import "patterns/media";
+@import "patterns/form";
+
+
+// Elements //
+
 @import "elements/navigation";
-@import "elements/hero";
 @import "elements/content";
-@import "elements/meta";
-@import "elements/footer";
+@import "elements/elements";

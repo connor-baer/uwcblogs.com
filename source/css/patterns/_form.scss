@@ -1,69 +1,65 @@
-// ==== FORM ==== //
+/*
+  FORM
 
-// Style all form components here.
+  Buttons
+  Inputs
+  Labels
+  Highlight
+*/
 
-// 1. Buttons
-// 2. Inputs
-// 3. Labels
-// 4. Highlight
 
-
-// 1. Buttons //
+// Buttons //
 
 .button {
-  @include font(app);
-
   display: inline-block;
-  margin: 1rem 0;
-  padding: .25rem .75rem;
-  transition: background-color $short, color $short;
-  border: 3px solid palette($primary);
-  border-radius: .5rem;
+  margin: $sp-small 0;
+  padding: .5rem .75rem;
+  transition: background-color $an-short, color $an-short;
+  border: 3px solid $oc-primary-6;
+  border-radius: $sp-tiny;
   outline: none;
-  background-color: palette(white);
-  color: palette($primary);
-  font-size: $fs-0;
-  font-weight: $sans-semibold;
+  background-color: $oc-white;
+  color: $oc-primary-6;
+  font-size: $fs-normal;
+  font-weight: $fw-sans-semibold;
   letter-spacing: 1px;
   text-decoration: none;
   cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: palette($primary);
-    color: palette(white);
+    background-color: $oc-primary-6;
+    color: $oc-white;
   }
 }
 
 
-// 2. Inputs //
+// Inputs //
 
 .form-input {
-  @include font(body);
-
   display: block;
   width: 100%;
   padding: .5rem .75rem;
-  transition: border-color $short;
-  border: 2px solid palette(gray);
-  border-radius: .5rem;
+  transition: border-color $an-short;
+  border: 2px solid $oc-gray-6;
+  border-radius: $sp-tiny;
   outline: none;
-  background-color: palette(white);
-  font-family: $sans;
+  background-color: $oc-white;
+  font-family: $ff-sans;
   resize: none;
 
   // Active state
 
   &:focus {
-    border-color: palette($primary);
+    border-color: $oc-primary-6;
     outline: none;
 
     ~ .form-icon {
-      fill: palette($primary);
+      fill: $oc-primary-6;
     }
 
     ~ .form-label {
-      color: palette($primary);
+      color: $oc-primary-6;
     }
   }
 }
@@ -73,38 +69,36 @@ textarea {
 }
 
 .form-select {
-  @include font(body);
-
   display: block;
   width: 100%;
   height: 2.25rem;
   margin: 2rem 0 .25rem;
   padding: .25rem 1rem;
-  transition: border-color $short, background-color $short;
-  border: 2px solid palette(gray);
+  transition: border-color $an-short, background-color $an-short;
+  border: 2px solid $oc-gray-6;
   border-radius: .5rem;
   outline: none;
-  background-color: palette(gray, lighter);
-  color: palette(gray);
+  background-color: $oc-gray-0;
+  color: $oc-gray-6;
 
   &:focus,
   &:active {
-    border-color: palette($primary);
-    background-color: palette($primary, lighter);
+    border-color: $oc-primary-6;
+    background-color: $oc-primary-0;
   }
 
   &:valid {
-    color: palette(gray, darker);
+    color: $oc-gray-9;
   }
 }
 
 
-// 3. Labels //
+// Labels //
 
 .form-group {
   position: relative;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+  margin-top: $sp-medium;
+  margin-bottom: $sp-small;
 }
 
 .form-icon {
@@ -113,34 +107,30 @@ textarea {
   left: 1rem;
   width: 1.25rem;
   height: 1.25rem;
-  fill: palette(gray);
+  fill: $oc-gray-6;
 }
 
 .form-hint {
-  @include font(app);
-
-  margin-top: 1rem;
+  margin-top: $sp-small;
 }
 
 .form-error {
-  @include font(app);
-
-  color: palette(red);
+  color: $oc-red-6;
 
   + .form-input {
-    border-color: palette(red);
+    border-color: $oc-red-6;
   }
 }
 
 .form-label {
-  @include font(app);
+  @extend %ts-app;
 
   position: absolute;
   top: 0;
 }
 
 
-// 4. Highlighter //
+// Highlighter //
 
 .form-highlight {
   position: absolute;
@@ -155,14 +145,14 @@ textarea {
 // Active state
 
 .form-input:focus ~ .form-highlight {
-  animation: inputHighlighter $long;
+  animation: inputHighlighter $an-long;
 }
 
 // Animations
 
 @keyframes inputHighlighter {
   from {
-    background: palette($primary, light);
+    background: $oc-primary-1;
   }
 
   to {

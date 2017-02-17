@@ -1,0 +1,195 @@
+/*
+  TYPOGRAPHY
+
+  Text styles
+  Font families
+  Font weights
+  Links & underlines
+*/
+
+
+// Text styles //
+
+.ts-title,
+.ts-header1,
+.ts-header2,
+.ts-header3,
+%ts-title,
+%ts-header1,
+%ts-header2,
+%ts-header3 {
+  margin-top: $sp-tiny;
+  margin-bottom: $sp-tiny;
+  font-family: $ff-headline;
+  font-weight: $fw-headline-bold;
+  line-height: $lh-small;
+
+  a {
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: 0% 90%, 100% 90%, 0% 90%;
+    background-size: .05em 2px, .05em 2px, 2px 2px;
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      background-image: linear-gradient($oc-primary-6, $oc-primary-6), linear-gradient($oc-primary-6, $oc-primary-6), linear-gradient($oc-primary-6, $oc-primary-6);
+      color: $oc-primary-6;
+      text-shadow: .03em 0 $oc-white, -.03em 0 $oc-white, 0 .03em $oc-white, 0 -.03em $oc-white, .06em 0 $oc-white, -.06em 0 $oc-white, .09em 0 $oc-white, -.09em 0 $oc-white, .12em 0 $oc-white, -.12em 0 $oc-white, .15em 0 $oc-white, -.15em 0 $oc-white;
+
+      &::selection {
+        text-shadow: .03em 0 $oc-primary-1, -.03em 0 $oc-primary-1, 0 .03em $oc-primary-1, 0 -.03em $oc-primary-1, .06em 0 $oc-primary-1, -.06em 0 $oc-primary-1, .09em 0 $oc-primary-1, -.09em 0 $oc-primary-1, .12em 0 $oc-primary-1, -.12em 0 $oc-primary-1, .15em 0 $oc-primary-1, -.15em 0 $oc-primary-1;
+      }
+
+      &::before,
+      &::after,
+      *,
+      *::before,
+      *::after {
+        text-shadow: none;
+      }
+    }
+  }
+}
+
+.ts-title,
+%ts-title {
+  font-size: $fs-xxx-large;
+}
+
+.ts-header1,
+%ts-header1 {
+  font-size: $fs-xx-large;
+}
+
+.ts-header2,
+%ts-header2 {
+  font-size: $fs-x-large;
+}
+
+.ts-header3,
+%ts-header3 {
+  color: $oc-gray-7;
+  font-size: $fs-large;
+}
+
+.ts-body,
+%ts-body {
+  margin-top: $sp-small;
+  margin-bottom: $sp-small;
+  font-family: $ff-serif;
+  font-size: $fs-normal;
+  font-weight: $fw-serif-normal;
+  line-height: $lh-large;
+}
+
+.ts-quote,
+%ts-quote {
+  font-family: $ff-headline;
+  font-size: $fs-xx-large;
+  font-weight: $fw-headline-semibold;
+  line-height: $lh-normal;
+}
+
+.ts-app,
+%ts-app {
+  color: $oc-gray-6;
+  font-family: $ff-sans;
+  font-size: $fs-small;
+  letter-spacing: $ls-small;
+  line-height: $lh-normal;
+}
+
+
+// Font families //
+
+.ff-sans {
+  font-family: $ff-sans;
+  font-weight: $fw-sans-normal;
+}
+
+.ff-serif {
+  font-family: $ff-serif;
+  font-weight: $fw-serif-normal;
+}
+
+.ff-headline {
+  font-family: $ff-headline;
+  font-weight: $fw-headline-bold;
+}
+
+.ff-mono {
+  font-family: $ff-mono;
+  font-weight: normal;
+}
+
+
+// Font weights //
+
+.fw-normal {
+  font-weight: 500;
+}
+
+.fw-semibold {
+  font-weight: 600;
+}
+
+.fw-bold,
+strong {
+  font-weight: 700;
+
+  &.ff-headline,
+  .ff-headline & {
+    font-weight: $fw-headline-bold;
+  }
+}
+
+
+// Links & underlines //
+
+.ts-quote a,
+.ts-body a,
+.ts-app a,
+%ts-quote a,
+%ts-body a,
+%ts-app a,
+.link {
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: 0% 90%, 100% 90%, 0% 90%;
+  background-size: .05em 1px, .05em 1px, 1px 1px;
+  color: $oc-primary-6;
+
+  &:hover,
+  &:focus {
+    background-image: linear-gradient($oc-primary-6, $oc-primary-6), linear-gradient($oc-primary-6, $oc-primary-6), linear-gradient($oc-primary-6, $oc-primary-6);
+    text-shadow: .03em 0 $oc-white, -.03em 0 $oc-white, 0 .03em $oc-white, 0 -.03em $oc-white, .06em 0 $oc-white, -.06em 0 $oc-white, .09em 0 $oc-white, -.09em 0 $oc-white, .12em 0 $oc-white, -.12em 0 $oc-white, .15em 0 $oc-white, -.15em 0 $oc-white;
+
+    &::selection {
+      text-shadow: .03em 0 $oc-primary-1, -.03em 0 $oc-primary-1, 0 .03em $oc-primary-1, 0 -.03em $oc-primary-1, .06em 0 $oc-primary-1, -.06em 0 $oc-primary-1, .09em 0 $oc-primary-1, -.09em 0 $oc-primary-1, .12em 0 $oc-primary-1, -.12em 0 $oc-primary-1, .15em 0 $oc-primary-1, -.15em 0 $oc-primary-1;
+    }
+
+    &::before,
+    &::after,
+    *,
+    *::before,
+    *::after {
+      text-shadow: none;
+    }
+  }
+}
+
+.underline {
+  background-image: linear-gradient($oc-gray-8, $oc-gray-8), linear-gradient($oc-gray-8, $oc-gray-8), linear-gradient($oc-gray-8, $oc-gray-8);
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-position: 0% 90%, 100% 90%, 0% 90%;
+  background-size: .05em 1px, .05em 1px, 1px 1px;
+  color: $oc-gray-8;
+  text-shadow: .03em 0 $oc-gray-8, -.03em 0 $oc-gray-8, 0 .03em $oc-gray-8, 0 -.03em $oc-gray-8, .06em 0 $oc-gray-8, -.06em 0 $oc-gray-8, .09em 0 $oc-gray-8, -.09em 0 $oc-gray-8, .12em 0 $oc-gray-8, -.12em 0 $oc-gray-8, .15em 0 $oc-gray-8, -.15em 0 $oc-gray-8;
+
+  &::before,
+  &::after,
+  *,
+  *::before,
+  *::after {
+    text-shadow: none;
+  }
+}

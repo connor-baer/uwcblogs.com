@@ -22,38 +22,51 @@
 {% block styles %}
   {{ parent() }}
 
-  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/submit.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ siteUrl ~ 'assets/css/choices.css' }}">
 {% endblock %}
 
 
 {% block scripts %}
   {{ parent() }}
 
-  <script defer src="{{ siteUrl ~ rev('js/submit.js') }}" data-turbolinks-track="reload"></script>
+  {# List #}
+  <script>
+    loadjs(['{{ siteUrl ~ 'assets/js/choices.min.js' }}'], 'list');
+    loadjs.ready('list', {
+      success: function() {
+        const choicesOptions = {
+          maxItemCount: 3,
+          duplicateItems: false,
+          itemSelectText: 'Press Enter to select',
+        };
+
+        const countries = new Choices('#countries', choicesOptions);
+        const languages = new Choices('#languages', choicesOptions);
+        const colleges = new Choices('#college', {
+          maxItemCount: 1,
+        });
+      }
+    });
+  </script>
 {% endblock %}
 
 
 {% block body %}
-  <article class="page">
+  <article class="w100 cf">
+    <header class="content-hero w3">
+      <h1 class="ts-title">{{ helpers.striptags(description) }}</h1>
 
+      {{ elements.heroImage(image, entry.heroImage) }}
 
-    {% block hero %}
-      <header class="hero">
-        <h1 class="hero-title">{{ helpers.striptags(description) }}</h1>
+    </header>
 
-        {{ elements.heroImage(image, entry.heroImage) }}
-
-      </header>
-    {% endblock %}
-
-
-    <div class="content content-style">
-      <aside>
-        <h4>Submit Your Blog</h4>
-        {{ entry.body }}
+    <div class="content cf">
+      <aside class="w1 fl-left">
+        <h4 class="ts-header2 mt3">{{ entry.title }}</h4>
+        <div class="ts-body">{{ entry.body }}<div>
       </aside>
 
-      <div>
+      <div class="w2 fl-right">
         <form method="post" action="" accept-charset="UTF-8">
           <div class="section-inputs">
             {{ getCsrfInput() }}

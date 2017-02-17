@@ -25,7 +25,9 @@ return array(
 
 	'local' => array(
 		'devMode' => true,
+		'enableTemplateCaching' => false,
 		'testToEmailAddress' => 'madebyconnor@icloud.com',
+		'userSessionDuration' => 'P2W',
 	),
 
 	'uwcblogs.com' => array(

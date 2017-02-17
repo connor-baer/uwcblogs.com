@@ -1,0 +1,36 @@
+{#
+ # Site Metabar include template
+ # --------------------------------
+ #
+ # This template is used to output HTML for the site metabar.
+ #
+ # An `entry` variable is expected to be defined.
+-#}
+
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
+
+{% block metabar %}
+  {% cache %}
+  {% minify %}
+
+  <header id="metabar" class="metabar w100">
+    <div class="cf">
+      <div class="metabar-brand fl-left">
+
+        {% include '_includes/name' %}
+
+      </div>
+      <div class="metabar-navigation fl-right">
+
+          {{ elements.navigation(navigation) }}
+
+      </div>
+    </div>
+  </header>
+
+  {% endminify %}
+  {% endcache %}
+{% endblock %}

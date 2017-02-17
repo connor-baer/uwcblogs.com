@@ -10,7 +10,13 @@
  # http://craftcms.com/docs/routing
  #}
 
+
 {% extends "_layouts/site" %}
+
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
 
 {% set title = entry.title %}
 {% set description = entry.description %}
@@ -67,13 +73,6 @@
       }
     }
   </script>
-{% endblock %}
-
-
-{% block styles %}
-  {{ parent() }}
-
-  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/posts.css') }}">
 {% endblock %}
 
 

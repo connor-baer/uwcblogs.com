@@ -1,0 +1,13 @@
+{% if loadPrism %}
+  <script>
+  loadjs(['{{ siteUrl ~ 'assets/js/prism.js' }}'], 'prism');
+  </script>
+{% endif %}
+
+<div class="content-code">
+  <div class="w100">
+    <pre class="w3">
+      <code class="language-{{ block.language }}">{{ block.code }}</code>
+    </pre>
+  </div>
+</div>
