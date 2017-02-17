@@ -2,6 +2,7 @@
   CONTENT
 
   Hero
+  Text
   Search
   Blogs
 */
@@ -22,6 +23,52 @@
   @media #{$bp-small} {
     margin-top: $sp-huge;
     margin-bottom: $sp-huge;
+  }
+}
+
+
+// Text //
+
+.content-text {
+  > h1 {
+    @extend %ts-header1;
+  }
+
+  > h2 {
+    @extend %ts-header2;
+  }
+
+  > h3 {
+    @extend %ts-header3;
+  }
+
+  > p {
+    @extend %ts-body;
+  }
+
+  ul,
+  ol {
+    padding-left: 1rem;
+  }
+
+  > ol,
+  > ul {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-left: 1rem;
+  }
+
+  li > ol,
+  li > ul {
+    padding-bottom: 0;
+  }
+
+  ol {
+    list-style: decimal;
+  }
+
+  ul {
+    list-style: disc;
   }
 }
 
