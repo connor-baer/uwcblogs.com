@@ -1,22 +1,18 @@
 // ==== CLEAN ==== //
 
-/* jshint -W117 */
-/* jshint -W098 */
-/* jshint -W070 */
-
-var gulp   = require('gulp'),
-    del    = require('del'),
-    config = require('../../gulpconfig').clean
+const gulp   = require('gulp'),
+      del    = require('del'),
+      config = require('../../gulpconfig').clean
 ;
 
 
 // Totally wipe the compiled CSS.
-gulp.task('clean-wipe-css', function () {
+gulp.task('clean-wipe-css', () => {
   return del(config.css);
 });
 
 // Totally wipe the compiled JS.
-gulp.task('clean-wipe-js', function () {
+gulp.task('clean-wipe-js', () => {
   return del(config.js);
 });
 
@@ -24,7 +20,7 @@ gulp.task('clean-wipe-js', function () {
 gulp.task('clean-wipe', ['clean-wipe-css', 'clean-wipe-js']);
 
 // Clean out junk files after build.
-gulp.task('clean-tidy', ['clean-wipe'], function () {
+gulp.task('clean-tidy', ['clean-wipe'], () => {
   return del(config.tidy);
 });
 

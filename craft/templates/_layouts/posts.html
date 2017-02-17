@@ -82,16 +82,16 @@
 
 {% block body %}
 
-  <article class="content post serif">
+  <article class="post serif">
 
 
     {% block hero %}
       <header class="hero">
         <h1 class="hero-title">{{ title }}</h1>
 
-        {{ macros.date(entry.postDate) }}
+        {{ elements.date(entry.postDate) }}
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+        {{ elements.heroImage(image, entry.heroImage) }}
 
       </header>
     {% endblock %}
@@ -111,9 +111,9 @@
       </aside>
       {% endif %}
 
-      {{ entry.body }}
+      {# {{ entry.body }} #}
 
-      {{ macros.share(title) }}
+      {{ elements.share(title) }}
 
       {% if entry.next %}
       <aside class="content-next">

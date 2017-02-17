@@ -13,28 +13,33 @@
  # http://craftcms.com/docs/routing
  #}
 
+
 {% extends "_layouts/site" %}
+
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
 
 {% set title = entry.title %}
 {% set description = entry.description %}
 {% set image = entry.image.first() %}
 
+
 {% block body %}
 
-  <article class="content page sans">
-    {% block hero %}
-      <header class="hero">
-        <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
+  <article class="w100 cf">
+    <header class="content-hero w3">
+      <h1 class="ts-title">{{ helpers.striptags(title) }}</h1>
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+      {{ elements.heroImage(image, entry.heroImage) }}
 
-      </header>
-    {% endblock %}
+    </header>
 
-    <div class="content content-style">
-      {{ entry.body }}
-
-      {{ macros.share(title) }}
+    <div class="content w2 fl-left">
+      <div class="content-text">
+        {{ entry.body }}
+      </div>
     </div>
   </article>
 

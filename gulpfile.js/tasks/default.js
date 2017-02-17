@@ -1,11 +1,7 @@
 // ==== DEFAULT ==== //
 
-/* jshint -W117 */
-/* jshint -W098 */
-/* jshint -W070 */
-
-var gulp        = require('gulp'),
-    runSequence = require('run-sequence')
+const gulp     = require('gulp'),
+      sequence = require('run-sequence')
 ;
 
 
@@ -24,8 +20,8 @@ gulp.task('default', ['watch']);
 // 2. Setup //
 
 // Setup task chain: update -> icons -> default.
-gulp.task('setup', function(callback) {
-  runSequence('update', 'icons',
+gulp.task('setup', (callback) => {
+  sequence('update', 'icons',
   [
     'default'
   ],
@@ -36,8 +32,8 @@ gulp.task('setup', function(callback) {
 // 3. Build //
 
 // Run all tasks needed for a build in defined order.
-gulp.task('build', function(callback) {
-  runSequence('clean',
+gulp.task('build', (callback) => {
+  sequence('clean',
   [
     'styles',
     'scripts'
@@ -50,8 +46,8 @@ gulp.task('build', function(callback) {
 // 4. Dist //
 
 // Dist task chain: setup -> default -> built -> revisions.
-gulp.task('dist', function(callback) {
-  runSequence('setup',
+gulp.task('dist', (callback) => {
+  sequence('setup',
   [
     'revisions'
   ],

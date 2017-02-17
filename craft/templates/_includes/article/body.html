@@ -39,6 +39,17 @@
 
 
 
+{% macro getPosition(block) %}
+	{% spaceless %}
+		{% set positionedTypes = ['text', 'pullQuote', 'image', 'quote'] %}
+		{{ block.type.handle in positionedTypes and block.position ? block.position : 'center' }}
+	{% endspaceless %}
+{% endmacro %}
+
+
+
+{% set blocks = entry.articleBody %}
+
 {% for i, block in blocks %}
 
 	{% set type = (nextType ?: block.type.handle) %}

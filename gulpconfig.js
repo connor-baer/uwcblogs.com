@@ -1,8 +1,3 @@
-/* jshint -W117 */
-/* jshint -W098 */
-/* jshint -W070 */
-
-
 // ==== GULP CONFIGURATION ==== //
 
 // 1. Variables
@@ -19,7 +14,7 @@
 
 // 1. Variables //
 
-var pkg   = require('./package.json'), // Allows access to the project metadata from the package.json file.
+const pkg   = require('./package.json'), // Allows access to the project metadata from the package.json file.
   project = pkg.name, // The name of the project, pulled from the package.json.
   src     = 'source/', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
   dist    = 'public/', // The webroot directory that will be accessible on your server.
@@ -60,15 +55,17 @@ module.exports = {
 
   update: {
     // Copies dependencies from package managers to `_scss` and renames them to allow for them to be imported as a Sass file.
-    src: [
-      modules + 'normalize.css/normalize.css',
-      modules + 'open-color/open-color.scss',
-      modules + 'choices.js/assets/styles/scss/choices.scss',
-    ],
-    dest: src + 'css/dependencies/',
-    rename: {
-      prefix: '_',
-      extname: '.scss',
+    styles: {
+      src: [
+        modules + 'normalize.css/normalize.css',
+        modules + 'open-color/open-color.scss',
+        modules + 'choices.js/assets/styles/scss/choices.scss',
+      ],
+      rename: {
+        prefix: '_',
+        extname: '.scss',
+      },
+      dest: src + 'css/dependencies/',
     },
   },
 
@@ -90,7 +87,7 @@ module.exports = {
     cssnano: {
       autoprefixer: {
         add: true,
-        browsers: ['> 3%', 'last 2 versions', 'ie 9', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
+        browsers: ['> 3%', 'last 2 versions', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
       },
     },
     libsass: { // Requires the libsass implementation of Sass (included in this package)
@@ -106,42 +103,22 @@ module.exports = {
   // 7. Scripts //
 
   scripts: {
-    bundles: { // Bundles are defined by a name and an array of chunks (below) to concatenate; warning: this method offers no dependency management!
-      scripts: ['navigation', 'core'],
-      index: ['search', 'index'],
-      submit: ['choices', 'submit'],
+    src: [tmplts + '*.js', '!' + tmplts + '*.min.js'],
+    minify: {
+      uglify: {}, // Default options.
+      rename: {
+        extname: '.min.js',
+      },
     },
-    chunks: { // Chunks are arrays of paths or globs matching a set of source files; this way you can organize a bunch of scripts that go together into pieces that can then be bundled (above)
-      // The core chunk is loaded no matter what; put essential scripts that you want loaded by your theme in here.
-      navigation: [
-        modules + 'smooth-scroll/dist/js/smooth-scroll.js',
-        modules + 'turbolinks/dist/turbolinks.js',
+    dest: tmplts,
+    deps: {
+      src: [
         modules + 'lazysizes/lazysizes.min.js',
-      ],
-      search: [
         modules + 'list.js/dist/list.min.js',
-      ],
-      choices: [
+        modules + 'smooth-scroll/dist/js/smooth-scroll.min.js',
         modules + 'choices.js/assets/scripts/dist/choices.min.js',
       ],
-      core: [
-        src + 'js/core.js',
-      ],
-      index: [
-        src + 'js/index.js',
-      ],
-      submit: [
-        src + 'js/submit.js',
-      ]
-    },
-    dest: dist + assets + 'js/', // Where the scripts end up in your theme.
-    lint: {
-      src: [src + 'js/**/*.js'], // Linting checks the quality of the code; we only lint custom scripts, not those under the various modules, so we're relying on the original authors to ship quality code.
-    },
-    minify: {
-      src: dist + assets + '**/**/*.js',
-      uglify: {}, // Default options.
-      dest: dist + assets,
+      dest: dist + assets + 'js/',
     },
   },
 
@@ -151,29 +128,24 @@ module.exports = {
   icons: {
     src: src + 'favicons/*(*.png|*.jpg|*.jpeg)',
     favicons: {
-      appName: pkg.name,
+      appName: 'UWC Blogs',
       appDescription: pkg.description,
       developerName: pkg.author,
-      background: '#000000',
+      background: '#ffffff',
+      theme_color: '#000000',
       path: '/favicons/',
       url: pkg.homepage,
       display: 'standalone',
       orientation: 'portrait',
-      start_url: '/index.html',
+      start_url: '/?utm_source=web_app_manifest',
       version: pkg.version,
       logging: false,
       online: false,
       replace: true,
-      html: tmplts + '_includes/site/icons.html',
+      html: tmplts + '_includes/icons.html',
       pipeHTML: true,
       icons: {
-        android: true,         // Create Android homescreen icon. `boolean`
-        appleIcon: true,       // Create Apple touch icons. `boolean` or `{ offset: offsetInPercentage }`
-        appleStartup: false,   // Create Apple startup images. `boolean`
         coast: { offset: 15 }, // Create Opera Coast icon with offset 15%. `boolean` or `{ offset: offsetInPercentage }`
-        favicons: true,        // Create regular favicons. `boolean`
-        firefox: true,         // Create Firefox OS icons. `boolean` or `{ offset: offsetInPercentage }`
-        windows: true,         // Create Windows 8 tile icons. `boolean`
         yandex: false,         // Create Yandex browser icon. `boolean`
       },
     },
@@ -192,7 +164,7 @@ module.exports = {
     options: {
       base: dist + assets,
       merge: true,
-    }
+    },
   },
 
 

@@ -1,19 +1,15 @@
 // ==== ICONS ==== //
 
-/* jshint -W117 */
-/* jshint -W098 */
-/* jshint -W070 */
-
-var gulp    = require('gulp'),
-    plugins = require('gulp-load-plugins')({ camelize: true }),
-    config  = require('../../gulpconfig').icons
+const gulp    = require('gulp'),
+      plugins = require('gulp-load-plugins')({ camelize: true }),
+      config  = require('../../gulpconfig').icons
 ;
 
 
 // Generate icons.
-gulp.task('icons', function () {
-  var htmlFilter = plugins.filter(config.favicons.html, {restore: true});
-  var iconsFilter = plugins.filter(['*', '!' + config.favicons.html], {restore: true});
+gulp.task('icons', () => {
+  let htmlFilter = plugins.filter(config.favicons.html, {restore: true});
+  let iconsFilter = plugins.filter(['*', '!' + config.favicons.html], {restore: true});
 
   return gulp.src(config.src)
     .pipe(plugins.favicons(config.favicons))

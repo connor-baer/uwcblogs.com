@@ -10,7 +10,13 @@
  # http://craftcms.com/docs/routing
  #}
 
+
 {% extends "_layouts/site" %}
+
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
 
 {% set title = entry.title %}
 {% set description = entry.description %}
@@ -70,22 +76,15 @@
 {% endblock %}
 
 
-{% block styles %}
-  {{ parent() }}
-
-  <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/posts.css') }}">
-{% endblock %}
-
-
 {% block body %}
-  <article class="content page">
+  <article class="page">
 
 
     {% block hero %}
       <header class="hero">
         <h1 class="hero-title">{{ description | striptags('<a>') | raw }}</h1>
 
-        {{ macros.heroImage(image, entry.heroImage) }}
+        {{ elements.heroImage(image, entry.heroImage) }}
 
       </header>
     {% endblock %}
@@ -154,7 +153,7 @@
           </a>
         {% endif %}
 
-        <p class="newsletter-body">{{ post.description | striptags }}</p>
+        <p class="newsletter-body">{{ helpers.striptags(post.description) }}</p>
       </article>
       {% endfor %}
 

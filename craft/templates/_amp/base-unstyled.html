@@ -49,13 +49,14 @@
  #             Child templates can use this to include Javascript files, etc.
 -#}
 
-{% import '_includes/macros' as macros %}
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
 
 <!doctype html>
 <html amp lang="{{ craft.locale }}">
 
 {% cache %}
-{% minify %}
+{% spaceless %}
 <head>
   <meta charset="utf-8">
   <script async src="https://cdn.ampproject.org/v0.js"></script>
@@ -89,7 +90,7 @@
     <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
   {% endblock %}
 </head>
-{% endminify %}
+{% endspaceless %}
 {% endcache %}
 
 <body {% if bodyClass is defined %}class="{{ bodyClass }}"{% endif %}>

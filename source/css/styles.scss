@@ -1,36 +1,39 @@
-// ==== IMPORTS ==== //
+/*
+  STYLES
 
-// The order of the imports is crucial since they build on top of each other.
-// For example, a form contains buttons; a menu can contain a form, etc.
-// Note: `bower_components` and `npm_modules` are already in Sass's path.
-
-
-// 1. SASS Helpers //
-
-@import "dependencies/import";
+  Dependencies
+  Base
+  Patterns
+  Elements
+*/
 
 
-// 2. Dependencies //
+// Dependencies //
 
 // Normalize: make browsers render things more consistently, from https://necolas.github.io/normalize.css/.
 @import "dependencies/normalize";
+// Open Color: an open-source color scheme, from https://yeun.github.io/open-color/.
+@import "dependencies/open-color";
+// Prism: a lightweight, extensible syntax highlighter, from http://prismjs.com/.
+@import "dependencies/prism";
 
-// Reset: a reset stylesheet to reduce browser inconsistencies, from http://meyerweb.com/eric/tools/css/reset/.
-@import "dependencies/reset";
+
+// Base //
+
+@import "base/variables";
+@import "base/reset";
 
 
-// 3. Patters //
+// Patterns //
 
-@import "patterns/base";
+@import "patterns/type";
+@import "patterns/layout";
+@import "patterns/media";
 @import "patterns/form";
-@import "patterns/syntax";
 
 
-// 4. Elements //
+// Elements //
 
-@import "elements/metabar";
 @import "elements/navigation";
-@import "elements/hero";
 @import "elements/content";
-@import "elements/meta";
-@import "elements/footer";
+@import "elements/elements";

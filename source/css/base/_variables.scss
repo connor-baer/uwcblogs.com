@@ -1,0 +1,76 @@
+/*
+  VARIABLES
+
+  Layout
+  Typography
+  Colors
+  Animations
+*/
+
+
+// Layout //
+
+$bp-small-only: "screen and (max-width: 37.4375em)";
+$bp-small: "screen and (min-width: 37.5em)";
+$bp-medium: "screen and (min-width: 56.25em)";
+$bp-large: "screen and (min-width: 75em)";
+
+$sp-tiny: 0.5rem;
+$sp-small: $sp-tiny * 2;
+$sp-medium: $sp-tiny * 3;
+$sp-large: $sp-tiny * 5;
+$sp-huge: $sp-tiny * 8;
+
+$max-width: 60rem;
+
+
+// Typography //
+
+$ff-sans: "freight-sans-pro", "FreightSans Pro", Arial, sans-serif;
+$fw-sans-normal: 500;
+$fw-sans-semibold: 600;
+
+$ff-serif: "freight-sans-pro", "FreightSans Pro", Arial, sans-serif;
+$fw-serif-normal: 500;
+$fw-serif-bold: 700;
+
+$ff-headline: "freight-sans-pro", "FreightSans Pro", Arial, sans-serif;
+$fw-headline-semibold: 600;
+$fw-headline-bold: 700;
+
+$ff-mono: "Courier New", Courier, monospace;
+
+$fs-xxx-large: 3rem; // 48px
+$fs-xx-large: 2.25rem; // 36px
+$fs-x-large: 1.5rem; // 24px
+$fs-large: 1.25rem; // 20px
+$fs-normal: 1rem; // 16px
+$fs-small: .875rem; // 14px
+
+$lh-large: 2;
+$lh-normal: 1.5;
+$lh-small: 1.25;
+
+$ls-large: .5px;
+$ls-small: .2px;
+$ls-normal: 1;
+
+
+// Colors //
+
+$oc-primary-0: $oc-blue-0;
+$oc-primary-1: $oc-blue-1;
+$oc-primary-2: $oc-blue-2;
+$oc-primary-3: $oc-blue-3;
+$oc-primary-4: $oc-blue-4;
+$oc-primary-5: $oc-blue-5;
+$oc-primary-6: $oc-blue-6;
+$oc-primary-7: $oc-blue-7;
+$oc-primary-8: $oc-blue-8;
+$oc-primary-9: $oc-blue-9;
+
+
+// Animations //
+
+$an-short: .15s cubic-bezier(0, 0, 0.2, 1);
+$an-long: .3s cubic-bezier(0, 0, 0.2, 1);

@@ -49,7 +49,8 @@
  #             Child templates can use this to include Javascript files, etc.
 -#}
 
-{% import '_includes/macros' as macros %}
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
 
 <!doctype html>
 <html lang="{{ craft.locale }}">
@@ -57,39 +58,87 @@
 {% cache %}
 {% minify %}
 <head>
-	<meta charset="utf-8" />
+  <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
 
 
-	{% block styles %}
+  {% block styles %}
     <link rel="stylesheet" type="text/css" href="{{ siteUrl }}{{ rev('css/styles.css') }}">
-	{% endblock %}
-
-
-	{% block typography %}
-	  {# Typekit #}
-	  <script src="https://use.typekit.net/{{ globals.siteTypekitKey }}.js"></script>
-	  <script>
-	    try {
-	      Typekit.load({
-	        async: true
-	      });
-	    } catch (e) {}
-	  </script>
-	{% endblock %}
+  {% endblock %}
 
 
   {% block scripts %}
-    <script defer src="{{ siteUrl ~ rev('js/scripts.js') }}"></script>
+  {# ServiceWorker #}
+    <script>
+      'serviceWorker'in navigator&&window.addEventListener('load',function(){navigator.serviceWorker.register('/sw.js',{scope:'/'}).then(function(e){console.log('ServiceWorker registration successful with scope: ',e.scope),navigator.serviceWorker.controller&&navigator.serviceWorker.controller.postMessage({command:'trimCaches'})})['catch'](function(e){console.log('ServiceWorker registration failed: ',e)})});
+    </script>
+
+    {# LoadJS #}
+    <script>
+      loadjs=function(){function e(e,n){e=e.push?e:[e];var t,r,o,i,c=[],s=e.length,h=s;for(t=function(e,t){t.length&&c.push(e),h--,h||n(c)};s--;)r=e[s],o=u[r],o?t(r,o):(i=f[r]=f[r]||[],i.push(t))}function n(e,n){if(e){var t=f[e];if(u[e]=n,t)for(;t.length;)t[0](e,n),t.splice(0,1)}}function t(e,n,r,o){var c,u,f=document,s=r.async,h=(r.numRetries||0)+1,a=r.before||i;o=o||0,/\.css$/.test(e)?(c=!0,u=f.createElement("link"),u.rel="stylesheet",u.href=e):(u=f.createElement("script"),u.src=e,u.async=void 0===s||s),u.onload=u.onerror=u.onbeforeload=function(i){var f=i.type[0];if(c&&"hideFocus"in u)try{u.sheet.cssText.length||(f="e")}catch(e){f="e"}return"e"==f&&(o+=1,o<h)?t(e,n,r,o):void n(e,f,i.defaultPrevented)},a(e,u),f.head.appendChild(u)}function r(e,n,r){e=e.push?e:[e];var o,i,c=e.length,u=c,f=[];for(o=function(e,t,r){if("e"==t&&f.push(e),"b"==t){if(!r)return;f.push(e)}c--,c||n(f)},i=0;i<u;i++)t(e[i],o,r)}function o(e,t,o){var u,f;if(t&&t.trim&&(u=t),f=(u?o:t)||{},u){if(u in c)throw"LoadJS";c[u]=!0}r(e,function(e){e.length?(f.error||i)(e):(f.success||i)(),n(u,e)},f)}var i=function(){},c={},u={},f={};return o.ready=function(n,t){return e(n,function(e){e.length?(t.error||i)(e):(t.success||i)()}),o},o.done=function(e){n(e,[])},o.reset=function(){c={},u={},f={}},o}();
+    </script>
+
+    {# Typekit #}
+    <script>
+    loadjs(['https://use.typekit.net/{{ globals.siteTypekitKey }}.js'], 'typekit');
+    loadjs.ready('typekit', {
+      success: function() {
+        try {
+          Typekit.load({
+            async: true
+          });
+        } catch (e) {}
+      }
+    });
+    </script>
+
+    {# Lazysizes #}
+    <script>
+    loadjs(['{{ siteUrl ~ 'assets/js/lazysizes.min.js' }}'], 'lazysizes');
+    </script>
+
+    {# Headroom #}
+    <script>
+      loadjs(['https://unpkg.com/headroom.js'], 'headroom');
+      loadjs.ready('headroom', {
+        success: function() {
+          const metabar = document.getElementById('metabar');
+          const headroom  = new Headroom(metabar);
+
+          headroom.init({
+            offset: 50,
+            tolerance: {
+                up: 25,
+                down: 0
+            }
+          });
+        }
+      });
+    </script>
+
+    {# SmoothScroll #}
+    <script>
+      loadjs(['{{ siteUrl ~ 'assets/js/smooth-scroll.min.js' }}'], 'smoothscroll');
+      loadjs.ready('smoothscroll', {
+        success: function() {
+          smoothScroll.init({
+            // Easing pattern to use.
+            easing: 'easeInOutCubic',
+            // How far to offset the scrolling anchor location in pixels.
+            offset: 40,
+          });
+        }
+      });
+    </script>
   {% endblock %}
 
 
   {% block schema %}{% endblock %}
 
 
-  {% include '_includes/site/seo' %}
+  {% include '_includes/seo' %}
 
-  {% include '_includes/site/icons' %}
+  {% include '_includes/icons' %}
 
 
   {% for block in navigation.siteNavigation %}
@@ -103,11 +152,10 @@
   {% endfor %}
 
 
-	{% block links %}
-	  <link rel="canonical" href="{{ entry.url }}">
-		<link rel="home" href="{{ siteUrl }}" />
-		<link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
-	{% endblock %}
+  {% block links %}
+    <link rel="home" href="{{ siteUrl }}" />
+    <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
+  {% endblock %}
 
 
 </head>
@@ -129,10 +177,7 @@
 
       ga('create', '{{ globals.siteGoogleAnalyticsKey }}', 'auto');
       ga('require', 'linkid');
-
-      document.addEventListener('turbolinks:load', function () {
-        ga('send', 'pageview', window.location.pathname);
-      });
+      ga('send', 'pageview');
     </script>
   {% endif %}
 </body>
