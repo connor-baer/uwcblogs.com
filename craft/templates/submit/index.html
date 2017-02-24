@@ -14,9 +14,6 @@
 
 {% set title = entry.title %}
 {% set description = entry.description %}
-{% if entry.image %}
-  {% set image = entry.image.first() %}
-{% endif %}
 
 
 {% block styles %}
@@ -55,9 +52,6 @@
   <article class="w100 cf">
     <header class="content-hero w3">
       <h1 class="ts-title">{{ helpers.striptags(description) }}</h1>
-
-      {{ elements.heroImage(image, entry.heroImage) }}
-
     </header>
 
     <div class="content cf">

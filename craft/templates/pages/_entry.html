@@ -23,7 +23,6 @@
 
 {% set title = entry.title %}
 {% set description = entry.description %}
-{% set image = entry.image.first() %}
 
 
 {% block body %}
@@ -31,9 +30,6 @@
   <article class="w100 cf">
     <header class="content-hero w3">
       <h1 class="ts-title">{{ helpers.striptags(title) }}</h1>
-
-      {{ elements.heroImage(image, entry.heroImage) }}
-
     </header>
 
     <div class="content w2 fl-left">
