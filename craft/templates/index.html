@@ -25,10 +25,8 @@
 {% import '_includes/helpers' as helpers %}
 
 
+{% set title = entry.title %}
 {% set description = entry.description %}
-{% if entry.image %}
-  {% set image = entry.image.first() %}
-{% endif %}
 
 
 {% block scripts %}
@@ -118,55 +116,6 @@
         }
       }
     });
-  </script>
-{% endblock %}
-
-
-{% block schema %}
-  {% set author = entry.author ? entry.author : globals.siteAuthor.first() %}
-
-  <script type="application/ld+json">
-    {
-      "@context": "http://schema.org/",
-      "@type": "ItemList",
-      "@id": "{{ url(entry.url) }}",
-      "name": "{{ siteName }}",
-      "description": "{{ globals.siteDescription }}",
-      {% if image %}
-      "image": {
-        "@type": "ImageObject",
-        "author": "{{ author.name }}",
-        "contentUrl": "{{ image.url }}",
-        "url": "{{ siteUrl }}{{ image.url }}",
-        "datePublished": "{{ image.dateCreated.w3c }}",
-        "name": "{{ image.title }}",
-        "height": "{{ image.height }}",
-        "width": "{{ image.width }}"
-      },
-      {% endif %}
-      {% set blogs = craft.entries.section('blogs').limit(null) %}
-      "numberOfItems": "{{ blogs | length }}",
-      "itemListElement": [
-        {% for blog in blogs %}
-        {
-          "@type": "ListItem",
-          "position": {{ loop.index }},
-          "item": {
-            "@type": "Blog",
-            "author": {
-              "@type": "Person",
-              "givenName": "{{ blog.blogFirstName }}"{% if blog.blogLastName %},
-              "familyName": "{{ blog.blogLastName }}"{% endif %}
-            },
-            {% for language in blog.blogLanguages %}
-            "inLanguage": "{{ language.title }}",
-            {% endfor %}
-            "url": "{{ blog.blogLink }}"
-          }
-        }{% if not loop.last %},{% endif %}
-        {% endfor %}
-      ]
-    }
   </script>
 {% endblock %}
 
