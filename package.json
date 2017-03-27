@@ -27,7 +27,7 @@
     "lazysizes": "^3.0.0-rc3",
     "list.js": "^1.4.0",
     "mappy-breakpoints": "^0.2.3",
-    "normalize.css": "^5.0.0",
+    "normalize.css": "^6.0.0",
     "open-color": "^1.4.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "tachyons-sass": "^4.7.1",
