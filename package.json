@@ -32,7 +32,7 @@
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "tachyons-sass": "^4.7.1",
     "turbolinks": "^5.0.0",
-    "typi": "^2.3.0"
+    "typi": "^3.0.0"
   },
   "devDependencies": {
     "browser-sync": "^2.14.3",
