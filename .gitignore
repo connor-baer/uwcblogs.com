@@ -9,7 +9,6 @@
 
 /public/uploads/
 /public/imager/
-/public/github-log.txt
 
 # Install by running `bower install`
 /bower_components/
