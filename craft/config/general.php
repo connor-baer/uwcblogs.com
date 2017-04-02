@@ -23,14 +23,14 @@ return array(
 		'siteUrl' => SITE_URL,
 	),
 
-	'local' => array(
+	'.dev' => array(
 		'devMode' => true,
 		'enableTemplateCaching' => false,
 		'testToEmailAddress' => 'madebyconnor@icloud.com',
 		'userSessionDuration' => 'P2W',
 	),
 
-	'uwcblogs.com' => array(
+	'.com' => array(
 		'devMode' => false,
 	),
 );
