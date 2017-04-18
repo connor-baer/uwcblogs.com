@@ -7,7 +7,8 @@ use craft\helpers\UrlHelper;
 
 return [
     'defaults' => [
-        'paginate' => false,
+        'paginate' => true,
+        'elementsPerPage' => 80,
     ],
 
     'endpoints' => [

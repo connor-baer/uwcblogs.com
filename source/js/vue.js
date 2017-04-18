@@ -11,14 +11,30 @@ new Vue( {
   mounted() {
     var self = this;
 
-    this.$http.get( '/api/blogs.json' ).then( response => {
-      self.$data.blogs = response.body.data;
-      const loading = document.getElementById( 'js-loading' );
-      loading.parentNode.removeChild( loading );
-    }, response => {
-      alertify
-        .closeLogOnClick( true )
-        .error( 'Couldn’t fetch data. ' + response.statusText );
+    function getData( url, callback ) {
+
+      Vue.http.get( url ).then( response => {
+        self.$data.blogs = response.body.data.reduce( function ( coll, item ) {
+          coll.push( item );
+          return coll;
+        }, self.$data.blogs );
+
+        let nextUrl = response.body.meta.pagination.links.next;
+
+        if ( nextUrl ) {
+          getData( nextUrl, callback );
+        } else {
+          callback();
+        }
+      }, response => {
+        alertify
+          .closeLogOnClick( true )
+          .error( 'Couldn’t fetch data. ' + response.statusText );
+      } );
+    }
+
+    getData( '/api/blogs.json', function () {
+      console.log( 'All blogs fetched.' );
     } );
   },
   computed: {

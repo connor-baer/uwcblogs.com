@@ -60,10 +60,6 @@
 
     {# -- VUEJS -- #}
     <div class="c-blogs l-w100">
-      <h4 id="js-loading" class="c-blog__college">
-        Loading blogs<span class="c-blog__loading">…</span>
-      </h4>
-
       <div v-for="college in filteredBlogs">
         <h3 :id="(college.college.replace(/\s+/g, '-').toLowerCase())" class="c-blog__college">[[ college.college ]]</h3>
         <div v-for="blog in college.blogs">
