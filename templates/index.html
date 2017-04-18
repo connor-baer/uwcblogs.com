@@ -59,7 +59,7 @@
 
 
     {# -- VUEJS -- #}
-    <div class="c-blogs l-w100">
+    <div class="c-blogs l-w100" v-cloak>
       <div v-for="college in filteredBlogs">
         <h3 :id="(college.college.replace(/\s+/g, '-').toLowerCase())" class="c-blog__college">[[ college.college ]]</h3>
         <div v-for="blog in college.blogs">
