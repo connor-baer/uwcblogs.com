@@ -118,7 +118,7 @@ module.exports = {
         ],
         vue: [
           modules + 'lodash/lodash.js',
-          modules + 'vue/dist/vue.js',
+          modules + 'vue/dist/vue.min.js',
           modules + 'vue-resource/dist/vue-resource.js',
           src + 'js/vue.js',
         ],
