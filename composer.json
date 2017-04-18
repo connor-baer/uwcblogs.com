@@ -24,18 +24,19 @@
       "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
     ]
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://asset-packagist.org"
-    }
-  ],
+  "repositories": [{
+    "type": "composer",
+    "url": "https://asset-packagist.org"
+  }],
   "require": {
-    "craftcms/cms": "~3.0.0-beta.1",
+    "craftcms/cms": "dev-develop as 3.0.0-beta.99",
     "craftcms/plugin-installer": "dev-master",
     "nystudio107/craft3-minify": "dev-master",
     "clubstudioltd/craft3-asset-rev": "dev-master",
     "vlucas/phpdotenv": "^2.4@dev",
-    "roave/security-advisories": "dev-master"
+    "roave/security-advisories": "dev-master",
+    "nystudio107/craft3-cookies": "dev-master",
+    "nystudio107/craft3-imageoptim": "dev-master",
+    "craftcms/element-api": "^2.0"
   }
 }

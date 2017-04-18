@@ -1,27 +1,17 @@
 <?php
-
 /**
  * Database Configuration
  *
- * All of your system's database configuration settings go in here.
- * You can see a list of the default settings in craft/app/etc/config/defaults/db.php
+ * All of your system's database connection settings go in here. You can see a
+ * list of the default settings in `vendor/craftcms/cms/src/config/defaults/db.php`.
  */
 
-return array(
-
-	// The database server name or IP address. Usually this is 'localhost' or '127.0.0.1'.
-	'server' => 'localhost',
-
-	// The name of the database to select.
-	'database' => 'uwcblogs',
-
-	// The database username to connect with.
-	'user' => 'homestead',
-
-	// The database password to connect with.
-	'password' => 'secret',
-
-	// The prefix to use when naming tables. This can be no more than 5 characters.
-	'tablePrefix' => 'craft',
-
-);
+return [
+    'driver' => getenv('DB_DRIVER'),
+    'server' => getenv('DB_SERVER'),
+    'user' => getenv('DB_USER'),
+    'password' => getenv('DB_PASSWORD'),
+    'database' => getenv('DB_DATABASE'),
+    'schema' => getenv('DB_SCHEMA'),
+    'tablePrefix' => getenv('DB_TABLE_PREFIX'),
+];

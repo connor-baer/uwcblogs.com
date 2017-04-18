@@ -1,61 +1,44 @@
-// ==== GULP CONFIGURATION ==== //
+/**
+ * GULP CONFIGURATION
+ *
+ * Clean
+ * Styles
+ * Scripts
+ * BrowserSync
+ * Watch
+ * Revisions
+ * Service Worker
+ * Favicons
+ */
 
-// 1. Variables
-// 2. BrowserSync
-// 3. Watch
-// 4. Update
-// 5. Clean
-// 6. Styles
-// 7. Scripts
-// 8. Icons
-// 9. Revisions
-// 10. AMP
 
-
-// 1. Variables //
-
-const pkg   = require('./package.json'), // Allows access to the project metadata from the package.json file.
-  project = pkg.name, // The name of the project, pulled from the package.json.
-  src     = 'source/', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
-  dist    = 'public/', // The webroot directory that will be accessible on your server.
-  assets  = 'assets/', // A folder for your assets in the source and/or distribution directory.
-  tmplts  = 'craft/templates/', // The CraftCMS template folder.
-  bower   = 'bower_components/', // Bower packages.
+const pkg = require( './package.json' ), // Allows access to the project metadata from the package.json file.
+  src = 'source/', // The raw material of the theme: custom scripts, SCSS source files, images, etc.; do not delete this folder!
+  root = 'public/', // The webroot directory that will be accessible on your server.
+  dev = root + 'dev/', // A folder for your assets in development.
+  dist = root + 'dist/', // A folder for your assets in production.
+  tmplts = 'templates/', // The CraftCMS template folder.
   modules = 'node_modules/' // NPM packages.
 ;
+
 
 module.exports = {
 
 
-  // 2. BrowserSync
+  // Clean //
 
-  browsersync: {
-    files: [dist + '**/*', tmplts + '**/*'],
-    port: 6000, // Port number for the live version of the site.
-    proxy: 'http://local.' + project + '/', // We need to use a proxy instead of the built-in server because WordPress has to do some server-side rendering for the theme to work.
-    notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
-    ui: false, // Set to false if you don't need the browsersync UI
-    open: false, // Set to false if you don't like the browser window opening automatically
-    reloadDelay: 1000, // Time, in milliseconds, to wait before reloading/injecting
-    watchOptions: {
-      debounceDelay: 4000, // This introduces a small delay when watching for file change events to avoid triggering too many reloads
-    },
+  clean: {
+    tidy: [ root + '**/.DS_Store' ], // A glob pattern matching junk files to clean out of the webroot.
+    dev: [ dev + '**', dist + 'revisions.json', tmplts + '**/*.min.css' ], // Clean the development directory for a fresh build.
+    dist: [ dist + '**' ], // Clean the distribution directory for a fresh build.
   },
 
 
-  // 3. Watch //
+  // Styles //
 
-  watch: {
-    styles:  [src + 'css/**/*.scss'],
-    scripts: src + 'js/*.js',
-  },
-
-
-  // 4. Update  //
-
-  update: {
-    // Copies dependencies from package managers to `_scss` and renames them to allow for them to be imported as a Sass file.
-    styles: {
+  styles: {
+    update: {
+      // Copies dependencies from package managers to the 'source' directory and renames them to allow for them to be imported as a SCSS partial.
       src: [
         modules + 'normalize.css/normalize.css',
         modules + 'open-color/open-color.scss',
@@ -65,72 +48,194 @@ module.exports = {
         prefix: '_',
         extname: '.scss',
       },
-      dest: src + 'css/dependencies/',
+      dest: src + 'css/lib/',
     },
-  },
-
-
-  // 5. Clean //
-
-  clean: {
-    tidy: [dist + '**/.DS_Store'], // A glob pattern matching junk files to clean out of `build`; feel free to add to this array.
-    css: [dist + assets + 'css/'], // Clean this out before creating a new distribution copy.
-    js: [dist + assets + 'js/'], // Clean this out before creating a new distribution copy.
-  },
-
-
-  // 6. Styles //
-
-  styles: {
-    src:  src + '**/**/*.scss',
-    dest: dist + assets,
-    cssnano: {
-      autoprefixer: {
-        add: true,
-        browsers: ['> 3%', 'last 2 versions', 'ios 6', 'android 4'], // This tool is magic and you should use it in all your projects :)
+    compile: {
+      src: src + '**/**/*.scss',
+      dest: dev,
+      libsass: { // Requires the libsass implementation of Sass (included in this package)
+        includePaths: [ modules ],
+        precision: 6,
+        onError: function ( err ) {
+          return console.log( err );
+        },
+      },
+      cssnano: {
+        zindex: false,
+        autoprefixer: {
+          add: true,
+          browsers: [ '> 3%', 'last 2 versions' ], // This tool is magic and you should use it in all your projects :)
+        },
+      },
+      rename: {
+        extname: '.min.css',
       },
     },
-    libsass: { // Requires the libsass implementation of Sass (included in this package)
-      includePaths: [bower, modules, src + 'css/'], // Adds Bower and npm directories to the load path so you can @import directly
-      precision: 6,
-      onError: function (err) {
-        return console.log(err);
+    amp: {
+      src: dev + 'css/amp.min.css',
+      dest: tmplts + '_layouts/',
+    },
+    critical: {
+      src: pkg.homepage,
+      dest: '../' + tmplts,
+      small: {
+        height: 732,
+        width: 412,
       },
+      large: {
+        height: 1280,
+        width: 1280,
+      },
+      base: root,
+      css: dev + 'css/styles.min.css',
+      files: [
+        {
+          url: '',
+          template: 'index'
+        },
+        {
+          url: 'submit',
+          template: 'submit/index'
+        },
+      ],
     },
   },
 
 
-  // 7. Scripts //
+  // Scripts //
 
   scripts: {
-    src: [tmplts + '*.js', '!' + tmplts + '*.min.js'],
-    minify: {
-      uglify: {}, // Default options.
-      rename: {
-        extname: '.min.js',
+    bundles: {
+      src: {
+        scripts: [
+          modules + 'lazysizes/lazysizes.js',
+          modules + 'fontfaceobserver/fontfaceobserver.js',
+          modules + 'object-fit-images/dist/ofi.js',
+          modules + 'smooth-scroll/dist/js/smooth-scroll.js',
+          modules + 'alertify.js/dist/js/alertify.js',
+          modules + 'vue/dist/vue.js',
+          modules + 'vue-resource/dist/vue-resource.js',
+          src + 'js/polyfills.js',
+          src + 'js/scripts.js',
+        ],
+        choices: [
+          modules + 'choices.js/assets/scripts/dist/choices.js',
+        ]
+      },
+      dest: dev + 'js/',
+    },
+    inline: {
+      src: [
+        modules + 'fg-loadcss/src/loadCSS.js',
+        modules + 'fg-loadcss/src/cssrelpreload.js',
+        modules + 'loadjs/dist/loadjs.js',
+      ],
+      dest: tmplts + '_inline/',
+    },
+    babili: {
+      mangle: {
+        keepClassNames: true
       },
     },
-    dest: tmplts,
-    deps: {
-      src: [
-        modules + 'lazysizes/lazysizes.min.js',
-        modules + 'list.js/dist/list.min.js',
-        modules + 'smooth-scroll/dist/js/smooth-scroll.min.js',
-        modules + 'choices.js/assets/scripts/dist/choices.min.js',
-      ],
-      dest: dist + assets + 'js/',
+    rename: {
+      extname: '.min.js',
     },
   },
 
 
-  // 8. Icons //
+  // BrowserSync //
 
-  icons: {
+  browsersync: {
+    files: [ dev + '**/*', tmplts + '**/*' ],
+    port: 5000, // Port number for the live version of the site.
+    proxy: 'http://' + pkg.name + '.dev/', // We need to use a proxy instead of the built-in server because CraftCMS has to do some server-side rendering for the website to work.
+    notify: false, // In-line notifications (the blocks of text saying whether you are connected to the BrowserSync server or not)
+    ui: false, // Set to false if you don't need the browsersync UI
+    open: false, // Set to false if you don't like the browser window opening automatically
+    reloadDelay: 1000, // Time, in milliseconds, to wait before reloading/injecting
+    logFileChanges: false, // Log information about changed files
+    watchOptions: {
+      debounceDelay: 4000, // This introduces a small delay when watching for file change events to avoid triggering too many reloads
+    },
+  },
+
+
+  // Watch //
+
+  watch: {
+    styles: src + 'css/**/*.scss',
+    scripts: src + 'js/*.js',
+  },
+
+
+  // Revisions //
+
+  revisions: {
+    src: {
+      css: dev + '**/*.css',
+      js: dev + '**/*.js',
+    },
+    dest: dist,
+    manifest: 'revisions.json',
+    options: {
+      base: dist,
+      merge: true,
+    },
+  },
+
+
+  // Service Worker //
+
+  serviceWorker: {
+    root: root,
+    name: 'service-worker.js',
+    config: {
+      cacheId: pkg.name,
+      importScripts: [ 'sw.js' ],
+      /*
+      dynamicUrlToDependencies: {
+        'dynamic/page1': [
+          path.join(rootDir, 'views', 'layout.jade'),
+          path.join(rootDir, 'views', 'page1.jade')
+        ],
+        'dynamic/page2': [
+          path.join(rootDir, 'views', 'layout.jade'),
+          path.join(rootDir, 'views', 'page2.jade')
+        ]
+      },
+      */
+      runtimeCaching: [ {
+        // See https://github.com/GoogleChrome/sw-toolbox#methods
+        urlPattern: /runtime-caching/,
+        handler: 'cacheFirst',
+        // See https://github.com/GoogleChrome/sw-toolbox#options
+        options: {
+          cache: {
+            maxEntries: 1,
+            name: 'runtime-cache',
+          },
+        },
+      }, ],
+      staticFileGlobs: [
+        dist + '/css/**.css',
+        dist + '/js/**.js',
+      ],
+      stripPrefix: root,
+      // verbose defaults to false, but for the purposes of this demo, log more.
+      verbose: true,
+    },
+  },
+
+
+  // Favicons //
+
+  favicons: {
     src: src + 'favicons/*(*.png|*.jpg|*.jpeg)',
-    favicons: {
+    options: {
       appName: 'UWC Blogs',
       appDescription: pkg.description,
       developerName: pkg.author,
+      developerURL: 'https://connorbaer.co',
       background: '#ffffff',
       theme_color: '#000000',
       path: '/favicons/',
@@ -145,35 +250,13 @@ module.exports = {
       html: tmplts + '_includes/icons.html',
       pipeHTML: true,
       icons: {
-        coast: { offset: 15 }, // Create Opera Coast icon with offset 15%. `boolean` or `{ offset: offsetInPercentage }`
-        yandex: false,         // Create Yandex browser icon. `boolean`
+        coast: {
+          offset: 15
+        }, // Create Opera Coast icon with offset 15%. `boolean` or `{ offset: offsetInPercentage }`
+        yandex: false, // Create Yandex browser icon. `boolean`
       },
     },
     destHtml: '',
-    dest: dist + 'favicons/',
-  },
-
-
-  // 9. Revisions //
-
-  revisions: {
-    css: dist + assets + '**/*.css',
-    js: dist + assets + '**/*.js',
-    dest: dist + assets,
-    manifest: 'revisions.json',
-    options: {
-      base: dist + assets,
-      merge: true,
-    },
-  },
-
-
-  // 10. AMP //
-
-  amp: {
-    src:     tmplts + '_amp/base-unstyled.html',
-    dest:    tmplts + '_amp/',
-    cssSrc:  dist + assets + 'css/amp.css',
-    cssDest: dist + assets + 'css/',
+    dest: root + 'favicons/',
   },
 };

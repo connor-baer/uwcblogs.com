@@ -3,11 +3,11 @@
 
     <title>{{ siteName }}</title>
     <link href="{{ siteUrl }}"/>
-    <link type="application/atom+xml" rel="self" href="{{ craft.request.url }}"/>
+    <link type="application/atom+xml" rel="self" href="{{ craft.app.request.url }}"/>
     <updated>{{ now.atom }}</updated>
-    <id>{{ craft.request.url }}</id>
+    <id>{{ craft.app.request.url }}</id>
     <author>
-        {% set siteAuthor = globals.siteAuthor.first() %}
+        {% set siteAuthor = globals.siteAuthor.one() %}
         {% if siteAuthor %}
             <name>{{ siteAuthor.friendlyName }}</name>
             <email>{{ siteAuthor.email }}</email>
@@ -26,7 +26,7 @@
                 <uri>{{ siteUrl }}</uri>
             </author>
 
-            {% set image = entry.image.first() %}
+            {% set image = entry.image.one() %}
             {% if image %}
                 <media:thumbnail xmlns:atom="http://www.w3.org/2005/Atom" url="{{ image.url }}"/>
             {% endif %}

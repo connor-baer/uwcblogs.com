@@ -1,44 +1,70 @@
 {#
-
- # The site layout template
+ # The base layout template
  # ------------------------
- #
- # This layout template extends the _layouts/base.html layout, and defines the
- # main site layout: the header, footer, and main content area.
- #
- # It’s never accessed directly. Instead it is extended by all of our main site
- # templates.
- #
- # This template defines one block region, `main`, which should be extended by
- # child templates to define the main contents for the page.
 -#}
 
-{% extends "_layouts/base" %}
+{# -- DRY -- #}
+{% set baseUrl = craft.app.config.getGeneral.baseUrl %}
+{% set devMode = craft.app.config.getGeneral.devMode %}
+{% set livePreview = craft.app.request.isLivePreview %}
 
-{# Set the `bodyClass` variable to the entry's section handle if there is one,
-   or the first URI segment (this is used by the parent template) #}
-{% if bodyClass is not defined %}
-  {% set bodyClass = entry is defined ? entry.section.handle : craft.request.firstSegment %}
-{% endif %}
+{# -- COOKIES -- #}
+{% set currentCache = getCookie('criticalCss') %}
+{% set fontFaceObserver = getCookie("fontFaceObserver") %}
+{% set darkMode = getCookie("darkMode") %}
 
-{# Set the `title` variable to the entry title #}
-{% if entry is defined %}
-  {% set title = entry.title %}
-{% endif %}
+<!doctype html>
+<html lang="{{ craft.app.language }}" class="{% if fontFaceObserver == 'true' %}fonts-loaded{% endif %}{% if darkMode == 'true' %} theme-dark{% endif %}">
 
+<head>
 
-{% block main %}
+{% block head %}
+  <meta charset="utf-8" />
 
-  {% include '_includes/metabar' %}
+  {% include ('_includes/head') %}
 
-  <main id="main" class="main">
+  {% cache %}
+  {% minify %}
 
+  {# -- TITLE -- #}
+  <title>{% if entry is defined %}{{ entry.title }} · {% endif %}{{ siteName | split('·') | first }}</title>
 
-    {% block body %}{% endblock %}
+  {# -- SEOMATIC -- #}
+  {% hook 'seomaticRender' %}
 
+  {# -- ICONS -- #}
+  {% include '_includes/icons' %}
 
-  </main>
+  <link rel="home" href="{{ siteUrl }}" />
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed.atom">
 
-  {% include '_includes/footer' %}
-
+  {% endminify %}
+  {% endcache %}
 {% endblock %}
+
+</head>
+
+{# -- BODY CLASS -- #}
+<body class="{{ entry is defined ? entry.section.handle : craft.app.request.segments | first }}">
+<!-- You know, rather than reading the source like a chump, you can see it all on GitHub like a champ: https://github.com/connor-baer/connorbaer.co -->
+
+
+{% block body %}{% endblock %}
+
+
+{% block foot %}
+  {# -- GOOGLE ANALYTICS -- #}
+  {% if not livePreview and not devMode %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '{{ globals.siteGoogleAnalyticsKey }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+  {% endif %}
+{% endblock %}
+</body>
+</html>

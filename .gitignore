@@ -1,23 +1,27 @@
-# CraftCMS specific
-
-/craft/app/
-/craft/storage/
-/craft/config/license.key
-/craft/config/db.php
-
+# CraftCMS #
+############
+/.env
+/.idea
+/config/license.key
 /scripts/.env.sh
 
-/public/uploads/
-/public/imager/
+/public/*
+!/public/favicons/
+!/public/index.php
+!/public/robots.txt
+!/public/sw.js
 
-# Install by running `bower install`
+/templates/**/*.min.css
+
+# Install by running `bower install` #
 /bower_components/
 
-# Install by running `npm install`
+# Install by running `npm install` #
 /node_modules/
 
-# Install by running `./composer.phar update`
+# Install by running `composer update` #
 /vendor/
+/composer.lock
 
 # Compiled source #
 ###################
@@ -41,7 +45,8 @@
 *.tar
 *.zip
 
-# Text editor files
+# Text editor files #
+#####################
 *.sublime-workspace
 *.sublime-project
 

@@ -1,0 +1,40 @@
+// Blogs
+// -----
+.c-blog {
+  @include typi("s0");
+
+  display: block;
+}
+
+.c-blog__college {
+  @include typi("t3");
+
+  margin-top: vr(3);
+  margin-bottom: vr(1);
+
+  font-weight: $fw-bold;
+}
+
+.c-blog__year {
+  @include typi("t1");
+
+  display: block;
+
+  margin-top: vr(1);
+  margin-bottom: vr(.5);
+}
+
+.c-blog__firstname {
+  @include t-link;
+
+  transition: box-shadow $an-short;
+
+  color: oc(primary);
+
+  font-weight: $fw-bold;
+
+  &:hover,
+  &:focus {
+    box-shadow: inset 0 -.08em 0 0 oc(primary);
+  }
+}

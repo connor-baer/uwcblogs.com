@@ -2,29 +2,28 @@
  # 404 template
  # ------------
  #
- # This template is loaded whenever Craft cannot figure out how to
- # respond to an incoming request. No setup is involved to get your
- # 404 page working; you just need to call it 404.html and put it
- # at the root of your craft/templates/ folder.
- #
- # You can also create 400.html, 403.html, 500.html, and 503.html
- # templates if you’d like. If Craft can’t find an error template
- # to match the error code, it will just use the one in
- # craft/app/templates/ instead.
- #
- # See this page for more details on how Craft routes requests:
+ # See this page for details on how Craft routes requests:
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/site" %}
+{% extends "_layouts/base" %}
 
-{% set title = "404" %}
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
 
-{% block body %}
-	<div class="w100 cf">
-		<header class="content-hero w3">
-			<h1 class="ts-title">Page not found</h1>
-			<p class="ts-body">What’s worse, a hilarious 404 page can’t be found either.</p>
+{% block main %}
+	<article>
+		<header class="l-ctnr l-flex l-flex--center">
+			<div class="c-header l-w100">
+				<h1 class="c-header__title c-header__title--color">Page not found.&nbsp;🕵&nbsp;️</h1>
+				<p class="c-header__subtitle">What’s worse, a hilarious 404 page can’t be found either.</p>
+			</div>
+
+      <figure class="c-header__image">
+        <img class="o-image"
+						 src="https://source.unsplash.com/collection/666969/1000x1000"
+						 alt="A random image from Unsplash.com">
+      </figure>
 		</header>
-	</div>
+	</article>
 {% endblock %}

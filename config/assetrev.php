@@ -8,10 +8,10 @@ return array(
 	// The path where your built asset files can be found. Required for query
 	// string creation. Again, this is relative to your Craft base directory,
 	// unless you supply an absolute path.
-	'assetsBasePath' => 'public/assets/',
+	'assetsBasePath' => 'public/' . getenv('ASSETS_PREFIX'),
 
 	// A prefix to apply to your asset filenames when they are output. You would
 	// likely want to set this if the paths in your manifest file are going to
 	// be different to the final intended asset URL.
-	'assetUrlPrefix' => 'assets/',
+	'assetUrlPrefix' => getenv('ASSETS_PREFIX'),
 );

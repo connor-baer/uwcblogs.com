@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c643cd3884c3a904b2b0a7b5f1369a25",
+    "content-hash": "2250502e6c47f74ff9e6ceb7405b03a0",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -163,16 +163,16 @@
         },
         {
             "name": "bower-asset/jquery.inputmask",
-            "version": "3.3.4.0",
+            "version": "3.3.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/RobinHerbots/Inputmask.git",
-                "reference": "8a882bc471ba4077c4f8ecbe3d9d61c7558f3ef2"
+                "reference": "ed27356d1b22366be48c4e7b8d038b9649bd4ab0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/8a882bc471ba4077c4f8ecbe3d9d61c7558f3ef2",
-                "reference": "8a882bc471ba4077c4f8ecbe3d9d61c7558f3ef2",
+                "url": "https://api.github.com/repos/RobinHerbots/Inputmask/zipball/ed27356d1b22366be48c4e7b8d038b9649bd4ab0",
+                "reference": "ed27356d1b22366be48c4e7b8d038b9649bd4ab0",
                 "shasum": null
             },
             "require": {
@@ -473,16 +473,16 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.0-beta.10",
+            "version": "dev-develop",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/cms.git",
-                "reference": "e211e8e1e2cc762a543caa7bdbdf7ed9384c0e46"
+                "reference": "09a2e8eb0d449fcc2724562291ad087272632363"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/e211e8e1e2cc762a543caa7bdbdf7ed9384c0e46",
-                "reference": "e211e8e1e2cc762a543caa7bdbdf7ed9384c0e46",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/09a2e8eb0d449fcc2724562291ad087272632363",
+                "reference": "09a2e8eb0d449fcc2724562291ad087272632363",
                 "shasum": ""
             },
             "require": {
@@ -546,7 +546,57 @@
                 "craftcms",
                 "yii2"
             ],
-            "time": "2017-04-07T23:06:36+00:00"
+            "time": "2017-04-18 13:16:08"
+        },
+        {
+            "name": "craftcms/element-api",
+            "version": "v2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/craftcms/element-api.git",
+                "reference": "6a9430081a8f0afa17f834ac74bfc7b2f0c58a73"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/craftcms/element-api/zipball/6a9430081a8f0afa17f834ac74bfc7b2f0c58a73",
+                "reference": "6a9430081a8f0afa17f834ac74bfc7b2f0c58a73",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "~3.0.0-beta.1",
+                "league/fractal": "^0.15.0"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Element API",
+                "handle": "elementApi",
+                "changelogUrl": "https://raw.githubusercontent.com/craftcms/element-api/master/CHANGELOG.md",
+                "downloadUrl": "https://github.com/craftcms/element-api/archive/master.zip"
+            },
+            "autoload": {
+                "psr-4": {
+                    "craft\\elementapi\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Pixel & Tonic",
+                    "homepage": "https://pixelandtonic.com/"
+                }
+            ],
+            "description": "Create a JSON API for your elements in Craft",
+            "keywords": [
+                "api",
+                "cms",
+                "craftcms",
+                "json",
+                "yii2"
+            ],
+            "time": "2017-03-28 22:52:03"
         },
         {
             "name": "craftcms/plugin-installer",
@@ -1074,6 +1124,69 @@
             "time": "2017-02-09T11:33:58+00:00"
         },
         {
+            "name": "league/fractal",
+            "version": "0.15.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/fractal.git",
+                "reference": "0546bd5c2aba414ba50c6ac676f507d42c6150a5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/fractal/zipball/0546bd5c2aba414ba50c6ac676f507d42c6150a5",
+                "reference": "0546bd5c2aba414ba50c6ac676f507d42c6150a5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "illuminate/contracts": "~5.0",
+                "mockery/mockery": "~0.9",
+                "pagerfanta/pagerfanta": "~1.0.0",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "zendframework/zend-paginator": "~2.3"
+            },
+            "suggest": {
+                "illuminate/pagination": "The Illuminate Pagination component.",
+                "pagerfanta/pagerfanta": "Pagerfanta Paginator",
+                "zendframework/zend-paginator": "Zend Framework Paginator"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.13-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Fractal\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Phil Sturgeon",
+                    "email": "me@philsturgeon.uk",
+                    "homepage": "http://philsturgeon.uk/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Handle the output of complex data structures ready for API output.",
+            "homepage": "http://fractal.thephpleague.com/",
+            "keywords": [
+                "api",
+                "json",
+                "league",
+                "rest"
+            ],
+            "time": "2016-12-28T01:30:30+00:00"
+        },
+        {
             "name": "mikehaertl/php-shellcommand",
             "version": "1.2.2",
             "source": {
@@ -1352,6 +1465,118 @@
                 "di container"
             ],
             "time": "2016-02-10T18:59:20+00:00"
+        },
+        {
+            "name": "nystudio107/craft3-cookies",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nystudio107/craft3-cookies.git",
+                "reference": "9758e7c61681f07d93c3f17590815ab06c64da0e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft3-cookies/zipball/9758e7c61681f07d93c3f17590815ab06c64da0e",
+                "reference": "9758e7c61681f07d93c3f17590815ab06c64da0e",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "~3.0.0-beta.1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Cookies",
+                "handle": "cookies",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft3-cookies/CHANGELOG.md",
+                "class": "nystudio107\\cookies\\Cookies",
+                "components": {
+                    "cookies": "nystudio107\\cookies\\services\\CookiesService"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\cookies\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com/"
+                }
+            ],
+            "description": "A simple plugin for setting and getting cookies from within Craft CMS templates.",
+            "keywords": [
+                "Craft",
+                "cms",
+                "cookies",
+                "craft-plugin",
+                "craftcms"
+            ],
+            "time": "2017-03-25 05:29:43"
+        },
+        {
+            "name": "nystudio107/craft3-imageoptim",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nystudio107/craft3-imageoptim.git",
+                "reference": "43542c7b3e0d27103e0c1909573f0e32b1790f5d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nystudio107/craft3-imageoptim/zipball/43542c7b3e0d27103e0c1909573f0e32b1790f5d",
+                "reference": "43542c7b3e0d27103e0c1909573f0e32b1790f5d",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "~3.0.0-beta.1",
+                "mikehaertl/php-shellcommand": "~1.2"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "ImageOptimize",
+                "handle": "imageOptimize",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/nystudio107/craft3-imageoptimize/master/CHANGELOG.md",
+                "components": {
+                    "optimize": "nystudio107\\imageoptimize\\services\\Optimize"
+                },
+                "class": "nystudio107\\imageoptimize\\ImageOptimize"
+            },
+            "autoload": {
+                "psr-4": {
+                    "nystudio107\\imageoptimize\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "nystudio107",
+                    "homepage": "https://nystudio107.com"
+                }
+            ],
+            "description": "Automatically optimize images after they've been transformed",
+            "keywords": [
+                "Craft",
+                "cms",
+                "craft-plugin",
+                "craftcms",
+                "image",
+                "optimize"
+            ],
+            "time": "2017-04-09 03:14:20"
         },
         {
             "name": "nystudio107/craft3-minify",
@@ -2175,12 +2400,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "65d43badb619fff8c136c2bf75f8b81151e56b2d"
+                "reference": "0a549a51a454294ab9a41052385dbe7ff9ee7756"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/65d43badb619fff8c136c2bf75f8b81151e56b2d",
-                "reference": "65d43badb619fff8c136c2bf75f8b81151e56b2d",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/0a549a51a454294ab9a41052385dbe7ff9ee7756",
+                "reference": "0a549a51a454294ab9a41052385dbe7ff9ee7756",
                 "shasum": ""
             },
             "require": {
@@ -2217,7 +2442,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2017-04-13 11:25:57"
+            "time": "2017-04-16 23:46:07"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -2518,14 +2743,24 @@
         }
     ],
     "packages-dev": [],
-    "aliases": [],
+    "aliases": [
+        {
+            "alias": "3.0.0-beta.99",
+            "alias_normalized": "3.0.0.0-beta99",
+            "version": "dev-develop",
+            "package": "craftcms/cms"
+        }
+    ],
     "minimum-stability": "dev",
     "stability-flags": {
+        "craftcms/cms": 20,
         "craftcms/plugin-installer": 20,
         "nystudio107/craft3-minify": 20,
         "clubstudioltd/craft3-asset-rev": 20,
         "vlucas/phpdotenv": 20,
-        "roave/security-advisories": 20
+        "roave/security-advisories": 20,
+        "nystudio107/craft3-cookies": 20,
+        "nystudio107/craft3-imageoptim": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

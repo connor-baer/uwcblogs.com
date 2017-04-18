@@ -2,34 +2,37 @@
  # Submissions template
  # -------------------
  #
- # This template is loaded whenever http://example.com/submissions is
- # requested, because it is located at submissions/index.html
- # in your craft/templates/ folder.
- #
  # See this page for more details on how Craft routes requests:
  # http://craftcms.com/docs/routing
  #}
 
-{% extends "_layouts/site" %}
+{% extends "_layouts/base" %}
 
-{% set title = entry.title %}
-{% set description = entry.description %}
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
+
+{% block critical %}
+  <style>
+    {{ source(_self ~ '.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
 
 
 {% block styles %}
   {{ parent() }}
 
-  <link rel="stylesheet" type="text/css" href="{{ siteUrl ~ 'assets/css/choices.css' }}">
+  <link rel="stylesheet" type="text/css" href="{{ baseUrl ~ rev('css/choices.min.css') }}">
 {% endblock %}
 
 
-{% block scripts %}
+{% block head %}
   {{ parent() }}
 
-  {# List #}
+  {# Choices #}
   <script>
-    loadjs(['{{ siteUrl ~ 'assets/js/choices.min.js' }}'], 'list');
-    loadjs.ready('list', {
+    loadjs(['{{ baseUrl ~ rev('js/choices.min.js') }}'], 'choices');
+    loadjs.ready('choices', {
       success: function() {
         const choicesOptions = {
           maxItemCount: 3,
@@ -48,114 +51,98 @@
 {% endblock %}
 
 
-{% block body %}
-  <article class="w100 cf">
-    <header class="content-hero w3">
-      <h1 class="ts-title">{{ helpers.striptags(description) }}</h1>
+{% block main %}
+  {% cache %}
+  {% minify %}
+
+  <article class="l-ctnr">
+
+    {# -- HEADER -- #}
+    <header class="c-header l-w100">
+      <h1 class="c-header__title c-header__title--color">{{ entry.title | striptags() }}&nbsp;</h1>
+      <h2 class="c-header__subtitle">{{ entry.description | striptags() }}</h2>
+
+      {% set image = entry.image.one() %}
+      {% if image %}
+        <figure class="c-header__image">
+          {{ elements.image(image) }}
+        </figure>
+      {% endif %}
+
     </header>
 
-    <div class="content cf">
-      <aside class="w1 fl-left">
-        <h4 class="ts-header2 mt3">{{ entry.title }}</h4>
-        <div class="ts-body">{{ entry.body }}<div>
-      </aside>
+    <div class="l-w100">
+      <form class="c-form" method="post" action="" accept-charset="UTF-8">
+        <div class="section-inputs">
+          {{ csrfInput() }}
+          <input type="hidden" name="action" value="guestEntries/saveEntry">
+          <input type="hidden" name="redirect" value="success">
+          <input type="hidden" name="sectionId" value="3">
 
-      <div class="w2 fl-right">
-        <form method="post" action="" accept-charset="UTF-8">
-          <div class="section-inputs">
-            {{ getCsrfInput() }}
-            <input type="hidden" name="action" value="guestEntries/saveEntry">
-            <input type="hidden" name="redirect" value="success">
-            <input type="hidden" name="sectionId" value="3">
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogFirstName') }}">
+            <label class="c-input__label" for="firstName">What's your name?</label>
+            <input id="firstName" type="text" name="fields[blogFirstName]" class="c-input__input" placeholder="Jane Doe" required>
+            <span class="c-input__highlight"></span>
+            {{ helpers.errorList(_context, 'blogFirstName') }}
+          </fieldset>
 
-            {% macro errorList(errors) %}
-                {% if errors %}
-                    <span class="form-error">
-                        {% for error in errors %}
-                            {{ error }}<br>
-                        {% endfor %}
-                    </span>
-                {% endif %}
-            {% endmacro %}
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogEmailAddress') }}">
+            <label class="c-input__label" for="email">What’s your email address?</label>
+            <input id="email" type="email" name="fields[blogEmail]" class="c-input__input" placeholder="jane@example.com" required>
+            <span class="c-input__highlight"></span>
+            {{ helpers.errorList(_context, 'blogEmailAddress') }}
+          </fieldset>
 
-            {% from _self import errorList %}
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogCountries') }}">
+            <label class="c-input__label" for="countries">Which country are you from?</label>
+            <select id="countries" name="fields[blogCountries][]" class="c-input__control" placeholder="Add a country..." multiple required>
+              {% for country in craft.tags.group('blogCountries') %}
+              <option value="{{ country.id }}">{{ country.title }}</option>
+              {% endfor %}
+            </select>
+            {{ helpers.errorList(_context, 'blogCountries') }}
+          </fieldset>
 
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogFirstName')) }}
-              {% endif %}
-              <input id="firstName" type="text" name="fields[blogFirstName]" class="form-input" placeholder="Jane Doe" required>
-              <span class="form-highlight"></span>
-              <label class="form-label" for="firstName">What's your name?</label>
-            </div>
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogLanguages') }}">
+            <label class="c-input__label" for="languages">Which language do you write in?</label>
+            <select id="languages" name="fields[blogLanguages][]" class="c-input__control" placeholder="Add a language..." multiple required>
+              {% for language in craft.tags.group('blogLanguages') %}
+              <option value="{{ language.id }}">{{ language.title }}</option>
+              {% endfor %}
+            </select>
+            {{ helpers.errorList(_context, 'blogLanguages') }}
+          </fieldset>
 
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogEmailAddress')) }}
-              {% endif %}
-              <input id="email" type="email" name="fields[blogEmail]" class="form-input" placeholder="jane@example.com" required>
-              <span class="form-highlight"></span>
-              <label class="form-label" for="email">What’s your email address?</label>
-            </div>
+          <fieldset class="mc-field-group c-input {{ helpers.hasError(_context, 'blogLink') }}">
+            <label class="c-input__label" for="link">What's the link to your blog?</label>
+            <input id="link" type="url" name="fields[blogLink]" class="c-input__input" placeholder="https://example.com/blog" required> <span class="c-input__highlight"></span>
+            {{ helpers.errorList(_context, 'blogLink') }}
+          </fieldset>
 
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogCountries')) }}
-              {% endif %}
-              <select id="countries" name="fields[blogCountries][]" class="form-control" placeholder="Add a country..." multiple required>
-                {% for country in craft.tags.group('blogCountries') %}
-                <option value="{{ country.id }}">{{ country.title }}</option>
-                {% endfor %}
-              </select>
-              <label class="form-label" for="countries">Which country are you from?</label>
-            </div>
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogCollege') }}">
+            <label class="c-input__label" for="college">Which UWC do/did you attend?</label>
+            <select id="college" name="fields[blogCollege][]" class="c-input__control" placeholder="Which UWC do/did you attend?" required>
+              <option value="" selected disabled>Select a college...</option>
+              {% for college in craft.categories.group('colleges') %}
+              <option value="{{ college.id }}">{{ college.title }}</option>
+              {% endfor %}
+            </select>
+            {{ helpers.errorList(_context, 'blogCollege') }}
+          </fieldset>
 
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogLanguages')) }}
-              {% endif %}
-              <select id="languages" name="fields[blogLanguages][]" class="form-control" placeholder="Add a language..." multiple required>
-                {% for language in craft.tags.group('blogLanguages') %}
-                <option value="{{ language.id }}">{{ language.title }}</option>
-                {% endfor %}
-              </select>
-              <label class="form-label" for="languages">Which language do you write in?</label>
-            </div>
+          <fieldset class="c-input {{ helpers.hasError(_context, 'blogYear') }}">
+            <label class="c-input__label" for="year">When will/did you finish UWC?</label>
+            <input id="year" type="number" name="fields[blogYear]" class="c-input__input" min="1960" max="{{ now | date_modify("+3 years") | date("Y") }}" step="1" placeholder="{{ now | date("Y") }}" required>
+            <span class="c-input__highlight"></span>
+            {{ helpers.errorList(_context, 'blogYear') }}
+          </fieldset>
 
-            <div class="mc-field-group form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogLink')) }}
-              {% endif %}
-              <input id="link" type="url" name="fields[blogLink]" class="form-input" placeholder="https://example.com/blog" required> <span class="form-highlight"></span>
-              <label class="form-label" for="link">What's the link to your blog?</label>
-            </div>
-
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogCollege')) }}
-              {% endif %}
-              <select id="college" name="fields[blogCollege][]" class="form-control" placeholder="Which UWC do/did you attend?" required>
-                <option value="" selected disabled>Select a college...</option>
-                {% for college in craft.categories.group('colleges') %}
-                <option value="{{ college.id }}">{{ college.title }}</option>
-                {% endfor %}
-              </select>
-              <label class="form-label" for="college">Which UWC do/did you attend?</label>
-            </div>
-
-            <div class="form-group">
-              {% if submission is defined %}
-                {{ errorList(submission.getErrors('blogYear')) }}
-              {% endif %}
-              <input id="year" type="number" name="fields[blogYear]" class="form-input" min="1960" max="{{ now.year + 3 }}" step="1" placeholder="{{ now.year }}" required>
-              <span class="form-highlight"></span>
-              <label class="form-label" for="year">When will/did you finish UWC?</label>
-            </div>
-
-            <input type="submit" value="Submit your blog →" class="button">
-          </div>
-        </form>
-      </div>
+          <input type="submit" value="Submit →" class="o-button">
+        </div>
+      </form>
     </div>
   </article>
+
+  {% endminify %}
+  {% endcache %}
 {% endblock %}

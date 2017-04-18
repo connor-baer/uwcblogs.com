@@ -3,6 +3,8 @@
  #
  # Strip Tags
  # Position
+ # Has Error
+ # Error List
 -#}
 
 
@@ -20,4 +22,32 @@
 		{% set positionedTypes = ['text', 'image', 'quote'] %}
 		{{ block.type.handle in positionedTypes and block.position ? block.position : 'center' }}
 	{% endminify %}
+{% endmacro %}
+
+
+{# Has Error #}
+
+{% macro hasError(context, field) %}
+	{% if submission is defined %}
+		{% set errors = submission.getErrors(field) %}
+
+		{% if errors %}c-input--error{% endif %}
+	{% endif %}
+{% endmacro %}
+
+
+{# Error List #}
+
+{% macro errorList(context, field) %}
+	{% if submission is defined %}
+		{% set errors = submission.getErrors(field) %}
+
+		{% if errors %}
+			<span class="c-input__error">
+				{% for error in errors %}
+					{{ error }}<br>
+				{% endfor %}
+			</span>
+		{% endif %}
+	{% endif %}
 {% endmacro %}

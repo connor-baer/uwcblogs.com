@@ -1,8 +1,0 @@
-{% import '_includes/helpers' as helpers %}
-
-<blockquote class="content-{{ block.style }} mv3">
-  {{ block.quote }}
-  {% if block.cite | length %}
-  <cite class="pt2 ts-app ta-right">— {{ helpers.striptags(block.cite) }}</cite>
-  {% endif %}
-</blockquote>

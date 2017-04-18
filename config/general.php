@@ -7,24 +7,21 @@
  */
 
 return array(
-	'*' => array(
-		'defaultWeekStartDay' => 1,
-		'omitScriptNameInUrls' => true,
-		'generateTransformsBeforePageLoad' => true,
-	),
+    '*' => array(
+        'devMode' => false,
+        'defaultWeekStartDay' => 1,
+        'omitScriptNameInUrls' => true,
+        'generateTransformsBeforePageLoad' => true,
+        'baseUrl' => 'https://uwcblogs.com/',
+        'siteUrl' => 'https://uwcblogs.com',
+    ),
 
-	'.dev' => array(
-		'devMode' => true,
-		'enableTemplateCaching' => false,
-		'testToEmailAddress' => 'madebyconnor@icloud.com',
-		'userSessionDuration' => 'P2W',
-		'baseUrl' => 'https://uwcblogs.dev/',
-		'siteUrl' => 'https://uwcblogs.dev',
-	),
-
-	'.com' => array(
-		'devMode' => false,
-		'baseUrl' => 'https://uwcblogs.com/',
-		'siteUrl' => 'https://uwcblogs.com',
-	),
+    '.dev' => array(
+        'devMode' => true,
+        'enableTemplateCaching' => false,
+        'testToEmailAddress' => 'madebyconnor@icloud.com',
+        'userSessionDuration' => 'P2W',
+        'baseUrl' => 'https://uwcblogs.dev/',
+        'siteUrl' => 'https://uwcblogs.dev',
+    ),
 );
