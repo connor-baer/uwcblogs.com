@@ -29,6 +29,7 @@
     "fontfaceobserver": "^2.0.9",
     "lazysizes": "^3.0.0-rc4",
     "list.js": "^1.4.0",
+    "lodash": "^4.17.4",
     "mappy-breakpoints": "^0.2.3",
     "normalize.css": "^6.0.0",
     "object-fit-images": "^3.1.3",
