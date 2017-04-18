@@ -30,6 +30,7 @@
 
 
 {% block main %}
+  {% cache %}
   {% minify %}
 
   <article class="l-ctnr">
@@ -79,4 +80,5 @@
   </article>
 
   {% endminify %}
+  {% endcache %}
 {% endblock %}
