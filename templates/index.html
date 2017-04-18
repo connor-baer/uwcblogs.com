@@ -18,77 +18,13 @@
   </style>
 {% endblock %}
 
+
 {% block head %}
   {{ parent() }}
 
-  {# List #}
+  {# VUEJS #}
   <script>
-    loadjs(['{{ baseUrl ~ rev('js/list.min.js') }}'], 'list');
-    loadjs.ready('list', {
-      success: function() {
-        // SMOOTHSCROLL //
-        const searchInput = document.getElementById('js-search');
-        searchInput.addEventListener('focus', function () {
-          smoothScroll.animateScroll(searchInput);
-        });
-        // LISTJS //
-        const searchOptions = {
-          valueNames: [
-            'name',
-            'country',
-            'language',
-            {
-              data: ['year'],
-            },
-          ],
-        };
-        const lists = document.getElementsByClassName('js-list');
-        const colleges = document.getElementsByClassName('js-college');
-        const years = document.getElementsByClassName('js-years');
-        let data = [];
-        let blogs = 0;
-        for (var i = 0; i < lists.length; ++i) {
-          var listId = lists[i].id;
-          data[i] = new List(listId, searchOptions);
-          blogs += data[i].items.length;
-        }
-
-        function searchAll() {
-          // Get search value.
-          let searchValue = searchInput.value;
-          // Search all lists.
-          for (var i = 0; i < lists.length; ++i) {
-            data[i].search(searchValue);
-          }
-          // Hide all year numbers without blogs.
-          for (var j = 0; j < years.length; ++j) {
-            if (years[j].hasChildNodes()) {
-              years[j].parentNode.style.display = 'block';
-            } else {
-              years[j].parentNode.style.display = 'none';
-            }
-          }
-          // Hide all college names with all years hidden.
-          for (var k = 0; k < colleges.length; ++k) {
-            let yearsInCollege = colleges[k].getElementsByClassName('js-list');
-            let empty = 0;
-            for (var m = 0; m < yearsInCollege.length; ++m) {
-              if (yearsInCollege[m].style.display === 'none') {
-                empty++;
-              }
-            }
-            if (empty === yearsInCollege.length) {
-              colleges[k].style.display = 'none';
-            } else {
-              colleges[k].style.display = 'block';
-            }
-          }
-        }
-        if (searchInput) {
-          searchInput.addEventListener('keyup', searchAll);
-        }
-      }
-    });
+    loadjs(['{{ baseUrl ~ rev('js/vue.min.js') }}'], 'vue');
   </script>
 {% endblock %}
 
@@ -121,38 +57,20 @@
     </div>
 
 
-    {# Get the categories related to my "blogs" entries in structure order. #}
-    {% set blogs = craft.entries.section('blogs').limit(null) %}
-    {% set colleges = craft.categories.relatedTo(blogs) %}
+    {# -- VUEJS -- #}
+    <div class="c-blogs l-w100">
+      <h4 id="js-loading" class="c-blog__college">
+        Loading blogs<span class="c-blog__loading">…</span>
+      </h4>
 
-    {# Loop the colleges. #}
-    {% for college in colleges %}
-      <section class="l-w100 js-college">
-        <h2 id="{{ college.title | lower | replace(' ', '-') }}" class="c-blog__college"><a class="t-link" href="{{ college.collegeWebsite }}">{{ college.title }}</a></h1>
-        <p class="college-body">
-
-          {# Get and loop through blogs related to this college. #}
-          {% set allBlogsInCollege = craft.entries.relatedTo(college).orderBy('blogYear desc').all() | group('blogYear') %}
-          {% for year, allBlogsInYear in allBlogsInCollege %}
-          <span class="js-list" id="{{ college.title | lower | replace(' ', '-') }}-{{ year }}">
-            <span class="c-blog__year js-year">{{ year }}</span>
-            <span class="list js-years">
-
-            {% for blog in allBlogsInYear %}
-              <span class="c-blog" data-year="{{ blog.blogYear }}">
-                <a href="{{ blog.blogLink }}" target="_blank" rel="noopener noreferrer" class="c-blog__firstname link name">{{ blog.blogFirstName }}</a> <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
-                {% if blog.blogCountries.count() and blog.blogLanguages.count() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
-              </span>
-            {% endfor %}
-
-            </span>
+      <div v-for="college in filteredBlogs">
+        <h3 :id="(college.college.replace(/\s+/g, '-').toLowerCase())" class="c-blog__college">[[ college.college ]]</h3>
+        <div v-for="blog in college.blogs">
+          <span class="c-blog" :data-year="blog.year">
+            <a class="c-blog__firstname" :href="blog.url" target="_blank" rel="noopener noreferrer" class="link name">[[ blog.firstName ]]</a> <span class="c-blog__countries">[[ blog.countries ]]</span><span v-if="(blog.countries.length && blog.languages.length)"> - </span><span class="c-blog__languages">[[ blog.languages ]]</span>
           </span>
-          {% endfor %}
-
-        </p>
-      </section>
-    {% endfor %}
-
+        </div>
+      </div>
     </div>
 
     {# -- SHARE -- #}

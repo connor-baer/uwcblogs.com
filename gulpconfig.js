@@ -116,8 +116,11 @@ module.exports = {
           src + 'js/polyfills.js',
           src + 'js/scripts.js',
         ],
-        list: [
-          modules + 'list.js/dist/list.js',
+        vue: [
+          modules + 'lodash/lodash.js',
+          modules + 'vue/dist/vue.js',
+          modules + 'vue-resource/dist/vue-resource.js',
+          src + 'js/vue.js',
         ],
         choices: [
           modules + 'choices.js/assets/scripts/dist/choices.js',
