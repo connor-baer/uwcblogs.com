@@ -19,6 +19,16 @@
 {% endblock %}
 
 
+{% block head %}
+  {{ parent() }}
+
+  {# VUEJS #}
+  <script>
+    loadjs(['{{ baseUrl ~ rev('js/vue.min.js') }}'], 'vue');
+  </script>
+{% endblock %}
+
+
 {% block main %}
   {% cache %}
   {% minify %}
@@ -48,46 +58,19 @@
     </div>
 
 
-    {# Get the categories related to my "blogs" entries in structure order. #}
-    {% set blogs = craft.entries.section('blogs').limit(null) %}
-    {% set colleges = craft.categories.relatedTo(blogs) %}
-
-    {# Loop the colleges. #}
-    {% for college in colleges %}
-      <section class="l-w100">
-        <h2 id="{{ college.title | lower | replace(' ', '-') }}" class="c-blog__college"><a class="t-link" href="{{ college.collegeWebsite }}">{{ college.title }}</a></h1>
-        <p class="college-body">
-
-          {# Get and loop through blogs related to this college. #}
-          {% set allBlogsInCollege = craft.entries.relatedTo(college).orderBy('blogYear desc').all() | group('blogYear') %}
-          {% for year, allBlogsInYear in allBlogsInCollege %}
-          <span class="js-list" id="{{ college.title | lower | replace(' ', '-') }}-{{ year }}">
-            <span class="c-blog__year js-year">{{ year }}</span>
-            <span class="list js-years">
-
-            {% for blog in allBlogsInYear %}
-              <span class="c-blog" data-year="{{ blog.blogYear }}">
-                <a href="{{ blog.blogLink }}" target="_blank" rel="noopener noreferrer" class="c-blog__firstname">{{ blog.blogFirstName }}</a> <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
-                {% if blog.blogCountries.count() and blog.blogLanguages.count() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
-              </span>
-            {% endfor %}
-
-            </span>
-          </span>
-          {% endfor %}
-
-        </p>
-      </section>
-    {% endfor %}
-
-
     {# -- VUEJS -- #}
-    <div class="l-w100">
+    <div class="c-blogs l-w100">
+      <h4 id="js-loading" class="c-blog__college">
+        Loading blogs<span class="c-blog__loading">…</span>
+      </h4>
 
-      <div v-for="blog in filteredBlogs">
-        <span class="c-blog" :data-year="blog.year">
-          <a class="c-blog__firstname" :href="blog.url" target="_blank" rel="noopener noreferrer" class="link name">[[ blog.firstName ]]</a> <span class="c-blog__countries">[[ blog.countries ]]</span><span v-if="(blog.countries.length && blog.languages.length)"> - </span><span class="c-blog__languages">[[ blog.languages ]]</span>
-        </span>
+      <div v-for="college in filteredBlogs">
+        <h3 :id="(college.college.replace(/\s+/g, '-').toLowerCase())" class="c-blog__college">[[ college.college ]]</h3>
+        <div v-for="blog in college.blogs">
+          <span class="c-blog" :data-year="blog.year">
+            <a class="c-blog__firstname" :href="blog.url" target="_blank" rel="noopener noreferrer" class="link name">[[ blog.firstName ]]</a> <span class="c-blog__countries">[[ blog.countries ]]</span><span v-if="(blog.countries.length && blog.languages.length)"> - </span><span class="c-blog__languages">[[ blog.languages ]]</span>
+          </span>
+        </div>
       </div>
 
     </div>

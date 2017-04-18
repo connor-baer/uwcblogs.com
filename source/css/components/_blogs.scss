@@ -1,5 +1,27 @@
 // Blogs
 // -----
+.c-blogs {
+  margin-top: vr(1);
+  margin-bottom: vr(1);
+}
+
+.c-blog__loading {
+  display: inline-block;
+
+  width: 0;
+
+  overflow: hidden;
+  vertical-align: bottom;
+
+  animation: ellipsis steps(4, end) 900ms infinite;
+}
+
+@keyframes ellipsis {
+  to {
+    width: 1.25em;
+  }
+}
+
 .c-blog {
   @include typi("s0");
 
