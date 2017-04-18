@@ -1,0 +1,75 @@
+// Typi
+// ----
+// NOTE: Access with typi(), see https://zellwk.com/blog/typi/
+$typi-breakpoint: mappy-bp;
+$typi: (
+  t4: (
+    null: (40px, 1.33)
+  ),
+  t3: (
+    null: 32px
+  ),
+  t2: (
+    null: (25px, 1.33),
+  ),
+  t1: (
+    null: 20px,
+  ),
+  base: (
+    null: (16px, 1.33),
+    large: 18px,
+    mega: 21px
+  ),
+  s0: (
+    null: (16px, 2),
+  ),
+  s1: (
+    null: (12px, 2),
+  )
+);
+
+
+// Font Weights
+// ------------
+$fw-light: 300;
+$fw-normal: 400;
+$fw-bold: 700;
+
+
+// Line Heights
+// ------------
+$lh-large: 1.75;
+$lh-normal: 1.33;
+$lh-small: 1.15;
+
+
+// Font Families
+// -------------
+$ff-sans: "Overpass", Arial, sans-serif;
+$ff-serif: "Lora", Georgia, serif;
+$ff-mono: "Overpass Mono", Courier, monospace;
+
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: 300;
+
+  src: local("Overpass Light"), local("Overpass-Light"), url(https://fonts.gstatic.com/s/overpass/v1/tgqY5qOfB6w1HP32JTSrLIgp9Q8gbYrhqGlRav_IXfk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: 400;
+
+  src: local("Overpass Regular"), local("Overpass-Regular"), url(https://fonts.gstatic.com/s/overpass/v1/o3S9a2vetxRRO8sKA6PL03YhjbSpvc47ee6xR_80Hnw.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}
+@font-face {
+  font-family: "Overpass";
+  font-style: normal;
+  font-weight: 700;
+
+  src: local("Overpass Bold"), local("Overpass-Bold"), url(https://fonts.gstatic.com/s/overpass/v1/z_QV2-z5a6o4brQE8JEVyogp9Q8gbYrhqGlRav_IXfk.woff2) format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215;
+}

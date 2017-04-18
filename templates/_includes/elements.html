@@ -1,0 +1,43 @@
+{#
+ # MACRO ELEMENTS
+ #
+ # Date
+ # Image
+-#}
+
+
+{# Date #}
+
+{% macro date(date) %}
+	<div>
+		<time class="ts-app" datetime="{{ date | date("Y-m-d") }}">{{ date | date("F d, Y") }}</time>
+	</div>
+{% endmacro %}
+
+
+{# Image #}
+
+{% macro image(image, type, ratio, size) %}
+	{% switch type %}
+		{% case "amp" %}
+			<amp-img src="image.getUrl('small' ~ ratio) }}"
+					 srcset="{{ image.getUrl('large' ~ ratio) }} {{ image.getWidth('large' ~ ratio) }}w, {{ image.getUrl('medium' ~ ratio) }} {{ image.getWidth('medium' ~ ratio) }}w, {{ image.getUrl('small' ~ ratio) }} {{ image.getWidth('small' ~ ratio) }}w"
+					 width="{{ image.getWidth('small' ~ ratio) }}"
+					 height="{{ image.getHeight('small' ~ ratio) }}"
+					 layout="responsive"
+					 alt="{{ image.title }}">
+			</amp-img>
+		{% case "lazyload" %}
+			<img class="lazyload"
+					 src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+					 data-sizes="auto"
+					 data-srcset="{{ image.getUrl('large' ~ ratio) }} {{ image.getWidth('large' ~ ratio) }}w, {{ image.getUrl('medium' ~ ratio) }} {{ image.getWidth('medium' ~ ratio) }}w, {{ image.getUrl('small' ~ ratio) }} {{ image.getWidth('small' ~ ratio) }}w"
+					 alt="{{ image.title }}">
+	 {% default %}
+			<img class="o-image"
+					 src="{{ image.getUrl('medium') }}"
+					 sizes="(min-width: 37.5em) {{ size | default('72rem') }}, 95vw"
+					 srcset="{{ image.getUrl('large' ~ ratio) }} {{ image.getWidth('large' ~ ratio) }}w, {{ image.getUrl('medium' ~ ratio) }} {{ image.getWidth('medium' ~ ratio) }}w, {{ image.getUrl('small' ~ ratio) }} {{ image.getWidth('small' ~ ratio) }}w"
+					 alt="{{ image.title }}">
+	{% endswitch %}
+{% endmacro %}

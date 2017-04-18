@@ -1,0 +1,166 @@
+{#
+ # Homepage template
+ # ---------------
+ #
+ # See this page for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/base" %}
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
+
+{% block critical %}
+  <style>
+    {{ source(_self ~ '.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+{% block head %}
+  {{ parent() }}
+
+  {# List #}
+  <script>
+    loadjs(['{{ baseUrl ~ rev('js/list.min.js') }}'], 'list');
+    loadjs.ready('list', {
+      success: function() {
+        // SMOOTHSCROLL //
+        const searchInput = document.getElementById('js-search');
+        searchInput.addEventListener('focus', function () {
+          smoothScroll.animateScroll(searchInput);
+        });
+        // LISTJS //
+        const searchOptions = {
+          valueNames: [
+            'name',
+            'country',
+            'language',
+            {
+              data: ['year'],
+            },
+          ],
+        };
+        const lists = document.getElementsByClassName('js-list');
+        const colleges = document.getElementsByClassName('js-college');
+        const years = document.getElementsByClassName('js-years');
+        let data = [];
+        let blogs = 0;
+        for (var i = 0; i < lists.length; ++i) {
+          var listId = lists[i].id;
+          data[i] = new List(listId, searchOptions);
+          blogs += data[i].items.length;
+        }
+
+        function searchAll() {
+          // Get search value.
+          let searchValue = searchInput.value;
+          // Search all lists.
+          for (var i = 0; i < lists.length; ++i) {
+            data[i].search(searchValue);
+          }
+          // Hide all year numbers without blogs.
+          for (var j = 0; j < years.length; ++j) {
+            if (years[j].hasChildNodes()) {
+              years[j].parentNode.style.display = 'block';
+            } else {
+              years[j].parentNode.style.display = 'none';
+            }
+          }
+          // Hide all college names with all years hidden.
+          for (var k = 0; k < colleges.length; ++k) {
+            let yearsInCollege = colleges[k].getElementsByClassName('js-list');
+            let empty = 0;
+            for (var m = 0; m < yearsInCollege.length; ++m) {
+              if (yearsInCollege[m].style.display === 'none') {
+                empty++;
+              }
+            }
+            if (empty === yearsInCollege.length) {
+              colleges[k].style.display = 'none';
+            } else {
+              colleges[k].style.display = 'block';
+            }
+          }
+        }
+        if (searchInput) {
+          searchInput.addEventListener('keyup', searchAll);
+        }
+      }
+    });
+  </script>
+{% endblock %}
+
+
+{% block main %}
+  {% cache %}
+  {% minify %}
+
+  <article class="l-ctnr">
+
+    {# -- HEADER -- #}
+    <header class="c-header l-w100">
+      <h1 class="c-header__title c-header__title--color">{{ entry.title | striptags() }}&nbsp;</h1>
+      <h2 class="c-header__subtitle">A collection of {{ craft.entries.section('blogs').count() }} blogs written by UWC students in {{ craft.tags.group('blogLanguages').count() }} languages from {{ craft.tags.group('blogCountries').count() }} countries at the {{ craft.categories.group('colleges').count() }} United World Colleges.</h2>
+
+      {% set image = entry.image.one() %}
+      {% if image %}
+        <figure class="c-header__image">
+          {{ elements.image(image) }}
+        </figure>
+      {% endif %}
+
+    </header>
+
+    <div class="l-w100">
+      <fieldset class="c-input">
+        <label class="c-input__label" for="js-search">Enter a college, year, country, language, or name:</label>
+        <input class="c-input__input" type="search" name="js-search" id="js-search" placeholder="Type to filter the blogs..." autocomplete="off" required/>
+        <span class="c-input__highlight"></span>
+      </fieldset>
+    </div>
+
+
+    {# Get the categories related to my "blogs" entries in structure order. #}
+    {% set blogs = craft.entries.section('blogs').limit(null) %}
+    {% set colleges = craft.categories.relatedTo(blogs) %}
+
+    {# Loop the colleges. #}
+    {% for college in colleges %}
+      <section class="l-w100 js-college">
+        <h2 id="{{ college.title | lower | replace(' ', '-') }}" class="c-blog__college"><a class="t-link" href="{{ college.collegeWebsite }}">{{ college.title }}</a></h1>
+        <p class="college-body">
+
+          {# Get and loop through blogs related to this college. #}
+          {% set allBlogsInCollege = craft.entries.relatedTo(college).orderBy('blogYear desc').all() | group('blogYear') %}
+          {% for year, allBlogsInYear in allBlogsInCollege %}
+          <span class="js-list" id="{{ college.title | lower | replace(' ', '-') }}-{{ year }}">
+            <span class="c-blog__year js-year">{{ year }}</span>
+            <span class="list js-years">
+
+            {% for blog in allBlogsInYear %}
+              <span class="c-blog" data-year="{{ blog.blogYear }}">
+                <a href="{{ blog.blogLink }}" target="_blank" rel="noopener noreferrer" class="c-blog__firstname link name">{{ blog.blogFirstName }}</a> <span class="country">{% for country in blog.blogCountries %}{{ country.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+                {% if blog.blogCountries.count() and blog.blogLanguages.count() %} - {% endif %}<span class="language">{% for language in blog.blogLanguages %}{{ language.title }}{% if not loop.last %}, {% endif %}{% endfor %}</span>
+              </span>
+            {% endfor %}
+
+            </span>
+          </span>
+          {% endfor %}
+
+        </p>
+      </section>
+    {% endfor %}
+
+    </div>
+
+    {# -- SHARE -- #}
+    {% include '_includes/components/share' %}
+
+  </article>
+
+  {% endminify %}
+  {% endcache %}
+{% endblock %}

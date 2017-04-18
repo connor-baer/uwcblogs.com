@@ -1,38 +1,37 @@
-// ==== SCRIPTS ==== //
-
-const gulp    = require('gulp'),
-      plugins = require('gulp-load-plugins')({ camelize: true }),
-      config  = require('../../gulpconfig').scripts
-;
+/**
+ * SCRIPTS
+ */
 
 
-// Check custom scripts for errors.
-gulp.task('scripts-lint', () => {
-  return gulp.src(config.src)
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('default')); // No need to pipe this anywhere.
-});
+const gulp = require( 'gulp' ),
+  plugins = require( 'gulp-load-plugins' )( {
+    camelize: true
+  } ),
+  config = require( '../../gulpconfig' ).scripts;
 
-// Minify scripts in place.
-gulp.task('scripts-minify', ['scripts-lint'], () => {
-  return gulp.src(config.src)
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.babel({
-        presets: ['es2015'],
-      }))
-    .pipe(plugins.uglify(config.minify.uglify))
-    .pipe(plugins.rename(config.minify.rename))
-    .pipe(plugins.sourcemaps.write('./'))
-    .pipe(gulp.dest(config.dest));
-});
 
-// Copy JavaScript dependencies to the public assets folder.
-gulp.task('scripts-deps', () => {
-  return gulp.src(config.deps.src)
-    .pipe(plugins.changed(config.deps.dest))
-    .pipe(plugins.uglify(config.minify.uglify))
-    .pipe(gulp.dest(config.deps.dest));
-});
+// Compile Javascript bundles.
+gulp.task( 'scripts-bundles', () => {
+  const bundles = config.bundles.src;
 
-// Master script task; lint -> bundle -> minify.
-gulp.task('scripts', ['scripts-deps']);
+  Object.keys( bundles ).forEach( function ( key ) {
+    return gulp.src( bundles[ key ] )
+      .pipe( plugins.concat( key ) )
+      .pipe( plugins.jshint() )
+      .pipe( plugins.babili( config.babili ) )
+      .pipe( plugins.rename( config.rename ) )
+      .pipe( gulp.dest( config.bundles.dest ) );
+  } );
+} );
+
+// Compile JavaScript files for inlining.
+gulp.task( 'scripts-inline', () => {
+  return gulp.src( config.inline.src )
+    .pipe( plugins.jshint() )
+    .pipe( plugins.babili( config.babili ) )
+    .pipe( plugins.rename( config.rename ) )
+    .pipe( gulp.dest( config.inline.dest ) );
+} );
+
+// Shortcut.
+gulp.task( 'scripts', [ 'scripts-bundles', 'scripts-inline' ] );

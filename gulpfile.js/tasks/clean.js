@@ -1,27 +1,30 @@
-// ==== CLEAN ==== //
-
-const gulp   = require('gulp'),
-      del    = require('del'),
-      config = require('../../gulpconfig').clean
-;
+/**
+ * CLEAN
+ */
 
 
-// Totally wipe the compiled CSS.
-gulp.task('clean-wipe-css', () => {
-  return del(config.css);
-});
+const gulp = require( 'gulp' ),
+  del = require( 'del' ),
+  config = require( '../../gulpconfig' ).clean;
 
-// Totally wipe the compiled JS.
-gulp.task('clean-wipe-js', () => {
-  return del(config.js);
-});
 
-// Totally wipe the compiled CSS and JS to prepare for a clean build.
-gulp.task('clean-wipe', ['clean-wipe-css', 'clean-wipe-js']);
+// Clean out junk files before build.
+gulp.task( 'clean-tidy', () => {
+  return del( config.tidy );
+} );
 
-// Clean out junk files after build.
-gulp.task('clean-tidy', ['clean-wipe'], () => {
-  return del(config.tidy);
-});
 
-gulp.task('clean', ['clean-tidy']);
+// Totally wipe the compiled development files.
+gulp.task( 'clean-dev', () => {
+  return del( config.dev );
+} );
+
+
+// Shortcut.
+gulp.task( 'clean', [ 'clean-tidy', 'clean-dev' ] );
+
+
+// Totally wipe the compiled production files.
+gulp.task( 'clean-dist', () => {
+  return del( config.dist );
+} );

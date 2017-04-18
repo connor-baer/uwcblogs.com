@@ -1,0 +1,25 @@
+{#
+ # The base layout template
+ # ------------------------
+-#}
+
+{% extends "_layouts/site" %}
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
+{% block body %}
+
+  {# -- METABAR -- #}
+  {% include '_includes/components/metabar' %}
+
+  <main id="app" class="l-main">
+
+    {% block main %}{% endblock %}
+
+  </main>
+
+  {# -- FOOTER -- #}
+  {% include '_includes/components/footer' %}
+
+{% endblock %}

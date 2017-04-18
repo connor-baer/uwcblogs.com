@@ -1,39 +1,50 @@
-/*
-  STYLES
+// Helpers
+// -------
+@import "lib/normalize";
+@import "lib/helpers";
 
-  Dependencies
-  Base
-  Patterns
-  Elements
-*/
+// Variables
+// ---------
+@import "variables/animations";
+@import "variables/layout";
+@import "variables/colors";
+@import "variables/typography";
 
+// Base & resets
+// -------------
+@import "base/base";
 
-// Dependencies //
+// Layouts
+// -------
+@import "layouts/layouts";
 
-// Normalize: make browsers render things more consistently, from https://necolas.github.io/normalize.css/.
-@import "dependencies/normalize";
-// Open Color: an open-source color scheme, from https://yeun.github.io/open-color/.
-@import "dependencies/open-color";
-// Prism: a lightweight, extensible syntax highlighter, from http://prismjs.com/.
-@import "dependencies/prism";
+// Typography
+// ----------
+@import "typography/typography";
 
+// Objects
+// -------
+@import "objects/buttons";
+@import "objects/inputs";
+@import "objects/media";
 
-// Base //
+// Components
+// ----------
+@import "components/metabar";
+@import "components/header";
+@import "components/blogs";
+@import "components/cards";
+@import "components/share";
+@import "components/footer";
 
-@import "base/variables";
-@import "base/reset";
+// Libraries
+// ---------
+@import "lib/lib";
 
+// Utilities
+// ----------
+@import "utilities";
 
-// Patterns //
-
-@import "patterns/type";
-@import "patterns/layout";
-@import "patterns/media";
-@import "patterns/form";
-
-
-// Elements //
-
-@import "elements/navigation";
-@import "elements/content";
-@import "elements/elements";
+// Shame
+// -----
+// @import "shame";

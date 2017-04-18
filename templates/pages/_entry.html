@@ -1,0 +1,35 @@
+{#
+ # Page entry template
+ # -------------------
+ #
+ # See this entry for more details on how Craft routes requests:
+ # http://craftcms.com/docs/routing
+ #}
+
+{% extends "_layouts/base" %}
+
+{% import '_includes/elements' as elements %}
+{% import '_includes/helpers' as helpers %}
+
+
+{% block main %}
+  {% cache %}
+  {% minify %}
+
+  <article class="l-ctnr">
+
+    {# -- HEADER -- #}
+    <header class="c-header l-w100">
+      <h1 class="c-header__title c-header__title--color">{{ entry.title | striptags() }}&nbsp;</h1>
+    </header>
+
+    <div class="l-w100">
+      <div class="c-header__subtitle">
+        {{ helpers.striptags(entry.description) }}
+      </div>
+    </div>
+  </article>
+
+  {% endminify %}
+  {% endcache %}
+{% endblock %}

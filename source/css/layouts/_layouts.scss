@@ -1,0 +1,118 @@
+// Main
+// ----
+.l-main {
+  min-height: 95vh;
+
+  padding-top: 4.66rem;
+}
+
+@include mappy-bp(750px) {
+  .c-metabar,
+  .l-main,
+  .c-footer {
+    width: 50vw;
+  }
+}
+
+
+// Container
+// ---------
+.l-ctnr {
+  @include mappy-bp(medium) {
+    padding-right: vr(1);
+    padding-left: vr(1);
+  }
+  @include mappy-bp(wide) {
+    padding-right: vr(2);
+    padding-left: vr(2);
+  }
+
+  display: block;
+
+  width: 100%;
+  max-width: $l-ctnr;
+
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: vr(.5);
+  padding-left: vr(.5);
+}
+
+
+// Flexbox Grid
+// ------------
+.l-flex {
+  display: flex;
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.l-flex--center {
+  justify-content: space-around;
+}
+
+[class*="l-w"] {
+  display: block;
+
+  margin-top: vr(.5);
+  margin-bottom: vr(.5);
+  padding-right: vr(1);
+  padding-left: vr(1);
+}
+
+
+// Full
+// ----
+.l-w100 {
+  width: 100%;
+}
+
+
+// Thirds
+// ------
+.l-w33 {
+  @include mappy-bp(medium) {
+    width: (100% / 2);
+  }
+  @include mappy-bp(large) {
+    width: (100% / 3);
+  }
+
+  width: 100%;
+}
+
+.l-w66 {
+  @include mappy-bp(large) {
+    width: (100% / 3 * 2);
+  }
+
+  width: 100%;
+}
+
+
+// Quarters
+// --------
+.l-w25 {
+  @include mappy-bp(large) {
+    width: (100% / 4);
+  }
+
+  width: (100% / 2);
+}
+
+.l-w50 {
+  @include mappy-bp(medium) {
+    width: (100% / 2);
+  }
+
+  width: 100%;
+}
+
+.l-w75 {
+  @include mappy-bp(large) {
+    width: (100% / 4 * 3);
+  }
+
+  width: 100%;
+}
