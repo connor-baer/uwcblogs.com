@@ -94,9 +94,6 @@
 
 
 {% block main %}
-  {% cache %}
-  {% minify %}
-
   <article class="l-ctnr">
 
     {# -- HEADER -- #}
@@ -120,6 +117,10 @@
         <span class="c-input__highlight"></span>
       </fieldset>
     </div>
+
+
+    {% cache %}
+    {% minify %}
 
 
     {# Get the categories related to my "blogs" entries in structure order. #}
