@@ -30,7 +30,6 @@
 
 
 {% block main %}
-  {% cache %}
   {% minify %}
 
   <article class="l-ctnr">
@@ -52,7 +51,7 @@
     <div class="l-w100">
       <fieldset class="c-input">
         <label class="c-input__label" for="js-search">Enter a college, year, country, language, or name:</label>
-        <input class="c-input__input" v-model="search" type="search" name="js-search" id="js-search" placeholder="Type to filter the blogs..." autocomplete="off" required>
+        <input class="c-input__input" type="search" name="js-search" id="js-search" placeholder="Type to filter the blogs..." autocomplete="off" required/>
         <span class="c-input__highlight"></span>
       </fieldset>
     </div>
@@ -72,7 +71,6 @@
           </span>
         </div>
       </div>
-
     </div>
 
     {# -- SHARE -- #}
@@ -81,5 +79,4 @@
   </article>
 
   {% endminify %}
-  {% endcache %}
 {% endblock %}

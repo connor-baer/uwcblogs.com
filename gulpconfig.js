@@ -94,7 +94,7 @@ module.exports = {
           template: 'index'
         },
         {
-          url: 'submit',
+          url: '/submit',
           template: 'submit/index'
         },
       ],
