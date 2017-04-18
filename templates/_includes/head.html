@@ -64,7 +64,7 @@ loadjs.ready('scripts', {
       html.classList.add('fonts-failed');
     });
 
-    const searchInput = document.getElementById('js-search');
+    const searchInput = document.getElementById('search');
     if (searchInput) {
       searchInput.addEventListener('focus', function () {
         smoothScroll.animateScroll(searchInput, null, { offset: 64});
