@@ -32,14 +32,14 @@ $choices-button-offset: .5rem;
   .#{$choices-selector}__input {
     padding: .5rem .75rem;
 
-    border-bottom: 2px solid $choices-keyline-color;
+    border-bottom: 1px solid $choices-keyline-color;
   }
 }
 
 .#{$choices-selector}[data-type*="select-multiple"],
 .#{$choices-selector}[data-type*="text"] {
   .#{$choices-selector}__button {
-    border-left: 2px solid darken($choices-primary-color, 10%);
+    border-left: 1px solid darken($choices-primary-color, 10%);
   }
 }
 
@@ -61,40 +61,44 @@ $choices-button-offset: .5rem;
   .#{$choices-selector}__item {
     margin-right: .25rem;
     margin-bottom: .25rem;
-    padding: 0 .5rem;
+    padding: vr(.25) vr(.5);
 
-    border: 2px solid $oc-gray-4;
+    border: 1px solid $oc-gray-4;
 
     background-color: $oc-gray-2;
     color: $oc-gray-9;
 
+    font-size: $choices-font-size-md;
+
     &.is-highlighted {
-      border: 2px solid oc(primary);
+      border: 1px solid oc(primary);
 
       background-color: $oc-gray-2;
     }
 
     .is-disabled & {
-      border: 2px solid darken($choices-disabled-color, 35%);
+      border: 1px solid darken($choices-disabled-color, 35%);
     }
   }
 }
 
 .#{$choices-selector}__list--dropdown {
-  margin-top: -2px;
+  margin-top: -1px;
 
-  border: 2px solid $choices-keyline-color;
+  border: 1px solid $choices-keyline-color;
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .06);
 
   .is-open & {
     border-color: oc(primary);
   }
 
   .is-flipped & {
-    margin-bottom: -2px;
+    margin-bottom: -1px;
   }
 
   .#{$choices-selector}__item {
-    padding: .25rem .75rem;
+    padding: vr(.25) vr(.5);
 
     font-family: $ff-sans;
     font-size: $choices-font-size-md;
@@ -115,11 +119,13 @@ $choices-button-offset: .5rem;
 .#{$choices-selector}__heading {
   padding: .5rem;
 
-  border-bottom: 2px solid lighten($choices-keyline-color, 10%);
+  border-bottom: 1px solid lighten($choices-keyline-color, 10%);
 }
 
 .#{$choices-selector}__input {
-  background-color: $oc-white;
+  width: 100% !important;
+
+  background-color: var(--oc-white);
 
   font-family: $ff-sans;
 }
@@ -240,7 +246,7 @@ input[type="select"] {
 
   transition: border-color $an-short, background-color $an-short;
 
-  border: 2px solid var(--oc-gray-6);
+  border: 1px solid var(--oc-gray-6);
   border-radius: .5rem;
   outline: none;
 

@@ -1,26 +1,6 @@
 // Metabar
 // -------
 .c-metabar {
-  @include mappy-bp(medium) {
-    position: fixed;
-
-    will-change: transform;
-
-    .headroom--not-top & {
-      padding: vr(.5) vr(1);
-
-      box-shadow: 0 0 8px rgba(0, 0, 0, .1);
-    }
-
-    .headroom--pinned {
-      transform: translateY(0%);
-    }
-
-    .headroom--unpinned & {
-      transform: translateY(-100%);
-    }
-  }
-
   position: absolute;
   top: 0;
   right: 0;

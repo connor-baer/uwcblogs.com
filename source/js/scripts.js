@@ -110,35 +110,3 @@ window.addEventListener( 'devicelight', throttle( ( event ) => {
     toggleDarkness( false );
   }
 }, 1000 ) );
-
-
-/**
- * Vue Instance
- */
-new Vue( {
-  el: '#app',
-  delimiters: [ '[[', ']]' ],
-  data: {
-    search: '',
-    blogs: [],
-  },
-  mounted() {
-    var self = this;
-    this.$http.get( '/api/blogs.json' ).then( response => {
-      self.$data.blogs = response.body.data;
-    }, response => {
-      alertify
-        .closeLogOnClick( true )
-        .error( 'Couldn’t fetch data. ' + response.statusText );
-    } );
-  },
-  computed: {
-    filteredBlogs() {
-      var self = this;
-
-      return this.blogs.filter( function ( blog ) {
-        return blog.firstName.toLowerCase().indexOf( self.search.toLowerCase() ) > -1 || blog.college.toLowerCase().indexOf( self.search.toLowerCase() ) > -1 || blog.year.toLowerCase().indexOf( self.search.toLowerCase() ) > -1 || blog.countries.toLowerCase().indexOf( self.search.toLowerCase() ) > -1 || blog.languages.toLowerCase().indexOf( self.search.toLowerCase() ) > -1;
-      } );
-    }
-  }
-} );

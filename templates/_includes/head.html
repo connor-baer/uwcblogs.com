@@ -17,14 +17,14 @@
 
   {% block critical %}{% endblock %}
 
-  <link rel="preload" href="{{ baseUrl ~ newCache }}" as="style" onload="this.rel='stylesheet'">
+  <link id="alertifyCSS" rel="preload" href="{{ baseUrl ~ newCache }}" as="style" onload="this.rel='stylesheet'">
   <noscript><link rel="stylesheet" type="text/css" href="{{ baseUrl ~ newCache }}"></noscript>
   <script>
     {{ source('_inline/loadCSS.min.js') }}
     {{ source('_inline/cssrelpreload.min.js') }}
   </script>
 {% else %}
-  <link id="styles" rel="stylesheet" type="text/css" href="{{ baseUrl ~ newCache }}">
+  <link id="alertifyCSS" rel="stylesheet" type="text/css" href="{{ baseUrl ~ newCache }}">
 {% endif %}
 
 {# -- SERVICE WORKER -- #}

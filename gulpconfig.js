@@ -94,7 +94,7 @@ module.exports = {
           template: 'index'
         },
         {
-          url: 'submit',
+          url: '/submit',
           template: 'submit/index'
         },
       ],
@@ -113,10 +113,11 @@ module.exports = {
           modules + 'object-fit-images/dist/ofi.js',
           modules + 'smooth-scroll/dist/js/smooth-scroll.js',
           modules + 'alertify.js/dist/js/alertify.js',
-          modules + 'vue/dist/vue.js',
-          modules + 'vue-resource/dist/vue-resource.js',
           src + 'js/polyfills.js',
           src + 'js/scripts.js',
+        ],
+        list: [
+          modules + 'list.js/dist/list.js',
         ],
         choices: [
           modules + 'choices.js/assets/scripts/dist/choices.js',

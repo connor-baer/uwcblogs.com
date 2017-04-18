@@ -72,16 +72,15 @@
     </header>
 
     <div class="l-w100">
-      <form class="c-form" method="post" action="" accept-charset="UTF-8">
+      <form class="c-form" method="post" action="https://formspree.io/connor@uwcblogs.com" accept-charset="UTF-8">
         <div class="section-inputs">
-          {{ csrfInput() }}
-          <input type="hidden" name="action" value="guestEntries/saveEntry">
-          <input type="hidden" name="redirect" value="success">
-          <input type="hidden" name="sectionId" value="3">
+          <input type="hidden" name="_next" value="/success" />
+          <input type="hidden" name="_subject" value="New blog submission!" />
+          <input type="text" name="_gotcha" style="display:none" />
 
           <fieldset class="c-input {{ helpers.hasError(_context, 'blogFirstName') }}">
-            <label class="c-input__label" for="firstName">What's your name?</label>
-            <input id="firstName" type="text" name="fields[blogFirstName]" class="c-input__input" placeholder="Jane Doe" required>
+            <label class="c-input__label" for="firstName">What's your first name?</label>
+            <input id="firstName" type="text" name="fields[blogFirstName]" class="c-input__input" placeholder="Jane" required>
             <span class="c-input__highlight"></span>
             {{ helpers.errorList(_context, 'blogFirstName') }}
           </fieldset>
@@ -137,7 +136,7 @@
             {{ helpers.errorList(_context, 'blogYear') }}
           </fieldset>
 
-          <input type="submit" value="Submit →" class="o-button">
+          <input type="submit" value="Submit →" class="o-button c-blog__submit">
         </div>
       </form>
     </div>
