@@ -1,4 +1,4 @@
-{% set title = entry.title %}
+{% set title = title is defined ? title : entry.title %}
 
 <div class="c-share l-w100">
   <a class="c-share__icon" href="https://twitter.com/share?text={{ title | url_encode }}&url={{ siteUrl ~ craft.app.request.url }}" target="_blank" rel="noopener noreferrer" title="Share '{{ title }}' on Twitter." aria-label="Share '{{ title }}' on Twitter.">

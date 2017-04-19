@@ -3,7 +3,6 @@
 use craft\elements\Entry;
 use craft\elements\Category;
 use craft\elements\Tag;
-use craft\helpers\UrlHelper;
 
 return [
     'defaults' => [
@@ -76,11 +75,13 @@ return [
                 ];
             },
         ],
-        'api/blogs/<collegeId:\d+>.json' => function ($collegeId) {
+        'api/blogs/<collegeSlug:{slug}>.json' => function ($collegeSlug) {
+            $category = Category::find()->slug($collegeSlug)->one();
+
             return [
                 'elementType' => Entry::class,
                 'criteria' => [
-                    'relatedTo' => $collegeId,
+                    'relatedTo' => $category,
                     'section' => 'blogs',
                     'orderBy' => 'blogFirstName',
                 ],

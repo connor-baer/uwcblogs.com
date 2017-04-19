@@ -96,7 +96,7 @@
             <label class="c-input__label" for="countries">Which country are you from?</label>
             <select id="countries" name="fields[blogCountries][]" class="c-input__control" placeholder="Add a country..." multiple required>
               {% for country in craft.tags.group('blogCountries') %}
-              <option value="{{ country.id }}">{{ country.title }}</option>
+              <option value="{{ country.title }}">{{ country.title }}</option>
               {% endfor %}
             </select>
             {{ helpers.errorList(_context, 'blogCountries') }}
@@ -106,7 +106,7 @@
             <label class="c-input__label" for="languages">Which language do you write in?</label>
             <select id="languages" name="fields[blogLanguages][]" class="c-input__control" placeholder="Add a language..." multiple required>
               {% for language in craft.tags.group('blogLanguages') %}
-              <option value="{{ language.id }}">{{ language.title }}</option>
+              <option value="{{ language.title }}">{{ language.title }}</option>
               {% endfor %}
             </select>
             {{ helpers.errorList(_context, 'blogLanguages') }}
@@ -123,7 +123,7 @@
             <select id="college" name="fields[blogCollege][]" class="c-input__control" placeholder="Which UWC do/did you attend?" required>
               <option value="" selected disabled>Select a college...</option>
               {% for college in craft.categories.group('colleges') %}
-              <option value="{{ college.id }}">{{ college.title }}</option>
+              <option value="{{ college.title }}">{{ college.title }}</option>
               {% endfor %}
             </select>
             {{ helpers.errorList(_context, 'blogCollege') }}

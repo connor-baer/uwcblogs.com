@@ -5,7 +5,7 @@ new Vue( {
   el: '#app',
   delimiters: [ '[[', ']]' ],
   data: {
-    search: '',
+    search: ( window.location.hash ? window.location.hash.substring( 1 ) : '' ),
     blogs: [],
   },
   mounted() {
@@ -33,8 +33,11 @@ new Vue( {
       } );
     }
 
-    getData( '/api/blogs.json', function () {
-      console.log( 'All blogs fetched.' );
+    const path = ( window.location.pathname !== '/' ? window.location.pathname : '' );
+    let url = '/api/blogs' + path + '.json';
+
+    getData( url, function () {
+      console.log( 'All blogs loaded.' );
     } );
   },
   computed: {
@@ -66,6 +69,30 @@ new Vue( {
           return _.zipObject( [ 'college', 'blogs' ], pair );
         } )
         .value().sort( sortColleges );
+    }
+  },
+  watch: {
+    search: function ( value ) {
+      var hash = encodeURIComponent( value );
+
+      if ( hash !== '' ) {
+        window.location.hash = hash;
+      } else {
+        history.replaceState( '', document.title, window.location.pathname + window.location.search );
+      }
+    }
+  },
+  methods: {
+    slugify: function ( string ) {
+      return string
+        .toString()
+        .trim()
+        .toLowerCase()
+        .replace( /\s+/g, '-' )
+        .replace( /[^\w\-]+/g, '' )
+        .replace( /\-\-+/g, '-' )
+        .replace( /^-+/, '' )
+        .replace( /-+$/, '' );
     }
   }
 } );

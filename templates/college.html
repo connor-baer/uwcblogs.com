@@ -37,10 +37,11 @@
 
     {# -- HEADER -- #}
     <header class="c-header l-w100">
-      <h1 class="c-header__title c-header__title--color">{{ entry.title | striptags() }}&nbsp;</h1>
-      <h2 class="c-header__subtitle">A collection of {{ craft.entries.section('blogs').count() }} blogs written by UWC students in {{ craft.tags.group('blogLanguages').count() }} languages from {{ craft.tags.group('blogCountries').count() }} countries at the {{ craft.categories.group('colleges').count() }} United World Colleges.</h2>
+      <h1 class="c-header__title c-header__title--color">{{ category.title | striptags() }}&nbsp;</h1>
+      <h2 class="c-header__subtitle">{{ category.description | striptags() }}</h2>
+      <p class="c-header__meta"><a class="t-link" href="{{ category.website }}" target="_blank" rel="noreferrer noopener">Visit the school’s website →</a></p>
 
-      {% set image = entry.image.one() %}
+      {% set image = category.image.one() %}
       {% if image %}
         <figure class="c-header__image">
           {{ elements.image(image) }}
@@ -51,7 +52,7 @@
 
     <div class="l-w100">
       <fieldset class="c-input">
-        <label class="c-input__label" for="search">Enter a college, year, country, language, or name:</label>
+        <label class="c-input__label" for="search">Enter a year, country, language, or name:</label>
         <input id="search" class="c-input__input" v-model="search" type="search" placeholder="Type to filter the blogs..." autocomplete="off" required/>
         <span class="c-input__highlight"></span>
       </fieldset>
@@ -61,7 +62,6 @@
     {# -- VUEJS -- #}
     <div class="c-blogs l-w100" v-cloak>
       <div v-for="(college, index) in filteredBlogs">
-        <h3 :id="slugify(college.college)" class="c-blog__college"><a class="t-link" :href="slugify(college.college)">[[ college.college ]]</a></h3>
         <div v-for="blog in college.blogs">
           <span class="c-blog">
             <a class="c-blog__firstname" :href="blog.url" target="_blank" rel="noopener noreferrer" class="link name">[[ blog.firstName ]]</a> <span class="c-blog__countries">[[ blog.countries ]]</span><span v-if="(blog.countries.length && blog.languages.length)"> - </span><span class="c-blog__languages">[[ blog.languages ]]</span>
@@ -78,7 +78,7 @@
     </div>
 
     {# -- SHARE -- #}
-    {% include '_includes/components/share' %}
+    {% include '_includes/components/share' with { 'title' : category.title } %}
 
   </article>
 
