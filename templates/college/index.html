@@ -67,14 +67,12 @@
             <a class="c-blog__firstname" :href="blog.url" target="_blank" rel="noopener noreferrer" class="link name">[[ blog.firstName ]]</a> <span class="c-blog__countries">[[ blog.countries ]]</span><span v-if="(blog.countries.length && blog.languages.length)"> - </span><span class="c-blog__languages">[[ blog.languages ]]</span>
           </span>
         </div>
-
-        <ins v-if="((index % 4) == 0)"
-             class="adsbygoogle"
-             style="display:block;margin:2rem 0;"
-             data-ad-client="ca-pub-4242118293341339"
-             data-ad-slot="2717711005"
-             data-ad-format="auto"></ins>
       </div>
+      <ins class="adsbygoogle"
+           style="display:block;margin:2rem 0;"
+           data-ad-client="ca-pub-4242118293341339"
+           data-ad-slot="2717711005"
+           data-ad-format="auto"></ins>
     </div>
 
     {# -- SHARE -- #}

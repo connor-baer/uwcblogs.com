@@ -97,6 +97,14 @@ module.exports = {
           url: '/submit',
           template: 'submit/index'
         },
+        {
+          url: '/uwc-adriatic',
+          template: 'college/index'
+        },
+        {
+          url: '/success',
+          template: '_pages/entry'
+        },
       ],
     },
   },

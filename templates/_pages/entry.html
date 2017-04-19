@@ -12,6 +12,13 @@
 {% import '_includes/helpers' as helpers %}
 
 
+{% block critical %}
+  <style>
+    {{ source(_self ~ '.min.css', ignore_missing = true) }}
+  </style>
+{% endblock %}
+
+
 {% block main %}
   {% cache %}
   {% minify %}
@@ -21,6 +28,7 @@
     {# -- HEADER -- #}
     <header class="c-header l-w100">
       <h1 class="c-header__title c-header__title--color">{{ entry.title | striptags() }}&nbsp;</h1>
+      <h2 class="c-header__subtitle">{{ helpers.striptags(entry.description) }}</h2>
 
       {% set image = entry.image.one() %}
       {% if image %}
@@ -30,10 +38,16 @@
       {% endif %}
     </header>
 
-    <div class="l-w100">
-      <div class="c-header__subtitle">
-        {{ helpers.striptags(entry.description) }}
+
+
+    {# -- CONTENT -- #}
+    <div class="c-blocks l-w100">
+      <div class="c-block__text">
+        {{ entry.body }}
       </div>
+    </div>
+
+    <div class="l-w100">
       <ins v-if="((index % 3) == 0)"
            class="adsbygoogle"
            style="display:block;margin:2rem 0;"
@@ -45,7 +59,9 @@
 
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
-  (adsbygoogle = window.adsbygoogle || []).push({});
+    [].forEach.call(document.querySelectorAll('.adsbygoogle'), function(){
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    });
   </script>
 
   {% endminify %}
