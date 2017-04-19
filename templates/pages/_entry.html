@@ -34,8 +34,19 @@
       <div class="c-header__subtitle">
         {{ helpers.striptags(entry.description) }}
       </div>
+      <ins v-if="((index % 3) == 0)"
+           class="adsbygoogle"
+           style="display:block;margin:2rem 0;"
+           data-ad-client="ca-pub-4242118293341339"
+           data-ad-slot="2717711005"
+           data-ad-format="auto"></ins>
     </div>
   </article>
+
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
 
   {% endminify %}
   {% endcache %}
