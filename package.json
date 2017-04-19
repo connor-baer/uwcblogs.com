@@ -1,7 +1,7 @@
 {
   "name": "uwcblogs",
-  "version": "3.3.0",
-  "description": "A collection of over 350 blogs written by UWC students in 28 languages from 76 countries at the 17 United World Colleges.",
+  "version": "4.0.0",
+  "description": "A collection of over 350 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
   "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

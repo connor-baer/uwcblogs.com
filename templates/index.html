@@ -1,6 +1,6 @@
 {#
  # Homepage template
- # ---------------
+ # -----------------
  #
  # See this page for more details on how Craft routes requests:
  # http://craftcms.com/docs/routing
@@ -49,6 +49,7 @@
 
     </header>
 
+    {# -- SEARCH FILTER -- #}
     <div class="l-w100">
       <fieldset class="c-input">
         <label class="c-input__label" for="search">Enter a college, year, country, language, or name:</label>
@@ -68,6 +69,7 @@
           </span>
         </div>
 
+        {# -- GOOGLE ADSENSE -- #}
         <ins v-if="((index % 4) == 0)"
              class="adsbygoogle"
              style="display:block;margin:2rem 0;"
