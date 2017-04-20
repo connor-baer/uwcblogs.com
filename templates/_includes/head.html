@@ -64,12 +64,16 @@ loadjs.ready('scripts', {
       html.classList.add('fonts-failed');
     });
 
-    const searchInput = document.getElementById('search');
-    if (searchInput) {
-      searchInput.addEventListener('focus', function () {
-        smoothScroll.animateScroll(searchInput, null, { offset: 64});
-      });
-    }
+    document.onreadystatechange = () => {
+      if (document.readyState === 'complete') {
+        const searchInput = document.getElementById('search');
+        if (searchInput) {
+          searchInput.addEventListener('focus', function () {
+            smoothScroll.animateScroll(searchInput, null, { offset: 64});
+          });
+        }
+      }
+    };
 
     console.info( 'Found a bug or want to contribute? Visit the GitHub repo: https://github.com/uwc/uwcblogs.' );
 
