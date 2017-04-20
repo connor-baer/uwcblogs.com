@@ -136,6 +136,13 @@ $choices-button-offset: .5rem;
 }
 
 
+// Form
+// ----
+.c-form {
+  position: relative;
+}
+
+
 // Input
 // ----
 .c-input {
@@ -155,7 +162,7 @@ $choices-button-offset: .5rem;
 
   box-shadow: 0 2px 4px rgba(0, 0, 0, .06);
 
-  .c-form--error & {
+  &.c-input--error {
     border-color: $oc-red-6;
   }
 }
@@ -167,6 +174,7 @@ $choices-button-offset: .5rem;
 input[type="text"],
 input[type="search"],
 input[type="email"],
+input[type="password"],
 input[type="number"],
 input[type="url"],
 input[type="tel"] {
@@ -203,8 +211,13 @@ input[type="tel"] {
     ~ .c-form-label {
       color: oc(primary);
     }
+
+    ~ .c-input__highlight {
+      animation: inputHighlighter $an-long;
+    }
   }
 }
+
 
 // Textarea
 // --------
@@ -281,10 +294,6 @@ input[type="select"] {
   pointer-events: none;
 }
 
-.c-form__input:focus ~ .c-form__highlight {
-  animation: inputHighlighter $an-long;
-}
-
 @keyframes inputHighlighter {
   from {
     background: oc(primary, 2);
@@ -314,7 +323,7 @@ input[type="select"] {
 
   color: $oc-red-6;
 
-  .c-form--error & {
+  .c-input--error & {
     display: block;
   }
 }
