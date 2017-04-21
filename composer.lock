@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "0dfedff7db27cd2a657df5c20c7d0eb5",
+    "content-hash": "bab881183e4e73304635345cd153f09f",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -1522,17 +1522,17 @@
             "time": "2017-03-25 05:29:43"
         },
         {
-            "name": "nystudio107/craft3-imageoptim",
+            "name": "nystudio107/craft3-imageoptimize",
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/nystudio107/craft3-imageoptim.git",
-                "reference": "43542c7b3e0d27103e0c1909573f0e32b1790f5d"
+                "url": "https://github.com/nystudio107/craft3-imageoptimize.git",
+                "reference": "cf9ae15a05f2e09cd40a710ebac36e261617964a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nystudio107/craft3-imageoptim/zipball/43542c7b3e0d27103e0c1909573f0e32b1790f5d",
-                "reference": "43542c7b3e0d27103e0c1909573f0e32b1790f5d",
+                "url": "https://api.github.com/repos/nystudio107/craft3-imageoptimize/zipball/cf9ae15a05f2e09cd40a710ebac36e261617964a",
+                "reference": "cf9ae15a05f2e09cd40a710ebac36e261617964a",
                 "shasum": ""
             },
             "require": {
@@ -1576,7 +1576,7 @@
                 "image",
                 "optimize"
             ],
-            "time": "2017-04-09 03:14:20"
+            "time": "2017-04-20 23:21:02"
         },
         {
             "name": "nystudio107/craft3-minify",
@@ -2020,16 +2020,16 @@
         },
         {
             "name": "swiftmailer/swiftmailer",
-            "version": "v5.4.6",
+            "version": "v5.4.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/swiftmailer/swiftmailer.git",
-                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e"
+                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
-                "reference": "81fdccfaf8bdc5d5d7a1ef6bb3a61bbb1a6c4a3e",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
+                "reference": "56db4ed32a6d5c9824c3ecc1d2e538f663f47eb4",
                 "shasum": ""
             },
             "require": {
@@ -2070,7 +2070,7 @@
                 "mail",
                 "mailer"
             ],
-            "time": "2017-02-13T07:52:53+00:00"
+            "time": "2017-04-20T17:32:18+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
@@ -2240,6 +2240,66 @@
                 "templating"
             ],
             "time": "2017-01-11T19:39:01+00:00"
+        },
+        {
+            "name": "venveo/maintenance-mode",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/venveo/craft3-maintenancemode.git",
+                "reference": "19ef126549f01ca6d95ecbf0050974d1fee3ecc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/venveo/craft3-maintenancemode/zipball/19ef126549f01ca6d95ecbf0050974d1fee3ecc4",
+                "reference": "19ef126549f01ca6d95ecbf0050974d1fee3ecc4",
+                "shasum": ""
+            },
+            "require": {
+                "craftcms/cms": "~3.0.0-beta.1"
+            },
+            "type": "craft-plugin",
+            "extra": {
+                "name": "Maintenance Mode",
+                "handle": "maintenanceMode",
+                "schemaVersion": "1.0.0",
+                "hasCpSettings": false,
+                "hasCpSection": false,
+                "changelogUrl": "https://raw.githubusercontent.com/venveo/maintenance-mode/master/CHANGELOG.md",
+                "class": "venveo\\maintenancemode\\MaintenanceMode"
+            },
+            "autoload": {
+                "psr-4": {
+                    "venveo\\maintenancemode\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Venveo",
+                    "homepage": "https://venveo.com"
+                },
+                {
+                    "name": "Ransom Roberson",
+                    "email": "ransom@venveo.com"
+                }
+            ],
+            "description": "Programmatically disable the website through command line",
+            "keywords": [
+                "cms",
+                "craft",
+                "craft-plugin",
+                "craftcms",
+                "maintenance mode"
+            ],
+            "support": {
+                "docs": "https://github.com/venveo/maintenance-mode/blob/master/README.md",
+                "issues": "https://github.com/venveo/maintenance-mode/issues",
+                "source": "https://github.com/venveo/craft3-maintenancemode/tree/master"
+            },
+            "time": "2017-04-21 18:56:08"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -2750,7 +2810,8 @@
         "vlucas/phpdotenv": 20,
         "roave/security-advisories": 20,
         "nystudio107/craft3-cookies": 20,
-        "nystudio107/craft3-imageoptim": 20
+        "nystudio107/craft3-imageoptimize": 20,
+        "venveo/maintenance-mode": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -19,15 +19,6 @@
     "rss": "https://craftcms.com/changelog.rss"
   },
   "minimum-stability": "beta",
-  "scripts": {
-    "post-root-package-install": [
-      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-    ]
-  },
-  "repositories": [{
-    "type": "composer",
-    "url": "https://asset-packagist.org"
-  }],
   "require": {
     "craftcms/cms": "3.0.0-beta.13",
     "craftcms/plugin-installer": "dev-master",
@@ -36,7 +27,25 @@
     "vlucas/phpdotenv": "^2.4@dev",
     "roave/security-advisories": "dev-master",
     "nystudio107/craft3-cookies": "dev-master",
-    "nystudio107/craft3-imageoptim": "dev-master",
-    "craftcms/element-api": "^2.0"
-  }
+    "nystudio107/craft3-imageoptimize": "dev-master",
+    "craftcms/element-api": "^2.0",
+    "venveo/maintenance-mode": "dev-master"
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "scripts": {
+    "post-root-package-install": [
+      "php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+    ]
+  },
+  "repositories": [{
+      "type": "composer",
+      "url": "https://asset-packagist.org"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/venveo/craft3-maintenancemode.git"
+    }
+  ]
 }
