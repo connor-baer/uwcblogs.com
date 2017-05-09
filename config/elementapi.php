@@ -1,4 +1,12 @@
 <?php
+/**
+ * API for uwcblogs.com
+ *
+ * The API follows the pattern: api/[items]?[params]
+ *
+ * @link      https://uwcblogs.com
+ * @copyright Copyright (c) 2017 Connor Bär
+ */
 
 use craft\elements\Entry;
 use craft\elements\Category;
