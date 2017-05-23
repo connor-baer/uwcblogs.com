@@ -20,7 +20,7 @@
   },
   "minimum-stability": "beta",
   "require": {
-    "craftcms/cms": "3.0.0-beta.13",
+    "craftcms/cms": "^3.0.0-beta.14",
     "craftcms/plugin-installer": "dev-master",
     "nystudio107/craft3-minify": "dev-master",
     "clubstudioltd/craft3-asset-rev": "dev-master",
