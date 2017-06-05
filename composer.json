@@ -28,7 +28,7 @@
     "roave/security-advisories": "dev-master",
     "nystudio107/craft3-cookies": "dev-master",
     "nystudio107/craft3-imageoptimize": "dev-master",
-    "craftcms/element-api": "^2.0",
+    "craftcms/element-api": "^2.4",
     "venveo/maintenance-mode": "dev-master"
   },
   "config": {
