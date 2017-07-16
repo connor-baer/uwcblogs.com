@@ -21,7 +21,7 @@
   "minimum-stability": "beta",
   "require": {
     "php": ">=7.0.0",
-    "craftcms/cms": "^3.0.0-beta.14",
+    "craftcms/cms": "^3.0.0-beta.22",
     "craftcms/plugin-installer": "^1.0.0",
     "nystudio107/craft3-minify": "^1.2",
     "clubstudioltd/craft3-asset-rev": "dev-master",
@@ -30,7 +30,8 @@
     "nystudio107/craft3-cookies": "^1.1",
     "nystudio107/craft3-imageoptimize": "^1.0",
     "craftcms/element-api": "^2.4",
-    "venveo/maintenance-mode": "dev-master"
+    "venveo/maintenance-mode": "dev-master",
+    "craftcms/guest-entries": "^2.0"
   },
   "config": {
     "optimize-autoloader": true

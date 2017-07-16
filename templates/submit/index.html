@@ -72,11 +72,12 @@
     </header>
 
     <div class="l-w100">
-      <form class="c-form" method="post" action="https://formspree.io/connor@uwcblogs.com" accept-charset="UTF-8">
+      <form class="c-form" method="post" action="" accept-charset="UTF-8">
+        {{ csrfInput() }}
         <div class="section-inputs">
-          <input type="hidden" name="_next" value="/success" />
-          <input type="hidden" name="_subject" value="New blog submission!" />
-          <input type="text" name="_gotcha" style="display:none" />
+          <input type="hidden" name="action" value="guest-entries/save">
+          <input type="hidden" name="redirect" value="success">
+          <input type="hidden" name="sectionId" value="3">
 
           <fieldset class="c-input {{ helpers.hasError(_context, 'blogFirstName') }}">
             <label class="c-input__label" for="firstName">What's your first name?</label>
