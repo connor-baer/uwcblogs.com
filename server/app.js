@@ -37,4 +37,4 @@ app.prepare().then(() => {
   });
 });
 
-export { app };
+export default app;

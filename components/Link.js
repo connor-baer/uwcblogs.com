@@ -1,5 +1,5 @@
-import { Link } from '../server/lib/routes';
+import { Link as CustomLink } from '../server/lib/routes';
 
-const WrappedLink = props => <Link {...props} />;
+const Link = props => <CustomLink {...props} />;
 
-export { WrappedLink as Link };
+export default Link;

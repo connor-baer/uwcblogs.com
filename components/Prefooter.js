@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'components/Link';
+import Link from './Link';
 import { colors, fonts } from '../styles';
 
 const Prefooter = ({ text, linkLabel, linkUrl }) => (
@@ -36,4 +36,4 @@ Prefooter.propTypes = {
   linkUrl: PropTypes.string
 };
 
-export { Prefooter };
+export default Prefooter;

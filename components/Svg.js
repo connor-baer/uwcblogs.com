@@ -33,4 +33,4 @@ Svg.propTypes = {
   className: PropTypes.string
 };
 
-export { Svg };
+export default Svg;

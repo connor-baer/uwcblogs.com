@@ -27,4 +27,4 @@ Main.propTypes = {
   sidebar: PropTypes.bool
 };
 
-export { Main };
+export default Main;

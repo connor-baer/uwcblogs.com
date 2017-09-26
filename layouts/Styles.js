@@ -393,34 +393,8 @@ const Styles = () => (
 
         content: '';
       }
-
-      /* loading progress bar styles */
-      #nprogress {
-        pointer-events: none;
-
-        & .bar {
-          background: ${colors.primary};
-          position: fixed;
-          z-index: 1031;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-        }
-
-        & .peg {
-          display: block;
-          position: absolute;
-          right: 0px;
-          width: 100px;
-          height: 100%;
-          box-shadow: 0 0 10px ${colors.primary}, 0 0 5px ${colors.primary};
-          opacity: 1;
-          transform: rotate(3deg) translate(0px, -4px);
-        }
-      }
     `}</style>
   </div>
 );
 
-export { Styles };
+export default Styles;

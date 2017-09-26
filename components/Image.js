@@ -63,4 +63,4 @@ Image.propTypes = {
   responsive: PropTypes.bool
 };
 
-export { Image };
+export default Image;

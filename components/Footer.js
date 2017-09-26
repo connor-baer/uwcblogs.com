@@ -58,4 +58,4 @@ Footer.propTypes = {
   description: PropTypes.string
 };
 
-export { Footer };
+export default Footer;

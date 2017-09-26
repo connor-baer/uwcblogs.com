@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Link } from 'components/Link';
+import Link from './Link';
 import { animations, colors, fonts } from '../styles';
 
 const Logo = ({ siteName, siteUrl, isHome }) => (
@@ -47,4 +47,4 @@ Logo.propTypes = {
   isHome: PropTypes.bool
 };
 
-export { Logo };
+export default Logo;

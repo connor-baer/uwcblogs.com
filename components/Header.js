@@ -77,4 +77,4 @@ Header.propTypes = {
   subtitle: PropTypes.string
 };
 
-export { Header };
+export default Header;

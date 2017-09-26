@@ -2,14 +2,14 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'next/router';
 import classNames from 'classnames';
-import { Link } from 'components/Link';
-import { Svg } from 'components/Svg';
-import { Logo } from 'components/Logo';
+import Link from './Link';
+import Svg from './Svg';
+import Logo from './Logo';
 import { animations, breakpoints, colors, fonts } from '../styles';
 
 class Navigation extends Component {
   componentDidMount() {
-    console.log('hello');
+    console.log('Navigation mounted');
   }
 
   render() {
@@ -142,6 +142,4 @@ Navigation.propTypes = {
   router: PropTypes.object
 };
 
-const n = withRouter(Navigation);
-
-export { n as Navigation };
+export default withRouter(Navigation);
