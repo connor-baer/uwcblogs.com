@@ -1,8 +1,8 @@
 # Project #
 ############
-config.js
 data/*
 .next
+.env*
 .esm-cache
 
 # Install by running `npm install` #
