@@ -16,7 +16,7 @@ const Main = ({ children, sidebar }) => (
         width: 100vw;
 
         @media (min-width: ${breakpoints.large}) {
-          width: calc(100vw - 20rem);
+          width: 50vw;
         }
       }
     `}</style>

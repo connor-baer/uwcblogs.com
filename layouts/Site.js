@@ -25,7 +25,7 @@ class Site extends Component {
     const { name, domain } = site;
     return (
       <div>
-        <Meta title={title} />
+        <Meta title={title} name={name} />
         <Navigation name={name} domain={domain} sidebar={sidebar} />
 
         {Children.map(children, child =>

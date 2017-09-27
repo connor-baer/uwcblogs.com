@@ -14,8 +14,8 @@ class Navigation extends Component {
 
   render() {
     const {
-      siteUrl,
-      siteName,
+      domain,
+      name,
       isHome = false,
       links = [
         { url: '/blog', label: 'Blog' },
@@ -29,7 +29,7 @@ class Navigation extends Component {
         className={classNames('navigation', { 'navigation--sidebar': sidebar })}
       >
         <div className="l-ctnr l-flex">
-          <Logo siteUrl={siteUrl} siteName={siteName} isHome={isHome} />
+          <Logo domain={domain} name={name} isHome={isHome} />
 
           <nav>
             <ul>
@@ -77,7 +77,7 @@ class Navigation extends Component {
             width: 100vw;
 
             @media (min-width: ${breakpoints.large}) {
-              width: calc(100vw - 20rem);
+              width: 50vw;
             }
           }
 

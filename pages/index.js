@@ -1,35 +1,30 @@
 import { Component } from 'react';
-import api from '../services/api';
+import api, { unpackData } from '../services/api';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
 import Header from '../components/Header';
 import Link from '../components/Link';
+import Blogs from '../components/Blogs';
 import Prefooter from '../components/Prefooter';
 
 export default class Page extends Component {
   static async getInitialProps({ req, query }) {
     const site = await api.getEntry('wL0L3aRGsSsCGqOOSGmUE');
-    const entries = await api.getEntries({ content_type: 'blog' });
-    const { items: blogs } = entries;
+    const blogs = await api.getEntries({ content_type: 'blog', include: 2 });
     return { site, blogs };
   }
 
   render() {
     const { site, blogs } = this.props;
     return (
-      <Site site={site}>
+      <Site site={site} sidebar={true}>
         <Main>
-          <Header title="no" subtitle="what" />
+          <Header
+            title={site.name}
+            subtitle={`A collection of ${blogs.length} blogs written by UWC students in {languages.length} languages from {countries.length} countries at the {colleges.length} United World Colleges.`}
+          />
           <div className="l-ctnr cf">
-            {blogs.map((blog, i) => {
-              const { firstName, lastName } = blog.fields;
-              return (
-                <div key={i}>
-                  <span>{firstName} </span>
-                  <span>{lastName}</span>
-                </div>
-              );
-            })}
+            <Blogs blogs={blogs} />
           </div>
           <Prefooter
             text="Let’s be friends!"

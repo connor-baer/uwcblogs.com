@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import Link from './Link';
 import { animations, colors, fonts } from '../styles';
 
-const Logo = ({ siteName, siteUrl, isHome }) => (
+const Logo = ({ domain, name, isHome }) => (
   <div>
-    <Link href={`${siteUrl}${isHome ? '#' : ''}`} prefetch>
-      <a title="Home">{siteName}</a>
+    <Link href={`${domain}${isHome ? '#' : ''}`} prefetch>
+      <a title="Home">{name}</a>
     </Link>
     <style jsx>{`
       a {
