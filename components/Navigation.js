@@ -13,20 +13,12 @@ class Navigation extends Component {
   }
 
   render() {
-    const {
-      domain,
-      name,
-      isHome = false,
-      links = [
-        { url: '/blog', label: 'Blog' },
-        { url: '/food', label: 'Food' }
-      ],
-      router,
-      sidebar
-    } = this.props;
+    const { domain, name, isHome, links, router, hasSidebar } = this.props;
     return (
       <header
-        className={classNames('navigation', { 'navigation--sidebar': sidebar })}
+        className={classNames('navigation', {
+          'navigation--sidebar': hasSidebar
+        })}
       >
         <div className="l-ctnr l-flex">
           <Logo domain={domain} name={name} isHome={isHome} />
@@ -137,9 +129,15 @@ Navigation.propTypes = {
   siteUrl: PropTypes.string,
   siteName: PropTypes.string,
   isHome: PropTypes.bool,
-  sidebar: PropTypes.bool,
+  hasSidebar: PropTypes.bool,
   links: PropTypes.array,
   router: PropTypes.object
+};
+
+Navigation.defaultProps = {
+  isHome: false,
+  hasSidebar: false,
+  links: []
 };
 
 export default withRouter(Navigation);

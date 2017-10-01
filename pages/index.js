@@ -1,28 +1,32 @@
 import { Component } from 'react';
-import api, { unpackData } from '../services/api';
+import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
 import Header from '../components/Header';
-import Link from '../components/Link';
 import Blogs from '../components/Blogs';
 import Prefooter from '../components/Prefooter';
 
 export default class Page extends Component {
   static async getInitialProps({ req, query }) {
-    const site = await api.getEntry('wL0L3aRGsSsCGqOOSGmUE');
-    const blogs = await api.getEntries({ content_type: 'blog', include: 2 });
-    return { site, blogs };
+    const { protocol, url } = req || {};
+    const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
+    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
+    const page = await fetch(`${siteUrl}/api/page${url}`).then(resp =>
+      resp.json()
+    );
+    const blogs = await fetch(`${siteUrl}/api/blogs`).then(resp => resp.json());
+
+    return { site, page, blogs };
   }
 
   render() {
-    const { site, blogs } = this.props;
+    const { site, page, blogs } = this.props;
+    const { title, subtitle } = page;
+
     return (
       <Site site={site} sidebar={true}>
         <Main>
-          <Header
-            title={site.name}
-            subtitle={`A collection of ${blogs.length} blogs written by UWC students in {languages.length} languages from {countries.length} countries at the {colleges.length} United World Colleges.`}
-          />
+          <Header title={title} subtitle={subtitle} />
           <div className="l-ctnr cf">
             <Blogs blogs={blogs} />
           </div>

@@ -1,7 +1,7 @@
 import { Component, Children, cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
-import { Router } from '../server/lib/routes';
+import { Router } from '../server/routes/next';
 import Meta from './Meta';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
@@ -26,7 +26,7 @@ class Site extends Component {
     return (
       <div>
         <Meta title={title} name={name} />
-        <Navigation name={name} domain={domain} sidebar={sidebar} />
+        <Navigation name={name} domain={domain} hasSidebar={sidebar} />
 
         {Children.map(children, child =>
           cloneElement(child, { sidebar: this.state.sidebar })

@@ -1,8 +1,7 @@
 {
   "name": "uwcblogs",
   "version": "5.0.0",
-  "description":
-    "A collection of over 370 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
+  "description": "A collection of over 370 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
   "main": "app.js",
   "scripts": {
     "build": "npm run prebuild && NODE_ENV=production next build",
@@ -11,8 +10,7 @@
     "fix": "npm run fix:prettier; npm run fix:eslint",
     "fix:eslint": "eslint --fix --quiet \"**/*.js\" \"**/*.js\"",
     "fix:prettier": "prettier --single-quote --write \"**/*.js\" \"**/*.js\"",
-    "sprites":
-      "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
+    "sprites": "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
     "start": "NODE_ENV=production node index.js",
     "prebuild": "npm run clean && npm run sprites",
     "precommit": "lint-staged"
@@ -21,7 +19,12 @@
     "type": "git",
     "url": "git+https://github.com/uwc/uwcblogs.git"
   },
-  "keywords": ["uwc", "blog", "blogs", "list"],
+  "keywords": [
+    "uwc",
+    "blog",
+    "blogs",
+    "list"
+  ],
   "author": "Connor Bär, connor-baer <hello@connorbaer.co>",
   "license": "MIT",
   "bugs": {
@@ -29,7 +32,10 @@
   },
   "homepage": "https://uwcblogs.com",
   "lint-staged": {
-    "*.js": ["npm run fix:prettier", "git add"]
+    "*.js": [
+      "npm run fix:prettier",
+      "git add"
+    ]
   },
   "dependencies": {
     "@std/esm": "^0.8.3",
@@ -40,17 +46,21 @@
     "choices.js": "^2.7.8",
     "classnames": "^2.2.5",
     "contentful": "^4.6.2",
-    "express": "^4.15.4",
+    "dotenv": "^4.0.0",
+    "dotenv-webpack": "^1.5.4",
+    "express": "^4.16.1",
     "fg-loadcss": "^1.3.1",
     "fontfaceobserver": "^2.0.9",
     "isomorphic-fetch": "^2.2.1",
+    "ladda-cache": "^0.1.4",
+    "ladda-logger": "^0.2.7",
     "lazysizes": "^3.0.0-rc4",
     "list.js": "^1.4.0",
     "loadjs": "^3.4.0",
     "lodash": "^4.17.4",
     "mappy-breakpoints": "^0.2.3",
-    "morgan": "^1.8.2",
-    "next": "^3.2.2",
+    "morgan": "^1.9.0",
+    "next": "^4.0.0-beta.2",
     "next-routes": "^1.0.40",
     "normalize.css": "^6.0.0",
     "nprogress": "^0.2.0",
@@ -61,8 +71,8 @@
     "postcss-cssnext": "^2.11.0",
     "prismjs": "^1.6.0",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-tabs": "^2.0.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "styled-jsx-postcss": "^0.2.0",
@@ -76,7 +86,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
-    "eslint": "^4.6.1",
+    "eslint": "^4.8.0",
     "eslint-config-airbnb": "^15.1.0",
     "eslint-config-airbnb-base": "^11.3.2",
     "eslint-config-prettier": "^2.3.0",
@@ -90,7 +100,7 @@
     "husky": "^0.13.4",
     "lint-staged": "^3.6.0",
     "nodemon": "^1.12.1",
-    "prettier": "^1.4.1",
+    "prettier": "^1.7.3",
     "yargs": "^9.0.1"
   }
 }

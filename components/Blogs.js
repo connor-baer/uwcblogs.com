@@ -1,16 +1,6 @@
 import { Component } from 'react';
-import {
-  chain,
-  filter,
-  groupBy,
-  includes,
-  map,
-  reduce,
-  sortBy,
-  toPairs,
-  zipObject
-} from 'lodash';
-import Link from '../components/Link';
+import { chain, sortBy, toPairs, zipObject } from 'lodash';
+import BlogItem from '../components/BlogItem';
 
 export default class Blogs extends Component {
   constructor(props) {
@@ -19,25 +9,6 @@ export default class Blogs extends Component {
       search: ''
     };
   }
-
-  filterBlogs = blogs =>
-    filter(blogs, blog => {
-      const lowercaseSearch = this.state.search.toLowerCase();
-      if (lowercaseSearch === '') {
-        return true;
-      }
-      const lowercaseValues = reduce(
-        blog,
-        (result, value, key) => {
-          if (typeof value === 'string') {
-            result.push(value.toLowerCase());
-          }
-          return result;
-        },
-        []
-      );
-      return lowercaseValues.some(value => includes(lowercaseSearch, value));
-    });
 
   group = (blogs, property) =>
     chain(blogs)
@@ -58,8 +29,7 @@ export default class Blogs extends Component {
 
   render() {
     const { blogs } = this.props;
-    const filteredBlogs = this.filterBlogs(blogs);
-    const orderedBlogs = this.orderBlogs(filteredBlogs);
+    const orderedBlogs = this.orderBlogs(blogs);
     return (
       <div>
         {orderedBlogs.map((collegeGroup, collegeIndex) => {
@@ -74,14 +44,9 @@ export default class Blogs extends Component {
                     <li key={yearIndex}>
                       <h3>{year}</h3>
                       <ul>
-                        {blogs.map((blog, blogIndex) => {
-                          const { firstName, lastName } = blog;
-                          return (
-                            <div key={blogIndex}>
-                              <span>{firstName}</span>
-                            </div>
-                          );
-                        })}
+                        {blogs.map((blog, blogIndex) => (
+                          <BlogItem key={blogIndex} {...blog} />
+                        ))}
                       </ul>
                     </li>
                   );
