@@ -7,7 +7,6 @@ const router = express.Router();
 
 function filterBlogs(blogs, search) {
   return filter(blogs, blog => {
-    console.log(blog);
     const lowercaseSearch = search.toLowerCase();
     if (lowercaseSearch === '') {
       return true;
@@ -22,7 +21,7 @@ function filterBlogs(blogs, search) {
       },
       []
     );
-    return lowercaseValues.some(value => includes(lowercaseSearch, value));
+    return lowercaseValues.some(value => includes(value, lowercaseSearch));
   });
 }
 

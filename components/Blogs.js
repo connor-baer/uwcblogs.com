@@ -1,14 +1,40 @@
 import { Component } from 'react';
-import { chain, sortBy, toPairs, zipObject } from 'lodash';
+import PropTypes from 'prop-types';
+import { chain, sortBy, zipObject } from 'lodash';
+import fetch from 'isomorphic-fetch';
 import BlogItem from '../components/BlogItem';
 
 export default class Blogs extends Component {
+  static propTypes = {
+    blogs: PropTypes.arrayOf(PropTypes.object)
+  };
+
   constructor(props) {
     super(props);
     this.state = {
-      search: ''
+      search: '',
+      blogs: []
     };
   }
+
+  componentDidMount() {
+    const { blogs } = this.props;
+    this.setState({ blogs });
+  }
+
+  handleSearch = async e => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    e.persist();
+    const { href: siteUrl } = window.location;
+    const { value: search } = e.target;
+    this.setState(() => ({ search }));
+    const blogs = await fetch(
+      `${siteUrl}api/blogs?search=${search}`
+    ).then(resp => resp.json());
+    this.setState(() => ({ blogs }));
+  };
 
   group = (blogs, property) =>
     chain(blogs)
@@ -28,10 +54,15 @@ export default class Blogs extends Component {
   };
 
   render() {
-    const { blogs } = this.props;
+    const { blogs } = this.state;
     const orderedBlogs = this.orderBlogs(blogs);
     return (
       <div>
+        <input
+          type="search"
+          value={this.state.search}
+          onChange={this.handleSearch}
+        />
         {orderedBlogs.map((collegeGroup, collegeIndex) => {
           const { college, years } = collegeGroup;
           return (
