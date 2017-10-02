@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import Link from '../components/Link';
+import { animations, colors, fonts } from '../styles';
 
-const BlogItem = ({ firstName, url, languages, countries, college }) => {
+const BlogItem = ({ firstName, url, languages, countries }) => {
   const languagesString = languages.map(l => l.name).join(', ');
   const countriesString = countries.map(c => c.name).join(', ');
   return (
@@ -11,7 +12,24 @@ const BlogItem = ({ firstName, url, languages, countries, college }) => {
           {firstName}
         </a>
       </Link>
-      {` | ${countriesString} - ${languagesString}`}
+      {` ${countriesString} — ${languagesString}`}
+      <style jsx>{`
+        div {
+          font-size: ${fonts.size.s0};
+          display: block;
+        }
+
+        a {
+          transition: box-shadow ${animations.short};
+          color: ${colors.primary};
+          font-weight: ${fonts.weight.bold};
+
+          &:hover,
+          &:focus {
+            box-shadow: inset 0 -0.08em 0 0 ${colors.primary};
+          }
+        }
+      `}</style>
     </div>
   );
 };

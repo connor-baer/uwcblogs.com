@@ -2,7 +2,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { chain, sortBy, zipObject } from 'lodash';
 import fetch from 'isomorphic-fetch';
-import BlogItem from '../components/BlogItem';
+import Input from '../components/Input';
+import CollegeGroup from '../components/CollegeGroup';
 
 export default class Blogs extends Component {
   static propTypes = {
@@ -27,9 +28,10 @@ export default class Blogs extends Component {
       return;
     }
     e.persist();
-    const { href: siteUrl } = window.location;
     const { value: search } = e.target;
     this.setState(() => ({ search }));
+
+    const { href: siteUrl } = window.location;
     const blogs = await fetch(
       `${siteUrl}api/blogs?search=${search}`
     ).then(resp => resp.json());
@@ -57,35 +59,26 @@ export default class Blogs extends Component {
     const { blogs } = this.state;
     const orderedBlogs = this.orderBlogs(blogs);
     return (
-      <div>
-        <input
+      <div className="l-w100">
+        <Input
+          label="Enter a college, year, country, language, or name:"
+          name="search"
           type="search"
           value={this.state.search}
+          placeholder="Type to filter the blogs..."
           onChange={this.handleSearch}
+          autoComplete={false}
+          required
         />
-        {orderedBlogs.map((collegeGroup, collegeIndex) => {
-          const { college, years } = collegeGroup;
-          return (
-            <div key={collegeIndex}>
-              <h2>{college}</h2>
-              <ul>
-                {years.map((yearGroup, yearIndex) => {
-                  const { year, blogs } = yearGroup;
-                  return (
-                    <li key={yearIndex}>
-                      <h3>{year}</h3>
-                      <ul>
-                        {blogs.map((blog, blogIndex) => (
-                          <BlogItem key={blogIndex} {...blog} />
-                        ))}
-                      </ul>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          );
-        })}
+        {orderedBlogs.map((collegeGroup, collegeIndex) => (
+          <CollegeGroup key={collegeIndex} {...collegeGroup} />
+        ))}
+        <style jsx>{`
+          div {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+          }
+        `}</style>
       </div>
     );
   }
