@@ -12,3 +12,10 @@ I strive to make the list as extensive as possible so that everybody can find a 
 ## Getting started
 
 [UWC Blogs](https://uwcblogs.com) is powered by [Contentful](https://contentful.com) and built with [NextJS](https://github.com/zeit/next.js/) and a lot of 💜.
+
+
+## To Do
+
+- Submit a blog
+- Validate blogs
+- Edit your own blog

@@ -6,7 +6,7 @@ const BlogItem = ({ firstName, url, languages, countries }) => {
   const languagesString = languages.map(l => l.name).join(', ');
   const countriesString = countries.map(c => c.name).join(', ');
   return (
-    <div>
+    <li>
       <Link href={url}>
         <a target="_blank" rel="noreferrer">
           {firstName}
@@ -30,7 +30,7 @@ const BlogItem = ({ firstName, url, languages, countries }) => {
           }
         }
       `}</style>
-    </div>
+    </li>
   );
 };
 

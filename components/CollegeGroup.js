@@ -8,7 +8,7 @@ const CollegeGroup = ({ college, years }) => {
     return null;
   }
   return (
-    <div>
+    <section>
       <h2>{college}</h2>
       <ul>
         {years.map((yearGroup, yearIndex) => (
@@ -18,12 +18,13 @@ const CollegeGroup = ({ college, years }) => {
       <style jsx>{`
         h2 {
           font-size: ${fonts.size.t3};
+          font-weight: ${fonts.weight.bold};
+          line-height: ${fonts.lineHeight.small};
           margin-top: 3rem;
           margin-bottom: 1rem;
-          font-weight: ${fonts.weight.bold};
         }
       `}</style>
-    </div>
+    </section>
   );
 };
 

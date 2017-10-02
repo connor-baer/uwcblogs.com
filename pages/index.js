@@ -3,7 +3,7 @@ import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
 import Header from '../components/Header';
-import Blogs from '../components/Blogs';
+import BlogsContainer from '../components/BlogsContainer';
 import Prefooter from '../components/Prefooter';
 
 export default class Page extends Component {
@@ -27,9 +27,7 @@ export default class Page extends Component {
       <Site site={site} sidebar={true}>
         <Main>
           <Header title={title} subtitle={subtitle} />
-          <div className="l-ctnr cf">
-            <Blogs blogs={blogs} />
-          </div>
+          <BlogsContainer blogs={blogs} />
           <Prefooter
             text="Let’s be friends!"
             linkLabel="Say hi!"
