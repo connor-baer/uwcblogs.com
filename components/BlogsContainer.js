@@ -12,8 +12,12 @@ export default class BlogsContainer extends Component {
 
   constructor(props) {
     super(props);
+    let search = '';
+    if (typeof window !== 'undefined') {
+      search = window.location.hash ? window.location.hash.substring(1) : '';
+    }
     this.state = {
-      search: '',
+      search,
       loading: false,
       blogs: []
     };
@@ -24,6 +28,24 @@ export default class BlogsContainer extends Component {
     this.setState({ blogs });
   }
 
+  setHash = value => {
+    if (typeof document === 'undefined') {
+      return;
+    }
+    const hash = encodeURIComponent(value);
+
+    if (hash !== '') {
+      window.location.hash = hash;
+    } else {
+      // Remove trailing # to prevent scrolling
+      history.replaceState(
+        '',
+        document.title,
+        window.location.pathname + window.location.search
+      );
+    }
+  };
+
   handleSearch = async e => {
     if (typeof window === 'undefined') {
       return;
@@ -31,10 +53,11 @@ export default class BlogsContainer extends Component {
     e.persist();
     const { value: search } = e.target;
     this.setState(() => ({ search, loading: true }));
+    this.setHash(search);
 
-    const { href: siteUrl } = window.location;
+    const { origin: siteUrl } = window.location;
     const blogs = await fetch(
-      `${siteUrl}api/blogs?search=${search}`
+      `${siteUrl}/api/blogs?search=${search}`
     ).then(resp => resp.json());
     this.setState(() => ({ blogs, loading: false }));
   };

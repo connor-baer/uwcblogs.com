@@ -36,12 +36,10 @@ class Spinner extends Component {
         {label}
         <style jsx>{`
           @keyframes rotateSpinner {
-            0%,
-            33% {
+            0% {
               transform: rotate(0deg);
             }
 
-            66%,
             100% {
               transform: rotate(359deg);
             }
@@ -56,9 +54,14 @@ class Spinner extends Component {
 
             &::before {
               display: inline-block;
-              content: '⏳';
-              animation: rotateSpinner 1.2s infinite ease-in-out;
+              content: '';
+              border: 2px solid ${colors.gray[4]};
+              border-top: 2px solid ${colors.primary};
+              border-radius: 50%;
+              animation: rotateSpinner 0.5s infinite linear;
               transform-origin: 50% 50%;
+              width: 1em;
+              height: 1em;
               margin-right: 0.25rem;
             }
           }
@@ -77,7 +80,7 @@ Spinner.propTypes = {
 Spinner.defaultProps = {
   label: 'Loading...',
   active: false,
-  timer: 1500
+  timer: 2000
 };
 
 export default Spinner;

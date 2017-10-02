@@ -1,18 +1,16 @@
 import PropTypes from 'prop-types';
-import { colors, fonts, animations } from '../styles';
+import classNames from 'classnames';
+import { breakpoints, colors, fonts, animations } from '../styles';
 
-const Footer = ({
-  siteName = 'Connor Bär',
-  siteEmail = 'hello@connorbaer.co'
-}) => (
-  <footer>
+const Footer = ({ name, email, hasSidebar }) => (
+  <footer className={classNames({ hasSidebar })}>
     <small className="l-w100">
       <span>
-        {`© ${new Date().getFullYear()} ${siteName}. All rights reserved.`}
+        {`© ${new Date().getFullYear()} ${name}. All rights reserved.`}
       </span>·<span>
         {`Email: `}
         <a href="mailto:hello@connorbaer.co" title="Send an email">
-          {siteEmail}
+          {email}
         </a>
       </span>·<span>
         <a href="/legal">Legal</a>
@@ -21,6 +19,14 @@ const Footer = ({
     <style jsx>{`
       footer {
         background-color: ${colors.gray[0]};
+      }
+
+      .hasSidebar {
+        width: 100vw;
+
+        @media (min-width: ${breakpoints.large}) {
+          width: 50vw;
+        }
       }
 
       small {

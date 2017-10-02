@@ -20,7 +20,7 @@ const Site = ({ title, site, children, sidebar }) => {
 
       {Children.map(children, child => cloneElement(child, { sidebar }))}
 
-      <Footer />
+      <Footer name={name} email="hello@connorbaer.co" hasSidebar={sidebar} />
       <style jsx>{`
         #nprogress {
           pointer-events: none;

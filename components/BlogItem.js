@@ -8,7 +8,7 @@ const BlogItem = ({ firstName, url, languages, countries }) => {
   return (
     <li>
       <Link href={url}>
-        <a target="_blank" rel="noreferrer">
+        <a target="_blank" rel="noopener noreferrer">
           {firstName}
         </a>
       </Link>

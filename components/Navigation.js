@@ -15,11 +15,7 @@ class Navigation extends Component {
   render() {
     const { domain, name, isHome, links, router, hasSidebar } = this.props;
     return (
-      <header
-        className={classNames('navigation', {
-          'navigation--sidebar': hasSidebar
-        })}
-      >
+      <header className={classNames({ hasSidebar })}>
         <div className="l-ctnr l-flex">
           <Logo domain={domain} name={name} isHome={isHome} />
 
@@ -49,7 +45,7 @@ class Navigation extends Component {
           </nav>
         </div>
         <style jsx>{`
-          .navigation {
+          header {
             position: fixed;
             top: 0;
             right: 0;
@@ -65,7 +61,7 @@ class Navigation extends Component {
             z-index: 999;
           }
 
-          .navigation--sidebar {
+          .hasSidebar {
             width: 100vw;
 
             @media (min-width: ${breakpoints.large}) {
@@ -126,12 +122,12 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  siteUrl: PropTypes.string,
-  siteName: PropTypes.string,
+  domain: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   isHome: PropTypes.bool,
   hasSidebar: PropTypes.bool,
   links: PropTypes.array,
-  router: PropTypes.object
+  router: PropTypes.object.isRequired
 };
 
 Navigation.defaultProps = {
