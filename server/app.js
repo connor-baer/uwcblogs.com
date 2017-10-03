@@ -7,6 +7,7 @@ import logger from './lib/logger';
 import routes from './routes/next';
 import cache from './routes/cache';
 import site from './routes/site';
+import single from './routes/single';
 import page from './routes/page';
 import blogs from './routes/blogs';
 
@@ -30,6 +31,7 @@ app.prepare().then(() => {
 
   server.use('/api/cache', cache);
   server.use('/api/site', site);
+  server.use('/api/single', single);
   server.use('/api/page', page);
   server.use('/api/blogs', blogs);
   server.use(handler);

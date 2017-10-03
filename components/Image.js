@@ -1,32 +1,36 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { animations } from '../styles';
+import queryString from 'query-string';
 
 const Image = ({
   src,
+  format,
+  progressive,
   sizes,
   alt,
   caption,
-  width = '100%',
-  height = 'auto',
-  className,
-  responsive = null,
-  cover = false
+  width,
+  height,
+  cover
 }) => {
   if (!src) {
     return null;
   }
-  const index = src.lastIndexOf('.');
-  const [filename, format] = [src.slice(0, index), src.slice(index + 1)];
-  const srcSet =
-    responsive && `${filename}.${format} 1000w, ${filename}@2x.${format} 2000w`;
+  if (progressive && format !== 'jpg') {
+    throw Error('Only jpgs can be progressive.');
+  }
+  const query = queryString.stringify({
+    fm: format,
+    fl: progressive && 'progressive'
+  });
+  const srcSet = `${src}?${query} 1000w, ${src}?${query} 2000w`;
   return (
-    <figure className={classNames(classNames, { cover })}>
+    <div className={classNames({ cover })}>
       <img
         src={src}
         srcSet={srcSet}
         sizes={sizes}
-        style={{ width, height }}
+        style={{ width, height: cover ? '100%' : height }}
         alt={alt}
       />
       {caption && <figcaption>{caption}</figcaption>}
@@ -48,19 +52,27 @@ const Image = ({
           }
         }
       `}</style>
-    </figure>
+    </div>
   );
 };
 
 Image.propTypes = {
   src: PropTypes.string,
+  format: PropTypes.oneOf(['jpg', 'png', 'webp']),
+  progressive: PropTypes.bool,
   sizes: PropTypes.string,
   alt: PropTypes.string,
   caption: PropTypes.string,
   width: PropTypes.string,
   height: PropTypes.string,
-  className: PropTypes.string,
-  responsive: PropTypes.bool
+  cover: PropTypes.bool
+};
+
+Image.defaultProps = {
+  format: 'jpg',
+  width: '100%',
+  height: 'auto',
+  cover: false
 };
 
 export default Image;

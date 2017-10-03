@@ -1,19 +1,38 @@
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { breakpoints, colors, fonts } from '../styles';
+import Image from './Image';
 
-const Header = ({ title, subtitle, children }) => (
+const Header = ({ title, subtitle, image, children }) => (
   <section className="l-ctnr">
     <header className="l-w100">
-      {title && <h1 className={subtitle ? 'color' : ''}>{`${title}  `}</h1>}
+      <h1 className={classNames({ color: subtitle })}>{`${title}  `}</h1>
       {subtitle && <h2>{subtitle}</h2>}
       {children}
+
+      {image && (
+        <figure>
+          <Image
+            src={image.file.url}
+            sizes="(min-width: 60em) 50vw"
+            alt={image.description}
+            responsive
+            cover
+          />
+        </figure>
+      )}
     </header>
 
     <style jsx>{`
       header {
         max-width: calc(60rem / 4 * 3);
-        margin-top: 4rem;
-        margin-bottom: 4rem;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+
+        @media (min-width: ${breakpoints.medium}) {
+          margin-top: 5rem;
+          margin-bottom: 5rem;
+        }
       }
 
       h1 {
@@ -50,23 +69,17 @@ const Header = ({ title, subtitle, children }) => (
         color: ${colors.gray[6]};
       }
 
-      img {
-        height: 12rem;
-        font-family: 'object-fit: cover';
-        object-fit: cover;
-      }
-
-      .c-header__image--split {
+      figure {
         @media (min-width: ${breakpoints.large}) {
-          position: fixed;
+          position: fixed !important;
           top: 0;
           right: 0;
           width: 50vw;
-
-          img {
-            height: 100vh;
-          }
+          height: 100vh;
+          display: block;
         }
+
+        display: none;
       }
     `}</style>
   </section>
@@ -74,7 +87,13 @@ const Header = ({ title, subtitle, children }) => (
 
 Header.propTypes = {
   title: PropTypes.string,
-  subtitle: PropTypes.string
+  subtitle: PropTypes.string,
+  image: PropTypes.shape({
+    title: PropTypes.string,
+    description: PropTypes.string,
+    file: PropTypes.object
+  }),
+  children: PropTypes.node
 };
 
 export default Header;

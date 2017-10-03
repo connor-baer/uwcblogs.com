@@ -301,6 +301,11 @@ const Styles = () => (
           padding-right: 1.5rem;
           padding-left: 1.5rem;
         }
+
+        @media (min-width: ${breakpoints.large}) {
+          padding-right: 3rem;
+          padding-left: 3rem;
+        }
       }
 
       .l-flex {

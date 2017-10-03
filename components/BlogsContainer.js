@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import queryString from 'query-string';
 import fetch from 'isomorphic-fetch';
 import Input from './Input';
 import Spinner from './Spinner';
@@ -14,7 +15,8 @@ export default class BlogsContainer extends Component {
     super(props);
     let search = '';
     if (typeof window !== 'undefined') {
-      search = window.location.hash ? window.location.hash.substring(1) : '';
+      const parsed = queryString.parse(window.location.search);
+      search = parsed.search;
     }
     this.state = {
       search,
