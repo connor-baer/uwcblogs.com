@@ -28,9 +28,12 @@ export default class BlogsContainer extends Component {
 
   componentDidMount() {
     if (typeof window !== 'undefined') {
-      const hash = queryString.parse(location.hash);
-      this.setState({ search: hash.search });
-      this.updateBlogs(hash.search);
+      const { search } = queryString.parse(location.hash);
+      if (!search) {
+        return;
+      }
+      this.setState({ search });
+      this.updateBlogs(search);
     }
   }
 
