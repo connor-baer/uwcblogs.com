@@ -11,8 +11,8 @@ const BlogItem = ({ firstName, url, languages, countries }) => {
         <a target="_blank" rel="noopener noreferrer">
           {firstName}
         </a>
-      </Link>
-      {` ${countriesString} — ${languagesString}`}
+      </Link>&ensp;
+      {`${countriesString} — ${languagesString}`}
       <style jsx>{`
         div {
           font-size: ${fonts.size.s0};

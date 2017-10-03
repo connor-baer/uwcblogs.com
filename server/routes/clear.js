@@ -5,7 +5,7 @@ import { asyncMiddleware } from '../lib/helpers';
 
 const router = express.Router();
 
-/* GET blogs */
+/* GET clear cache */
 router.get(
   '/',
   asyncMiddleware(async (req, res, next) => {

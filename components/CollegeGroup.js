@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import { isEmpty, sortBy } from 'lodash';
 import { fonts } from '../styles';
 import YearGroup from './YearGroup';
 
@@ -7,11 +7,12 @@ const CollegeGroup = ({ college, years }) => {
   if (isEmpty(years)) {
     return null;
   }
+  const sortedYears = sortBy(years, 'year').reverse();
   return (
     <section>
       <h2>{college}</h2>
       <ul>
-        {years.map((yearGroup, yearIndex) => (
+        {sortedYears.map((yearGroup, yearIndex) => (
           <YearGroup key={yearIndex} {...yearGroup} />
         ))}
       </ul>

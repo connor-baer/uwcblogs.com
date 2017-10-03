@@ -1,18 +1,19 @@
 import express from 'express';
 import api from '../api';
 import { asyncMiddleware } from '../lib/helpers';
-import CONFIG from '../../config';
 
 const router = express.Router();
 
-/* GET site */
+/* GET colleges */
 router.get(
   '/',
   asyncMiddleware(async (req, res, next) => {
-    const site = await api.contentful.getEntry({
-      'sys.id': CONFIG.contentful.ids.site
+    const { items: colleges } = await api.contentful.getEntries({
+      content_type: 'college',
+      include: 1
     });
-    res.json(site);
+    console.log(colleges);
+    return res.json(colleges);
   })
 );
 

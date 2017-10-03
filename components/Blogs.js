@@ -10,14 +10,14 @@ function groupPairs(blogs, property) {
     .map(pair => zipObject([property, 'blogs'], pair));
 }
 
-const orderBlogs = blogs => {
+const groupBlogs = blogs => {
   const groupedByCollege = groupPairs(blogs, 'college.name');
-  const sortedByCollege = sortBy(groupedByCollege, group => group.college);
-  const groupedByYear = sortedByCollege.map(group => ({
+  const groupedByYear = groupedByCollege.map(group => ({
     college: group['college.name'],
     years: groupPairs(group.blogs, 'year')
   }));
-  return groupedByYear;
+  const sortedByCollege = sortBy(groupedByYear, 'college');
+  return sortedByCollege;
 };
 
 const Blogs = ({ blogs }) => {
@@ -34,10 +34,10 @@ const Blogs = ({ blogs }) => {
       </p>
     );
   }
-  const orderedBlogs = orderBlogs(blogs);
+  const groupedBlogs = groupBlogs(blogs);
   return (
     <div>
-      {orderedBlogs.map((collegeGroup, collegeIndex) => (
+      {groupedBlogs.map((collegeGroup, collegeIndex) => (
         <CollegeGroup key={collegeIndex} {...collegeGroup} />
       ))}
       <style jsx>{`

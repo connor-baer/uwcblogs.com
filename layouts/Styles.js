@@ -190,10 +190,6 @@ const Styles = () => (
       }
 
       html {
-        @media (max-width: ${breakpoints.small}) {
-          font-size: 87.5%;
-        }
-
         @media (min-width: ${breakpoints.large}) {
           font-size: 110%;
         }
@@ -298,11 +294,16 @@ const Styles = () => (
         padding-left: 0.5rem;
 
         @media (min-width: ${breakpoints.medium}) {
-          padding-right: 1.5rem;
-          padding-left: 1.5rem;
+          padding-right: 3rem;
+          padding-left: 3rem;
         }
 
         @media (min-width: ${breakpoints.large}) {
+          padding-right: 1rem;
+          padding-left: 1rem;
+        }
+
+        @media (min-width: ${breakpoints.wide}) {
           padding-right: 3rem;
           padding-left: 3rem;
         }

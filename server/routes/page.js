@@ -4,7 +4,7 @@ import { asyncMiddleware, getPath } from '../lib/helpers';
 
 const router = express.Router();
 
-/* GET blogs */
+/* GET page */
 router.get(
   '*',
   asyncMiddleware(async (req, res, next) => {

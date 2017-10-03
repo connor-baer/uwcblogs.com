@@ -5,7 +5,7 @@ import { asyncMiddleware, getPath } from '../lib/helpers';
 
 const router = express.Router();
 
-/* GET blogs */
+/* GET single */
 router.get(
   '/',
   asyncMiddleware(async (req, res, next) => {
@@ -20,9 +20,9 @@ router.get(
         {
           content_type: 'blog',
           include: 1,
-          limit: 0
+          limit: 1
         },
-        false
+        true
       )
       .then(resp => resp.total);
     const languages = await api.contentful
@@ -30,9 +30,9 @@ router.get(
         {
           content_type: 'language',
           include: 1,
-          limit: 0
+          limit: 1
         },
-        false
+        true
       )
       .then(resp => resp.total);
     const countries = await api.contentful
@@ -40,9 +40,9 @@ router.get(
         {
           content_type: 'country',
           include: 1,
-          limit: 0
+          limit: 1
         },
-        false
+        true
       )
       .then(resp => resp.total);
     const colleges = await api.contentful
@@ -50,9 +50,9 @@ router.get(
         {
           content_type: 'college',
           include: 1,
-          limit: 0
+          limit: 1
         },
-        false
+        true
       )
       .then(resp => resp.total);
 

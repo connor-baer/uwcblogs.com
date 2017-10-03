@@ -13,6 +13,9 @@ import site from './routes/site';
 import single from './routes/single';
 import page from './routes/page';
 import blogs from './routes/blogs';
+import colleges from './routes/colleges';
+import countries from './routes/countries';
+import languages from './routes/languages';
 
 const port = parseInt(process.env.PORT, 10) || 8080;
 const dev = process.env.NODE_ENV !== 'production';
@@ -36,6 +39,9 @@ app.prepare().then(() => {
   server.use('/api/single', single);
   server.use('/api/page', page);
   server.use('/api/blogs', blogs);
+  server.use('/api/colleges', colleges);
+  server.use('/api/countries', countries);
+  server.use('/api/languages', languages);
   server.use(renderAndCache);
 
   server.get('*', (req, res) => handle(req, res));

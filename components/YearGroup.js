@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { isEmpty } from 'lodash';
+import { isEmpty, sortBy } from 'lodash';
 import { fonts } from '../styles';
 import BlogItem from './BlogItem';
 
@@ -7,11 +7,15 @@ const YearGroup = ({ year, blogs }) => {
   if (isEmpty(blogs)) {
     return null;
   }
+
+  const sortedBlogs = sortBy(blogs, 'firstName');
   return (
     <li>
       <h3>{year}</h3>
       <ul>
-        {blogs.map((blog, blogIndex) => <BlogItem key={blogIndex} {...blog} />)}
+        {sortedBlogs.map((blog, blogIndex) => (
+          <BlogItem key={blogIndex} {...blog} />
+        ))}
       </ul>
       <style jsx>{`
         h3 {

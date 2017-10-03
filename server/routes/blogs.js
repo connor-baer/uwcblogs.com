@@ -16,6 +16,12 @@ function filterBlogs(blogs, search) {
       (result, value) => {
         if (typeof value === 'string') {
           result.push(value.toLowerCase());
+        } else if (typeof value === 'number') {
+          result.push(value.toString().toLowerCase());
+        } else if (value.constructor === Object) {
+          result.push(value.name.toLowerCase());
+        } else if (value.constructor === Array) {
+          value.map(item => result.push(item.name.toLowerCase()));
         }
         return result;
       },

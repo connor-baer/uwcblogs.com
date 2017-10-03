@@ -1,18 +1,19 @@
 import express from 'express';
 import api from '../api';
 import { asyncMiddleware } from '../lib/helpers';
-import CONFIG from '../../config';
 
 const router = express.Router();
 
-/* GET site */
+/* GET countries */
 router.get(
   '/',
   asyncMiddleware(async (req, res, next) => {
-    const site = await api.contentful.getEntry({
-      'sys.id': CONFIG.contentful.ids.site
+    const { items: countries } = await api.contentful.getEntries({
+      content_type: 'country',
+      include: 1
     });
-    res.json(site);
+
+    return res.json(countries);
   })
 );
 
