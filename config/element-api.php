@@ -24,6 +24,7 @@ return [
             'criteria' => [
                 'group' => 'colleges',
             ],
+            'cache' => 43200,
             'transformer' => function (Category $category) {
                 return [
                     'title' => $category->title,
@@ -38,6 +39,7 @@ return [
             'criteria' => [
                 'group' => 'blogCountries',
             ],
+            'cache' => 43200,
             'transformer' => function (Tag $tag) {
                 return [
                     'title' => $tag->title,
@@ -50,6 +52,7 @@ return [
             'criteria' => [
                 'group' => 'blogLanguages',
             ],
+            'cache' => 43200,
             'transformer' => function (Tag $tag) {
                 return [
                     'title' => $tag->title,
@@ -63,6 +66,7 @@ return [
                 'section' => 'blogs',
                 'orderBy' => 'blogFirstName',
             ],
+            'cache' => 43200,
             'transformer' => function (Entry $entry) {
                 $blogCountries = [];
                 $blogLanguages = [];
@@ -95,6 +99,7 @@ return [
                     'section' => 'blogs',
                     'orderBy' => 'blogFirstName',
                 ],
+                'cache' => 43200,
                 'transformer' => function (Entry $entry) {
                     $blogCountries = [];
                     $blogLanguages = [];
