@@ -29,6 +29,8 @@ return [
                 return [
                     'title' => $category->title,
                     'id' => $category->id,
+                    'description' => $category->description,
+                    'website' => $category->website,
                 ];
             },
         ],
