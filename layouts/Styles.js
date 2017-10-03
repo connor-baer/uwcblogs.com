@@ -199,7 +199,7 @@ const Styles = () => (
         }
 
         @media (min-width: ${breakpoints.wide}) {
-          font-size: 115%;
+          font-size: 125%;
         }
 
         transition: background-color ${animations.short},

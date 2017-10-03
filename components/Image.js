@@ -23,7 +23,7 @@ const Image = ({
     fm: format,
     fl: progressive && 'progressive'
   });
-  const srcSet = `${src}?${query} 1000w, ${src}?${query} 2000w`;
+  const srcSet = `${src}?${query}&w=1000 1000w, ${src}?${query}&w=2000 2000w`;
   return (
     <div className={classNames({ cover })}>
       <img

@@ -39,7 +39,7 @@ export default class Page extends Component {
     const { title, subtitle, image } = page;
 
     return (
-      <Site site={site} sidebar={true}>
+      <Site site={site} title={title} sidebar={true}>
         <Main>
           <Header title={title} subtitle={subtitle} image={image} />
           <BlogsContainer blogs={blogs} />

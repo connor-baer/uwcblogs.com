@@ -2,18 +2,13 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { breakpoints, colors, fonts, animations } from '../styles';
 
-const Footer = ({ name, email, hasSidebar }) => (
+const Footer = ({ name, hasSidebar }) => (
   <footer className={classNames({ hasSidebar })}>
     <small className="l-w100">
       <span>
         {`© ${new Date().getFullYear()} ${name}. All rights reserved.`}
       </span>·<span>
-        {`Email: `}
-        <a href="mailto:hello@connorbaer.co" title="Send an email">
-          {email}
-        </a>
-      </span>·<span>
-        <a href="/legal">Legal</a>
+        <a href="/disclaimer">Disclaimer</a>
       </span>
     </small>
     <style jsx>{`
@@ -61,7 +56,8 @@ const Footer = ({ name, email, hasSidebar }) => (
 );
 
 Footer.propTypes = {
-  description: PropTypes.string
+  name: PropTypes.string,
+  hasSidebar: PropTypes.bool
 };
 
 export default Footer;

@@ -18,7 +18,6 @@ const port = parseInt(process.env.PORT, 10) || 8080;
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
-const handler = routes.getRequestHandler(app);
 
 app.prepare().then(() => {
   const server = express();
@@ -55,7 +54,6 @@ function renderAndCache(req, res) {
     return res.send(cache.get(req.url));
   }
 
-  // Match route + parse params
   const { route, params } = routes.match(req.url);
   if (!route) {
     return handle(req, res);
@@ -64,7 +62,7 @@ function renderAndCache(req, res) {
   return app
     .renderToHTML(req, res, route.page, params)
     .then(html => {
-      cache.put(req.url, html, CONFIG.next.ttl);
+      cache.put(req.url, html, CONFIG.next.ttl * 1000);
       res.send(html);
     })
     .catch(err => {

@@ -32,15 +32,6 @@ class Navigation extends Component {
                   </li>
                 );
               })}
-
-              <li>
-                <button
-                  title="Toggle darkmode"
-                  onClick={() => toggleDarkness()}
-                >
-                  <Svg sprite="site" name="moon" width={24} height={24} />
-                </button>
-              </li>
             </ul>
           </nav>
         </div>
@@ -52,7 +43,7 @@ class Navigation extends Component {
             left: 0;
             align-items: center;
             max-width: 100vw;
-            padding: 1rem 0;
+            padding: 1.5rem 0;
             transition: box-shadow ${animations.short},
               background-color ${animations.short}, padding ${animations.short},
               transform ${animations.medium}, opacity ${animations.medium},

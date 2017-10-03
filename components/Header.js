@@ -38,6 +38,7 @@ const Header = ({ title, subtitle, image, children }) => (
       h1 {
         font-size: ${fonts.size.t3};
         font-weight: ${fonts.weight.bold};
+        line-height: ${fonts.lineHeight.normal};
 
         &.color {
           color: ${colors.primary};
@@ -46,8 +47,9 @@ const Header = ({ title, subtitle, image, children }) => (
 
       h2 {
         font-size: ${fonts.size.t3};
-        color: ${colors.gray[8]};
         font-weight: ${fonts.weight.light};
+        line-height: ${fonts.lineHeight.normal};
+        color: ${colors.gray[8]};
 
         @media (max-width: ${breakpoints.medium}) {
           font-size: ${fonts.size.t2};
