@@ -62,7 +62,7 @@ router.get(
       return res.json(filteredBlogs);
     }
 
-    const searchedBlogs = searchBlogs(blogs, search);
+    const searchedBlogs = searchBlogs(filteredBlogs, search);
     return res.json(searchedBlogs);
   })
 );

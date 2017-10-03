@@ -9,21 +9,29 @@ import Blogs from './Blogs';
 
 export default class BlogsContainer extends Component {
   static propTypes = {
-    blogs: PropTypes.arrayOf(PropTypes.object)
+    blogs: PropTypes.arrayOf(PropTypes.object).isRequired,
+    filter: PropTypes.object
+  };
+
+  static defaultProps = {
+    filter: {}
   };
 
   constructor(props) {
     super(props);
-    let search = '';
-    if (typeof window !== 'undefined') {
-      const hash = queryString.parse(location.hash);
-      search = hash.search;
-    }
     this.state = {
-      search,
+      search: '',
       loading: false,
       blogs: props.blogs
     };
+  }
+
+  componentDidMount() {
+    if (typeof window !== 'undefined') {
+      const hash = queryString.parse(location.hash);
+      this.setState({ search: hash.search });
+      this.updateBlogs(hash.search);
+    }
   }
 
   setHash = value => {
@@ -45,6 +53,15 @@ export default class BlogsContainer extends Component {
     }
   };
 
+  updateBlogs = async search => {
+    const { origin: siteUrl } = window.location;
+    const filter = queryString.stringify(this.props.filter);
+    const blogs = await fetch(
+      `${siteUrl}/api/blogs?search=${search}&${filter}`
+    ).then(resp => resp.json());
+    this.setState(() => ({ blogs, loading: false }));
+  };
+
   handleSearch = async e => {
     if (typeof window === 'undefined') {
       return;
@@ -53,12 +70,7 @@ export default class BlogsContainer extends Component {
     const { value: search } = e.target;
     this.setState(() => ({ search, loading: true }));
     this.setHash(search);
-
-    const { origin: siteUrl } = window.location;
-    const blogs = await fetch(
-      `${siteUrl}/api/blogs?search=${search}`
-    ).then(resp => resp.json());
-    this.setState(() => ({ blogs, loading: false }));
+    this.updateBlogs(search);
   };
 
   handleFocus = e => {

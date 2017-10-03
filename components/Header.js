@@ -91,7 +91,7 @@ const Header = ({ title, subtitle, meta, image, children }) => (
 Header.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  meta: PropTypes.string,
+  meta: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   image: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,

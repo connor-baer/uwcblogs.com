@@ -41,7 +41,13 @@ export default class Page extends Component {
 
   render() {
     const { site, college, blogs } = this.props;
-    const { name: title, description: subtitle, website, image } = college;
+    const {
+      name: title,
+      description: subtitle,
+      website,
+      image,
+      slug
+    } = college;
     const meta = (
       <Link href={website}>
         <a target="_blank" rel="noreferrer noopener">
@@ -65,7 +71,7 @@ export default class Page extends Component {
       <Site site={site} sidebar={hasSidebar}>
         <Main>
           <Header title={title} subtitle={subtitle} meta={meta} image={image} />
-          <BlogsContainer blogs={blogs} />
+          <BlogsContainer blogs={blogs} filter={{ college: slug }} />
           <Prefooter
             text="Let’s be friends!"
             linkLabel="Say hi!"
