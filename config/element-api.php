@@ -114,6 +114,8 @@ return [
 
                     return [
                         'firstName' => $entry['blogFirstName'],
+                        'lastName' => $entry['blogLastName'],
+                        'email' => $entry['blogEmailAddress'],
                         'college' => $entry['blogCollege'][0]['title'],
                         'url' => $entry['blogLink'],
                         'countries' => implode(', ', $blogCountries),
