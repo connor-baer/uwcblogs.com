@@ -15,7 +15,7 @@ const config = {
       clear: () => Promise.resolve()
     },
     invalidatesOn: ['NO_OPERATION'],
-    invalidates: ['contentful', 'cache']
+    invalidates: ['contentful', 'next', 'cache']
   }
 };
 

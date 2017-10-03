@@ -8,7 +8,7 @@ import BlogsContainer from '../components/BlogsContainer';
 import Prefooter from '../components/Prefooter';
 
 export default class Page extends Component {
-  static async getInitialProps({ req, query }) {
+  static async getInitialProps({ req }) {
     const { protocol } = req || {};
     const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
     const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());

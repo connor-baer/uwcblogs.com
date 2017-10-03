@@ -21,13 +21,8 @@ export default class BlogsContainer extends Component {
     this.state = {
       search,
       loading: false,
-      blogs: []
+      blogs: props.blogs
     };
-  }
-
-  componentDidMount() {
-    const { blogs } = this.props;
-    this.setState({ blogs });
   }
 
   setHash = value => {
