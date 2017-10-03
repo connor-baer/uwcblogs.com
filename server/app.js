@@ -13,6 +13,7 @@ import site from './routes/site';
 import single from './routes/single';
 import page from './routes/page';
 import blogs from './routes/blogs';
+import college from './routes/college';
 import colleges from './routes/colleges';
 import countries from './routes/countries';
 import languages from './routes/languages';
@@ -39,6 +40,7 @@ app.prepare().then(() => {
   server.use('/api/single', single);
   server.use('/api/page', page);
   server.use('/api/blogs', blogs);
+  server.use('/api/college', college);
   server.use('/api/colleges', colleges);
   server.use('/api/countries', countries);
   server.use('/api/languages', languages);

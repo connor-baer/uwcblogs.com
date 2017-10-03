@@ -2,6 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import fetch from 'isomorphic-fetch';
+import smoothScroll from 'smoothscroll';
 import Input from './Input';
 import Spinner from './Spinner';
 import Blogs from './Blogs';
@@ -15,8 +16,8 @@ export default class BlogsContainer extends Component {
     super(props);
     let search = '';
     if (typeof window !== 'undefined') {
-      const parsed = queryString.parse(window.location.search);
-      search = parsed.search;
+      const hash = queryString.parse(location.hash);
+      search = hash.search;
     }
     this.state = {
       search,
@@ -26,19 +27,20 @@ export default class BlogsContainer extends Component {
   }
 
   setHash = value => {
-    if (typeof document === 'undefined') {
+    if (typeof window === 'undefined') {
       return;
     }
-    const hash = encodeURIComponent(value);
+    const oldHash = queryString.parse(location.hash);
+    const newHash = { ...oldHash, search: value };
 
-    if (hash !== '') {
-      window.location.hash = hash;
+    if (newHash.search !== '') {
+      location.hash = queryString.stringify(newHash);
     } else {
       // Remove trailing # to prevent scrolling
       history.replaceState(
         '',
         document.title,
-        window.location.pathname + window.location.search
+        location.pathname + location.search
       );
     }
   };
@@ -59,6 +61,10 @@ export default class BlogsContainer extends Component {
     this.setState(() => ({ blogs, loading: false }));
   };
 
+  handleFocus = e => {
+    smoothScroll(e.target);
+  };
+
   render() {
     const { search, loading, blogs } = this.state;
     return (
@@ -71,6 +77,7 @@ export default class BlogsContainer extends Component {
             value={search}
             placeholder="Type to filter the blogs..."
             onChange={this.handleSearch}
+            onFocus={this.handleFocus}
             autoComplete={false}
             required
           />

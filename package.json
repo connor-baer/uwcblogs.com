@@ -79,6 +79,7 @@
     "react-dom": "^16.0.0",
     "react-tabs": "^2.0.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
+    "smoothscroll": "^0.3.0",
     "styled-jsx-postcss": "^0.2.0",
     "suncalc": "^1.8.0",
     "svgo": "^0.7.2",

@@ -22,16 +22,18 @@ class Input extends Component {
     }
   }
 
-  handleFocus = () => {
+  handleFocus = e => {
     this.setState(() => ({
       hasFocus: true
     }));
+    this.props.onFocus(e);
   };
 
-  handleBlur = () => {
+  handleBlur = e => {
     this.setState(() => ({
       hasFocus: false
     }));
+    this.props.onBlur(e);
   };
 
   render() {
@@ -183,6 +185,8 @@ Input.propTypes = {
   value: PropTypes.string,
   placeholder: PropTypes.string,
   onChange: PropTypes.func.isRequired,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   validator: PropTypes.func,
   autoComplete: PropTypes.bool,
   required: PropTypes.bool,
@@ -193,6 +197,8 @@ Input.defaultProps = {
   type: 'text',
   value: '',
   placeholder: '',
+  onFocus: () => {},
+  onBlur: () => {},
   autoComplete: true,
   required: false,
   disabled: false

@@ -5,7 +5,7 @@ import { asyncMiddleware } from '../lib/helpers';
 
 const router = express.Router();
 
-function filterBlogs(blogs, search) {
+function searchBlogs(blogs, search) {
   return filter(blogs, blog => {
     const lowercaseSearch = search.toLowerCase();
     if (lowercaseSearch === '') {
@@ -37,18 +37,33 @@ router.get(
   asyncMiddleware(async (req, res, next) => {
     const { query } = req;
     const search = get(query, 'search');
+    const college = get(query, 'college');
+    const language = get(query, 'language');
+    const country = get(query, 'country');
 
     const { items: blogs } = await api.contentful.getEntries({
       content_type: 'blog',
       include: 2
     });
 
+    const filteredBlogs = filter(blogs, blog => {
+      const hasCollege = college ? blog.college.slug === college : true;
+      const hasLanguage = language
+        ? blog.languages.some(blogLanguage => blogLanguage === language)
+        : true;
+      const hasCountry = country
+        ? blog.countries.some(blogCountry => blogCountry === country)
+        : true;
+
+      return hasCollege && hasLanguage && hasCountry;
+    });
+
     if (!search) {
-      return res.json(blogs);
+      return res.json(filteredBlogs);
     }
 
-    const filteredBlogs = filterBlogs(blogs, search);
-    return res.json(filteredBlogs);
+    const searchedBlogs = searchBlogs(blogs, search);
+    return res.json(searchedBlogs);
   })
 );
 

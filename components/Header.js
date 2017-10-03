@@ -3,11 +3,12 @@ import classNames from 'classnames';
 import { breakpoints, colors, fonts } from '../styles';
 import Image from './Image';
 
-const Header = ({ title, subtitle, image, children }) => (
+const Header = ({ title, subtitle, meta, image, children }) => (
   <section className="l-ctnr">
     <header className="l-w100">
       <h1 className={classNames({ color: subtitle })}>{`${title}  `}</h1>
       {subtitle && <h2>{subtitle}</h2>}
+      {meta && <p>{meta}</p>}
       {children}
 
       {image && (
@@ -64,10 +65,10 @@ const Header = ({ title, subtitle, image, children }) => (
         }
       }
 
-      .c-header__meta {
+      p {
         font-size: ${fonts.size.s1};
         display: block;
-        margin-top: 0.25rem;
+        margin-top: 1rem;
         color: ${colors.gray[6]};
       }
 
@@ -90,6 +91,7 @@ const Header = ({ title, subtitle, image, children }) => (
 Header.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  meta: PropTypes.string,
   image: PropTypes.shape({
     title: PropTypes.string,
     description: PropTypes.string,
