@@ -1,10 +1,26 @@
 import PropTypes from 'prop-types';
 import validator from 'validator';
 
-const SubmissionForm = ({ value, type, options, children }) => {
+const Validator = ({ value, type, options, children }) => {
   let valid = true;
   let error = `Please provide a valid ${type}.`;
   switch (type) {
+    case 'array': {
+      const isArray = Array.isArray(value);
+      if (!options || !isArray) {
+        valid = isArray;
+        break;
+      }
+      const isMin = options.min ? value.length >= options.min : true;
+      const isMax = options.max ? value.length <= options.max : true;
+      valid = isArray && isMin && isMax;
+      error = `Please provide between ${options.min} and ${options.max} items.`;
+      break;
+    }
+    case 'object': {
+      valid = typeof value === 'object';
+      break;
+    }
     case 'email': {
       valid = validator.isEmail(value);
       break;
@@ -19,7 +35,7 @@ const SubmissionForm = ({ value, type, options, children }) => {
       break;
     }
     default: {
-      valid = validator.isAlpha(value, 'de-DE');
+      valid = typeof value === 'string';
     }
   }
   if (valid) {
@@ -28,11 +44,15 @@ const SubmissionForm = ({ value, type, options, children }) => {
   return children({ valid, error });
 };
 
-SubmissionForm.propTypes = {
-  value: PropTypes.string.isRequired,
+Validator.propTypes = {
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.object
+  ]).isRequired,
   type: PropTypes.string,
   options: PropTypes.object,
   children: PropTypes.func.isRequired
 };
 
-export default SubmissionForm;
+export default Validator;

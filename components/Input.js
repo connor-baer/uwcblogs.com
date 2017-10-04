@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { animations, colors, fonts } from '../styles';
 
 export default class Input extends Component {
@@ -94,7 +94,9 @@ export default class Input extends Component {
           isInvalid: validate && !valid
         })}
       >
-        <label htmlFor={name}>{label}</label>
+        <label htmlFor={name} className="label">
+          {label}
+        </label>
         <input
           id={name}
           type={type}
@@ -136,12 +138,16 @@ export default class Input extends Component {
             }
           }
 
-          label,
+          .label,
           .error {
             font-size: ${fonts.size.s1};
             display: block;
-            color: ${colors.gray[6]};
             transition: color ${animations.short};
+          }
+
+          .label {
+            color: ${colors.gray[7]};
+            margin-bottom: 0.125rem;
           }
 
           .error {
@@ -160,23 +166,28 @@ export default class Input extends Component {
             color: ${colors.gray[9]};
             font-family: ${fonts.family.sans};
             resize: none;
+
+            &:invalid,
+            &:required {
+              box-shadow: none;
+            }
           }
 
           .hasFocus {
-            & label {
+            & .label {
               color: ${colors.primary};
             }
           }
 
           .isValid {
-            & label,
+            & .label,
             & .error {
               color: ${colors.green[6]};
             }
           }
 
           .isInvalid {
-            & label {
+            & .label {
               color: ${colors.gray[6]};
             }
           }

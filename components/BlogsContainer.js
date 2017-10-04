@@ -94,7 +94,6 @@ export default class BlogsContainer extends Component {
             onChange={this.handleSearch}
             onFocus={this.handleFocus}
             autoComplete={false}
-            required
           />
           <Spinner active={loading} />
           <Blogs blogs={blogs} />
