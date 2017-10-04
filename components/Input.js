@@ -3,7 +3,50 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import { animations, colors, fonts } from '../styles';
 
-class Input extends Component {
+export default class Input extends Component {
+  static propTypes = {
+    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    type: PropTypes.oneOf([
+      'color',
+      'date',
+      'datetime-local',
+      'email',
+      'hidden',
+      'month',
+      'number',
+      'password',
+      'search',
+      'tel',
+      'text',
+      'time',
+      'url',
+      'week'
+    ]),
+    value: PropTypes.string,
+    placeholder: PropTypes.string,
+    onChange: PropTypes.func.isRequired,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func,
+    autoComplete: PropTypes.bool,
+    required: PropTypes.bool,
+    disabled: PropTypes.bool,
+    valid: PropTypes.bool,
+    error: PropTypes.string
+  };
+
+  static defaultProps = {
+    type: 'text',
+    value: '',
+    placeholder: '',
+    onFocus: () => {},
+    onBlur: () => {},
+    autoComplete: true,
+    required: false,
+    disabled: false,
+    valid: true
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -11,15 +54,6 @@ class Input extends Component {
       isValid: true,
       error: ''
     };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { validator } = this.props;
-    if (validator) {
-      const validation = validator(nextProps.value);
-      const { isValid, error } = validation;
-      this.setState(() => ({ isValid, error }));
-    }
   }
 
   handleFocus = e => {
@@ -44,19 +78,20 @@ class Input extends Component {
       value,
       placeholder,
       onChange,
-      validator,
       autoComplete,
       required,
-      disabled
+      disabled,
+      valid,
+      error
     } = this.props;
-    const { hasFocus, isValid, error } = this.state;
-    const validate = value && validator;
+    const { hasFocus } = this.state;
+    const validate = !hasFocus && value;
     return (
       <div
         className={classNames({
           hasFocus,
-          isValid: validate && isValid,
-          isInvalid: validate && !isValid
+          isValid: validate && valid,
+          isInvalid: validate && !valid
         })}
       >
         <label htmlFor={name}>{label}</label>
@@ -72,7 +107,7 @@ class Input extends Component {
           required={required}
           disabled={disabled}
         />
-        {error && <span className="error">{error}</span>}
+        {validate && <span className="error">{error}</span>}
         <style jsx>{`
           div {
             display: inline-block;
@@ -110,9 +145,7 @@ class Input extends Component {
           }
 
           .error {
-            display: none;
             color: ${colors.red[6]};
-            height: 0;
           }
 
           input {
@@ -130,8 +163,7 @@ class Input extends Component {
           }
 
           .hasFocus {
-            & label,
-            & .error {
+            & label {
               color: ${colors.primary};
             }
           }
@@ -147,61 +179,9 @@ class Input extends Component {
             & label {
               color: ${colors.gray[6]};
             }
-
-            & .error {
-              color: ${colors.red[6]};
-            }
-
-            & .error {
-              display: block;
-              height: 100%;
-            }
           }
         `}</style>
       </div>
     );
   }
 }
-
-Input.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf([
-    'color',
-    'date',
-    'datetime-local',
-    'email',
-    'hidden',
-    'month',
-    'number',
-    'password',
-    'search',
-    'tel',
-    'text',
-    'time',
-    'url',
-    'week'
-  ]),
-  value: PropTypes.string,
-  placeholder: PropTypes.string,
-  onChange: PropTypes.func.isRequired,
-  onFocus: PropTypes.func,
-  onBlur: PropTypes.func,
-  validator: PropTypes.func,
-  autoComplete: PropTypes.bool,
-  required: PropTypes.bool,
-  disabled: PropTypes.bool
-};
-
-Input.defaultProps = {
-  type: 'text',
-  value: '',
-  placeholder: '',
-  onFocus: () => {},
-  onBlur: () => {},
-  autoComplete: true,
-  required: false,
-  disabled: false
-};
-
-export default Input;

@@ -5,7 +5,7 @@ import { asyncMiddleware, getPath } from '../lib/helpers';
 
 const router = express.Router();
 
-/* GET single */
+/* GET index single */
 router.get(
   '/',
   asyncMiddleware(async (req, res, next) => {
@@ -64,6 +64,47 @@ router.get(
       title,
       subtitle: parsedSubtitle,
       image
+    });
+  })
+);
+
+/* GET index single */
+router.get(
+  '/submit',
+  asyncMiddleware(async (req, res, next) => {
+    const slug = getPath(req);
+    const page = await api.contentful.getEntry({
+      content_type: 'page',
+      'fields.slug': slug,
+      include: 2
+    });
+    const colleges = await api.contentful
+      .getEntries({
+        content_type: 'college',
+        include: 2
+      })
+      .then(resp => resp.items);
+    const countries = await api.contentful
+      .getEntries({
+        content_type: 'country',
+        include: 1
+      })
+      .then(resp => resp.items);
+    const languages = await api.contentful
+      .getEntries({
+        content_type: 'language',
+        include: 1
+      })
+      .then(resp => resp.items);
+
+    const { title, subtitle, image } = page;
+    res.json({
+      title,
+      subtitle,
+      image,
+      colleges,
+      countries,
+      languages
     });
   })
 );

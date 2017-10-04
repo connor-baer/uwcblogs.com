@@ -12,7 +12,6 @@ router.get(
       content_type: 'college',
       include: 1
     });
-    console.log(colleges);
     return res.json(colleges);
   })
 );

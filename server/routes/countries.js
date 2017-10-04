@@ -12,7 +12,6 @@ router.get(
       content_type: 'country',
       include: 1
     });
-
     return res.json(countries);
   })
 );

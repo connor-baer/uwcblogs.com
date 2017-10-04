@@ -12,7 +12,6 @@ router.get(
       content_type: 'language',
       include: 1
     });
-
     return res.json(languages);
   })
 );
