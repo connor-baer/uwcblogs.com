@@ -1,0 +1,70 @@
+import express from 'express';
+import { filter, get, includes, reduce } from 'lodash';
+import api from '../api';
+import { asyncMiddleware } from '../lib/helpers';
+
+const router = express.Router();
+
+function searchBlogs(blogs, search) {
+  return filter(blogs, blog => {
+    const lowercaseSearch = search.toLowerCase();
+    if (lowercaseSearch === '') {
+      return true;
+    }
+    const lowercaseValues = reduce(
+      blog,
+      (result, value) => {
+        if (typeof value === 'string') {
+          result.push(value.toLowerCase());
+        } else if (typeof value === 'number') {
+          result.push(value.toString().toLowerCase());
+        } else if (value.constructor === Object) {
+          result.push(value.name.toLowerCase());
+        } else if (value.constructor === Array) {
+          value.map(item => result.push(item.name.toLowerCase()));
+        }
+        return result;
+      },
+      []
+    );
+    return lowercaseValues.some(value => includes(value, lowercaseSearch));
+  });
+}
+
+/* GET blogs */
+router.get(
+  '/',
+  asyncMiddleware(async (req, res, next) => {
+    const { query } = req;
+    const search = get(query, 'search');
+    const college = get(query, 'college');
+    const language = get(query, 'language');
+    const country = get(query, 'country');
+
+    const { items: blogs } = await api.contentful.getEntries({
+      content_type: 'blog',
+      include: 2
+    });
+
+    const filteredBlogs = filter(blogs, blog => {
+      const hasCollege = college ? blog.college.slug === college : true;
+      const hasLanguage = language
+        ? blog.languages.some(blogLanguage => blogLanguage === language)
+        : true;
+      const hasCountry = country
+        ? blog.countries.some(blogCountry => blogCountry === country)
+        : true;
+
+      return hasCollege && hasLanguage && hasCountry;
+    });
+
+    if (!search) {
+      return res.json(filteredBlogs);
+    }
+
+    const searchedBlogs = searchBlogs(filteredBlogs, search);
+    return res.json(searchedBlogs);
+  })
+);
+
+export default router;
