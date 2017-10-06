@@ -1,9 +1,13 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import axios from 'axios';
+import BlogItem from './BlogItem';
 import Validator from './Validator';
+import Field from './Field';
 import Input from './Input';
 import Select from './Select';
-import { animations, colors, fonts } from '../styles';
+import Button from './Button';
 
 export default class SubmissionForm extends Component {
   static propTypes = {
@@ -15,7 +19,9 @@ export default class SubmissionForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isSubmitted: false,
+      isSubmitting: false,
+      isSuccess: false,
+      isError: false,
       firstName: '',
       email: '',
       url: '',
@@ -25,16 +31,6 @@ export default class SubmissionForm extends Component {
       year: ''
     };
   }
-
-  sortValues = (a, b) => {
-    if (a.value > b.value) {
-      return 1;
-    }
-    if (a.value < b.value) {
-      return -1;
-    }
-    return 0;
-  };
 
   handleChange = e => {
     e.persist();
@@ -49,20 +45,16 @@ export default class SubmissionForm extends Component {
     this.setState(() => ({ college: option.value }));
   };
 
-  handleCountriesChange = value => {
-    this.setState(() => ({ countries: value }));
+  handleCountriesChange = option => {
+    this.setState(() => ({ countries: option }));
   };
 
-  handleLanguagesChange = value => {
-    this.setState(() => ({ languages: value }));
+  handleLanguagesChange = option => {
+    this.setState(() => ({ languages: option }));
   };
 
-  render() {
-    const {
-      colleges: collegeList,
-      countries: countryList,
-      languages: languageList
-    } = this.props;
+  handleSubmit = e => {
+    e.preventDefault();
     const {
       firstName,
       email,
@@ -72,92 +64,204 @@ export default class SubmissionForm extends Component {
       languages,
       year
     } = this.state;
+    this.setState(() => ({ isSubmitting: true }));
+    axios
+      .post('/api/blogs', {
+        firstName,
+        email,
+        url,
+        college,
+        countries,
+        languages,
+        year
+      })
+      .then(() => {
+        this.setState(() => ({
+          isSubmitting: false,
+          isSuccess: true
+        }));
+      })
+      .catch(error => {
+        console.warn(error);
+      });
+  };
+
+  handleReset = () => {
+    this.setState(() => ({
+      isSubmitting: false,
+      isSuccess: false,
+      isError: false,
+      firstName: '',
+      email: '',
+      url: '',
+      college: '',
+      countries: [],
+      languages: [],
+      year: ''
+    }));
+  };
+
+  sortValues = (a, b) => {
+    if (a.label > b.label) {
+      return 1;
+    }
+    if (a.label < b.label) {
+      return -1;
+    }
+    return 0;
+  };
+
+  render() {
+    const {
+      colleges: collegeList,
+      countries: countryList,
+      languages: languageList
+    } = this.props;
+    const {
+      isSubmitting,
+      isSuccess,
+      isError,
+      firstName,
+      email,
+      url,
+      college,
+      countries,
+      languages,
+      year
+    } = this.state;
+
+    if (isSuccess) {
+      const languagesString = languages.map(({ label }) => ({ name: label }));
+      const countriesString = countries.map(({ label }) => ({ name: label }));
+      return (
+        <article className="l-ctnr cf">
+          <div className="l-w100">
+            <h3>Success!</h3>
+            <p>This is what your blog will look like:</p>
+            <ul>
+              <BlogItem
+                firstName={firstName}
+                url={url}
+                languages={languagesString}
+                countries={countriesString}
+              />
+            </ul>
+            <Button
+              type="reset"
+              label="Submit more →"
+              onClick={this.handleReset}
+            />
+          </div>
+        </article>
+      );
+    }
+
     const collegeOptions = collegeList
       .map(option => ({
-        value: option.name,
+        value: option.id,
         label: option.name
       }))
       .sort(this.sortValues);
     const countryOptions = countryList
       .map(option => ({
-        value: option.name,
+        value: option.id,
         label: option.name
       }))
       .sort(this.sortValues);
     const languageOptions = languageList
       .map(option => ({
-        value: option.name,
+        value: option.id,
         label: option.name
       }))
       .sort(this.sortValues);
     return (
       <article className="l-ctnr cf">
         <div className="l-w100">
+          {isError && (
+            <div>
+              <h3>Error!</h3>
+              <p>Please try again.</p>
+            </div>
+          )}
           <form
-            className="c-form"
-            method="post"
-            action=""
-            acceptCharset="UTF-8"
+            onSubmit={this.handleSubmit}
+            className={classNames({ isSubmitting })}
           >
             <div className="section-inputs">
               <Validator value={firstName} type="name">
                 {({ valid, error }) => (
-                  <Input
-                    label="What's your first name?"
+                  <Field
                     value={firstName}
                     name="firstName"
-                    type="text"
-                    onChange={this.handleChange}
-                    placeholder="Jane"
-                    valid={valid}
+                    label="What's your first name?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                  />
+                  >
+                    <Input
+                      type="text"
+                      onChange={this.handleChange}
+                      placeholder="Jane"
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator value={email} type="email">
                 {({ valid, error }) => (
-                  <Input
-                    label="What’s your email address?"
+                  <Field
                     value={email}
                     name="email"
-                    type="email"
-                    onChange={this.handleChange}
-                    placeholder="jane@example.com"
-                    valid={valid}
+                    label="What’s your email address?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                  />
+                  >
+                    <Input
+                      type="email"
+                      onChange={this.handleChange}
+                      placeholder="jane@example.com"
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator value={url} type="url">
                 {({ valid, error }) => (
-                  <Input
-                    label="What's the link to your blog?"
+                  <Field
                     value={url}
                     name="url"
-                    type="url"
-                    onChange={this.handleChange}
-                    placeholder="https://example.com/blog"
-                    valid={valid}
+                    label="What's the link to your blog?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                  />
+                  >
+                    <Input
+                      type="url"
+                      onChange={this.handleChange}
+                      placeholder="https://example.com/blog"
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator value={college} type="text">
                 {({ valid, error }) => (
-                  <Select
-                    label="Which UWC do/did you attend?"
-                    name="college"
-                    placeholder="Add a college..."
-                    options={collegeOptions}
+                  <Field
                     value={college}
-                    onChange={this.handleCollegeChange}
-                    valid={valid}
+                    name="college"
+                    label="Which college do/did you attend?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                  />
+                  >
+                    <Select
+                      placeholder="Add a college..."
+                      options={collegeOptions}
+                      onChange={this.handleCollegeChange}
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator
@@ -166,18 +270,22 @@ export default class SubmissionForm extends Component {
                 options={{ min: 1, max: 3 }}
               >
                 {({ valid, error }) => (
-                  <Select
-                    label="Which country are you from?"
-                    name="countries"
-                    placeholder="Add a country..."
-                    options={countryOptions}
+                  <Field
                     value={countries}
-                    onChange={this.handleCountriesChange}
-                    valid={valid}
+                    name="countries"
+                    label="Which country are you from?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                    multi
-                  />
+                  >
+                    <Select
+                      placeholder="Add a country..."
+                      options={countryOptions}
+                      onChange={this.handleCountriesChange}
+                      multi
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator
@@ -186,18 +294,22 @@ export default class SubmissionForm extends Component {
                 options={{ min: 1, max: 3 }}
               >
                 {({ valid, error }) => (
-                  <Select
-                    label="Which language do you write in?"
-                    name="languages"
-                    placeholder="Add a language..."
-                    options={languageOptions}
+                  <Field
                     value={languages}
-                    onChange={this.handleLanguagesChange}
-                    valid={valid}
+                    name="languages"
+                    label="Which language do you write in?"
                     error={error}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                    multi
-                  />
+                  >
+                    <Select
+                      placeholder="Add a language..."
+                      options={languageOptions}
+                      onChange={this.handleLanguagesChange}
+                      multi
+                    />
+                  </Field>
                 )}
               </Validator>
               <Validator
@@ -206,23 +318,28 @@ export default class SubmissionForm extends Component {
                 options={{ min: 1961, max: 2025 }}
               >
                 {({ valid, error }) => (
-                  <Input
-                    label="When will/did you finish UWC?"
+                  <Field
                     value={year}
                     name="year"
-                    type="number"
-                    onChange={this.handleChange}
-                    min="1961"
-                    max="2025"
-                    step="1"
-                    valid={valid}
+                    label="When will/did you finish UWC?"
                     error={error}
-                    placeholder={new Date().getFullYear().toString()}
+                    valid={valid}
+                    disabled={isSubmitting}
                     required
-                  />
+                  >
+                    <Input
+                      value={year}
+                      placeholder={new Date().getFullYear().toString()}
+                      type="number"
+                      onChange={this.handleChange}
+                      min="1961"
+                      max="2025"
+                      step="1"
+                    />
+                  </Field>
                 )}
               </Validator>
-              {/* <Input type="submit" value="Submit →" /> */}
+              <Button type="submit" label="Submit →" />
             </div>
           </form>
         </div>

@@ -68,7 +68,7 @@ router.get(
   })
 );
 
-/* GET index single */
+/* GET submit single */
 router.get(
   '/submit',
   asyncMiddleware(async (req, res, next) => {

@@ -11,10 +11,17 @@ const Validator = ({ value, type, options, children }) => {
         valid = isArray;
         break;
       }
-      const isMin = options.min ? value.length >= options.min : true;
-      const isMax = options.max ? value.length <= options.max : true;
+      const { min, max } = options;
+      const isMin = min ? value.length >= min : true;
+      const isMax = max ? value.length <= max : true;
       valid = isArray && isMin && isMax;
-      error = `Please provide between ${options.min} and ${options.max} items.`;
+      if (min && max) {
+        error = `Please provide between ${min} and ${max} items.`;
+      } else if (min) {
+        error = `Please provide at least ${min} items.`;
+      } else if (max) {
+        error = `Please provide at most ${min} items.`;
+      }
       break;
     }
     case 'object': {

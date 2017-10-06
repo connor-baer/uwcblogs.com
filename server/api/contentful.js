@@ -1,6 +1,7 @@
 import { createClient } from 'contentful';
 import { createClient as createManager } from 'contentful-management';
 import { get, head, reduce } from 'lodash';
+import logger from '../lib/logger';
 import CONFIG from '../../config';
 
 const client = createClient({
@@ -14,41 +15,32 @@ const manager = createManager({
   accessToken: CONFIG.contentful.managementToken
 });
 
+const idFromEntry = entry => `${entry.sys.id}`;
+const idFromQuery = resp => `${resp.args}-${resp.queryLocale}`;
+
 createEntry.operation = 'CREATE';
-export function createEntry(query) {
+createEntry.idFrom = idFromEntry;
+export function createEntry(contentType, fields) {
   return manager
     .getSpace(CONFIG.contentful.spaceId)
-    .then(space =>
-      space.createEntry('<content_type_id>', {
-        fields: {
-          title: {
-            'en-US': 'Entry title'
-          }
-        }
-      })
-    )
-    .then(entry => console.log(entry))
-    .catch(console.error);
-
-  // const queryLocale = get(query, 'locale', '*');
-  // const args = JSON.stringify(query);
-  // return client.getEntries(query).then(resp => {
-  //   const data = { ...head(resp.items), queryLocale, args };
-  //   return shouldUnpack ? unpackData(data) : data;
-  // });
+    .then(space => space.createEntry(contentType, { fields }))
+    .then(entry => entry.publish())
+    .then(entry => entry)
+    .catch(logger.error);
 }
-
-const idFromQuery = resp => `${resp.args}-${resp.queryLocale}`;
 
 getEntry.operation = 'READ';
 getEntry.idFrom = idFromQuery;
 export function getEntry(query, raw = false) {
   const queryLocale = get(query, 'locale', '*');
   const args = JSON.stringify(query);
-  return client.getEntries(query).then(resp => {
-    const data = { ...head(resp.items), queryLocale, args };
-    return raw ? data : unpackData(data);
-  });
+  return client
+    .getEntries(query)
+    .then(resp => {
+      const data = { ...head(resp.items), queryLocale, args };
+      return raw ? data : unpackData(data);
+    })
+    .catch(logger.error);
 }
 
 getEntries.operation = 'READ';
@@ -59,11 +51,12 @@ export function getEntries(query, raw = false) {
   if (raw) {
     return client
       .getEntries(query)
-      .then(resp => ({ ...resp, queryLocale, args }));
+      .then(resp => ({ ...resp, queryLocale, args }))
+      .catch(logger.error);
   }
-  return getAllEntries(query).then(resp =>
-    unpackData({ ...resp, queryLocale, args })
-  );
+  return getAllEntries(query)
+    .then(resp => unpackData({ ...resp, queryLocale, args }))
+    .catch(logger.error);
 }
 
 function getAllEntries(
@@ -72,20 +65,23 @@ function getAllEntries(
   limit = 250,
   allEntries = { items: [] }
 ) {
-  return client.getEntries({ skip, limit, ...query }).then(resp => {
-    if (limit < 10) {
-      throw Error('Limit must be at least 10.');
-    }
-    const allItems = allEntries.items;
-    const respItems = resp.items;
-    const items = [...allItems, ...respItems];
-    const entries = { ...resp, items };
-    const newSkip = resp.skip + limit;
-    if (resp.total > items.length) {
-      return getAllEntries(query, newSkip, limit, entries);
-    }
-    return entries;
-  });
+  return client
+    .getEntries({ skip, limit, ...query })
+    .then(resp => {
+      if (limit < 10) {
+        throw Error('Limit must be at least 10.');
+      }
+      const allItems = allEntries.items;
+      const respItems = resp.items;
+      const items = [...allItems, ...respItems];
+      const entries = { ...resp, items };
+      const newSkip = resp.skip + limit;
+      if (resp.total > items.length) {
+        return getAllEntries(query, newSkip, limit, entries);
+      }
+      return entries;
+    })
+    .catch(logger.error);
 }
 
 function unpackObject(obj) {
@@ -94,7 +90,7 @@ function unpackObject(obj) {
     (result, value, key) => {
       if (obj.hasOwnProperty(key) && obj[key] != null) {
         if (key === 'sys') {
-          return result;
+          result.id = value.id;
         } else if (key === 'fields') {
           result = { ...result, ...unpackData(obj[key]) };
         } else if (

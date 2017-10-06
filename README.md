@@ -16,6 +16,4 @@ I strive to make the list as extensive as possible so that everybody can find a 
 
 ## To Do
 
-- Submit a blog
-- Validate blogs
 - Edit your own blog
