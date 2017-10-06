@@ -20,8 +20,7 @@ export default class Field extends Component {
 
   static defaultProps = {
     required: false,
-    disabled: false,
-    valid: true
+    disabled: false
   };
 
   constructor(props) {
@@ -57,7 +56,8 @@ export default class Field extends Component {
       children
     } = this.props;
     const { hasFocus } = this.state;
-    const validate = !hasFocus && !isEmpty(value);
+    const validate =
+      !hasFocus && !isEmpty(value) && typeof valid !== 'undefined';
     return (
       <div
         className={classNames({

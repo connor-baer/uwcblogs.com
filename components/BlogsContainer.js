@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import fetch from 'isomorphic-fetch';
-import smoothScroll from 'smoothscroll';
+import Field from './Field';
 import Input from './Input';
 import Spinner from './Spinner';
 import Blogs from './Blogs';
@@ -76,25 +76,23 @@ export default class BlogsContainer extends Component {
     this.updateBlogs(search);
   };
 
-  handleFocus = e => {
-    smoothScroll(e.target);
-  };
-
   render() {
     const { search, loading, blogs } = this.state;
     return (
       <article className="l-ctnr cf">
         <div className="l-w100">
-          <Input
+          <Field
+            value={search}
             label="Enter a college, year, country, language, or name:"
             name="search"
-            type="search"
-            value={search}
-            placeholder="Type to filter the blogs..."
-            onChange={this.handleSearch}
-            onFocus={this.handleFocus}
-            autoComplete={false}
-          />
+          >
+            <Input
+              type="search"
+              placeholder="Type to filter the blogs..."
+              onChange={this.handleSearch}
+              autoComplete={false}
+            />
+          </Field>
           <Spinner active={loading} />
           <Blogs blogs={blogs} />
           <style jsx>{`

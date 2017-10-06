@@ -5,12 +5,11 @@ const fonts = {
     mono: '"Overpass Mono", Courier, monospace'
   },
   size: {
-    t4: '2.5rem',
-    t3: '2rem',
-    t2: '1.5rem',
+    t4: '3rem',
+    t3: '2.25rem',
+    t2: '1.75rem',
     t1: '1.25rem',
     base: '1rem',
-    s0: '1rem',
     s1: '0.75rem'
   },
   weight: {

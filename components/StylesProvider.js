@@ -35,7 +35,7 @@ class StylesProvider extends Component {
             t2: '1.5rem',
             t1: '1.25rem',
             base: '1rem',
-            s0: '1rem',
+            base: '1rem',
             s1: '0.75rem'
           },
           weight: {

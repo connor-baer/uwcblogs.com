@@ -10,7 +10,7 @@ const Logo = ({ domain, name, isHome }) => (
     <style jsx>{`
       a {
         padding: 0 1rem;
-        font-size: ${fonts.size.t1};
+        font-size: 1.5rem;
         display: inline-block;
         transition: color ${animations.short};
         color: ${colors.gray[9]};

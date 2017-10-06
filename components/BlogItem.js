@@ -14,9 +14,10 @@ const BlogItem = ({ firstName, url, languages, countries }) => {
       </Link>&ensp;
       {`${countriesString} — ${languagesString}`}
       <style jsx>{`
-        div {
-          font-size: ${fonts.size.s0};
+        li {
+          font-size: ${fonts.size.base};
           display: block;
+          line-height: ${fonts.lineHeight.large};
         }
 
         a {
