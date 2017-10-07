@@ -5,14 +5,12 @@ import Site from '../layouts/Site';
 import Main from '../components/Main';
 import Header from '../components/Header';
 import SubmissionForm from '../components/SubmissionForm';
-import Prefooter from '../components/Prefooter';
 
 export default class Page extends Component {
-  static async getInitialProps({ req }) {
-    const { protocol, originalUrl } = req || {};
-    const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
+  static async getInitialProps({ req, asPath, pathname }) {
+    const siteUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
     const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
-    const page = await fetch(`${siteUrl}/api/single${originalUrl}`).then(resp =>
+    const page = await fetch(`${siteUrl}/api/single${asPath}`).then(resp =>
       resp.json()
     );
     const colleges = await fetch(`${siteUrl}/api/colleges`).then(resp =>

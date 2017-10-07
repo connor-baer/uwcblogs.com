@@ -12,16 +12,16 @@ Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
 const Site = ({ title, site, children, sidebar }) => {
-  const { name, domain } = site;
+  const { name, navigation } = site;
   return (
     <div>
       <Meta title={title} name={name} />
-      <Navigation name={name} domain={domain} hasSidebar={sidebar} />
+      <Navigation name={name} links={navigation} hasSidebar={sidebar} />
 
       {Children.map(children, child => cloneElement(child, { sidebar }))}
 
       <Footer name={name} email="hello@connorbaer.co" hasSidebar={sidebar} />
-      <style jsx>{`
+      <style jsx global>{`
         #nprogress {
           pointer-events: none;
 

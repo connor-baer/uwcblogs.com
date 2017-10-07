@@ -2,12 +2,14 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import axios from 'axios';
+import NProgress from 'nprogress';
 import BlogItem from './BlogItem';
 import Validator from './Validator';
 import Field from './Field';
 import Input from './Input';
 import Select from './Select';
 import Button from './Button';
+import { fonts } from '../styles';
 
 export default class SubmissionForm extends Component {
   static propTypes = {
@@ -55,6 +57,7 @@ export default class SubmissionForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    NProgress.start();
     const {
       firstName,
       email,
@@ -76,12 +79,18 @@ export default class SubmissionForm extends Component {
         year
       })
       .then(() => {
+        NProgress.done();
         this.setState(() => ({
           isSubmitting: false,
           isSuccess: true
         }));
       })
       .catch(error => {
+        this.setState(() => ({
+          isSubmitting: false,
+          isError: true
+        }));
+        NProgress.done();
         console.warn(error);
       });
   };
@@ -130,6 +139,24 @@ export default class SubmissionForm extends Component {
       year
     } = this.state;
 
+    const styles = (
+      <style jsx>{`
+        h3 {
+          font-size: ${fonts.size.t2};
+          font-weight: ${fonts.weight.bold};
+        }
+
+        p {
+          font-size: ${fonts.size.t1};
+          margin-bottom: 1rem;
+        }
+
+        ul {
+          margin-bottom: 2rem;
+        }
+      `}</style>
+    );
+
     if (isSuccess) {
       const languagesString = languages.map(({ label }) => ({ name: label }));
       const countriesString = countries.map(({ label }) => ({ name: label }));
@@ -152,6 +179,7 @@ export default class SubmissionForm extends Component {
               onClick={this.handleReset}
             />
           </div>
+          {styles}
         </article>
       );
     }
@@ -343,6 +371,7 @@ export default class SubmissionForm extends Component {
             </div>
           </form>
         </div>
+        {styles}
       </article>
     );
   }

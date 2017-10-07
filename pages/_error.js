@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
 import Header from '../components/Header';
@@ -14,10 +15,14 @@ export default class Error extends Component {
     return { site, statusCode };
   }
 
+  static propTypes = {
+    site: PropTypes.object,
+    statusCode: PropTypes.number
+  };
+
   render() {
     const { site, statusCode } = this.props;
     let notice = {};
-    console.log(statusCode);
     switch (statusCode) {
       case 404: {
         notice = {

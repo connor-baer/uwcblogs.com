@@ -6,7 +6,7 @@ const Prefooter = ({ body, linkLabel, linkUrl }) => (
   <section className="prefooter">
     <h4>
       {body}&ensp;
-      <Link href={linkUrl}>
+      <Link route={linkUrl}>
         <a>{linkLabel}</a>
       </Link>
     </h4>

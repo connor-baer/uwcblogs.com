@@ -13,20 +13,20 @@ class Navigation extends Component {
   }
 
   render() {
-    const { domain, name, isHome, links, router, hasSidebar } = this.props;
+    const { name, links, router, hasSidebar } = this.props;
     return (
       <header className={classNames({ hasSidebar })}>
         <div className="l-ctnr l-flex">
-          <Logo domain={domain} name={name} isHome={isHome} />
+          <Logo name={name} />
 
           <nav>
             <ul>
               {links.map((link, i) => {
-                const { url, label } = link;
-                const isActive = router.pathname === url;
+                const { route, href, label } = link;
+                const isActive = router.pathname === route;
                 return (
                   <li key={i}>
-                    <Link href={url} prefetch>
+                    <Link route={route} href={href} prefetch>
                       <a className={isActive ? 'active' : ''}>{label}</a>
                     </Link>
                   </li>
@@ -113,16 +113,13 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  domain: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  isHome: PropTypes.bool,
   hasSidebar: PropTypes.bool,
   links: PropTypes.array,
   router: PropTypes.object.isRequired
 };
 
 Navigation.defaultProps = {
-  isHome: false,
   hasSidebar: false,
   links: []
 };
