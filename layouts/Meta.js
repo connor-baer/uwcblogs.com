@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
-import Styles from './Styles';
+import Styles from 'change/Styles';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();

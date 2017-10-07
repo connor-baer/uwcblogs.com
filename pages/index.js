@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
-import Header from '../components/Header';
+import Header from 'change/Header';
 import BlogsContainer from '../components/BlogsContainer';
-import Prefooter from '../components/Prefooter';
+import Prefooter from 'change/Prefooter';
 
 export default class Page extends Component {
   static async getInitialProps({ req }) {

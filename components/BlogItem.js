@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import Link from '../components/Link';
+import Link from 'change/Link';
 import { animations, colors, fonts } from '../styles';
 
 const BlogItem = ({ firstName, url, languages, countries }) => {

@@ -2,8 +2,8 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import queryString from 'query-string';
 import fetch from 'isomorphic-fetch';
-import Field from './Field';
-import Input from './Input';
+import Field from 'change/Field';
+import Input from 'change/Input';
 import Spinner from './Spinner';
 import Blogs from './Blogs';
 

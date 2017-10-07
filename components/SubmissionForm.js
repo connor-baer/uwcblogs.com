@@ -4,11 +4,11 @@ import classNames from 'classnames';
 import axios from 'axios';
 import NProgress from 'nprogress';
 import BlogItem from './BlogItem';
-import Validator from './Validator';
-import Field from './Field';
-import Input from './Input';
-import Select from './Select';
-import Button from './Button';
+import Validator from 'change/Validator';
+import Field from 'change/Field';
+import Input from 'change/Input';
+import Select from 'change/Select';
+import Button from 'change/Button';
 import { fonts } from '../styles';
 
 export default class SubmissionForm extends Component {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
-import Header from '../components/Header';
+import Header from 'change/Header';
 import SubmissionForm from '../components/SubmissionForm';
 
 export default class Page extends Component {

@@ -2,10 +2,32 @@
   "presets": ["./babel-preset"],
   "env": {
     "development": {
-      "plugins": ["inline-dotenv"]
+      "plugins": [
+        "inline-dotenv",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "change": "./change/src"
+            }
+          }
+        ]
+      ]
     },
     "production": {
-      "plugins": ["transform-inline-environment-variables"]
+      "plugins": [
+        "transform-inline-environment-variables",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "change": "./change/src"
+            }
+          }
+        ]
+      ]
     }
   }
 }

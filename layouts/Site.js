@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
 import Meta from './Meta';
-import Navigation from '../components/Navigation';
-import Footer from '../components/Footer';
+import Navigation from 'change/Navigation';
+import Footer from 'change/Footer';
 import { colors } from '../styles';
 
 Router.onRouteChangeStart = () => NProgress.start();

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Main from '../components/Main';
-import Header from '../components/Header';
-import Link from '../components/Link';
+import Header from 'change/Header';
+import Link from 'change/Link';
 import BlogsContainer from '../components/BlogsContainer';
-import Prefooter from '../components/Prefooter';
+import Prefooter from 'change/Prefooter';
 import { animations, colors } from '../styles';
 
 export default class Page extends Component {
