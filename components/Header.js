@@ -6,7 +6,7 @@ import Image from './Image';
 const Header = ({ title, subtitle, meta, image, children }) => (
   <section className="l-ctnr">
     <header className="l-w100">
-      <h1 className={classNames({ color: subtitle })}>{`${title}`}&ensp;</h1>
+      <h1 className={classNames({ color: subtitle })}>{title}&ensp;</h1>
       {subtitle && <h2>{subtitle}</h2>}
       {meta && <p>{meta}</p>}
       {children}

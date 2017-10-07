@@ -36,6 +36,7 @@ export default class Page extends Component {
 
   render() {
     const { site, page, blogs } = this.props;
+    const { prefooterBody, prefooterButtonLabel, prefooterButtonUrl } = site;
     const { title, subtitle, image } = page;
 
     return (
@@ -44,9 +45,9 @@ export default class Page extends Component {
           <Header title={title} subtitle={subtitle} image={image} />
           <BlogsContainer blogs={blogs} />
           <Prefooter
-            text="Let’s be friends!"
-            linkLabel="Say hi!"
-            linkUrl="https://twitter.com/connor_baer"
+            body={prefooterBody}
+            linkLabel={prefooterButtonLabel}
+            linkUrl={prefooterButtonUrl}
           />
         </Main>
       </Site>

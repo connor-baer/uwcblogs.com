@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import Link from './Link';
-import { colors, fonts } from '../styles';
+import { animations, colors, fonts } from '../styles';
 
-const Prefooter = ({ text, linkLabel, linkUrl }) => (
+const Prefooter = ({ body, linkLabel, linkUrl }) => (
   <section className="prefooter">
     <h4>
-      {`${text} `}
+      {body}&ensp;
       <Link href={linkUrl}>
-        <a className="link">{linkLabel}</a>
+        <a>{linkLabel}</a>
       </Link>
     </h4>
     <style jsx>{`
@@ -20,10 +20,16 @@ const Prefooter = ({ text, linkLabel, linkUrl }) => (
 
       h4 {
         font-size: ${fonts.size.t3};
+      }
 
-        & a {
-          font-weight: ${fonts.weight.bold};
-          color: ${colors.primary};
+      a {
+        transition: box-shadow ${animations.short};
+        font-weight: ${fonts.weight.bold};
+        color: ${colors.primary};
+
+        &:hover,
+        &:focus {
+          box-shadow: inset 0 -0.08em 0 0 ${colors.primary};
         }
       }
     `}</style>
@@ -31,7 +37,7 @@ const Prefooter = ({ text, linkLabel, linkUrl }) => (
 );
 
 Prefooter.propTypes = {
-  text: PropTypes.string,
+  body: PropTypes.string,
   linkLabel: PropTypes.string,
   linkUrl: PropTypes.string
 };

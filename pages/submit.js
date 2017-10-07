@@ -57,11 +57,6 @@ export default class Page extends Component {
             countries={countries}
             languages={languages}
           />
-          <Prefooter
-            text="Let’s be friends!"
-            linkLabel="Say hi!"
-            linkUrl="https://twitter.com/connor_baer"
-          />
         </Main>
       </Site>
     );
