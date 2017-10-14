@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import Head from 'next/head';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
-import Styles from 'change/Styles';
+import Styles from './Styles';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -33,6 +33,7 @@ const Meta = ({ title, name, index = true, follow = true }) => (
 
 Meta.propTypes = {
   title: PropTypes.string,
+  name: PropTypes.string,
   index: PropTypes.bool,
   follow: PropTypes.bool
 };

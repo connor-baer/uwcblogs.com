@@ -7,7 +7,7 @@ import Header from 'change/Header';
 import Link from 'change/Link';
 import BlogsContainer from '../components/BlogsContainer';
 import Prefooter from 'change/Prefooter';
-import { animations, colors } from '../styles';
+import { animations, colors } from 'styles';
 
 export default class Page extends Component {
   static async getInitialProps({ req, query }) {

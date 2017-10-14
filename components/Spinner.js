@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { colors, fonts } from '../styles';
+import { colors, fonts } from 'styles';
 
 class Spinner extends Component {
   constructor(props) {

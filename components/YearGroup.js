@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { isEmpty, sortBy } from 'lodash';
-import { fonts } from '../styles';
+import { fonts } from 'styles';
 import BlogItem from './BlogItem';
 
 const YearGroup = ({ year, blogs }) => {

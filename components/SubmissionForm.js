@@ -9,7 +9,7 @@ import Field from 'change/Field';
 import Input from 'change/Input';
 import Select from 'change/Select';
 import Button from 'change/Button';
-import { fonts } from '../styles';
+import { fonts } from 'styles';
 
 export default class SubmissionForm extends Component {
   static propTypes = {

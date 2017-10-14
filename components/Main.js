@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { breakpoints } from '../styles';
+import { breakpoints } from 'styles';
 
 const Main = ({ children, sidebar }) => (
   <main className={classNames({ 'has-sidebar': sidebar })}>

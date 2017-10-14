@@ -1,3 +1,4 @@
+import withStyles from 'change/withStyles';
 import { animations, breakpoints, colors, fonts } from '../styles';
 
 const Styles = () => (
@@ -407,4 +408,4 @@ const Styles = () => (
   </div>
 );
 
-export default Styles;
+export default withStyles(Styles);
