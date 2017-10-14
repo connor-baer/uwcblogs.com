@@ -82,6 +82,9 @@ router.post(
       languages,
       year
     } = req.body;
+    const { remoteAddress } = req.connection;
+    const userAgent = req.headers['user-agent'];
+    const referrer = req.headers.referer;
     const locale = 'en-US';
 
     const validFirstName = typeof firstName === 'string';
@@ -133,6 +136,20 @@ router.post(
     const localisedLanguages = mapLocalise(languagesValue, locale);
     const localisedYear = mapLocalise(Number(year), locale);
 
+    const isSpam = await api.akismet
+      .checkSpam({
+        user_ip: remoteAddress,
+        user_agent: userAgent,
+        referrer,
+        permalink: 'https://uwcblogs.com/submit',
+        comment_type: 'contact-form',
+        comment_author: firstName,
+        comment_author_email: email,
+        comment_author_url: url,
+        blog_lang: 'en'
+      })
+      .then(({ spam }) => spam);
+
     const fields = {
       firstName: localisedFirstName,
       email: localisedEmail,
@@ -143,7 +160,7 @@ router.post(
       year: localisedYear
     };
     api.contentful
-      .createEntry('blog', fields)
+      .createEntry('blog', fields, !isSpam)
       .then(entry => res.json(entry))
       .catch(error => res.status(422).json({ error }));
   })

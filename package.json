@@ -1,7 +1,8 @@
 {
   "name": "uwcblogs",
   "version": "5.0.0",
-  "description": "A collection of over 370 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
+  "description":
+    "A collection of over 370 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
   "main": "app.js",
   "scripts": {
     "build": "npm run prebuild && NODE_ENV=production next build",
@@ -11,35 +12,29 @@
     "fix": "npm run fix:prettier; npm run fix:eslint",
     "fix:eslint": "eslint --fix --quiet \"**/*.js\" \"**/*.js\"",
     "fix:prettier": "prettier --single-quote --write \"**/*.js\" \"**/*.js\"",
-    "sprites": "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
+    "sprites":
+      "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
     "start": "NODE_ENV=production node index.js",
     "prebuild": "npm run clean && npm run sprites",
     "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/uwc/uwcblogs.git"
+    "url": "git+https://github.com/connor-baer/uwcblogs.git"
   },
-  "keywords": [
-    "uwc",
-    "blog",
-    "blogs",
-    "list"
-  ],
+  "keywords": ["uwc", "blog", "blogs", "list"],
   "author": "Connor Bär, connor-baer <hello@connorbaer.co>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/uwc/uwcblogs/issues"
+    "url": "https://github.com/connor-baer/uwcblogs/issues"
   },
   "homepage": "https://uwcblogs.com",
   "lint-staged": {
-    "*.js": [
-      "npm run fix:prettier",
-      "git add"
-    ]
+    "*.js": ["npm run fix:prettier", "git add"]
   },
   "dependencies": {
     "@std/esm": "^0.8.3",
+    "akismet-api": "^3.0.0",
     "alertify.js": "^1.0.12",
     "axios": "^0.16.2",
     "babel-plugin-inline-dotenv": "^1.1.1",

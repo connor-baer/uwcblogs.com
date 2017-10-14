@@ -3,10 +3,10 @@ import { SiteProvider } from 'providers/SiteProvider';
 import { StylesProvider } from 'providers/StylesProvider';
 import Meta from './Meta';
 
-const Site = ({ site, title, index, follow, children }) => (
+const Site = ({ site, title, index, follow, head, children }) => (
   <SiteProvider site={site}>
     <StylesProvider>
-      <Meta title={title} index={index} follow={follow} />
+      <Meta title={title} index={index} follow={follow} head={head} />
       {children}
     </StylesProvider>
   </SiteProvider>
@@ -14,12 +14,13 @@ const Site = ({ site, title, index, follow, children }) => (
 
 Site.propTypes = {
   title: PropTypes.string,
+  index: PropTypes.bool,
+  follow: PropTypes.bool,
+  head: PropTypes.element,
   site: PropTypes.shape({
     name: PropTypes.string.isRequired,
     domain: PropTypes.string.isRequired
-  }),
-  index: PropTypes.bool,
-  follow: PropTypes.bool
+  })
 };
 
 Site.defaultProps = {

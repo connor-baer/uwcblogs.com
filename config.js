@@ -16,6 +16,11 @@ const CONFIG = {
   },
   next: {
     ttl: isDev ? 10 : 300
+  },
+  akismet: {
+    ttl: 0,
+    key: '252fcd467ce9',
+    blog: 'https://uwcblogs.com'
   }
 };
 

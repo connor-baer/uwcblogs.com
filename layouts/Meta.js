@@ -10,7 +10,7 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-const Meta = ({ title, index, follow, site: { name } }) => {
+const Meta = ({ title, index, follow, head, site: { name } }) => {
   const pageTitle = title ? `${title} — ` : '';
   return (
     <div>
@@ -30,6 +30,7 @@ const Meta = ({ title, index, follow, site: { name } }) => {
           type="image/png"
           href="/static/favicons/favicon-96x96.png"
         />
+        {head}
       </Head>
       <Styles />
       <style jsx global>{`
@@ -64,11 +65,12 @@ const Meta = ({ title, index, follow, site: { name } }) => {
 
 Meta.propTypes = {
   title: PropTypes.string,
+  index: PropTypes.bool,
+  follow: PropTypes.bool,
+  head: PropTypes.element,
   site: PropTypes.shape({
     name: PropTypes.string
-  }),
-  index: PropTypes.bool,
-  follow: PropTypes.bool
+  })
 };
 
 export default withSite(Meta);

@@ -1,4 +1,4 @@
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2d8734becc4c452ab3c4db9875435a55)](https://www.codacy.com/app/connor_baer/uwcblogs?utm_source=github.com&utm_medium=referral&utm_content=uwc/uwcblogs&utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2d8734becc4c452ab3c4db9875435a55)](https://www.codacy.com/app/connor_baer/uwcblogs?utm_source=github.com&utm_medium=referral&utm_content=connor-baer/uwcblogs&utm_campaign=Badge_Grade)
 
 # UWC Blogs
 

@@ -20,11 +20,11 @@ const idFromQuery = resp => `${resp.args}-${resp.queryLocale}`;
 
 createEntry.operation = 'CREATE';
 createEntry.idFrom = idFromEntry;
-export function createEntry(contentType, fields) {
+export function createEntry(contentType, fields, publish = false) {
   return manager
     .getSpace(CONFIG.contentful.spaceId)
     .then(space => space.createEntry(contentType, { fields }))
-    .then(entry => entry.publish())
+    .then(entry => (publish ? entry.publish() : entry))
     .then(entry => entry)
     .catch(logger.error);
 }
