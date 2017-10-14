@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
-import Main from '../components/Main';
+import Layout from '../layouts/Layout';
 import Header from 'change/Header';
 import SubmissionForm from '../components/SubmissionForm';
 
@@ -27,10 +27,7 @@ export default class Page extends Component {
   }
 
   static propTypes = {
-    site: PropTypes.shape({
-      domain: PropTypes.string,
-      name: PropTypes.string
-    }),
+    site: PropTypes.object,
     page: PropTypes.shape({
       title: PropTypes.string,
       slug: PropTypes.string,
@@ -47,15 +44,15 @@ export default class Page extends Component {
     const { title, subtitle, image, colleges, countries, languages } = page;
 
     return (
-      <Site site={site} title={title} sidebar={true}>
-        <Main>
+      <Site site={site} title={title}>
+        <Layout navigation sidebar footer>
           <Header title={title} subtitle={subtitle} image={image} />
           <SubmissionForm
             colleges={colleges}
             countries={countries}
             languages={languages}
           />
-        </Main>
+        </Layout>
       </Site>
     );
   }

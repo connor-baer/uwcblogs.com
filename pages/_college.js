@@ -2,11 +2,10 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
-import Main from '../components/Main';
+import Layout from '../layouts/Layout';
 import Header from 'change/Header';
 import Link from 'change/Link';
 import BlogsContainer from '../components/BlogsContainer';
-import Prefooter from 'change/Prefooter';
 import { animations, colors } from 'styles';
 
 export default class Page extends Component {
@@ -26,10 +25,7 @@ export default class Page extends Component {
   }
 
   static propTypes = {
-    site: PropTypes.shape({
-      domain: PropTypes.string,
-      name: PropTypes.string
-    }),
+    site: PropTypes.object,
     college: PropTypes.shape({
       name: PropTypes.string,
       slug: PropTypes.string,
@@ -68,16 +64,11 @@ export default class Page extends Component {
     );
     const hasSidebar = !!image;
     return (
-      <Site site={site} sidebar={hasSidebar}>
-        <Main>
+      <Site site={site} title={title}>
+        <Layout navigation sidebar={hasSidebar} prefooter footer>
           <Header title={title} subtitle={subtitle} meta={meta} image={image} />
           <BlogsContainer blogs={blogs} filter={{ college: slug }} />
-          <Prefooter
-            text="Let’s be friends!"
-            linkLabel="Say hi!"
-            linkUrl="https://twitter.com/connor_baer"
-          />
-        </Main>
+        </Layout>
       </Site>
     );
   }

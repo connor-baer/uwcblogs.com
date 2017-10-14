@@ -10,54 +10,57 @@ Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
 Router.onRouteChangeError = () => NProgress.done();
 
-const Meta = ({ title, index, follow, site: { name } }) => (
-  <div>
-    <Head>
-      <title>{`${title || 'Hi there'} · ${name}`}</title>
-      <meta charSet="utf-8" />
-      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta
-        name="robots"
-        content={`${index ? 'index' : 'noindex'}, ${follow
-          ? 'follow'
-          : 'nofollow'}`}
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        href="/static/favicons/favicon-96x96.png"
-      />
-    </Head>
-    <Styles />
-    <style jsx global>{`
-      #nprogress {
-        pointer-events: none;
+const Meta = ({ title, index, follow, site: { name } }) => {
+  const pageTitle = title ? `${title} — ` : '';
+  return (
+    <div>
+      <Head>
+        <title>{`${pageTitle}${name}`}</title>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+          name="robots"
+          content={`${index ? 'index' : 'noindex'}, ${follow
+            ? 'follow'
+            : 'nofollow'}`}
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          href="/static/favicons/favicon-96x96.png"
+        />
+      </Head>
+      <Styles />
+      <style jsx global>{`
+        #nprogress {
+          pointer-events: none;
 
-        & .bar {
-          background: ${colors.primary};
-          position: fixed;
-          z-index: 1031;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 2px;
-        }
+          & .bar {
+            background: ${colors.primary};
+            position: fixed;
+            z-index: 1031;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+          }
 
-        & .peg {
-          display: block;
-          position: absolute;
-          right: 0px;
-          width: 100px;
-          height: 100%;
-          box-shadow: 0 0 10px ${colors.primary}, 0 0 5px ${colors.primary};
-          opacity: 1;
-          transform: rotate(3deg) translate(0px, -4px);
+          & .peg {
+            display: block;
+            position: absolute;
+            right: 0px;
+            width: 100px;
+            height: 100%;
+            box-shadow: 0 0 10px ${colors.primary}, 0 0 5px ${colors.primary};
+            opacity: 1;
+            transform: rotate(3deg) translate(0px, -4px);
+          }
         }
-      }
-    `}</style>
-  </div>
-);
+      `}</style>
+    </div>
+  );
+};
 
 Meta.propTypes = {
   title: PropTypes.string,
