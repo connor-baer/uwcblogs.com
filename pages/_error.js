@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
-import Main from '../components/Main';
+import Layout from '../layouts/Layout';
 import Header from 'change/Header';
 import Link from 'change/Link';
 
@@ -48,7 +48,7 @@ export default class Error extends Component {
     }
     return (
       <Site site={site} title={notice.title}>
-        <Main>
+        <Layout navigation prefooter footer>
           <Header {...notice} />
           <article className="l-ctnr cf">
             <div className="l-w100">
@@ -57,7 +57,7 @@ export default class Error extends Component {
               </Link>
             </div>
           </article>
-        </Main>
+        </Layout>
       </Site>
     );
   }

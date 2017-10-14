@@ -2,10 +2,9 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
-import Main from '../components/Main';
+import Layout from '../layouts/Layout';
 import Header from 'change/Header';
 import BlogsContainer from '../components/BlogsContainer';
-import Prefooter from 'change/Prefooter';
 
 export default class Page extends Component {
   static async getInitialProps({ req }) {
@@ -21,10 +20,7 @@ export default class Page extends Component {
   }
 
   static propTypes = {
-    site: PropTypes.shape({
-      domain: PropTypes.string,
-      name: PropTypes.string
-    }),
+    site: PropTypes.object,
     page: PropTypes.shape({
       title: PropTypes.string,
       slug: PropTypes.string,
@@ -36,20 +32,14 @@ export default class Page extends Component {
 
   render() {
     const { site, page, blogs } = this.props;
-    const { prefooterBody, prefooterButtonLabel, prefooterButtonUrl } = site;
     const { title, subtitle, image } = page;
 
     return (
-      <Site site={site} title={title} sidebar={true}>
-        <Main>
+      <Site site={site} title={title}>
+        <Layout navigation sidebar prefooter footer>
           <Header title={title} subtitle={subtitle} image={image} />
           <BlogsContainer blogs={blogs} />
-          <Prefooter
-            body={prefooterBody}
-            linkLabel={prefooterButtonLabel}
-            linkUrl={prefooterButtonUrl}
-          />
-        </Main>
+        </Layout>
       </Site>
     );
   }

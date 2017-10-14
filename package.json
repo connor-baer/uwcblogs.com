@@ -81,6 +81,7 @@
     "react-tabs": "^2.1.0",
     "smooth-scroll": "github:cferdinandi/smooth-scroll",
     "smoothscroll": "^0.3.0",
+    "styled-jsx": "^2.0.2",
     "styled-jsx-postcss": "^0.2.0",
     "suncalc": "^1.8.0",
     "svgo": "^0.7.2",

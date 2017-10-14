@@ -9,9 +9,10 @@
           {
             "root": ["./"],
             "alias": {
-              "change": "./change/src",
+              "change": "./components/change/src",
+              "providers": "./providers",
               "styles": "./styles",
-              "providers": "./providers"
+              "server": "./server"
             }
           }
         ]
@@ -25,9 +26,10 @@
           {
             "root": ["./"],
             "alias": {
-              "change": "./change/src",
+              "change": "./components/change/src",
+              "providers": "./providers",
               "styles": "./styles",
-              "providers": "./providers"
+              "server": "./server"
             }
           }
         ]
