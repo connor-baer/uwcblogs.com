@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { isEmpty, sortBy } from 'lodash';
-import { fonts } from 'styles';
+import withStyles from 'change/withStyles';
 import YearGroup from './YearGroup';
 
-const CollegeGroup = ({ college, years }) => {
+const CollegeGroup = ({ college, years, styles: { fonts } }) => {
   if (isEmpty(years)) {
     return null;
   }

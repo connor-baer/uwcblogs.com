@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import { isEmpty, sortBy } from 'lodash';
-import { fonts } from 'styles';
+import withStyles from 'change/withStyles';
 import BlogItem from './BlogItem';
 
-const YearGroup = ({ year, blogs }) => {
+const YearGroup = ({ year, blogs, styles: { fonts } }) => {
   if (isEmpty(blogs)) {
     return null;
   }
@@ -34,4 +34,4 @@ YearGroup.propTypes = {
   blogs: PropTypes.array.isRequired
 };
 
-export default YearGroup;
+export default withStyles(YearGroup);

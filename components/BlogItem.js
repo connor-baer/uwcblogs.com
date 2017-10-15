@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
+import withStyles from 'change/withStyles';
 import Link from 'change/Link';
-import { animations, colors, fonts } from 'styles';
 
-const BlogItem = ({ firstName, url, languages, countries }) => {
+const BlogItem = ({ firstName, url, languages, countries, styles }) => {
+  const { animations, colors, fonts } = styles;
   const languagesString = languages.map(l => l.name).join(', ');
   const countriesString = countries.map(c => c.name).join(', ');
   return (
@@ -49,4 +50,4 @@ BlogItem.defaultProps = {
   countries: []
 };
 
-export default BlogItem;
+export default withStyles(BlogItem);

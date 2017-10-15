@@ -1,7 +1,6 @@
 import withStyles from 'change/withStyles';
-import { animations, breakpoints, colors, fonts } from '../styles';
 
-const Styles = () => (
+const Styles = ({ styles: { animations, breakpoints, colors, fonts } }) => (
   <div>
     <style jsx global>{`
       /* Font faces */

@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { colors, fonts } from 'styles';
+import withStyles from 'change/withStyles';
 
 class Spinner extends Component {
   constructor(props) {
@@ -24,8 +24,9 @@ class Spinner extends Component {
   }
 
   render() {
-    const { label, active } = this.props;
+    const { label, active, styles } = this.props;
     const { visible } = this.state;
+    const { colors, fonts } = styles;
 
     if (!active || !visible) {
       return null;
@@ -83,4 +84,4 @@ Spinner.defaultProps = {
   timer: 2000
 };
 
-export default Spinner;
+export default withStyles(Spinner);

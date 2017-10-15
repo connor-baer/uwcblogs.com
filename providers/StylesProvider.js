@@ -16,6 +16,14 @@ class StylesProvider extends Component {
 
   getChildContext() {
     const { theme, colors } = this.state;
+    const grayscales =
+      theme !== 'light'
+        ? {}
+        : {
+            white: '#1b1f22',
+            black: '#fff',
+            gray: oc.gray.reverse()
+          };
     return {
       styles: {
         animations: {
@@ -32,6 +40,7 @@ class StylesProvider extends Component {
         },
         colors: {
           ...oc,
+          ...grayscales,
           primary: colors.primary,
           secondary: colors.secondary
         },

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import axios from 'axios';
 import NProgress from 'nprogress';
-import BlogItem from './BlogItem';
+import withStyles from 'change/withStyles';
 import Validator from 'change/Validator';
 import Field from 'change/Field';
 import Input from 'change/Input';
 import Select from 'change/Select';
 import Button from 'change/Button';
-import { fonts } from 'styles';
+import BlogItem from './BlogItem';
 
-export default class SubmissionForm extends Component {
+class SubmissionForm extends Component {
   static propTypes = {
     colleges: PropTypes.arrayOf(PropTypes.object).isRequired,
     countries: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -124,7 +124,8 @@ export default class SubmissionForm extends Component {
     const {
       colleges: collegeList,
       countries: countryList,
-      languages: languageList
+      languages: languageList,
+      styles: { fonts }
     } = this.props;
     const {
       isSubmitting,
@@ -376,3 +377,5 @@ export default class SubmissionForm extends Component {
     );
   }
 }
+
+export default withStyles(SubmissionForm);
