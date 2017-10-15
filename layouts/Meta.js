@@ -26,6 +26,17 @@ class Meta extends Component {
     if (typeof window === 'undefined') {
       return;
     }
+    const mssgMe = document.createElement('script');
+    mssgMe.setAttribute('src', 'https://mssg.me/widget/connor');
+    document.head.appendChild(mssgMe);
+
+    const ga = document.createElement('script');
+    ga.setAttribute(
+      'src',
+      'https://www.googletagmanager.com/gtag/js?id=UA-37412525-3'
+    );
+    document.head.appendChild(ga);
+
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
@@ -58,11 +69,6 @@ class Meta extends Component {
             type="image/png"
             href="/static/favicons/favicon-96x96.png"
           />
-          <script
-            src="https://www.googletagmanager.com/gtag/js?id=UA-37412525-3"
-            async
-          />
-          <script src="https://mssg.me/widget/connor" async />
           {head}
         </Head>
         <Styles />
