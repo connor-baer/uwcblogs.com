@@ -1,8 +1,7 @@
 {
   "name": "uwcblogs",
   "version": "5.0.0",
-  "description":
-    "A collection of over 370 blogs written by UWC students in 27 languages from 77 countries at the 17 United World Colleges.",
+  "description": "A collection of over 370 blogs written by UWC students in 28 languages from 77 countries at the 17 United World Colleges.",
   "main": "app.js",
   "scripts": {
     "build": "npm run prebuild && NODE_ENV=production next build",
@@ -12,17 +11,22 @@
     "fix": "npm run fix:prettier; npm run fix:eslint",
     "fix:eslint": "eslint --fix --quiet \"**/*.js\" \"**/*.js\"",
     "fix:prettier": "prettier --single-quote --write \"**/*.js\" \"**/*.js\"",
-    "sprites":
-      "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
+    "sprites": "mkdir -p static/svgs; ./bin/svg-sprites --source source/svgs --destination static/svgs",
     "start": "NODE_ENV=production node index.js",
-    "prebuild": "npm run clean && npm run sprites",
+    "serviceworker": "sw-precache --static-file-globs='static/**/*'",
+    "prebuild": "npm run clean && npm run sprites && npm run serviceworker",
     "precommit": "lint-staged"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/connor-baer/uwcblogs.git"
   },
-  "keywords": ["uwc", "blog", "blogs", "list"],
+  "keywords": [
+    "uwc",
+    "blog",
+    "blogs",
+    "list"
+  ],
   "author": "Connor Bär, connor-baer <hello@connorbaer.co>",
   "license": "MIT",
   "bugs": {
@@ -30,7 +34,10 @@
   },
   "homepage": "https://uwcblogs.com",
   "lint-staged": {
-    "*.js": ["npm run fix:prettier", "git add"]
+    "*.js": [
+      "npm run fix:prettier",
+      "git add"
+    ]
   },
   "dependencies": {
     "@std/esm": "^0.8.3",
@@ -82,10 +89,12 @@
     "svgo": "^0.7.2",
     "svgstore": "^2.0.2",
     "svgxuse": "^1.2.4",
+    "sw-precache": "^5.2.0",
     "typi": "^3.0.0",
     "validator": "^9.0.0",
     "whatwg-fetch": "^2.0.3",
-    "winston": "^2.4.0"
+    "winston": "^2.4.0",
+    "workbox-cli": "^2.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",

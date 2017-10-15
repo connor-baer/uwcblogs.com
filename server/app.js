@@ -11,6 +11,7 @@ import canonicalUrl from './lib/canonical-url';
 import redirects from './routes/redirects';
 import sitemap from './routes/sitemap';
 import robots from './routes/robots';
+import serviceworker from './routes/serviceworker';
 import routes from './routes/next';
 import clear from './routes/clear';
 import site from './routes/site';
@@ -44,6 +45,7 @@ app.prepare().then(() => {
 
   server.get('/sitemap.xml', sitemap);
   server.get('/robots.txt', robots);
+  server.get('/service-worker.js', serviceworker);
 
   server.use('/api/clear', clear);
   server.use('/api/site', site);

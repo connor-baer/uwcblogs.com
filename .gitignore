@@ -4,6 +4,7 @@ data/*
 .next
 .env*
 .esm-cache
+/service-worker.js
 
 # Install by running `npm install` #
 /node_modules/

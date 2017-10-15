@@ -26,6 +26,13 @@ class Meta extends Component {
     if (typeof window === 'undefined') {
       return;
     }
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/service-worker.js')
+        .catch(err => console.error('Service worker registration failed', err));
+    } else {
+      console.log('Service worker not supported');
+    }
     const mssgMe = document.createElement('script');
     mssgMe.setAttribute('src', 'https://mssg.me/widget/connor');
     document.head.appendChild(mssgMe);
