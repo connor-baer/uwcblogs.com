@@ -9,17 +9,17 @@ import SubmissionForm from '../components/SubmissionForm';
 export default class Page extends Component {
   static async getInitialProps({ req, asPath, pathname }) {
     const siteUrl = req ? `${req.protocol}://${req.get('Host')}` : '';
-    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
-    const page = await fetch(`${siteUrl}/api/single${asPath}`).then(resp =>
+    const site = await fetch(`${siteUrl}/api/site/`).then(resp => resp.json());
+    const page = await fetch(`${siteUrl}/api/single${asPath}/`).then(resp =>
       resp.json()
     );
-    const colleges = await fetch(`${siteUrl}/api/colleges`).then(resp =>
+    const colleges = await fetch(`${siteUrl}/api/colleges/`).then(resp =>
       resp.json()
     );
-    const countries = await fetch(`${siteUrl}/api/countries`).then(resp =>
+    const countries = await fetch(`${siteUrl}/api/countries/`).then(resp =>
       resp.json()
     );
-    const languages = await fetch(`${siteUrl}/api/languages`).then(resp =>
+    const languages = await fetch(`${siteUrl}/api/languages/`).then(resp =>
       resp.json()
     );
 

@@ -10,7 +10,7 @@ export default class Error extends Component {
   static async getInitialProps({ req, res }) {
     const { protocol } = req || {};
     const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
-    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
+    const site = await fetch(`${siteUrl}/api/site/`).then(resp => resp.json());
     const { statusCode } = res;
     return { site, statusCode };
   }

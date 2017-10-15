@@ -7,6 +7,10 @@ import cache from 'memory-cache';
 import logger from './lib/logger';
 import CONFIG from '../config';
 
+import canonicalUrl from './lib/canonical-url';
+import redirects from './routes/redirects';
+import sitemap from './routes/sitemap';
+import robots from './routes/robots';
 import routes from './routes/next';
 import clear from './routes/clear';
 import site from './routes/site';
@@ -34,6 +38,12 @@ app.prepare().then(() => {
   );
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded({ extended: false }));
+
+  server.use(redirects);
+  server.use(canonicalUrl);
+
+  server.get('/sitemap.xml', sitemap);
+  server.get('/robots.txt', robots);
 
   server.use('/api/clear', clear);
   server.use('/api/site', site);

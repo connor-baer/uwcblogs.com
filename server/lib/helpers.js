@@ -27,3 +27,16 @@ export function getPath(req) {
     : withoutFrontSlash;
   return withoutBackSlash;
 }
+
+export function stripIndex(path) {
+  const indexPattern = '/index.htm';
+  const hasIndex = path.includes(indexPattern);
+  if (!hasIndex) {
+    return path;
+  }
+  return path.substring(0, path.indexOf(indexPattern, indexPattern.length));
+}
+
+export function addTrailingSlash(path) {
+  return path.substr(-1) === '/' ? path : `${path}/`;
+}

@@ -13,12 +13,12 @@ export default class Page extends Component {
     const { protocol } = req || {};
     const { slug } = query || {};
     const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
-    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
-    const college = await fetch(`${siteUrl}/api/college/${slug}`).then(resp =>
+    const site = await fetch(`${siteUrl}/api/site/`).then(resp => resp.json());
+    const college = await fetch(`${siteUrl}/api/college/${slug}/`).then(resp =>
       resp.json()
     );
     const blogs = await fetch(
-      `${siteUrl}/api/blogs?college=${slug}`
+      `${siteUrl}/api/blogs/?college=${slug}`
     ).then(resp => resp.json());
 
     return { site, college, blogs };
