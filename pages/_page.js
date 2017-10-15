@@ -11,8 +11,8 @@ export default class Page extends Component {
     const { protocol } = req || {};
     const { slug } = query || {};
     const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
-    const site = await fetch(`${siteUrl}/api/site/`).then(resp => resp.json());
-    const page = await fetch(`${siteUrl}/api/page/${slug}/`).then(resp =>
+    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
+    const page = await fetch(`${siteUrl}/api/page/${slug}`).then(resp =>
       resp.json()
     );
 

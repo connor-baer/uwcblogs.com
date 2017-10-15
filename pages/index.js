@@ -10,13 +10,9 @@ export default class Page extends Component {
   static async getInitialProps({ req }) {
     const { protocol } = req || {};
     const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
-    const site = await fetch(`${siteUrl}/api/site/`).then(resp => resp.json());
-    const page = await fetch(`${siteUrl}/api/single/`).then(resp =>
-      resp.json()
-    );
-    const blogs = await fetch(`${siteUrl}/api/blogs/`).then(resp =>
-      resp.json()
-    );
+    const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
+    const page = await fetch(`${siteUrl}/api/single`).then(resp => resp.json());
+    const blogs = await fetch(`${siteUrl}/api/blogs`).then(resp => resp.json());
 
     return { site, page, blogs };
   }

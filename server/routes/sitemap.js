@@ -1,6 +1,6 @@
 import logger from '../lib/logger';
 import api from '../api';
-import { addTrailingSlash } from '../lib/helpers';
+import { trailingSlash } from '../lib/helpers';
 
 function getAllEntries(
   query,
@@ -32,7 +32,7 @@ function mapEntries(entries, baseUrl, changefreq, priority) {
     if (!slug) {
       return result;
     }
-    const locXml = `<loc>${baseUrl}/${addTrailingSlash(slug)}</loc>`;
+    const locXml = `<loc>${baseUrl}/${trailingSlash(slug)}</loc>`;
     const lastmodXml = updatedAt ? `<lastmod>${updatedAt}</lastmod>` : '';
     const changefreqXml = changefreq
       ? `<changefreq>${changefreq}</changefreq>`

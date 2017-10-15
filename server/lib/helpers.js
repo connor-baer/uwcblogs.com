@@ -37,6 +37,9 @@ export function stripIndex(path) {
   return path.substring(0, path.indexOf(indexPattern, indexPattern.length));
 }
 
-export function addTrailingSlash(path) {
-  return path.substr(-1) === '/' ? path : `${path}/`;
+export function trailingSlash(path) {
+  if (path === '/') {
+    return path;
+  }
+  return path.substr(-1) === '/' ? path.substr(0, -1) : path;
 }
