@@ -64,6 +64,10 @@ class Meta extends Component {
               ? 'follow'
               : 'nofollow'}`}
           />
+          <meta
+            name="google-site-verification"
+            content="UXWTlQN6FmtFKirHUeXDKh13WSjo_v5g21dRjbhqMNw"
+          />
           <link
             rel="icon"
             type="image/png"
