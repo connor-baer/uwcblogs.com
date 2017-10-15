@@ -41,5 +41,5 @@ export function trailingSlash(path) {
   if (path === '/') {
     return path;
   }
-  return path.substr(-1) === '/' ? path.substr(0, -1) : path;
+  return path.substr(-1) === '/' ? path.slice(0, -1) : path;
 }

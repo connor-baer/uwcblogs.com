@@ -4,12 +4,14 @@ import { stripIndex, trailingSlash } from '../lib/helpers';
 export default function canonicalUrl(req, res, next) {
   const { path, query } = req;
 
+  const isFile = path.includes('.');
+  if (isFile) {
+    return next();
+  }
+
   const pathWithoutIndex = stripIndex(path);
   const pathWithoutTrailingSlash = trailingSlash(pathWithoutIndex);
-
-  const isFile = path.includes('.');
-
-  if (isFile || path === pathWithoutTrailingSlash) {
+  if (path === pathWithoutTrailingSlash) {
     return next();
   }
 
