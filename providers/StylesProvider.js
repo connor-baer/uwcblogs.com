@@ -17,7 +17,7 @@ class StylesProvider extends Component {
   getChildContext() {
     const { theme, colors } = this.state;
     const grayscales =
-      theme !== 'light'
+      theme === 'light'
         ? {}
         : {
             white: '#1b1f22',

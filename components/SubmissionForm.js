@@ -142,6 +142,10 @@ class SubmissionForm extends Component {
 
     const styles = (
       <style jsx>{`
+        article {
+          margin-bottom: 3rem;
+        }
+
         h3 {
           font-size: ${fonts.size.t2};
           font-weight: ${fonts.weight.bold};

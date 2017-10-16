@@ -34,4 +34,4 @@ CollegeGroup.propTypes = {
   years: PropTypes.array.isRequired
 };
 
-export default CollegeGroup;
+export default withStyles(CollegeGroup);

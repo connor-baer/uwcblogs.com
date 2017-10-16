@@ -9,40 +9,26 @@
       }
     ]
   ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": ["./"],
+        "alias": {
+          "change": "./components/change/src",
+          "providers": "./providers",
+          "styles": "./styles",
+          "server": "./server"
+        }
+      }
+    ]
+  ],
   "env": {
     "development": {
-      "plugins": [
-        "inline-dotenv",
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "change": "./components/change/src",
-              "providers": "./providers",
-              "styles": "./styles",
-              "server": "./server"
-            }
-          }
-        ]
-      ]
+      "plugins": ["inline-dotenv"]
     },
     "production": {
-      "plugins": [
-        "transform-inline-environment-variables",
-        [
-          "module-resolver",
-          {
-            "root": ["./"],
-            "alias": {
-              "change": "./components/change/src",
-              "providers": "./providers",
-              "styles": "./styles",
-              "server": "./server"
-            }
-          }
-        ]
-      ]
+      "plugins": ["transform-inline-environment-variables"]
     }
   }
 }
