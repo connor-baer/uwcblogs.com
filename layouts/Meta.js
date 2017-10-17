@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
+import { flow } from 'lodash';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
 import withSite from 'change/withSite';
