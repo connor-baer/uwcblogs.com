@@ -5,10 +5,14 @@ import Prefooter from 'change/Prefooter';
 import Footer from 'change/Footer';
 import withStyles from 'change/withStyles';
 
-const Layout = (
-  { navigation, sidebar, prefooter, footer, children },
-  { styles: { breakpoints } }
-) => (
+const Layout = ({
+  navigation,
+  sidebar,
+  prefooter,
+  footer,
+  children,
+  styles: { breakpoints }
+}) => (
   <div>
     {navigation && <Navigation hasSidebar={sidebar} />}
     <main className={classNames({ 'has-sidebar': sidebar })}>
