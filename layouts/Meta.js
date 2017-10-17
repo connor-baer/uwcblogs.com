@@ -4,8 +4,8 @@ import Head from 'next/head';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
 import withSite from 'change/withSite';
+import withStyles from 'change/withStyles';
 import Styles from './Styles';
-import { colors } from 'styles';
 
 Router.onRouteChangeStart = () => NProgress.start();
 Router.onRouteChangeComplete = () => NProgress.done();
@@ -53,7 +53,9 @@ class Meta extends Component {
   }
 
   render() {
-    const { title, index, follow, head, site: { name } } = this.props;
+    const { title, index, follow, head, site, styles } = this.props;
+    const { name } = site;
+    const { colors } = styles;
     const pageTitle = title ? `${title} — ` : '';
     return (
       <div>
@@ -114,4 +116,4 @@ class Meta extends Component {
   }
 }
 
-export default withSite(Meta);
+export default flow(withSite, withStyles)(Meta);
