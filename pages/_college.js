@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Layout from '../layouts/Layout';
-import Header from 'change/Header';
-import Link from 'change/Link';
+import { Header, Link, withStyles } from 'change';
 import BlogsContainer from '../components/BlogsContainer';
-import { animations, colors } from 'styles';
 
-export default class Page extends Component {
+class Page extends Component {
   static async getInitialProps({ req, query }) {
     const { protocol } = req || {};
     const { slug } = query || {};
@@ -36,7 +34,8 @@ export default class Page extends Component {
   };
 
   render() {
-    const { site, college, blogs } = this.props;
+    const { site, college, blogs, styles } = this.props;
+    const { animations, colors } = styles;
     const {
       name: title,
       description: subtitle,
@@ -73,3 +72,5 @@ export default class Page extends Component {
     );
   }
 }
+
+export default withStyles(Page);

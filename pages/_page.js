@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Layout from '../layouts/Layout';
-import Header from 'change/Header';
-import Prefooter from 'change/Prefooter';
+import { Header, Prefooter } from 'change';
 
 export default class Page extends Component {
   static async getInitialProps({ req, query }) {

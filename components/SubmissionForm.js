@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import axios from 'axios';
 import NProgress from 'nprogress';
-import withStyles from 'change/withStyles';
-import Validator from 'change/Validator';
-import Field from 'change/Field';
-import Input from 'change/Input';
-import Select from 'change/Select';
-import Button from 'change/Button';
+import { Button, Field, Input, Select, Validator, withStyles } from 'change';
 import BlogItem from './BlogItem';
 
 class SubmissionForm extends Component {
@@ -365,14 +360,14 @@ class SubmissionForm extends Component {
                       placeholder={new Date().getFullYear().toString()}
                       type="number"
                       onChange={this.handleChange}
-                      min="1961"
-                      max="2025"
+                      min={1961}
+                      max={2025}
                       step="1"
                     />
                   </Field>
                 )}
               </Validator>
-              <Button type="submit" label="Submit →" />
+              <Button type="submit" label="Submit →" primary />
             </div>
           </form>
         </div>

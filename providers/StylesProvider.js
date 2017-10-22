@@ -59,9 +59,9 @@ class StylesProvider extends Component {
             s1: '0.75rem'
           },
           weight: {
-            light: 300,
-            normal: 400,
-            bold: 700
+            light: 400,
+            normal: 600,
+            bold: 800
           },
           lineHeight: {
             large: 1.75,

@@ -4,8 +4,7 @@ import Head from 'next/head';
 import { flow } from 'lodash';
 import NProgress from 'nprogress';
 import { Router } from '../server/routes/next';
-import withSite from 'change/withSite';
-import withStyles from 'change/withStyles';
+import { withSite, withStyles } from 'change';
 import Styles from './Styles';
 
 Router.onRouteChangeStart = () => NProgress.start();

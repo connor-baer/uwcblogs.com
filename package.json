@@ -39,6 +39,12 @@
       "git add"
     ]
   },
+  "now": {
+    "alias": "uwcblogs.com",
+    "env": {
+      "NODE_ENV": "production"
+    }
+  },
   "dependencies": {
     "@std/esm": "^0.8.3",
     "akismet-api": "^3.0.0",
@@ -76,13 +82,13 @@
     "react-select": "^1.0.0-rc.10",
     "react-tabs": "^2.1.0",
     "styled-jsx-plugin-postcss": "^0.1.0",
-    "styled-jsx-plugin-sass": "^0.1.0",
     "svgo": "^0.7.2",
     "svgstore": "^2.0.2",
     "svgxuse": "^1.2.4",
     "sw-precache": "^5.2.0",
     "validator": "^9.0.0",
-    "winston": "^2.4.0"
+    "winston": "^2.4.0",
+    "yargs": "^9.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
@@ -100,7 +106,6 @@
     "husky": "^0.13.4",
     "lint-staged": "^3.6.0",
     "nodemon": "^1.12.1",
-    "prettier": "^1.7.4",
-    "yargs": "^9.0.1"
+    "prettier": "^1.7.4"
   }
 }

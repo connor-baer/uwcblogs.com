@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import withStyles from 'change/withStyles';
+import { withStyles } from 'change';
 
 class Spinner extends Component {
   constructor(props) {

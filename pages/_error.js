@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import fetch from 'isomorphic-fetch';
 import Site from '../layouts/Site';
 import Layout from '../layouts/Layout';
-import Header from 'change/Header';
-import Link from 'change/Link';
+import { Header, Link } from 'change';
 
 export default class Error extends Component {
   static async getInitialProps({ req, res }) {

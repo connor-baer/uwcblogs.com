@@ -15,7 +15,7 @@
       {
         "root": ["./"],
         "alias": {
-          "change": "./components/change/src",
+          "change": "./components/change",
           "providers": "./providers",
           "server": "./server"
         }

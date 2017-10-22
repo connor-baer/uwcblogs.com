@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import withStyles from 'change/withStyles';
-import Link from 'change/Link';
+import { Link, withStyles } from 'change';
 
 const BlogItem = ({ firstName, url, languages, countries, styles }) => {
   const { animations, colors, fonts } = styles;
