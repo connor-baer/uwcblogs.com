@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Footer, Navigation, Prefooter, withStyles } from 'change';
+import {
+  Footer,
+  Navigation,
+  Prefooter,
+  withStyles
+} from '../components/change';
 
 const Layout = ({
   navigation,

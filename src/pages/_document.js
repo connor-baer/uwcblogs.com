@@ -1,5 +1,11 @@
 import Document, { Head, Main, NextScript } from 'next/document';
+import { injectGlobal } from 'emotion';
 import { extractCritical } from 'emotion-server';
+
+import { globalStyles } from '../shared/styles';
+import { change } from '../shared/themes';
+
+injectGlobal(globalStyles({ theme: change }));
 
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {

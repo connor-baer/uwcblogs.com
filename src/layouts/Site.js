@@ -1,15 +1,12 @@
 import PropTypes from 'prop-types';
-import { SiteProvider } from 'providers/SiteProvider';
-import { StylesProvider } from 'providers/StylesProvider';
+import SiteContext from '../context/SiteContext';
 import Meta from './Meta';
 
 const Site = ({ site, title, index, follow, head, children }) => (
-  <SiteProvider site={site}>
-    <StylesProvider>
-      <Meta title={title} index={index} follow={follow} head={head} />
-      {children}
-    </StylesProvider>
-  </SiteProvider>
+  <SiteContext.Provider value={site}>
+    <Meta title={title} index={index} follow={follow} head={head} />
+    {children}
+  </SiteContext.Provider>
 );
 
 Site.propTypes = {
