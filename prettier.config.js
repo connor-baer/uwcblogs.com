@@ -3,6 +3,6 @@ module.exports = {
   tabWidth: 2,
   useTabs: false,
   trailingComma: 'none',
-  brackketSpacing: true,
+  bracketSpacing: true,
   jsxBracketSameLine: false
 };

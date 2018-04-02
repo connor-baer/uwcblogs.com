@@ -1,33 +1,25 @@
 {
   "presets": [
-    [
-      "next/babel",
-      {
-        "styled-jsx": {
-          "plugins": ["styled-jsx-plugin-postcss"]
-        }
-      }
-    ]
+    "next/babel"
   ],
   "plugins": [
+    "lodash",
+    [
+      "emotion",
+      {
+        "autoLabel": true,
+        "hoist": true,
+        "sourceMap": true
+      }
+    ],
     [
       "module-resolver",
       {
         "root": ["./"],
         "alias": {
-          "change": "./components/change",
-          "providers": "./providers",
           "server": "./server"
         }
       }
     ]
-  ],
-  "env": {
-    "development": {
-      "plugins": ["inline-dotenv"]
-    },
-    "production": {
-      "plugins": ["transform-inline-environment-variables"]
-    }
-  }
+  ]
 }
