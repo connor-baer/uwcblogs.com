@@ -69,9 +69,9 @@ class Meta extends Component {
           <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
           <meta
             name="robots"
-            content={`${index ? 'index' : 'noindex'}, ${follow
-              ? 'follow'
-              : 'nofollow'}`}
+            content={`${index ? 'index' : 'noindex'}, ${
+              follow ? 'follow' : 'nofollow'
+            }`}
           />
           <meta
             name="google-site-verification"

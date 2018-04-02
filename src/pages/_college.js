@@ -15,9 +15,9 @@ class Page extends Component {
     const college = await fetch(`${siteUrl}/api/college/${slug}`).then(resp =>
       resp.json()
     );
-    const blogs = await fetch(
-      `${siteUrl}/api/blogs/?college=${slug}`
-    ).then(resp => resp.json());
+    const blogs = await fetch(`${siteUrl}/api/blogs/?college=${slug}`).then(
+      resp => resp.json()
+    );
 
     return { site, college, blogs };
   }

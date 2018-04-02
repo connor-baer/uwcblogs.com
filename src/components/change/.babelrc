@@ -1,0 +1,33 @@
+{
+  "presets": ["./babel-preset"],
+  "env": {
+    "development": {
+      "plugins": [
+        "inline-dotenv",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "change": "./src"
+            }
+          }
+        ]
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-inline-environment-variables",
+        [
+          "module-resolver",
+          {
+            "root": ["./"],
+            "alias": {
+              "change": "./src"
+            }
+          }
+        ]
+      ]
+    }
+  }
+}

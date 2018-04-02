@@ -1,0 +1,35 @@
+{
+  "name": "change",
+  "version": "0.0.1",
+  "description": "My personal, light-weight and ever-changing library of React components",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connor-baer/change.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/connor-baer/change/issues"
+  },
+  "homepage": "https://github.com/connor-baer/change#readme",
+  "devDependencies": {
+    "@storybook/react": "^3.2.8",
+    "@storybook/addon-actions": "^3.2.6",
+    "@storybook/addon-links": "^3.2.6"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
+    "open-color": "^1.5.1",
+    "prop-types": "^15.6.0",
+    "query-string": "^5.0.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-select": "^1.0.0-rc.10",
+    "validator": "^9.0.0"
+  }
+}
