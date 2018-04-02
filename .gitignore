@@ -4,6 +4,7 @@ data/*
 .next
 .env*
 .esm-cache
+dist
 
 
 # Install by running `npm install` #

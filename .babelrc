@@ -1,7 +1,5 @@
 {
-  "presets": [
-    "next/babel"
-  ],
+  "presets": ["next/babel"],
   "plugins": [
     "lodash",
     [
@@ -10,15 +8,6 @@
         "autoLabel": true,
         "hoist": true,
         "sourceMap": true
-      }
-    ],
-    [
-      "module-resolver",
-      {
-        "root": ["./"],
-        "alias": {
-          "server": "./server"
-        }
       }
     ]
   ]

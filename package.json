@@ -4,7 +4,8 @@
   "description": "A collection of over 390 blogs written by UWC students in 28 languages from 77 countries at the 17 United World Colleges.",
   "main": "server/index.js",
   "scripts": {
-    "build": "NODE_ENV=production next build",
+    "analyze": "BUNDLE_ANALYZE=true yarn build",
+    "build": "NODE_ENV=production next build src",
     "dev": "nodemon --watch server --inspect server",
     "deploy": "now",
     "fix": "yarn fix:eslint",
@@ -46,6 +47,7 @@
     "contentful": "^4.6.2",
     "contentful-management": "^3.12.0",
     "emotion": "^9.1.0",
+    "emotion-server": "^9.1.0",
     "emotion-theming": "^9.0.0",
     "express": "^4.16.2",
     "isomorphic-fetch": "^2.2.1",
@@ -71,8 +73,11 @@
     "yargs": "^9.0.1"
   },
   "devDependencies": {
+    "@zeit/next-bundle-analyzer": "^0.1.1",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^22.4.3",
+    "babel-plugin-emotion": "^9.1.0",
+    "babel-plugin-lodash": "^3.3.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.9.0",
@@ -93,8 +98,10 @@
     "jest-cli": "^22.4.3",
     "jest-emotion": "^9.0.0",
     "jest-enzyme": "^6.0.0",
+    "next-compose-plugins": "^1.0.3",
     "nodemon": "^1.12.1",
     "prettier": "^1.7.4",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "webpack-bundle-analyzer": "^2.11.1"
   }
 }
