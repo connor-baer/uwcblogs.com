@@ -44,10 +44,12 @@ const reds = {
 const primary = {
   p100: blues.b100,
   p300: blues.b300,
-  p500: blues.b500,
+  p500: '#1fb7e3',
   p700: blues.b700,
   p900: blues.b900
 };
+
+// secondary: '#00ccd2'
 
 const misc = {
   shadow: '#0C0F14',
@@ -148,13 +150,14 @@ export const typography = {
 };
 
 export const fontStack = {
-  default: 'aktiv-grotesk, -apple-system, BlinkMacSystemFont, "Segoe UI"',
-  mono: 'Consolas, monaco, monospace'
+  default:
+    '"Overpass", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+  mono: '"Overpass Mono", Courier, monospace'
 };
 
 export const fontWeight = {
   regular: '400',
-  bold: '700'
+  bold: '800'
 };
 
 export const breakpoints = {

@@ -3,6 +3,7 @@ module.exports = {
   plugins: ['prettier', 'jest'],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
+    'jsx-a11y/href-no-hash': 'off',
     'no-use-before-define': ['error', { functions: false }],
     'no-underscore-dangle': 'off',
     'no-param-reassign': 'off',
