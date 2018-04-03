@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import SiteContext from '../context/SiteContext';
-import Meta from './Meta';
+import Meta from '../shared/components/Meta';
 
 const Site = ({ site, title, index, follow, head, children }) => (
   <SiteContext.Provider value={site}>
