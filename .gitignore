@@ -2,14 +2,13 @@
 ############
 data/*
 .next
-.env*
+.env*.local
 .esm-cache
 dist
 
 
 # Install by running `npm install` #
 /node_modules/
-package-lock.json
 
 # Compiled source #
 ###################
