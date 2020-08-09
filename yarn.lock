@@ -1187,9 +1187,9 @@
     yargs "^8.0.2"
 
 "@madebyconnor/bamboo-ui@^2.0.0-canary":
-  version "2.0.0-canary.14"
-  resolved "https://registry.yarnpkg.com/@madebyconnor/bamboo-ui/-/bamboo-ui-2.0.0-canary.14.tgz#70a3b656ee99a1eaa2fc0a6fd05f39664f50e0a2"
-  integrity sha512-fvce7iJ/woyqixAbHqbZYIJni7aMrZuLwzYtOfdX9VvCleQFfbZLyfh6Zw2y4v5B6LPr/KmCuKEO5jN+ykGtvw==
+  version "2.0.0-canary.15"
+  resolved "https://registry.yarnpkg.com/@madebyconnor/bamboo-ui/-/bamboo-ui-2.0.0-canary.15.tgz#4f49f82f6b1256aa05491949c55f8aabfa562516"
+  integrity sha512-piH9+FsATLLzybyQxV4as1jN9TTGA67vzyaC4gZ4zmF7D22AOFvLS/LYlfaVIGraq1NWZjYQuoFfkSCaNBqAvA==
   dependencies:
     "@emotion/core" "^10.0.10"
     "@emotion/is-prop-valid" "^0.8.2"
