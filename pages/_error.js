@@ -1,60 +1,59 @@
-import { Component, Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Header } from '@madebyconnor/bamboo-ui';
+import { Button } from '@madebyconnor/bamboo-ui';
 
-import Link from '../components/Link';
+import { Split } from '../layouts/Split';
+import Meta from '../components/Meta';
+import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
-export default class Error extends Component {
-  // static async getInitialProps({ req, res }) {
-  //   const { protocol } = req || {};
-  //   const siteUrl = req ? `${protocol}://${req.get('Host')}` : '';
-  //   const site = await fetch(`${siteUrl}/api/site`).then(resp => resp.json());
-  //   const { statusCode } = res;
-  //   return { site, statusCode };
-  // }
+export default function ErrorPage({ statusCode }) {
+  let notice = {};
 
-  static propTypes = {
-    site: PropTypes.object,
-    statusCode: PropTypes.number,
+  switch (statusCode) {
+    case 404: {
+      notice = {
+        title: 'Page not found 🕵️',
+        subtitle: 'What’s worse, a hilarious 404 page can’t be found either.',
+      };
+      break;
+    }
+    case 500: {
+      notice = {
+        title: 'Bear with me please 🐼',
+        subtitle:
+          'I’m currently carrying out some maintenance on this website. It will only take a minute.',
+      };
+      break;
+    }
+    default: {
+      notice = {
+        title: 'An error occured ⚠️',
+        subtitle: 'Apologies, I’m not quite sure what went wrong.',
+      };
+    }
+  }
+
+  const image = {
+    src:
+      'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
+    alt: 'A boy is writing into his journal on top of a mountain.',
   };
 
-  render() {
-    const { site = {}, statusCode = 500 } = this.props;
-    let notice = {};
-    switch (statusCode) {
-      case 404: {
-        notice = {
-          title: 'Page not found 🕵️',
-          subtitle: 'What’s worse, a hilarious 404 page can’t be found either.',
-        };
-        break;
-      }
-      case 500: {
-        notice = {
-          title: 'Bear with me please 🐼',
-          subtitle:
-            'I’m currently carrying out some maintenance on this website. It will only take a minute.',
-        };
-        break;
-      }
-      default: {
-        notice = {
-          title: 'An error occured ⚠️',
-          subtitle: 'Apologies, I’m not quite sure what went wrong.',
-        };
-      }
-    }
-    return (
-      <Fragment>
-        <Header {...notice} />
-        <article className="l-ctnr cf">
-          <div className="l-w100">
-            <Link href={site.domain} prefetch>
-              <a>Return home →</a>
-            </Link>
-          </div>
-        </article>
-      </Fragment>
-    );
-  }
+  return (
+    <>
+      <Meta {...notice} index={false} />
+
+      <Navigation />
+
+      <Split {...notice} image={image}>
+        <Button href="/">Return home →</Button>
+      </Split>
+      <Footer />
+    </>
+  );
 }
+
+ErrorPage.propTypes = {
+  statusCode: PropTypes.number,
+};
