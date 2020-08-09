@@ -1,14 +1,4 @@
 {
-  "presets": ["next/babel"],
-  "plugins": [
-    "lodash",
-    [
-      "emotion",
-      {
-        "autoLabel": true,
-        "hoist": true,
-        "sourceMap": true
-      }
-    ]
-  ]
+  "presets": ["next/babel", "@emotion/babel-preset-css-prop"],
+  "plugins": ["lodash"]
 }
