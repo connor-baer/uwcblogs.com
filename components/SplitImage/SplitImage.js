@@ -21,6 +21,10 @@ const imageStyles = ({ theme }) => css`
 
 const SplitImage = styled(Image)(imageStyles);
 
+SplitImage.defaultProps = {
+  loading: 'lazy',
+};
+
 SplitImage.propTypes = propTypes.imagePropType;
 
 export default SplitImage;
