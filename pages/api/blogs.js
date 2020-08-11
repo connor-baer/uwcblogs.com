@@ -1,32 +1,7 @@
-import { get, reduce } from 'lodash/fp';
+import { get } from 'lodash/fp';
 
 import contentful from '../../services/contentful';
-
-function searchBlogs(blogs, search) {
-  return blogs.filter((blog) => {
-    const lowercaseSearch = search.toLowerCase();
-    if (lowercaseSearch === '') {
-      return true;
-    }
-    const lowercaseValues = reduce(
-      (result, value) => {
-        if (typeof value === 'string') {
-          result.push(value.toLowerCase());
-        } else if (typeof value === 'number') {
-          result.push(value.toString().toLowerCase());
-        } else if (value.constructor === Object) {
-          result.push(value.name.toLowerCase());
-        } else if (value.constructor === Array) {
-          value.map((item) => result.push(item.name.toLowerCase()));
-        }
-        return result;
-      },
-      [],
-      blog,
-    );
-    return lowercaseValues.some((value) => value.includes(lowercaseSearch));
-  });
-}
+import { searchBlogs, mapBlogs, groupBlogs } from '../../services/blogs';
 
 export default async (req, res) => {
   const { query } = req;
@@ -52,10 +27,8 @@ export default async (req, res) => {
     return hasCollege && hasLanguage && hasCountry;
   });
 
-  if (!search) {
-    return res.json(filteredBlogs);
-  }
-
-  const searchedBlogs = searchBlogs(filteredBlogs, search);
-  return res.json(searchedBlogs);
+  const mappedBlogs = mapBlogs(filteredBlogs);
+  const searchedBlogs = searchBlogs(mappedBlogs, search);
+  const groupedBlogs = groupBlogs(searchedBlogs);
+  return res.json(groupedBlogs);
 };
