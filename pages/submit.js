@@ -9,6 +9,10 @@ import Footer from '../components/Footer';
 // import SubmissionForm from '../components/SubmissionForm';
 import contentful from '../services/contentful';
 
+// const createHandler = (setFn) => (event) => {
+//   setFn(event.target.value);
+// };
+
 export default function Page({
   title,
   subtitle,
@@ -17,18 +21,36 @@ export default function Page({
   countries,
   languages,
 }) {
+  // const [firstName, setFirstName] = useState('');
+  // const [email, setEmail] = useState('');
+
+  // const handleFirstName = createHandler(setFirstName);
+  // const handleEmail = createHandler(setEmail);
   // console.log(colleges, countries, languages);
   return (
     <>
       <Meta title={title} description={subtitle} pathname="/submit" />
       <Navigation />
       <Split title={title} subtitle={subtitle} image={image}>
-        {/* <SubmissionForm
-        colleges={colleges}
-        countries={countries}
-        languages={languages}
-      /> */}
         <Paragraph slope="italic">Coming back soon...</Paragraph>
+        {/* <SubmissionForm
+          colleges={colleges}
+          countries={countries}
+          languages={languages}
+        />
+        <Input
+          label="What's your first name?"
+          placeholder="Jane"
+          onChange={handleFirstName}
+          value={firstName}
+        />
+        <Input
+          label="What's your email address?"
+          placeholder="jane@uwc.org"
+          type="email"
+          onChange={handleEmail}
+          value={email}
+        /> */}
       </Split>
       <Footer />
     </>
