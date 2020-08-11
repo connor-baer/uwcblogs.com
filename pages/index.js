@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
 import React, { useState, useEffect, memo } from 'react';
 import { css } from '@emotion/core';
-import { Input, Paragraph, Emoji } from '@madebyconnor/bamboo-ui';
+import { Input, Paragraph, Emoji, LoadingIcon } from '@madebyconnor/bamboo-ui';
 import { isEmpty } from 'lodash/fp';
 
 import { request } from '../services/request';
@@ -18,13 +18,16 @@ import { BlogItem } from '../components/BlogItem';
 
 export default function Page({ title, subtitle, image, blogs: initialBlogs }) {
   const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(false);
   const [blogs, setBlogs] = useState(initialBlogs);
   const debouncedSearch = useDebounce(search, 300);
 
   useEffect(() => {
-    request(`/api/blogs?search=${debouncedSearch}`).then((data) =>
-      setBlogs(data),
-    );
+    setLoading(true);
+    request(`/api/blogs?search=${debouncedSearch}`).then((data) => {
+      setBlogs(data);
+      setLoading(false);
+    });
   }, [debouncedSearch]);
 
   const handleSearch = (event) => {
@@ -44,6 +47,7 @@ export default function Page({ title, subtitle, image, blogs: initialBlogs }) {
           placeholder="Type to filter the blogs..."
           onChange={handleSearch}
           value={search}
+          suffix={loading && LoadingIcon}
           css={(theme) =>
             css`
               margin-bottom: ${theme.spacing.xxxxl};
