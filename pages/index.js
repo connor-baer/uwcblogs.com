@@ -1,5 +1,7 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
+/* eslint-disable jsx-a11y/accessible-emoji, jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect, memo } from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 import { css } from '@emotion/core';
 import { Input, Paragraph, Emoji, LoadingIcon } from '@madebyconnor/bamboo-ui';
 import { isEmpty } from 'lodash/fp';
@@ -16,7 +18,13 @@ import { BlogSection } from '../components/BlogSection';
 import { BlogGroup } from '../components/BlogGroup';
 import { BlogItem } from '../components/BlogItem';
 
-export default function Page({ title, subtitle, image, blogs: initialBlogs }) {
+export default function Page({
+  title,
+  subtitle,
+  image,
+  blogs: initialBlogs,
+  colleges,
+}) {
   const [search, setSearch] = useState('');
   const [loading, setLoading] = useState(false);
   const [blogs, setBlogs] = useState(initialBlogs);
@@ -55,14 +63,45 @@ export default function Page({ title, subtitle, image, blogs: initialBlogs }) {
           }
         />
 
-        <BlogList blogs={blogs} />
+        <BlogList blogs={blogs} colleges={colleges} />
       </Split>
       <Footer />
     </>
   );
 }
 
-const BlogList = memo(({ blogs }) => {
+const blogsPropType = PropTypes.arrayOf(
+  PropTypes.shape({
+    college: PropTypes.string,
+    years: PropTypes.arrayOf(
+      PropTypes.shape({
+        year: PropTypes.string,
+        blogs: PropTypes.arrayOf(
+          PropTypes.shape({
+            firstName: PropTypes.string,
+            url: PropTypes.string,
+            college: PropTypes.string,
+            countries: PropTypes.arrayOf(PropTypes.string),
+            languages: PropTypes.arrayOf(PropTypes.string),
+            yarn: PropTypes.number,
+          }),
+        ),
+      }),
+    ),
+  }),
+);
+
+Page.propTypes = {
+  title: PropTypes.string,
+  subtitle: PropTypes.string,
+  image: PropTypes.shape({
+    src: PropTypes.string,
+    alt: PropTypes.string,
+  }),
+  blogs: blogsPropType,
+  colleges: PropTypes.object,
+};
+const BlogList = memo(({ blogs, colleges }) => {
   if (isEmpty(blogs)) {
     return (
       <Paragraph
@@ -78,16 +117,25 @@ const BlogList = memo(({ blogs }) => {
     );
   }
   return blogs.map(({ college, years }) => (
-    <BlogSection key={college} title={college}>
+    <BlogSection
+      key={college}
+      title={
+        <Link href="/college/[slug]" as={`/college/${colleges[college]}`}>
+          <a>{college}</a>
+        </Link>
+      }
+    >
       {years.map(({ year, blogs: items }) => (
-        <BlogGroup key={`${college}-${year}`} title={year}>
-          {items.map((blog) => (
-            <BlogItem
-              key={`${college}-${year}-${blog.firstName}-${blog.url}`}
-              {...blog}
-            />
-          ))}
-        </BlogGroup>
+        <li key={`${college}-${year}`}>
+          <BlogGroup title={year}>
+            {items.map((blog) => (
+              <BlogItem
+                key={`${college}-${year}-${blog.firstName}-${blog.url}`}
+                {...blog}
+              />
+            ))}
+          </BlogGroup>
+        </li>
       ))}
     </BlogSection>
   ));
@@ -95,21 +143,40 @@ const BlogList = memo(({ blogs }) => {
 
 BlogList.displayName = 'BlogList';
 
+BlogList.propTypes = {
+  blogs: blogsPropType,
+  colleges: PropTypes.object,
+};
+
 export async function getStaticProps() {
-  const { items, total } = await contentful.getEntries({
-    content_type: 'blog',
-    include: 2,
-  });
-  const blogs = mapBlogs(items);
+  const [
+    { items: blogs, total: blogCount },
+    { items: colleges },
+  ] = await Promise.all([
+    contentful.getEntries({
+      content_type: 'blog',
+      include: 2,
+      order: 'fields.firstName',
+    }),
+    contentful.getEntries({
+      content_type: 'college',
+    }),
+  ]);
 
-  const collegeCount = count(blogs, 'college');
-  const languageCount = count(blogs, 'languages');
-  const countryCount = count(blogs, 'countries');
+  const mappedBlogs = mapBlogs(blogs);
+  const mappedColleges = colleges.reduce(
+    (acc, { name, slug }) => ({ ...acc, [name]: slug }),
+    {},
+  );
 
-  const groupedBlogs = groupBlogs(blogs);
+  const collegeCount = count(mappedBlogs, 'college');
+  const languageCount = count(mappedBlogs, 'languages');
+  const countryCount = count(mappedBlogs, 'countries');
+
+  const groupedBlogs = groupBlogs(mappedBlogs);
 
   const title = 'UWC Blogs';
-  const subtitle = `A collection of ${total} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${collegeCount} United World Colleges.`;
+  const subtitle = `A collection of ${blogCount} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${collegeCount} United World Colleges.`;
   const image = {
     src:
       'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
@@ -117,7 +184,13 @@ export async function getStaticProps() {
   };
 
   return {
-    props: { title, subtitle, image, blogs: groupedBlogs },
+    props: {
+      title,
+      subtitle,
+      image,
+      blogs: groupedBlogs,
+      colleges: mappedColleges,
+    },
     revalidate: 60,
   };
 }

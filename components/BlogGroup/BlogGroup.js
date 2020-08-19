@@ -13,7 +13,7 @@ const Title = styled(Text)(
 );
 
 export const BlogGroup = ({ title, children }) => (
-  <li>
+  <>
     <Title as="h4" size="l">
       {title}
     </Title>
@@ -25,7 +25,7 @@ export const BlogGroup = ({ title, children }) => (
     >
       {children}
     </ul>
-  </li>
+  </>
 );
 
 BlogGroup.propTypes = {

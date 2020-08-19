@@ -13,6 +13,7 @@ export default async (req, res) => {
   const { items: blogs } = await contentful.getEntries({
     content_type: 'blog',
     include: 2,
+    order: 'fields.firstName',
   });
 
   const filteredBlogs = blogs.filter((blog) => {
