@@ -10,6 +10,10 @@ const Content = styled.div(
   ({ theme }) => css`
     padding: 0 ${theme.spacing.s};
 
+    ${theme.mq.hand} {
+      padding: 0 ${theme.spacing.xxxxl};
+    }
+
     ${theme.mq.lap} {
       padding: 0 ${theme.spacing.l};
     }

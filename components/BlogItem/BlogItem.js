@@ -32,7 +32,6 @@ export const BlogItem = ({
 
 BlogItem.propTypes = {
   firstName: PropTypes.string,
-  lastName: PropTypes.string,
   url: PropTypes.string,
   languages: PropTypes.arrayOf(PropTypes.string),
   countries: PropTypes.arrayOf(PropTypes.string),

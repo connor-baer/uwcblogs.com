@@ -1,26 +1,94 @@
-import validator from 'validator';
+import { isEmail, isURL, isInt } from 'validator';
+import { flow, isEmpty } from 'lodash/fp';
+import { FORM_ERROR } from 'final-form';
 
 import akismet from '../../services/akismet';
 import contentful from '../../services/contentful';
 
-function mapLocalise(value, locale) {
-  return { [locale]: value };
-}
-
-function mapLink(id) {
-  if (!id) {
-    return undefined;
-  }
-  return {
-    sys: {
-      type: 'Link',
-      linkType: 'Entry',
-      id,
-    },
-  };
-}
+const fiveYearsFromNow = new Date().getFullYear() + 5;
 
 export default async (req, res) => {
+  const [
+    { items: collegeEntries },
+    { items: countryEntries },
+    { items: languageEntries },
+  ] = await Promise.all([
+    contentful.getEntries({
+      content_type: 'college',
+      select: 'sys.id,fields.name',
+    }),
+    contentful.getEntries({
+      content_type: 'country',
+      select: 'sys.id,fields.name',
+    }),
+    contentful.getEntries({
+      content_type: 'language',
+      select: 'sys.id,fields.name',
+    }),
+  ]);
+
+  const validations = [
+    {
+      name: 'firstName',
+      validateFn: isString,
+      validationHint: 'Please enter your first name',
+    },
+    {
+      name: 'email',
+      validateFn: isEmail,
+      validationHint: 'Please enter a valid email address',
+    },
+    {
+      name: 'url',
+      validateFn: isURL,
+      validationHint: 'Please enter a valid URL',
+    },
+    {
+      name: 'college',
+      validateFn: flow(validateInEntries(collegeEntries)),
+      validationHint: 'Please select a college from the provided options',
+    },
+    {
+      name: 'countries',
+      validateFn: validateFactory(
+        validateArrayLength(1, 3),
+        validateInEntries(countryEntries),
+      ),
+      validationHint:
+        'Please select between 1 and 3 countries from the provided options',
+    },
+    {
+      name: 'languages',
+      validateFn: validateFactory(
+        validateArrayLength(1, 3),
+        validateInEntries(languageEntries),
+      ),
+      validationHint:
+        'Please select between 1 and 3 languages from the provided options',
+    },
+    {
+      name: 'year',
+      validateFn: validateYear(1961, fiveYearsFromNow),
+      validationHint: `Please enter a year between 1961 and ${fiveYearsFromNow}`,
+    },
+  ];
+
+  const errors = validations.reduce((acc, validation) => {
+    const { name, validateFn, validationHint } = validation;
+    const value = req.body[name];
+    const valid = validateFn(value);
+
+    if (valid) {
+      return acc;
+    }
+
+    return { ...acc, [name]: validationHint };
+  }, {});
+
+  if (!isEmpty(errors)) {
+    return res.status(422).json({ errors });
+  }
+
   const {
     firstName,
     email,
@@ -35,46 +103,13 @@ export default async (req, res) => {
   const referrer = req.headers.referer;
   const locale = 'en-US';
 
-  const validFirstName = typeof firstName === 'string';
-  const validEmail = validator.isEmail(email);
-  const validUrl = validator.isURL(url);
-  const validCollege = typeof firstName === 'string';
-  const validCountries = (() => {
-    const isArray = Array.isArray(countries);
-    if (!isArray) {
-      return false;
-    }
-    const isMin = countries.length >= 1;
-    const isMax = countries.length <= 3;
-    return isArray && isMin && isMax;
-  })();
-  const validLanguages = (() => {
-    const isArray = Array.isArray(languages);
-    if (!isArray) {
-      return false;
-    }
-    const isMin = languages.length >= 1;
-    const isMax = languages.length <= 3;
-    return isArray && isMin && isMax;
-  })();
-  const validYear = validator.isInt(year, { min: 1961, max: 2025 });
-
-  const valid =
-    validFirstName &&
-    validEmail &&
-    validUrl &&
-    validCollege &&
-    validCountries &&
-    validLanguages &&
-    validYear;
-
-  if (!valid) {
-    return res.status(422).json({ error: 'Validation failed.' });
-  }
-
-  const collegeValue = mapLink(college);
-  const countriesValue = countries.map((country) => mapLink(country.value));
-  const languagesValue = languages.map((language) => mapLink(language.value));
+  const collegeValue = mapLink(college, collegeEntries);
+  const countriesValue = countries.map((country) =>
+    mapLink(country, countryEntries),
+  );
+  const languagesValue = languages.map((language) =>
+    mapLink(language, languageEntries),
+  );
 
   const localisedFirstName = mapLocalise(firstName, locale);
   const localisedEmail = mapLocalise(email, locale);
@@ -110,6 +145,58 @@ export default async (req, res) => {
 
   return contentful
     .createEntry('blog', fields, !isSpam)
-    .then((entry) => res.json(entry))
-    .catch((error) => res.status(422).json({ error }));
+    .then((entry) =>
+      res.json({ success: true, entry: contentful.unpackData(entry) }),
+    )
+    .catch((error) =>
+      res
+        .status(422)
+        .json({ errors: { [FORM_ERROR]: JSON.parse(error.message).message } }),
+    );
 };
+
+function isString(value) {
+  return typeof value === 'string';
+}
+
+function validateFactory(...validators) {
+  return (value) => validators.find((validateFn) => validateFn(value));
+}
+
+function validateArrayLength(min, max) {
+  return (array) => {
+    const isArray = Array.isArray(array);
+    if (!isArray) {
+      return false;
+    }
+    const isMin = array.length >= min;
+    const isMax = array.length <= max;
+    return isMin && isMax;
+  };
+}
+
+function validateInEntries(entries) {
+  return (value) => {
+    const array = Array.isArray(value) ? value : [value];
+    return array.every((item) => entries.find((entry) => entry.name === item));
+  };
+}
+
+function validateYear(min, max) {
+  return (year) => isInt(year, { min, max });
+}
+
+function mapLink(name, entries) {
+  const entry = entries.find((e) => e.name === name);
+  return {
+    sys: {
+      type: 'Link',
+      linkType: 'Entry',
+      id: entry.id,
+    },
+  };
+}
+
+function mapLocalise(value, locale) {
+  return { [locale]: value };
+}
