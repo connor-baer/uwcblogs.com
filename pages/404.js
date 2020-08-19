@@ -23,7 +23,7 @@ export default function NotFound() {
       <Navigation />
 
       <Split title={title} subtitle={subtitle} image={image}>
-        <Button href="/">Return home →</Button>
+        <Button href="/">← Return home</Button>
       </Split>
       <Footer />
     </>

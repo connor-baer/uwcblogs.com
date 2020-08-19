@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Site from '../layouts/Site';
 import Layout from '../layouts/Layout';
-import { Header, Prefooter } from '../server/college/node_modules/change';
+import { Header, Prefooter } from './college/node_modules/change';
 
 export default class Page extends Component {
   static async getInitialProps({ req, query }) {
