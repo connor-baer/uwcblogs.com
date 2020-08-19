@@ -47,7 +47,7 @@ export default function ErrorPage({ statusCode }) {
       <Navigation />
 
       <Split {...notice} image={image}>
-        <Button href="/">Return home →</Button>
+        <Button href="/">← Return home</Button>
       </Split>
       <Footer />
     </>
