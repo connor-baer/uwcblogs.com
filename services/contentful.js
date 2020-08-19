@@ -16,7 +16,8 @@ const manager = createManager({
 function createEntry(contentType, fields, publish = false) {
   return manager
     .getSpace(process.env.CONTENTFUL_SPACE)
-    .then((space) => space.createEntry(contentType, { fields }))
+    .then((space) => space.getEnvironment(process.env.CONTENTFUL_ENVIRONMENT))
+    .then((environment) => environment.createEntry(contentType, { fields }))
     .then((entry) => (publish ? entry.publish() : entry))
     .then((entry) => entry);
 }
@@ -82,4 +83,4 @@ function unpackArray(arr) {
   return arr.map((item) => unpackData(item));
 }
 
-export default { getEntry, createEntry, getEntries };
+export default { getEntry, createEntry, getEntries, unpackData };

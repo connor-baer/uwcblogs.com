@@ -28,9 +28,6 @@
   "bugs": {
     "url": "https://github.com/connor-baer/uwcblogs.com/issues"
   },
-  "engines": {
-    "node": "12.x"
-  },
   "homepage": "https://uwcblogs.com",
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -42,6 +39,7 @@
     "contentful": "^7.9.1",
     "contentful-management": "^5.10.0",
     "emotion-theming": "^10.0.10",
+    "final-form": "^4.20.1",
     "lodash": "^4.17.4",
     "next": "^9.0.0",
     "next-compose-plugins": "^2.1.1",
@@ -51,6 +49,7 @@
     "query-string": "^5.0.0",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
+    "react-final-form": "^6.5.1",
     "react-select": "^1.0.0-rc.10",
     "react-svg-loader": "^2.1.0",
     "validator": "^9.0.0"
