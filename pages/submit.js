@@ -154,9 +154,11 @@ export default function Page({
             </Paragraph>
             <Hr />
             <BlogSection title={blog.college}>
-              <BlogGroup title={blog.year}>
-                <BlogItem {...blog} />
-              </BlogGroup>
+              <li>
+                <BlogGroup title={blog.year}>
+                  <BlogItem {...blog} />
+                </BlogGroup>
+              </li>
             </BlogSection>
             <Hr />
             <Button variant="secondary" onClick={() => setBlog(null)}>

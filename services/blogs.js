@@ -36,14 +36,7 @@ export function groupBlogs(blogs) {
 
     return {
       college: college.college,
-      years: sortedByYear.map((year) => {
-        const sortedByName = sortBy('firstName', year.blogs);
-
-        return {
-          year: year.year,
-          blogs: sortedByName,
-        };
-      }),
+      years: sortedByYear,
     };
   });
 }
