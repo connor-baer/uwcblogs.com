@@ -149,7 +149,7 @@ export default function Page({
           <>
             <Paragraph lineHeight="m">
               {
-                "Thank you for your submission! It might a couple of minutes until your blog is shown in the list. Here's a preview of how it will look:"
+                "Thank you for your submission! It might take a couple of minutes until your blog is shown in the blog list. Here's a preview of how it will look:"
               }
             </Paragraph>
             <Hr />
