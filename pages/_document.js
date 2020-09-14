@@ -1,5 +1,5 @@
 import React from 'react';
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
 
 import { LOCALE } from '../constants/site';
 import { FAVICONS_PATH } from '../constants/paths';
@@ -8,7 +8,7 @@ export default class CustomDocument extends Document {
   // eslint-disable-next-line class-methods-use-this
   render() {
     return (
-      <html lang={LOCALE}>
+      <Html lang={LOCALE}>
         <Head>
           <link
             rel="shortcut icon"
@@ -69,7 +69,7 @@ export default class CustomDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </html>
+      </Html>
     );
   }
 }
