@@ -22,6 +22,7 @@ const SplitImage = styled(Image)(imageStyles);
 
 SplitImage.defaultProps = {
   loading: 'eager',
+  priority: true,
   unsized: true,
   quality: 90,
 };

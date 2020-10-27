@@ -93,7 +93,7 @@ export async function getStaticProps({ params }) {
   const title = college.name;
   const subtitle = college.description;
   const image = {
-    src: college.image.file.url,
+    src: `https:${college.image.file.url}`,
     alt: college.image.description,
   };
 
