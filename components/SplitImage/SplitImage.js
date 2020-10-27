@@ -1,8 +1,7 @@
+import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
 import { propTypes } from '@madebyconnor/bamboo-ui';
-
-import Image from '../Image';
 
 const imageStyles = ({ theme }) => css`
   display: none;
@@ -22,7 +21,9 @@ const imageStyles = ({ theme }) => css`
 const SplitImage = styled(Image)(imageStyles);
 
 SplitImage.defaultProps = {
-  loading: 'lazy',
+  loading: 'eager',
+  unsized: true,
+  quality: 90,
 };
 
 SplitImage.propTypes = propTypes.imagePropType;

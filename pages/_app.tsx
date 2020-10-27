@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
+import Image from 'next/image';
 import {
   ComponentsProvider,
   Theme,
@@ -29,7 +30,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <ComponentsProvider value={{ Head, Link, Align }}>
+    <ComponentsProvider value={{ Head, Link, Align, Image }}>
       <Theme theme={themes.standard}>
         <BaseStyles />
         <LoadingBar isLoading={isLoading} />

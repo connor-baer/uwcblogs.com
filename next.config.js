@@ -4,6 +4,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer');
 
 const nextConfig = {
   poweredByHeader: false,
+  images: {
+    domains: ['images.ctfassets.net'],
+  },
   webpack: (config, { dev, defaultLoaders }) => {
     // eslint-disable-next-line no-param-reassign
     config.node = {
