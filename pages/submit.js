@@ -107,7 +107,7 @@ export default function Page({
       type: 'number',
       name: 'year',
       label: 'Which year did/will you finish UWC?',
-      placeholder: new Date().getFullYear(),
+      placeholder: new Date().getFullYear().toString(),
       component: Input,
       validateFn: required,
     },

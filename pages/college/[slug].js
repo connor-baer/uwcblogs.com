@@ -10,10 +10,14 @@ import contentful from '../../services/contentful';
 import { BlogGroup } from '../../components/BlogGroup';
 import { BlogItem } from '../../components/BlogItem';
 
-export default function College({ title, subtitle, image, blogs }) {
+export default function College({ title, subtitle, image, slug, blogs }) {
   return (
     <>
-      <Meta title={title} description={subtitle} pathname={''} />
+      <Meta
+        title={title}
+        description={subtitle}
+        pathname={`/college/${slug}`}
+      />
 
       <Navigation />
 
@@ -43,6 +47,7 @@ College.propTypes = {
     src: PropTypes.string,
     alt: PropTypes.string,
   }),
+  slug: PropTypes.string.isRequired,
   blogs: PropTypes.arrayOf(
     PropTypes.shape({
       college: PropTypes.string,
@@ -93,7 +98,7 @@ export async function getStaticProps({ params }) {
   };
 
   return {
-    props: { title, subtitle, image, college, blogs: groupedBlogs },
+    props: { title, subtitle, image, college, slug, blogs: groupedBlogs },
     revalidate: 60,
   };
 }

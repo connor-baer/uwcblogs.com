@@ -44,7 +44,7 @@ export default function Page({
 
   return (
     <>
-      <Meta title={title} description={subtitle} pathname={''} />
+      <Meta title={title} description={subtitle} pathname={'/'} />
 
       <Navigation />
 
