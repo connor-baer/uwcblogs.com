@@ -1,3 +1,4 @@
+import React from 'react';
 import Image from 'next/image';
 import styled from '@emotion/styled';
 import { css } from '@emotion/core';
@@ -18,15 +19,22 @@ const imageStyles = ({ theme }) => css`
   }
 `;
 
-const SplitImage = styled(Image)(imageStyles);
+const ImageWrapper = styled('div')(imageStyles);
 
-SplitImage.defaultProps = {
-  loading: 'eager',
-  priority: true,
-  unsized: true,
-  quality: 90,
-};
-
+function SplitImage(props) {
+  return (
+    <ImageWrapper>
+      <Image
+        {...props}
+        loading="eager"
+        quality={90}
+        layout="fill"
+        objectFit="cover"
+        priority
+      />
+    </ImageWrapper>
+  );
+}
 SplitImage.propTypes = propTypes.imagePropType;
 
 export default SplitImage;
