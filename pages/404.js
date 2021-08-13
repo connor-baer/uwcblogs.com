@@ -11,8 +11,7 @@ export default function NotFound() {
   const subtitle = 'What’s worse, a hilarious 404 page can’t be found either.';
 
   const image = {
-    src:
-      'https://images.ctfassets.net/wgin2u9ggvsy/1RGLKbeyBV11Bfvj40YhXp/e97eeb457a383813849790196695bfd1/drew-graham-_Sr03VSKIeg-unsplash.jpg',
+    src: 'https://images.ctfassets.net/wgin2u9ggvsy/1RGLKbeyBV11Bfvj40YhXp/e97eeb457a383813849790196695bfd1/drew-graham-_Sr03VSKIeg-unsplash.jpg',
     alt: 'Binoculars pointing to nowhere',
   };
 

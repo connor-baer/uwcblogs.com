@@ -7,8 +7,7 @@ import { NAME } from '../../constants/site';
 import * as Url from '../../services/url';
 
 const DEFAULT_IMAGE = {
-  src:
-    'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg?w=1440',
+  src: 'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg?w=1440',
   alt: 'A boy is writing into his journal on top of a mountain.',
 };
 

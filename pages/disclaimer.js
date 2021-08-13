@@ -10,8 +10,7 @@ export default function Page() {
   const title = 'Disclaimer';
   const subtitle = '';
   const image = {
-    src:
-      'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
+    src: 'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
     alt: 'A boy is writing into his journal on top of a mountain.',
   };
   return (

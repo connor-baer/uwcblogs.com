@@ -89,15 +89,8 @@ export default async (req, res) => {
     return res.status(422).json({ errors });
   }
 
-  const {
-    firstName,
-    email,
-    url,
-    college,
-    countries,
-    languages,
-    year,
-  } = req.body;
+  const { firstName, email, url, college, countries, languages, year } =
+    req.body;
   const { remoteAddress } = req.connection;
   const userAgent = req.headers['user-agent'];
   const referrer = req.headers.referer;

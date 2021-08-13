@@ -149,19 +149,17 @@ BlogList.propTypes = {
 };
 
 export async function getStaticProps() {
-  const [
-    { items: blogs, total: blogCount },
-    { items: colleges },
-  ] = await Promise.all([
-    contentful.getEntries({
-      content_type: 'blog',
-      include: 2,
-      order: 'fields.firstName',
-    }),
-    contentful.getEntries({
-      content_type: 'college',
-    }),
-  ]);
+  const [{ items: blogs, total: blogCount }, { items: colleges }] =
+    await Promise.all([
+      contentful.getEntries({
+        content_type: 'blog',
+        include: 2,
+        order: 'fields.firstName',
+      }),
+      contentful.getEntries({
+        content_type: 'college',
+      }),
+    ]);
 
   const mappedBlogs = mapBlogs(blogs);
   const mappedColleges = colleges.reduce(
@@ -178,8 +176,7 @@ export async function getStaticProps() {
   const title = 'UWC Blogs';
   const subtitle = `A collection of ${blogCount} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${collegeCount} United World Colleges.`;
   const image = {
-    src:
-      'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
+    src: 'https://images.ctfassets.net/wgin2u9ggvsy/1rCrSbXDO4ECoKow2QKkyg/e068c16bb6e71eb6eae6a4befffe1418/aidan-meyer-129877.jpg',
     alt: 'A boy is writing into his journal on top of a mountain.',
   };
 

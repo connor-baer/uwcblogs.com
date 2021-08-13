@@ -219,8 +219,7 @@ export async function getStaticProps() {
   const subtitle =
     'Share your UWC experience with the world and gain more readers.';
   const image = {
-    src:
-      'https://images.ctfassets.net/wgin2u9ggvsy/1ITM0m6MLO8m0ECk26O84c/26200e9757217369f4cf7dd6d88f9702/photo-1452421822248-d4c2b47f0c81.jpeg',
+    src: 'https://images.ctfassets.net/wgin2u9ggvsy/1ITM0m6MLO8m0ECk26O84c/26200e9757217369f4cf7dd6d88f9702/photo-1452421822248-d4c2b47f0c81.jpeg',
     alt: 'An open and empty journal rests next to a camera, a map and a loupe.',
   };
   const [colleges, countries, languages] = await Promise.all([
