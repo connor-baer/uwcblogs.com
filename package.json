@@ -51,7 +51,7 @@
     "react-dom": "^17.0.1",
     "react-final-form": "^6.5.2",
     "react-svg-loader": "^3.0.3",
-    "validator": "^13.1.17"
+    "validator": "^13.7.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.3",
