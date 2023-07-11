@@ -72,8 +72,8 @@ export default function Page() {
           {
             'According to the Federal Data Protection Act, you have a right to free-of-charge information about your stored data, and possibly entitlement to correction, blocking or deletion of such data. Inquiries can be directed to the following e-mail address: '
           }
-          <Anchor href="mailto:privacy@connorbaer.co">
-            privacy@connorbaer.co
+          <Anchor href="mailto:privacy@connorbaer.com">
+            privacy@connorbaer.com
           </Anchor>
           {'.'}
         </Paragraph>
