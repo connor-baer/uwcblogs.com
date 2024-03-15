@@ -1,17 +1,43 @@
 {
-  "name": "",
+  "name": "uwcblogs.com",
+  "description": "A collection of over 390 blogs written by UWC students in 28 languages from 77 countries at the 18 United World Colleges.",
   "type": "module",
-  "version": "0.0.1",
+  "version": "8.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/connor-baer/uwcblogs.com.git"
+  },
+  "keywords": [
+    "uwc",
+    "blog",
+    "blogs",
+    "list"
+  ],
+  "author": "Connor Bär, connor-baer <hello@connorbaer.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/connor-baer/uwcblogs.com/issues"
+  },
+  "homepage": "https://uwcblogs.com",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "check": "astro check",
+    "sync": "astro sync",
+    "prebuild": "npm run check",
+    "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "prelint": "npm run sync",
+    "lint": "foundry run eslint . --ext .js,.jsx,.json,.ts,.tsx",
+    "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
     "astro": "^4.5.4",
     "@astrojs/check": "^0.5.9",
     "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@sumup/foundry": "^7.1.1",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }
