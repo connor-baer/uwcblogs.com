@@ -1,7 +1,14 @@
 ---
-import Base from '../layouts/base.astro';
+import Split from '../layouts/split.astro';
+
+import image from '../assets/aidan-meyer-129877.jpg';
 ---
 
-<Base title="UWC Blogs">
-  <h1>Astro</h1>
-</Base>
+<Split
+  title="UWC Blogs"
+  subtitle="A collection of 477 blogs written by UWC students in 33 languages from 81 countries at the 18 United World Colleges."
+  image={{
+    src: image,
+    alt: 'A boy is writing into his journal on top of a mountain.',
+  }}
+/>

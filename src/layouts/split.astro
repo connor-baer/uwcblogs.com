@@ -1,0 +1,132 @@
+---
+import {
+  Image,
+  type LocalImageProps,
+  type RemoteImageProps,
+} from 'astro:assets';
+
+import Base from './base.astro';
+
+export interface Props {
+  title: string;
+  subtitle: string;
+  image: LocalImageProps | RemoteImageProps;
+}
+
+const { title, subtitle, image } = Astro.props;
+---
+
+<Base title={title} description={subtitle}>
+  <div class="content">
+    <header>
+      <div>
+        <h1 class="title">{title}</h1>
+        <h2 class="subtitle">{subtitle}</h2>
+      </div>
+    </header>
+
+    <slot />
+  </div>
+  <!-- @ts-expect-error -->
+  <Image
+    {...image}
+    widths={[400, 800, 1200, 1600, 2000]}
+    sizes="(min-width: 56.25em) 50vw, 100vw"
+    class="image"
+  />
+</Base>
+
+<style>
+  .content {
+    width: 100vw;
+    padding: 0 12px;
+  }
+  @media (min-width: 37.5em) {
+    .content {
+      padding: 0 48px;
+    }
+  }
+  @media (min-width: 56.25em) {
+    .content {
+      width: 50vw;
+      padding: 0 16px;
+    }
+  }
+  @media (min-width: 75em) {
+    .content {
+      padding: 0 48px;
+    }
+  }
+
+  header {
+    margin-top: 9vh;
+    margin-bottom: 9vh;
+  }
+  @supports (margin: min(calc(12vh - 1rem), 6rem)) {
+    header {
+      margin-top: min(calc(12vh - 1rem), 6rem);
+      margin-bottom: min(calc(12vh - 1rem), 6rem);
+    }
+  }
+
+  .title,
+  .subtitle {
+    margin-top: var(---spacing-xxl);
+    margin-bottom: var(---spacing-l);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  @media (min-width: 37.5em) {
+    .title,
+    .subtitle {
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+  }
+
+  .title {
+    color: var(--color-primary);
+    font-size: var(--font-size-xl);
+  }
+  @media (min-width: 37.5em) {
+    .title {
+      display: inline;
+    }
+    .title::after {
+      content: ' ';
+      display: inline;
+    }
+  }
+
+  .subtitle {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-default);
+    margin-top: var(--spacing-s);
+  }
+  @media (min-width: 37.5em) {
+    .subtitle {
+      font-size: var(--font-size-xl);
+      display: inline;
+      margin-top: 0;
+    }
+  }
+
+  .image {
+    display: none;
+  }
+  @media (min-width: 56.25em) {
+    .image {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+</style>
