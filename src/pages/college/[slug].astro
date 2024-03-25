@@ -1,0 +1,32 @@
+---
+import type { InferGetStaticPropsType } from 'astro';
+import { db, College } from 'astro:db';
+
+// FIXME: Replace image with college-specific one
+import image from '../../assets/aidan-meyer-129877.jpg';
+import Layout from '../../layouts/split.astro';
+import BlogList from '../../components/BlogList.astro';
+
+export async function getStaticPaths() {
+  const colleges = await db.select().from(College);
+  return colleges.map((college) => ({
+    params: { slug: college.slug },
+    props: college,
+  }));
+}
+
+export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { slug, name, description } = Astro.props;
+---
+
+<Layout
+  title={name}
+  subtitle={description}
+  image={{
+    src: image,
+    alt: 'A boy is writing into his journal on top of a mountain.',
+  }}
+>
+  <BlogList collegeId={slug} />
+</Layout>
