@@ -1,0 +1,66 @@
+---
+import {
+  db,
+  eq,
+  Blog,
+  BlogsToCountries,
+  BlogsToLanguages,
+  Country,
+  Language,
+} from 'astro:db';
+
+import { groupBy, uniqueBy } from '../lib/collection';
+
+export type Props = { collegeId: string };
+
+const { collegeId } = Astro.props;
+
+const rows = await db
+  .select()
+  .from(Blog)
+  .where(eq(Blog.collegeId, collegeId))
+  .innerJoin(BlogsToCountries, eq(BlogsToCountries.blogId, Blog.id))
+  .innerJoin(Country, eq(BlogsToCountries.countryId, Country.code))
+  .innerJoin(BlogsToLanguages, eq(BlogsToLanguages.blogId, Blog.id))
+  .innerJoin(Language, eq(BlogsToLanguages.languageId, Language.code));
+
+const groupedRows = groupBy(rows, (row) => row.Blog.id!);
+
+const blogs = Object.values(groupedRows).map((group) => {
+  const blog = group[0]?.Blog;
+  const countries = uniqueBy(group, (row) => row.Country.code!).map(
+    (row) => row.Country.name,
+  );
+  const languages = uniqueBy(group, (row) => row.Language.code!).map(
+    (row) => row.Language.name,
+  );
+  return { ...blog, countries, languages };
+});
+
+const blogsByYear = Object.entries(
+  groupBy(blogs, (blog) => blog.year as number),
+).sort(
+  ([aYear], [bYear]) =>
+    (bYear as unknown as number) - (aYear as unknown as number),
+);
+---
+
+<ul>
+  {
+    blogsByYear.map(([year, blogs]) => (
+      <li>
+        <h2>{year}</h2>
+        <ul>
+          {blogs.map((blog) => (
+            <li>
+              <a href={blog.url}>{blog.firstName}</a>{' '}
+              {blog.countries.join(', ')}
+              {' – '}
+              {blog.languages.join(', ')}
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ul>

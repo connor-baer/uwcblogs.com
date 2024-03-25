@@ -1,14 +1,27 @@
 ---
-import Split from '../layouts/split.astro';
+import { db, College } from 'astro:db';
 
+import Layout from '../layouts/split.astro';
+import BlogList from '../components/BlogList.astro';
 import image from '../assets/aidan-meyer-129877.jpg';
+
+const colleges = await db.select().from(College);
 ---
 
-<Split
+<Layout
   title="UWC Blogs"
   subtitle="A collection of 477 blogs written by UWC students in 33 languages from 81 countries at the 18 United World Colleges."
   image={{
     src: image,
     alt: 'A boy is writing into his journal on top of a mountain.',
   }}
-/>
+>
+  {
+    colleges.map((college) => (
+      <div>
+        <h2>{college.name}</h2>
+        <BlogList collegeId={college.slug} />
+      </div>
+    ))
+  }
+</Layout>
