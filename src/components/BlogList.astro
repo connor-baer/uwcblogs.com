@@ -10,6 +10,7 @@ import {
 } from 'astro:db';
 
 import { groupBy, uniqueBy } from '../lib/collection';
+import { joinList } from '../lib/intl';
 
 export type Props = { collegeId: string };
 
@@ -49,14 +50,15 @@ const blogsByYear = Object.entries(
   {
     blogsByYear.map(([year, blogs]) => (
       <li>
-        <h2>{year}</h2>
+        <h3 class="year">{year}</h3>
         <ul>
           {blogs.map((blog) => (
-            <li>
-              <a href={blog.url}>{blog.firstName}</a>{' '}
-              {blog.countries.join(', ')}
+            <li class="blog">
+              {/* prettier-ignore */}
+              <a href={blog.url} target="_blank" class="first-name">{blog.firstName}</a>{' '}
+              {joinList(blog.countries)}
               {' – '}
-              {blog.languages.join(', ')}
+              {joinList(blog.languages)}
             </li>
           ))}
         </ul>
@@ -64,3 +66,35 @@ const blogsByYear = Object.entries(
     ))
   }
 </ul>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .year {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+    margin-top: var(--spacing-m);
+    margin-bottom: var(--spacing-xxs);
+  }
+
+  .blog {
+    line-height: var(--line-height-l);
+  }
+
+  .first-name {
+    color: var(--color-primary);
+    font-weight: var(--font-weight-bold);
+    text-underline-offset: 0.25em;
+    text-decoration-color: var(--color-border);
+  }
+
+  .first-name:hover,
+  .first-name:focus {
+    text-decoration-color: var(--color-primary);
+    text-decoration-thickness: 0.125em;
+  }
+</style>

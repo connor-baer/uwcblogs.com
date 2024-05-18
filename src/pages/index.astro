@@ -1,16 +1,19 @@
 ---
-import { db, College } from 'astro:db';
+import { db, count, College, Country, Blog, Language } from 'astro:db';
 
 import Layout from '../layouts/split.astro';
 import BlogList from '../components/BlogList.astro';
 import image from '../assets/aidan-meyer-129877.jpg';
 
 const colleges = await db.select().from(College);
+const blogCount = await db.select({ value: count() }).from(Blog).get();
+const countryCount = await db.select({ value: count() }).from(Country).get();
+const languageCount = await db.select({ value: count() }).from(Language).get();
 ---
 
 <Layout
   title="UWC Blogs"
-  subtitle="A collection of 477 blogs written by UWC students in 33 languages from 81 countries at the 18 United World Colleges."
+  subtitle={`A collection of ${blogCount?.value} blogs written by UWC students in ${languageCount?.value} languages from ${countryCount?.value} countries at the ${colleges.length} United World Colleges.`}
   image={{
     src: image,
     alt: 'A boy is writing into his journal on top of a mountain.',
@@ -19,9 +22,33 @@ const colleges = await db.select().from(College);
   {
     colleges.map((college) => (
       <div>
-        <h2>{college.name}</h2>
+        <h2 class="college-name">
+          <a href={`/college/${college.slug}`}>{college.name}</a>
+        </h2>
         <BlogList collegeId={college.slug} />
       </div>
     ))
   }
 </Layout>
+
+<style>
+  .college-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    margin-top: var(--spacing-xxl);
+    margin-bottom: var(--spacing-l);
+  }
+  .college-name a {
+    color: var(--color-default);
+    text-decoration: none;
+  }
+
+  .college-name a:hover,
+  .college-name a:focus {
+    text-decoration: underline;
+    text-decoration-color: var(--color-default);
+    text-decoration-thickness: 0.125em;
+    text-underline-offset: 0.25em;
+  }
+</style>
