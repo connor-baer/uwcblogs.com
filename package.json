@@ -32,13 +32,13 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/db": "^0.9.4",
-    "astro": "^4.5.9",
-    "typescript": "^5.4.2"
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/db": "^0.11.3",
+    "astro": "^4.8.6",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@sumup/foundry": "^7.1.1",
+    "@sumup-oss/foundry": "^8.0.0",
     "prettier-plugin-astro": "^0.13.0"
   }
 }

@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-module.exports = require('@sumup/foundry/prettier')({
+module.exports = require('@sumup-oss/foundry/prettier')({
   plugins: ['prettier-plugin-astro'],
   overrides: [
     {
