@@ -49,16 +49,16 @@ const blogsByYear = Object.entries(
 <ul>
   {
     blogsByYear.map(([year, blogs]) => (
-      <li>
+      <li data-year={year}>
         <h3 class="year">{year}</h3>
         <ul>
           {blogs.map((blog) => (
-            <li class="blog">
+            <li class="blog" data-blog={blog.id}>
               {/* prettier-ignore */}
-              <a href={blog.url} target="_blank" class="first-name">{blog.firstName}</a>{' '}
-              {joinList(blog.countries)}
+              <a href={blog.url} target="_blank" class="first-name" data-name>{blog.firstName}</a>{' '}
+              <span data-countries>{joinList(blog.countries)}</span>
               {' – '}
-              {joinList(blog.languages)}
+              <span data-languages>{joinList(blog.languages)}</span>
             </li>
           ))}
         </ul>
@@ -90,11 +90,17 @@ const blogsByYear = Object.entries(
     font-weight: var(--font-weight-bold);
     text-underline-offset: 0.25em;
     text-decoration-color: var(--color-border);
+    margin-right: 0.25em;
   }
 
   .first-name:hover,
   .first-name:focus {
     text-decoration-color: var(--color-primary);
     text-decoration-thickness: 0.125em;
+  }
+
+  /* Hide empty year groups */
+  [data-year]:not(:has(.blog:not([hidden]))) {
+    display: none;
   }
 </style>

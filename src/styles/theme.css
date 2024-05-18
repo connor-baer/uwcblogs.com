@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   /* Font families */
   --font-family-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
@@ -168,6 +170,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    color-scheme: dark;
+
     /* Colors */
     --color-button-primary: #000;
     --background-button-primary: var(--primary-7);

@@ -32,7 +32,6 @@
       format('woff');
 }
 
-/* Our globals */
 /**
  * Best practice from http://callmenick.com/post/the-new-box-sizing-reset
  * TLDR: It’s easier to override and a slight performance boost.
@@ -56,6 +55,7 @@ body {
   color: var(--color-default);
   background: var(--background-default);
   transition: background var(--transition-micro);
+  margin: 0;
 }
 
 /**
