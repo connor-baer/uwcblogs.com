@@ -5,10 +5,7 @@ import vercel from '@astrojs/vercel/serverless';
 // https://astro.build/config
 export default defineConfig({
   output: 'hybrid',
-  adapter: vercel({
-    imageService: true,
-    functionPerRoute: false,
-  }),
+  adapter: vercel(),
   site: 'https://uwcblogs.com',
   integrations: [db()],
   experimental: {
