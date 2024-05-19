@@ -10,23 +10,36 @@ import Base from './base.astro';
 export interface Props {
   title: string;
   subtitle: string;
+  action?: {
+    label: string;
+    href: string;
+  };
   image: LocalImageProps | RemoteImageProps;
 }
 
-const { title, subtitle, image } = Astro.props;
+const { title, subtitle, action, image } = Astro.props;
 ---
 
 <Base title={title} description={subtitle}>
   <div class="content">
+    <a href="/">All blogs</a>
     <header>
       <div>
         <h1 class="title">{title}</h1>
         <p class="subtitle">{subtitle}</p>
       </div>
+      {
+        action && (
+          <a href={action.href} class="action">
+            {action.label}
+          </a>
+        )
+      }
     </header>
 
     <slot />
   </div>
+
   <!-- @ts-expect-error -->
   <Image
     {...image}
@@ -34,26 +47,36 @@ const { title, subtitle, image } = Astro.props;
     sizes="(min-width: 56.25em) 50vw, 100vw"
     class="image"
   />
+  <footer>
+    <span class="copyright"
+      >© 2024 <a href="https://connorbaer.com">Connor Bär</a>. All rights
+      reserved.</span
+    ><a href="/disclaimer">Disclaimer</a>
+  </footer>
 </Base>
 
 <style>
-  .content {
+  .content,
+  footer {
     width: 100vw;
     padding: 0 12px;
   }
   @media (min-width: 37.5em) {
-    .content {
+    .content,
+    footer {
       padding: 0 48px;
     }
   }
   @media (min-width: 56.25em) {
-    .content {
+    .content,
+    footer {
       width: 50vw;
       padding: 0 16px;
     }
   }
   @media (min-width: 75em) {
-    .content {
+    .content,
+    footer {
       padding: 0 48px;
     }
   }
@@ -114,6 +137,28 @@ const { title, subtitle, image } = Astro.props;
     }
   }
 
+  .action {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-primary);
+    background-color: var(--background-subtle);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    padding: 12px 16px;
+    margin-top: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    transition:
+      color var(--transition-micro),
+      background-color var(--transition-micro);
+  }
+
+  .action:hover {
+    color: white;
+    background-color: var(--color-primary);
+  }
+
   .image {
     display: none;
   }
@@ -128,5 +173,21 @@ const { title, subtitle, image } = Astro.props;
       height: 100vh;
       object-fit: cover;
     }
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-subtle);
+    padding: 1rem;
+  }
+
+  .copyright::after {
+    content: '·';
+    display: inline-block;
+    font-weight: var(--font-weight-bold);
+    padding-right: var(--spacing-s);
+    padding-left: var(--spacing-s);
   }
 </style>

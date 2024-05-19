@@ -34,6 +34,18 @@ const Blog = defineTable({
   },
 });
 
+const DraftBlog = defineTable({
+  columns: {
+    id: column.number({ primaryKey: true }),
+    firstName: column.text(),
+    url: column.text(),
+    year: column.number(),
+    collegeId: column.text({ references: () => College.columns.slug }),
+    language: column.text(),
+    country: column.text(),
+  },
+});
+
 const BlogsToCountries = defineTable({
   columns: {
     blogId: column.number({ references: () => Blog.columns.id }),
@@ -52,6 +64,7 @@ const BlogsToLanguages = defineTable({
 export default defineDb({
   tables: {
     Blog,
+    DraftBlog,
     College,
     Country,
     Language,

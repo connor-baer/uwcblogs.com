@@ -46,12 +46,12 @@ const blogsByYear = Object.entries(
 );
 ---
 
-<ul>
+<ul role="list">
   {
     blogsByYear.map(([year, blogs]) => (
       <li data-year={year}>
         <h3 class="year">{year}</h3>
-        <ul>
+        <ul role="list">
           {blogs.map((blog) => (
             <li class="blog" data-blog={blog.id}>
               {/* prettier-ignore */}

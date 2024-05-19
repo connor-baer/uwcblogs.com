@@ -1,0 +1,200 @@
+---
+import { db, College, Country, Language } from 'astro:db';
+import { actions, getActionProps } from 'astro:actions';
+import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
+
+import { sortAlphabetically } from '../lib/collection';
+import Layout from '../layouts/split.astro';
+
+export const prerender = false;
+
+const colleges = await db.select().from(College);
+const countries = await db.select().from(Country);
+const languages = await db.select().from(Language);
+
+const collegeOptions = sortAlphabetically(colleges, ({ name }) => name);
+const countryOptions = sortAlphabetically(countries, ({ name }) => name);
+const languageOptions = sortAlphabetically(languages, ({ name }) => name);
+
+// const submission = Astro.getActionResult(actions.submit);
+// TODO: display errors
+---
+
+<Layout
+  title="Submit a blog"
+  subtitle="Share your UWC experience with the world and gain more readers."
+  image={{
+    src: image,
+    alt: 'An open and empty journal rests on top of a map next to a camera and a pair of glasses.',
+  }}
+>
+  <form method="POST">
+    <input {...getActionProps(actions.submit)} />
+    <div class="field">
+      <label for="first-name">What's your first name?</label>
+      <input
+        type="text"
+        id="first-name"
+        name="firstName"
+        autocomplete="given-name"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="email">What's your email address?</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        autocomplete="email"
+        required
+      />
+    </div>
+    <div class="field">
+      <label for="url">What's the link to your blog?</label>
+      <input type="url" id="url" name="url" autocomplete="url" required />
+    </div>
+    <div class="field">
+      <label for="college">Which college do/did you attend?</label>
+      <select id="college" name="collegeId" required>
+        <option value="" selected disabled></option>
+        {
+          collegeOptions.map((college) => (
+            <option value={college.slug}>{college.name}</option>
+          ))
+        }
+      </select>
+    </div>
+    <div class="field">
+      <label for="country">Which country are you from?</label>
+      <input
+        type="text"
+        id="country"
+        name="country"
+        autocomplete="country"
+        list="country-list"
+        required
+        multiple
+      />
+      <datalist id="country-list">
+        {countryOptions.map((country) => <option value={country.name} />)}
+      </datalist>
+    </div>
+    <div class="field">
+      <label for="language">Which language do you write in?</label>
+      <input
+        type="text"
+        id="language"
+        name="language"
+        list="language-list"
+        required
+        multiple
+      />
+      <datalist id="language-list">
+        {languageOptions.map((language) => <option value={language.name} />)}
+      </datalist>
+    </div>
+    <div class="field">
+      <label for="year">Which year did/will you finish UWC?</label>
+      <input
+        type="number"
+        id="year"
+        name="year"
+        min={1962}
+        max={new Date().getFullYear() + 5}
+        required
+      />
+    </div>
+    <button type="submit" class="action">Submit blog</button>
+  </form>
+</Layout>
+
+<style>
+  form {
+    margin-bottom: 64px;
+  }
+
+  .field {
+    margin-bottom: 16px;
+  }
+  .field label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: var(--font-size-s);
+  }
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 12px 16px;
+    outline: 1px solid var(--color-border);
+    border-radius: var(--border-radius-s);
+    border: none;
+    transition: outline var(--transition-micro);
+    background-color: var(--background-default);
+    font-size: var(--font-size-m);
+    line-height: var(--line-height-s);
+  }
+  .field input[type='number'] {
+    appearance: textfield;
+  }
+  .field input::-webkit-outer-spin-button,
+  .field input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+  .field select {
+    appearance: none;
+    background-color: transparent;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBmaWxsPSJncmF5IiBkPSJNMTAsMjMyLjdsNDkwLDUzNC41bDQ5MC01MzQuNUgxMHoiIC8+DQo8L3N2Zz4=');
+    background-repeat: no-repeat;
+    background-position: center right 16px;
+    background-size: 0.75em;
+  }
+  .field input:hover,
+  .field select:hover {
+    outline: 1px solid var(--color-default);
+  }
+  .field input:focus,
+  .field select:focus {
+    outline: 2px solid var(--color-primary);
+  }
+  .field input:user-invalid,
+  .field select:user-invalid {
+    outline: 2px solid var(--color-danger);
+  }
+
+  .action {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--color-primary);
+    background-color: var(--background-subtle);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    padding: 12px 16px;
+    margin-top: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 12px;
+    transition:
+      color var(--transition-micro),
+      background-color var(--transition-micro);
+    cursor: pointer;
+  }
+
+  .action:hover {
+    color: white;
+    background-color: var(--color-primary);
+  }
+</style>
+
+<script>
+  // import { actions } from 'astro:actions';
+  // const form = document.getElementsByTagName('form')[0];
+  // form?.addEventListener('submit', async (event) => {
+  //   event.preventDefault();
+  //   const formData = new FormData(event.target as HTMLFormElement);
+  //   const result = await actions.submit(formData);
+  //   // handle result
+  //   console.log(result);
+  //   form.reset()
+  // });
+</script>
