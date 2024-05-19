@@ -34,6 +34,7 @@
   "dependencies": {
     "@astrojs/check": "^0.7.0",
     "@astrojs/db": "^0.11.3",
+    "@astrojs/vercel": "^7.6.0",
     "astro": "^4.8.6",
     "fuse.js": "^7.0.0",
     "typescript": "^5.4.5"
