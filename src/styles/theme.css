@@ -131,7 +131,7 @@
   --background-button-secondary: #f1f3f5;
   --background-button-secondary-hover: #dee2e6;
 
-  --color-button-danger: #c92a2a;
+  --color-button-danger: #99123b;
   --background-button-danger: #ffe3e3;
   --background-button-danger-hover: #ffc9c9;
 
@@ -146,9 +146,9 @@
   --background-default: #fff;
   --color-subtle: #495057;
   --background-subtle: #e9ecef;
-  --color-primary: var(--primary-7);
+  --color-primary: #009b90;
   --color-primary-hover: var(--primary-9);
-  --color-danger: #c92a2a;
+  --color-danger: #99123b;
   --background-image-placeholder: #dee2e6;
 
   /* Shadows */
