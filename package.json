@@ -25,7 +25,7 @@
     "check": "astro check",
     "sync": "astro sync",
     "prebuild": "npm run check",
-    "build": "astro build",
+    "build": "astro build --remote",
     "preview": "astro preview",
     "prelint": "npm run sync",
     "lint": "foundry run eslint . --ext .js,.jsx,.json,.ts,.tsx",
