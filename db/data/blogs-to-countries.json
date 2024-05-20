@@ -12,20 +12,12 @@
     "countryId": "IN"
   },
   {
-    "blogId": 3,
-    "countryId": "HU"
-  },
-  {
     "blogId": 4,
     "countryId": "HU"
   },
   {
     "blogId": 5,
     "countryId": "PL"
-  },
-  {
-    "blogId": 6,
-    "countryId": "KE"
   },
   {
     "blogId": 7,
@@ -64,10 +56,6 @@
     "countryId": "DE"
   },
   {
-    "blogId": 16,
-    "countryId": "GH"
-  },
-  {
     "blogId": 17,
     "countryId": "DE"
   },
@@ -100,10 +88,6 @@
     "countryId": "GB"
   },
   {
-    "blogId": 24,
-    "countryId": "NO"
-  },
-  {
     "blogId": 25,
     "countryId": "AX"
   },
@@ -112,16 +96,8 @@
     "countryId": "GR"
   },
   {
-    "blogId": 27,
-    "countryId": "US"
-  },
-  {
     "blogId": 28,
     "countryId": "BE"
-  },
-  {
-    "blogId": 29,
-    "countryId": "MX"
   },
   {
     "blogId": 30,
@@ -148,20 +124,12 @@
     "countryId": "US"
   },
   {
-    "blogId": 36,
-    "countryId": "HU"
-  },
-  {
     "blogId": 37,
     "countryId": "SE"
   },
   {
     "blogId": 38,
     "countryId": "AU"
-  },
-  {
-    "blogId": 39,
-    "countryId": "UA"
   },
   {
     "blogId": 40,
@@ -192,19 +160,7 @@
     "countryId": "NL"
   },
   {
-    "blogId": 47,
-    "countryId": "NL"
-  },
-  {
     "blogId": 48,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 49,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 50,
     "countryId": "DE"
   },
   {
@@ -224,10 +180,6 @@
     "countryId": "DE"
   },
   {
-    "blogId": 54,
-    "countryId": "IN"
-  },
-  {
     "blogId": 55,
     "countryId": "HU"
   },
@@ -238,14 +190,6 @@
   {
     "blogId": 56,
     "countryId": "TR"
-  },
-  {
-    "blogId": 57,
-    "countryId": "GB"
-  },
-  {
-    "blogId": 57,
-    "countryId": "IT"
   },
   {
     "blogId": 58,
@@ -296,10 +240,6 @@
     "countryId": "BS"
   },
   {
-    "blogId": 70,
-    "countryId": "CH"
-  },
-  {
     "blogId": 71,
     "countryId": "SV"
   },
@@ -328,10 +268,6 @@
     "countryId": "US"
   },
   {
-    "blogId": 78,
-    "countryId": "ES"
-  },
-  {
     "blogId": 79,
     "countryId": "SG"
   },
@@ -342,14 +278,6 @@
   {
     "blogId": 81,
     "countryId": "DE"
-  },
-  {
-    "blogId": 82,
-    "countryId": "SG"
-  },
-  {
-    "blogId": 82,
-    "countryId": "IN"
   },
   {
     "blogId": 83,
@@ -464,10 +392,6 @@
     "countryId": "ID"
   },
   {
-    "blogId": 111,
-    "countryId": "NP"
-  },
-  {
     "blogId": 112,
     "countryId": "IL"
   },
@@ -486,10 +410,6 @@
   {
     "blogId": 116,
     "countryId": "IT"
-  },
-  {
-    "blogId": 117,
-    "countryId": "ID"
   },
   {
     "blogId": 118,
@@ -536,10 +456,6 @@
     "countryId": "US"
   },
   {
-    "blogId": 127,
-    "countryId": "MY"
-  },
-  {
     "blogId": 128,
     "countryId": "NO"
   },
@@ -564,10 +480,6 @@
     "countryId": "CA"
   },
   {
-    "blogId": 133,
-    "countryId": "HK"
-  },
-  {
     "blogId": 134,
     "countryId": "US"
   },
@@ -578,10 +490,6 @@
   {
     "blogId": 136,
     "countryId": "FI"
-  },
-  {
-    "blogId": 137,
-    "countryId": "NL"
   },
   {
     "blogId": 138,
@@ -598,22 +506,6 @@
   {
     "blogId": 141,
     "countryId": "US"
-  },
-  {
-    "blogId": 142,
-    "countryId": "ID"
-  },
-  {
-    "blogId": 143,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 143,
-    "countryId": "ES"
-  },
-  {
-    "blogId": 144,
-    "countryId": "DE"
   },
   {
     "blogId": 145,
@@ -648,10 +540,6 @@
     "countryId": "DE"
   },
   {
-    "blogId": 153,
-    "countryId": "NL"
-  },
-  {
     "blogId": 154,
     "countryId": "SL"
   },
@@ -670,10 +558,6 @@
   {
     "blogId": 158,
     "countryId": "IN"
-  },
-  {
-    "blogId": 159,
-    "countryId": "ID"
   },
   {
     "blogId": 160,
@@ -728,10 +612,6 @@
     "countryId": "HK"
   },
   {
-    "blogId": 173,
-    "countryId": "HK"
-  },
-  {
     "blogId": 174,
     "countryId": "ZA"
   },
@@ -754,10 +634,6 @@
   {
     "blogId": 178,
     "countryId": "BG"
-  },
-  {
-    "blogId": 179,
-    "countryId": "JP"
   },
   {
     "blogId": 180,
@@ -788,10 +664,6 @@
     "countryId": "FI"
   },
   {
-    "blogId": 187,
-    "countryId": "DE"
-  },
-  {
     "blogId": 188,
     "countryId": "CZ"
   },
@@ -804,10 +676,6 @@
     "countryId": "HK"
   },
   {
-    "blogId": 191,
-    "countryId": "GB"
-  },
-  {
     "blogId": 192,
     "countryId": "CA"
   },
@@ -818,10 +686,6 @@
   {
     "blogId": 194,
     "countryId": "HK"
-  },
-  {
-    "blogId": 195,
-    "countryId": "DE"
   },
   {
     "blogId": 196,
@@ -864,16 +728,8 @@
     "countryId": "PT"
   },
   {
-    "blogId": 204,
-    "countryId": "PT"
-  },
-  {
     "blogId": 205,
     "countryId": "US"
-  },
-  {
-    "blogId": 206,
-    "countryId": "NO"
   },
   {
     "blogId": 207,
@@ -884,20 +740,8 @@
     "countryId": "HK"
   },
   {
-    "blogId": 209,
-    "countryId": "US"
-  },
-  {
     "blogId": 210,
     "countryId": "GB"
-  },
-  {
-    "blogId": 211,
-    "countryId": "GB"
-  },
-  {
-    "blogId": 212,
-    "countryId": "ZM"
   },
   {
     "blogId": 213,
@@ -944,14 +788,6 @@
     "countryId": "JP"
   },
   {
-    "blogId": 223,
-    "countryId": "LB"
-  },
-  {
-    "blogId": 223,
-    "countryId": "OM"
-  },
-  {
     "blogId": 224,
     "countryId": "MY"
   },
@@ -966,18 +802,6 @@
   {
     "blogId": 226,
     "countryId": "DK"
-  },
-  {
-    "blogId": 227,
-    "countryId": "IN"
-  },
-  {
-    "blogId": 227,
-    "countryId": "AE"
-  },
-  {
-    "blogId": 228,
-    "countryId": "US"
   },
   {
     "blogId": 229,
@@ -1028,14 +852,6 @@
     "countryId": "JP"
   },
   {
-    "blogId": 240,
-    "countryId": "GB"
-  },
-  {
-    "blogId": 241,
-    "countryId": "DK"
-  },
-  {
     "blogId": 242,
     "countryId": "DE"
   },
@@ -1074,10 +890,6 @@
   {
     "blogId": 250,
     "countryId": "DE"
-  },
-  {
-    "blogId": 251,
-    "countryId": "US"
   },
   {
     "blogId": 252,
@@ -1124,10 +936,6 @@
     "countryId": "VN"
   },
   {
-    "blogId": 262,
-    "countryId": "VN"
-  },
-  {
     "blogId": 263,
     "countryId": "KE"
   },
@@ -1148,16 +956,8 @@
     "countryId": "BE"
   },
   {
-    "blogId": 268,
-    "countryId": "NO"
-  },
-  {
     "blogId": 269,
     "countryId": "CD"
-  },
-  {
-    "blogId": 270,
-    "countryId": "AU"
   },
   {
     "blogId": 271,
@@ -1224,20 +1024,8 @@
     "countryId": "NO"
   },
   {
-    "blogId": 286,
-    "countryId": "NO"
-  },
-  {
     "blogId": 287,
     "countryId": "US"
-  },
-  {
-    "blogId": 288,
-    "countryId": "IN"
-  },
-  {
-    "blogId": 289,
-    "countryId": "ID"
   },
   {
     "blogId": 290,
@@ -1268,10 +1056,6 @@
     "countryId": "DE"
   },
   {
-    "blogId": 296,
-    "countryId": "CA"
-  },
-  {
     "blogId": 297,
     "countryId": "CR"
   },
@@ -1292,32 +1076,12 @@
     "countryId": "ES"
   },
   {
-    "blogId": 302,
-    "countryId": "NO"
-  },
-  {
-    "blogId": 303,
-    "countryId": "NL"
-  },
-  {
     "blogId": 304,
     "countryId": "ES"
   },
   {
     "blogId": 304,
     "countryId": "BO"
-  },
-  {
-    "blogId": 305,
-    "countryId": "UA"
-  },
-  {
-    "blogId": 306,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 307,
-    "countryId": "IT"
   },
   {
     "blogId": 308,
@@ -1348,10 +1112,6 @@
     "countryId": "BW"
   },
   {
-    "blogId": 315,
-    "countryId": "HK"
-  },
-  {
     "blogId": 316,
     "countryId": "NL"
   },
@@ -1374,10 +1134,6 @@
   {
     "blogId": 321,
     "countryId": "DE"
-  },
-  {
-    "blogId": 322,
-    "countryId": "EG"
   },
   {
     "blogId": 323,
@@ -1404,18 +1160,6 @@
     "countryId": "DE"
   },
   {
-    "blogId": 329,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 329,
-    "countryId": "TR"
-  },
-  {
-    "blogId": 330,
-    "countryId": "IT"
-  },
-  {
     "blogId": 331,
     "countryId": "DE"
   },
@@ -1429,14 +1173,6 @@
   },
   {
     "blogId": 334,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 335,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 336,
     "countryId": "DE"
   },
   {
@@ -1456,10 +1192,6 @@
     "countryId": "NP"
   },
   {
-    "blogId": 340,
-    "countryId": "NL"
-  },
-  {
     "blogId": 341,
     "countryId": "DE"
   },
@@ -1472,24 +1204,8 @@
     "countryId": "DE"
   },
   {
-    "blogId": 343,
-    "countryId": "SY"
-  },
-  {
-    "blogId": 344,
-    "countryId": "NO"
-  },
-  {
-    "blogId": 345,
-    "countryId": "PL"
-  },
-  {
     "blogId": 346,
     "countryId": "DK"
-  },
-  {
-    "blogId": 347,
-    "countryId": "US"
   },
   {
     "blogId": 348,
@@ -1572,23 +1288,11 @@
     "countryId": "IT"
   },
   {
-    "blogId": 365,
-    "countryId": "NO"
-  },
-  {
-    "blogId": 365,
-    "countryId": "NG"
-  },
-  {
     "blogId": 366,
     "countryId": "SE"
   },
   {
     "blogId": 366,
-    "countryId": "NO"
-  },
-  {
-    "blogId": 367,
     "countryId": "NO"
   },
   {
@@ -1606,14 +1310,6 @@
   {
     "blogId": 371,
     "countryId": "MY"
-  },
-  {
-    "blogId": 372,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 373,
-    "countryId": "AU"
   },
   {
     "blogId": 374,
@@ -1640,10 +1336,6 @@
     "countryId": "SX"
   },
   {
-    "blogId": 380,
-    "countryId": "GB"
-  },
-  {
     "blogId": 381,
     "countryId": "FI"
   },
@@ -1660,16 +1352,8 @@
     "countryId": "BM"
   },
   {
-    "blogId": 385,
-    "countryId": "NL"
-  },
-  {
     "blogId": 386,
     "countryId": "IT"
-  },
-  {
-    "blogId": 387,
-    "countryId": "NO"
   },
   {
     "blogId": 388,
@@ -1724,10 +1408,6 @@
     "countryId": "CA"
   },
   {
-    "blogId": 400,
-    "countryId": "US"
-  },
-  {
     "blogId": 401,
     "countryId": "IT"
   },
@@ -1760,15 +1440,7 @@
     "countryId": "BR"
   },
   {
-    "blogId": 409,
-    "countryId": "DE"
-  },
-  {
     "blogId": 410,
-    "countryId": "DE"
-  },
-  {
-    "blogId": 411,
     "countryId": "DE"
   },
   {
@@ -1810,10 +1482,6 @@
   {
     "blogId": 420,
     "countryId": "SG"
-  },
-  {
-    "blogId": 421,
-    "countryId": "DE"
   },
   {
     "blogId": 422,
@@ -1876,10 +1544,6 @@
     "countryId": "CA"
   },
   {
-    "blogId": 436,
-    "countryId": "DE"
-  },
-  {
     "blogId": 437,
     "countryId": "HK"
   },
@@ -1902,10 +1566,6 @@
   {
     "blogId": 441,
     "countryId": "KE"
-  },
-  {
-    "blogId": 442,
-    "countryId": "TR"
   },
   {
     "blogId": 443,
@@ -1940,16 +1600,8 @@
     "countryId": "DK"
   },
   {
-    "blogId": 451,
-    "countryId": "SV"
-  },
-  {
     "blogId": 452,
     "countryId": "HU"
-  },
-  {
-    "blogId": 453,
-    "countryId": "CZ"
   },
   {
     "blogId": 454,
@@ -1964,14 +1616,6 @@
     "countryId": "NL"
   },
   {
-    "blogId": 457,
-    "countryId": "MX"
-  },
-  {
-    "blogId": 457,
-    "countryId": "SG"
-  },
-  {
     "blogId": 458,
     "countryId": "MX"
   },
@@ -1982,10 +1626,6 @@
   {
     "blogId": 460,
     "countryId": "IL"
-  },
-  {
-    "blogId": 461,
-    "countryId": "CN"
   },
   {
     "blogId": 462,

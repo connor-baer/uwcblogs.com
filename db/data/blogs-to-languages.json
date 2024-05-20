@@ -12,14 +12,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 3,
-    "languageId": "hu"
-  },
-  {
-    "blogId": 3,
-    "languageId": "en"
-  },
-  {
     "blogId": 4,
     "languageId": "hu"
   },
@@ -30,10 +22,6 @@
   {
     "blogId": 5,
     "languageId": "pl"
-  },
-  {
-    "blogId": 6,
-    "languageId": "en"
   },
   {
     "blogId": 7,
@@ -72,10 +60,6 @@
     "languageId": "de"
   },
   {
-    "blogId": 16,
-    "languageId": "en"
-  },
-  {
     "blogId": 17,
     "languageId": "de"
   },
@@ -104,14 +88,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 24,
-    "languageId": "no"
-  },
-  {
-    "blogId": 24,
-    "languageId": "en"
-  },
-  {
     "blogId": 25,
     "languageId": "sv"
   },
@@ -124,28 +100,12 @@
     "languageId": "en"
   },
   {
-    "blogId": 27,
-    "languageId": "en"
-  },
-  {
     "blogId": 28,
     "languageId": "nl"
   },
   {
     "blogId": 28,
     "languageId": "en"
-  },
-  {
-    "blogId": 29,
-    "languageId": "es"
-  },
-  {
-    "blogId": 29,
-    "languageId": "en"
-  },
-  {
-    "blogId": 29,
-    "languageId": "fr"
   },
   {
     "blogId": 30,
@@ -172,24 +132,12 @@
     "languageId": "en"
   },
   {
-    "blogId": 36,
-    "languageId": "en"
-  },
-  {
     "blogId": 37,
     "languageId": "en"
   },
   {
     "blogId": 38,
     "languageId": "en"
-  },
-  {
-    "blogId": 39,
-    "languageId": "en"
-  },
-  {
-    "blogId": 39,
-    "languageId": "es"
   },
   {
     "blogId": 40,
@@ -224,23 +172,11 @@
     "languageId": "nl"
   },
   {
-    "blogId": 47,
-    "languageId": "en"
-  },
-  {
     "blogId": 48,
     "languageId": "de"
   },
   {
     "blogId": 48,
-    "languageId": "en"
-  },
-  {
-    "blogId": 49,
-    "languageId": "en"
-  },
-  {
-    "blogId": 50,
     "languageId": "en"
   },
   {
@@ -260,19 +196,11 @@
     "languageId": "en"
   },
   {
-    "blogId": 54,
-    "languageId": "en"
-  },
-  {
     "blogId": 55,
     "languageId": "hu"
   },
   {
     "blogId": 56,
-    "languageId": "en"
-  },
-  {
-    "blogId": 57,
     "languageId": "en"
   },
   {
@@ -328,10 +256,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 70,
-    "languageId": "en"
-  },
-  {
     "blogId": 71,
     "languageId": "es"
   },
@@ -364,10 +288,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 78,
-    "languageId": "es"
-  },
-  {
     "blogId": 79,
     "languageId": "zh"
   },
@@ -378,10 +298,6 @@
   {
     "blogId": 81,
     "languageId": "de"
-  },
-  {
-    "blogId": 82,
-    "languageId": "en"
   },
   {
     "blogId": 83,
@@ -512,10 +428,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 111,
-    "languageId": "en"
-  },
-  {
     "blogId": 112,
     "languageId": "he"
   },
@@ -541,10 +453,6 @@
   },
   {
     "blogId": 116,
-    "languageId": "en"
-  },
-  {
-    "blogId": 117,
     "languageId": "en"
   },
   {
@@ -588,10 +496,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 127,
-    "languageId": "en"
-  },
-  {
     "blogId": 128,
     "languageId": "en"
   },
@@ -616,14 +520,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 133,
-    "languageId": "en"
-  },
-  {
-    "blogId": 133,
-    "languageId": "zh"
-  },
-  {
     "blogId": 134,
     "languageId": "en"
   },
@@ -634,10 +530,6 @@
   {
     "blogId": 136,
     "languageId": "en"
-  },
-  {
-    "blogId": 137,
-    "languageId": "nl"
   },
   {
     "blogId": 138,
@@ -654,30 +546,6 @@
   {
     "blogId": 141,
     "languageId": "en"
-  },
-  {
-    "blogId": 142,
-    "languageId": "en"
-  },
-  {
-    "blogId": 142,
-    "languageId": "id"
-  },
-  {
-    "blogId": 143,
-    "languageId": "en"
-  },
-  {
-    "blogId": 143,
-    "languageId": "de"
-  },
-  {
-    "blogId": 143,
-    "languageId": "es"
-  },
-  {
-    "blogId": 144,
-    "languageId": "de"
   },
   {
     "blogId": 145,
@@ -732,10 +600,6 @@
     "languageId": "de"
   },
   {
-    "blogId": 153,
-    "languageId": "nl"
-  },
-  {
     "blogId": 154,
     "languageId": "en"
   },
@@ -766,10 +630,6 @@
   {
     "blogId": 158,
     "languageId": "hi"
-  },
-  {
-    "blogId": 159,
-    "languageId": "en"
   },
   {
     "blogId": 160,
@@ -840,10 +700,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 173,
-    "languageId": "en"
-  },
-  {
     "blogId": 174,
     "languageId": "en"
   },
@@ -862,14 +718,6 @@
   {
     "blogId": 178,
     "languageId": "en"
-  },
-  {
-    "blogId": 179,
-    "languageId": "en"
-  },
-  {
-    "blogId": 179,
-    "languageId": "ja"
   },
   {
     "blogId": 180,
@@ -904,10 +752,6 @@
     "languageId": "fi"
   },
   {
-    "blogId": 187,
-    "languageId": "de"
-  },
-  {
     "blogId": 188,
     "languageId": "en"
   },
@@ -924,10 +768,6 @@
     "languageId": "zh"
   },
   {
-    "blogId": 191,
-    "languageId": "en"
-  },
-  {
     "blogId": 192,
     "languageId": "en"
   },
@@ -937,14 +777,6 @@
   },
   {
     "blogId": 194,
-    "languageId": "en"
-  },
-  {
-    "blogId": 195,
-    "languageId": "de"
-  },
-  {
-    "blogId": 195,
     "languageId": "en"
   },
   {
@@ -988,16 +820,8 @@
     "languageId": "pt"
   },
   {
-    "blogId": 204,
-    "languageId": "en"
-  },
-  {
     "blogId": 205,
     "languageId": "en"
-  },
-  {
-    "blogId": 206,
-    "languageId": "no"
   },
   {
     "blogId": 207,
@@ -1008,19 +832,7 @@
     "languageId": "en"
   },
   {
-    "blogId": 209,
-    "languageId": "en"
-  },
-  {
     "blogId": 210,
-    "languageId": "en"
-  },
-  {
-    "blogId": 211,
-    "languageId": "en"
-  },
-  {
-    "blogId": 212,
     "languageId": "en"
   },
   {
@@ -1076,10 +888,6 @@
     "languageId": "it"
   },
   {
-    "blogId": 223,
-    "languageId": "en"
-  },
-  {
     "blogId": 224,
     "languageId": "en"
   },
@@ -1090,14 +898,6 @@
   {
     "blogId": 226,
     "languageId": "da"
-  },
-  {
-    "blogId": 227,
-    "languageId": "en"
-  },
-  {
-    "blogId": 228,
-    "languageId": "en"
   },
   {
     "blogId": 229,
@@ -1160,14 +960,6 @@
     "languageId": "ja"
   },
   {
-    "blogId": 240,
-    "languageId": "en"
-  },
-  {
-    "blogId": 241,
-    "languageId": "en"
-  },
-  {
     "blogId": 242,
     "languageId": "de"
   },
@@ -1212,10 +1004,6 @@
     "languageId": "de"
   },
   {
-    "blogId": 251,
-    "languageId": "en"
-  },
-  {
     "blogId": 252,
     "languageId": "en"
   },
@@ -1256,10 +1044,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 262,
-    "languageId": "en"
-  },
-  {
     "blogId": 263,
     "languageId": "en"
   },
@@ -1280,15 +1064,7 @@
     "languageId": "en"
   },
   {
-    "blogId": 268,
-    "languageId": "en"
-  },
-  {
     "blogId": 269,
-    "languageId": "en"
-  },
-  {
-    "blogId": 270,
     "languageId": "en"
   },
   {
@@ -1360,19 +1136,7 @@
     "languageId": "nn"
   },
   {
-    "blogId": 286,
-    "languageId": "nn"
-  },
-  {
     "blogId": 287,
-    "languageId": "en"
-  },
-  {
-    "blogId": 288,
-    "languageId": "en"
-  },
-  {
-    "blogId": 289,
     "languageId": "en"
   },
   {
@@ -1404,10 +1168,6 @@
     "languageId": "de"
   },
   {
-    "blogId": 296,
-    "languageId": "fr"
-  },
-  {
     "blogId": 297,
     "languageId": "es"
   },
@@ -1432,32 +1192,8 @@
     "languageId": "es"
   },
   {
-    "blogId": 302,
-    "languageId": "en"
-  },
-  {
-    "blogId": 303,
-    "languageId": "nl"
-  },
-  {
     "blogId": 304,
     "languageId": "es"
-  },
-  {
-    "blogId": 305,
-    "languageId": "en"
-  },
-  {
-    "blogId": 305,
-    "languageId": "ru"
-  },
-  {
-    "blogId": 306,
-    "languageId": "en"
-  },
-  {
-    "blogId": 307,
-    "languageId": "en"
   },
   {
     "blogId": 308,
@@ -1489,10 +1225,6 @@
   },
   {
     "blogId": 314,
-    "languageId": "en"
-  },
-  {
-    "blogId": 315,
     "languageId": "en"
   },
   {
@@ -1532,10 +1264,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 322,
-    "languageId": "en"
-  },
-  {
     "blogId": 323,
     "languageId": "en"
   },
@@ -1564,14 +1292,6 @@
     "languageId": "de"
   },
   {
-    "blogId": 329,
-    "languageId": "de"
-  },
-  {
-    "blogId": 330,
-    "languageId": "en"
-  },
-  {
     "blogId": 331,
     "languageId": "de"
   },
@@ -1588,14 +1308,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 335,
-    "languageId": "de"
-  },
-  {
-    "blogId": 336,
-    "languageId": "de"
-  },
-  {
     "blogId": 337,
     "languageId": "en"
   },
@@ -1608,10 +1320,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 340,
-    "languageId": "en"
-  },
-  {
     "blogId": 341,
     "languageId": "en"
   },
@@ -1620,27 +1328,7 @@
     "languageId": "de"
   },
   {
-    "blogId": 343,
-    "languageId": "en"
-  },
-  {
-    "blogId": 343,
-    "languageId": "ar"
-  },
-  {
-    "blogId": 344,
-    "languageId": "no"
-  },
-  {
-    "blogId": 345,
-    "languageId": "en"
-  },
-  {
     "blogId": 346,
-    "languageId": "en"
-  },
-  {
-    "blogId": 347,
     "languageId": "en"
   },
   {
@@ -1728,20 +1416,12 @@
     "languageId": "en"
   },
   {
-    "blogId": 365,
-    "languageId": "en"
-  },
-  {
     "blogId": 366,
     "languageId": "no"
   },
   {
     "blogId": 366,
     "languageId": "en"
-  },
-  {
-    "blogId": 367,
-    "languageId": "nn"
   },
   {
     "blogId": 368,
@@ -1757,14 +1437,6 @@
   },
   {
     "blogId": 371,
-    "languageId": "en"
-  },
-  {
-    "blogId": 372,
-    "languageId": "de"
-  },
-  {
-    "blogId": 373,
     "languageId": "en"
   },
   {
@@ -1792,10 +1464,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 380,
-    "languageId": "en"
-  },
-  {
     "blogId": 381,
     "languageId": "fi"
   },
@@ -1812,16 +1480,8 @@
     "languageId": "en"
   },
   {
-    "blogId": 385,
-    "languageId": "nl"
-  },
-  {
     "blogId": 386,
     "languageId": "it"
-  },
-  {
-    "blogId": 387,
-    "languageId": "no"
   },
   {
     "blogId": 388,
@@ -1880,10 +1540,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 400,
-    "languageId": "en"
-  },
-  {
     "blogId": 401,
     "languageId": "it"
   },
@@ -1928,16 +1584,8 @@
     "languageId": "pt"
   },
   {
-    "blogId": 409,
-    "languageId": "de"
-  },
-  {
     "blogId": 410,
     "languageId": "en"
-  },
-  {
-    "blogId": 411,
-    "languageId": "ph"
   },
   {
     "blogId": 412,
@@ -1981,10 +1629,6 @@
   },
   {
     "blogId": 420,
-    "languageId": "en"
-  },
-  {
-    "blogId": 421,
     "languageId": "en"
   },
   {
@@ -2056,10 +1700,6 @@
     "languageId": "en"
   },
   {
-    "blogId": 436,
-    "languageId": "de"
-  },
-  {
     "blogId": 437,
     "languageId": "en"
   },
@@ -2078,14 +1718,6 @@
   {
     "blogId": 441,
     "languageId": "en"
-  },
-  {
-    "blogId": 442,
-    "languageId": "en"
-  },
-  {
-    "blogId": 442,
-    "languageId": "tr"
   },
   {
     "blogId": 443,
@@ -2120,19 +1752,7 @@
     "languageId": "en"
   },
   {
-    "blogId": 451,
-    "languageId": "en"
-  },
-  {
-    "blogId": 451,
-    "languageId": "es"
-  },
-  {
     "blogId": 452,
-    "languageId": "en"
-  },
-  {
-    "blogId": 453,
     "languageId": "en"
   },
   {
@@ -2146,10 +1766,6 @@
   {
     "blogId": 456,
     "languageId": "nl"
-  },
-  {
-    "blogId": 457,
-    "languageId": "en"
   },
   {
     "blogId": 458,
@@ -2170,10 +1786,6 @@
   {
     "blogId": 460,
     "languageId": "he"
-  },
-  {
-    "blogId": 461,
-    "languageId": "en"
   },
   {
     "blogId": 462,

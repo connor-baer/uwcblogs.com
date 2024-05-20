@@ -21,13 +21,6 @@
     "collegeId": "uwc-mahindra"
   },
   {
-    "id": 3,
-    "firstName": "Abigel",
-    "url": "http://miskoabi.simplesite.com/",
-    "year": 2019,
-    "collegeId": "uwc-thailand"
-  },
-  {
     "id": 4,
     "firstName": "Abigél",
     "url": "https://miskoabi.wixsite.com/uwc-to-unc",
@@ -39,13 +32,6 @@
     "firstName": "Ada",
     "url": "http://slonindyjski.blogspot.de",
     "year": 2015,
-    "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 6,
-    "firstName": "Adala",
-    "url": "https://makhuloadala.wixsite.com/254inindia",
-    "year": 2018,
     "collegeId": "uwc-mahindra"
   },
   {
@@ -112,13 +98,6 @@
     "collegeId": "uwc-mostar"
   },
   {
-    "id": 16,
-    "firstName": "Alice",
-    "url": "http://akkosua.wordpress.com",
-    "year": 2017,
-    "collegeId": "uwc-waterford-kamhlaba"
-  },
-  {
     "id": 17,
     "firstName": "Alice",
     "url": "https://aliceamuwc.wordpress.com",
@@ -135,7 +114,7 @@
   {
     "id": 19,
     "firstName": "Alida",
-    "url": "alidarahemtulla.wordpress.com",
+    "url": "https://alidarahemtulla.wordpress.com",
     "year": 2020,
     "collegeId": "uwc-mahindra"
   },
@@ -149,7 +128,7 @@
   {
     "id": 21,
     "firstName": "Alisha",
-    "url": "http://www.alishainwooonderland.tumblr.com",
+    "url": "http://alishainwooonderland.tumblr.com",
     "year": 2016,
     "collegeId": "uwc-mostar"
   },
@@ -168,13 +147,6 @@
     "collegeId": "uwc-costa-rica"
   },
   {
-    "id": 24,
-    "firstName": "Amalie",
-    "url": "https://rcnmoments.wordpress.com/",
-    "year": 2020,
-    "collegeId": "uwc-red-cross-nordic"
-  },
-  {
     "id": 25,
     "firstName": "Amanda",
     "url": "http://amandarcn.blogg.se/",
@@ -189,25 +161,11 @@
     "collegeId": "uwc-east-africa"
   },
   {
-    "id": 27,
-    "firstName": "Andy",
-    "url": "http://apavey1.tumblr.com",
-    "year": 2018,
-    "collegeId": "uwc-usa"
-  },
-  {
     "id": 28,
     "firstName": "Ange-Vanessa",
     "url": "https://angeopstap.wordpress.com/",
     "year": 2017,
     "collegeId": "uwc-usa"
-  },
-  {
-    "id": 29,
-    "firstName": "Angel Benjamín",
-    "url": "https://blogangelbenjamin.wordpress.com",
-    "year": 2019,
-    "collegeId": "uwc-thailand"
   },
   {
     "id": 30,
@@ -252,13 +210,6 @@
     "collegeId": "uwc-usa"
   },
   {
-    "id": 36,
-    "firstName": "Anna",
-    "url": "https://abloomabroad.blogspot.com/",
-    "year": 2022,
-    "collegeId": "uwc-isak-japan"
-  },
-  {
     "id": 37,
     "firstName": "Anna",
     "url": "http://annarcnuwc.blogspot.de",
@@ -271,13 +222,6 @@
     "url": "http://annaaway.wordpress.com",
     "year": 2017,
     "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 39,
-    "firstName": "Anna",
-    "url": "http://ukrainetocostarica.wordpress.com/",
-    "year": 2017,
-    "collegeId": "uwc-costa-rica"
   },
   {
     "id": 40,
@@ -310,14 +254,14 @@
   {
     "id": 44,
     "firstName": "Annaleena",
-    "url": "http://www.leenasingapuris.blogspot.sg/",
+    "url": "http://leenasingapuris.blogspot.sg/",
     "year": 2017,
     "collegeId": "uwc-adriatic"
   },
   {
     "id": 45,
     "firstName": "Annaleena",
-    "url": "http://www.leenasingapuris.blogspot.de",
+    "url": "http://leenasingapuris.blogspot.de",
     "year": 2017,
     "collegeId": "uwc-south-east-asia"
   },
@@ -329,31 +273,10 @@
     "collegeId": "uwc-li-po-chun"
   },
   {
-    "id": 47,
-    "firstName": "Annemaayke",
-    "url": "http://annemaayke.reislogger.nl",
-    "year": 2014,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
     "id": 48,
     "firstName": "Anni",
     "url": "https://drownedoralive.wordpress.com/",
     "year": 2019,
-    "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 49,
-    "firstName": "Annika",
-    "url": "https://iselblog.wixsite.com/meinewebsite",
-    "year": 2021,
-    "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 50,
-    "firstName": "Annika",
-    "url": "https://iselblog.wixsite.com/meinewebsite",
-    "year": 2014,
     "collegeId": "uwc-red-cross-nordic"
   },
   {
@@ -378,13 +301,6 @@
     "collegeId": "uwc-robert-bosch-college"
   },
   {
-    "id": 54,
-    "firstName": "Arijit",
-    "url": "http://welshchronicles.wordpress.com/",
-    "year": 2015,
-    "collegeId": "uwc-atlantic"
-  },
-  {
     "id": 55,
     "firstName": "Arnold",
     "url": "http://arnircn.blogspot.de",
@@ -397,13 +313,6 @@
     "url": "http://arzucanaskin.com",
     "year": 2015,
     "collegeId": "uwc-li-po-chun"
-  },
-  {
-    "id": 57,
-    "firstName": "Asia",
-    "url": "https://londontopearson.tumblr.com/",
-    "year": 2020,
-    "collegeId": "uwc-pearson-college"
   },
   {
     "id": 58,
@@ -478,7 +387,7 @@
   {
     "id": 68,
     "firstName": "Camilla",
-    "url": "http://www.camilla.reismee.nl",
+    "url": "https://camilla.reismee.nl",
     "year": 2013,
     "collegeId": "uwc-mahindra"
   },
@@ -488,13 +397,6 @@
     "url": "https://herownsunshine.wordpress.com/",
     "year": 2016,
     "collegeId": "uwc-usa"
-  },
-  {
-    "id": 70,
-    "firstName": "Camille",
-    "url": "http://camillleincanada.jimdo.com",
-    "year": 2015,
-    "collegeId": "uwc-pearson-college"
   },
   {
     "id": 71,
@@ -546,13 +448,6 @@
     "collegeId": "uwc-pearson-college"
   },
   {
-    "id": 78,
-    "firstName": "Celia",
-    "url": "http://lacabrasinbrujula.wordpress.com",
-    "year": 2016,
-    "collegeId": "uwc-adriatic"
-  },
-  {
     "id": 79,
     "firstName": "Celia",
     "url": "https://blog.becomingcelia.com",
@@ -572,13 +467,6 @@
     "url": "http://www.youtube.com/channel/UCcKXH7vUwhvVA9uW9OvKHAA",
     "year": 2016,
     "collegeId": "uwc-robert-bosch-college"
-  },
-  {
-    "id": 82,
-    "firstName": "Chaitanyasre ",
-    "url": "https://chaitanyasre.wordpress.com",
-    "year": 2018,
-    "collegeId": "uwc-mahindra"
   },
   {
     "id": 83,
@@ -777,13 +665,6 @@
     "collegeId": "uwc-adriatic"
   },
   {
-    "id": 111,
-    "firstName": "Durgesh",
-    "url": "https://durgeshjhablog.wordpress.com/",
-    "year": 2019,
-    "collegeId": "uwc-mostar"
-  },
-  {
     "id": 112,
     "firstName": "Dvir",
     "url": "http://dvirmaimon.blogspot.com/",
@@ -819,16 +700,9 @@
     "collegeId": "uwc-changshu"
   },
   {
-    "id": 117,
-    "firstName": "Elena",
-    "url": "http://elenalie.com",
-    "year": 2015,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
     "id": 118,
     "firstName": "Elena",
-    "url": "http://www.elli-goes-mostar.blogspot.de",
+    "url": "https://elli-goes-mostar.blogspot.de",
     "year": 2013,
     "collegeId": "uwc-mostar"
   },
@@ -889,13 +763,6 @@
     "collegeId": "uwc-robert-bosch-college"
   },
   {
-    "id": 127,
-    "firstName": "Emery",
-    "url": "https://jiamuxshen.wordpress.com/",
-    "year": 2020,
-    "collegeId": "uwc-changshu"
-  },
-  {
     "id": 128,
     "firstName": "Emma",
     "url": "http://emmainhongkong.wordpress.com",
@@ -931,13 +798,6 @@
     "collegeId": "uwc-pearson-college"
   },
   {
-    "id": 133,
-    "firstName": "Erica",
-    "url": "https://leeerica1010.wixsite.com/mysite",
-    "year": 2020,
-    "collegeId": "uwc-usa"
-  },
-  {
     "id": 134,
     "firstName": "Erika",
     "url": "http://erikabatiz.wordpress.com",
@@ -957,13 +817,6 @@
     "url": "http://esternaelleraldri.blogspot.de",
     "year": 2015,
     "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 137,
-    "firstName": "Eva",
-    "url": "http://evaincostarica.wordpress.com",
-    "year": 2016,
-    "collegeId": "uwc-costa-rica"
   },
   {
     "id": 138,
@@ -992,27 +845,6 @@
     "url": "http://faithsfjordforay.wordpress.com/",
     "year": 2017,
     "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 142,
-    "firstName": "Farid",
-    "url": "https://zuchrinata.com",
-    "year": 2018,
-    "collegeId": "uwc-robert-bosch-college"
-  },
-  {
-    "id": 143,
-    "firstName": "Felix",
-    "url": "http://myuwcUnited Statesblog.jimdo.com",
-    "year": 2016,
-    "collegeId": "uwc-usa"
-  },
-  {
-    "id": 144,
-    "firstName": "Felix",
-    "url": "http://felix-goes-hongkong.jimdo.com",
-    "year": 2011,
-    "collegeId": "uwc-li-po-chun"
   },
   {
     "id": 145,
@@ -1071,13 +903,6 @@
     "collegeId": "uwc-pearson-college"
   },
   {
-    "id": 153,
-    "firstName": "Floyd",
-    "url": "http://floydcostarica.wordpress.com",
-    "year": 2016,
-    "collegeId": "uwc-costa-rica"
-  },
-  {
     "id": 154,
     "firstName": "Foday",
     "url": "https://fsesay.site123.me/blog",
@@ -1108,15 +933,8 @@
   {
     "id": 158,
     "firstName": "Gayatri ",
-    "url": "https://iamgayatriblog.wordpress.com/2018/03/21/its-a-world-out-there/",
+    "url": "https://iamgayatriblog.wordpress.com",
     "year": 2020,
-    "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 159,
-    "firstName": "Geraldine",
-    "url": "http://hillsidestories.tumblr.com",
-    "year": 2018,
     "collegeId": "uwc-mahindra"
   },
   {
@@ -1211,13 +1029,6 @@
     "collegeId": "uwc-red-cross-nordic"
   },
   {
-    "id": 173,
-    "firstName": "Hazel",
-    "url": "http://hk-whales.tumblr.com",
-    "year": 2016,
-    "collegeId": "uwc-atlantic"
-  },
-  {
     "id": 174,
     "firstName": "Helen",
     "url": "https://collectingtimesite.wordpress.com/",
@@ -1234,7 +1045,7 @@
   {
     "id": 176,
     "firstName": "Hester",
-    "url": "http://hesterlouter.reislogger.nl",
+    "url": "https://hesterlouter.reislogger.nl",
     "year": 2014,
     "collegeId": "uwc-adriatic"
   },
@@ -1251,13 +1062,6 @@
     "url": "https://www.youtube.com/channel/UCSAim7kYKqhIhY-uykEekFQ/",
     "year": 2022,
     "collegeId": "uwc-mostar"
-  },
-  {
-    "id": 179,
-    "firstName": "Idomu",
-    "url": "https://idomuito.wordpress.com/",
-    "year": 2017,
-    "collegeId": "uwc-dilijan"
   },
   {
     "id": 180,
@@ -1309,13 +1113,6 @@
     "collegeId": "uwc-costa-rica"
   },
   {
-    "id": 187,
-    "firstName": "Jasmin",
-    "url": "http://tawahi.blogspot.de",
-    "year": 2010,
-    "collegeId": "uwc-mostar"
-  },
-  {
     "id": 188,
     "firstName": "Jasmína",
     "url": "http://jasminainitaly.blogspot.de",
@@ -1337,13 +1134,6 @@
     "collegeId": "uwc-red-cross-nordic"
   },
   {
-    "id": 191,
-    "firstName": "Jasmine",
-    "url": "https://franticatatlantic.tumblr.com/",
-    "year": 2020,
-    "collegeId": "uwc-atlantic"
-  },
-  {
     "id": 192,
     "firstName": "Jayden",
     "url": "http://flyawayjay.wordpress.com/",
@@ -1363,13 +1153,6 @@
     "url": "https://ulticjen.wordpress.com/",
     "year": 2018,
     "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 195,
-    "firstName": "Jeremias",
-    "url": "https://ichundmeinuwcerlebnis.wordpress.com/",
-    "year": 2019,
-    "collegeId": "uwc-robert-bosch-college"
   },
   {
     "id": 196,
@@ -1428,24 +1211,10 @@
     "collegeId": "uwc-changshu"
   },
   {
-    "id": 204,
-    "firstName": "João",
-    "url": "http://thoughtsaroundmyworld.wordpress.com/",
-    "year": 2016,
-    "collegeId": "uwc-dilijan"
-  },
-  {
     "id": 205,
     "firstName": "Joelle",
     "url": "https://theadventuresofanaveragejo.wordpress.com/",
     "year": 2018,
-    "collegeId": "uwc-atlantic"
-  },
-  {
-    "id": 206,
-    "firstName": "Johanna",
-    "url": "http://johannaac.blogg.no",
-    "year": 2014,
     "collegeId": "uwc-atlantic"
   },
   {
@@ -1463,32 +1232,11 @@
     "collegeId": "uwc-li-po-chun"
   },
   {
-    "id": 209,
-    "firstName": "Jordan",
-    "url": "http://www.jordantakesac.blogspot.com",
-    "year": 2017,
-    "collegeId": "uwc-adriatic"
-  },
-  {
     "id": 210,
     "firstName": "Jordan",
-    "url": "http://www.jordantakesac.blogspot.com",
+    "url": "https://jordantakesac.blogspot.com",
     "year": 2017,
     "collegeId": "uwc-atlantic"
-  },
-  {
-    "id": 211,
-    "firstName": "Joseph",
-    "url": "https://whereisbosnia.tumblr.com/",
-    "year": 2020,
-    "collegeId": "uwc-mostar"
-  },
-  {
-    "id": 212,
-    "firstName": "Joshua",
-    "url": "https://azambianabroad.wordpress.com/",
-    "year": 2019,
-    "collegeId": "uwc-li-po-chun"
   },
   {
     "id": 213,
@@ -1528,7 +1276,7 @@
   {
     "id": 218,
     "firstName": "Julian",
-    "url": "http://www.juliinswasiland.blogspot.de",
+    "url": "https://juliinswasiland.blogspot.de",
     "year": 2013,
     "collegeId": "uwc-waterford-kamhlaba"
   },
@@ -1561,13 +1309,6 @@
     "collegeId": "uwc-li-po-chun"
   },
   {
-    "id": 223,
-    "firstName": "Karim",
-    "url": "http://www.ghadlantic.tumblr.com",
-    "year": 2021,
-    "collegeId": "uwc-atlantic"
-  },
-  {
     "id": 224,
     "firstName": "Karin",
     "url": "http://uwcseaclassof2014.blogspot.de",
@@ -1577,7 +1318,7 @@
   {
     "id": 225,
     "firstName": "Katharina",
-    "url": "http://www.katharinaemilie.wordpress.com",
+    "url": "https://katharinaemilie.wordpress.com",
     "year": 2016,
     "collegeId": "uwc-red-cross-nordic"
   },
@@ -1587,20 +1328,6 @@
     "url": "http://katrineuwc.blogspot.com",
     "year": 2016,
     "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 227,
-    "firstName": "Katya",
-    "url": "http://impermanent-resident.tumblr.com",
-    "year": 2018,
-    "collegeId": "uwc-costa-rica"
-  },
-  {
-    "id": 228,
-    "firstName": "Kaz",
-    "url": "http://sar-kaz-m.blogspot.com/",
-    "year": 2016,
-    "collegeId": "uwc-mahindra"
   },
   {
     "id": 229,
@@ -1633,7 +1360,7 @@
   {
     "id": 233,
     "firstName": "Kevin",
-    "url": "https://www.kaiwensworld.wordpress.com",
+    "url": "https://kaiwensworld.wordpress.com",
     "year": 2020,
     "collegeId": "uwc-robert-bosch-college"
   },
@@ -1668,7 +1395,7 @@
   {
     "id": 238,
     "firstName": "Klara",
-    "url": "http://Mvhklara.blogg.se",
+    "url": "https://mvhklara.blogg.se",
     "year": 2016,
     "collegeId": "uwc-red-cross-nordic"
   },
@@ -1678,20 +1405,6 @@
     "url": "http://jimaincostarica.blog.jp/",
     "year": 2016,
     "collegeId": "uwc-costa-rica"
-  },
-  {
-    "id": 240,
-    "firstName": "Kripa",
-    "url": "http://shresthakripa.wordpress.com/",
-    "year": 2015,
-    "collegeId": "uwc-costa-rica"
-  },
-  {
-    "id": 241,
-    "firstName": "Lærke",
-    "url": "http://laerkeinindia.tumblr.com",
-    "year": 2016,
-    "collegeId": "uwc-mahindra"
   },
   {
     "id": 242,
@@ -1755,13 +1468,6 @@
     "url": "http://schneekugelpinguin.wordpress.com",
     "year": 2017,
     "collegeId": "uwc-dilijan"
-  },
-  {
-    "id": 251,
-    "firstName": "Leah",
-    "url": "http://leahmariereynolds.blogspot.de",
-    "year": 2010,
-    "collegeId": "uwc-mostar"
   },
   {
     "id": 252,
@@ -1834,13 +1540,6 @@
     "collegeId": "uwc-pearson-college"
   },
   {
-    "id": 262,
-    "firstName": "Linh",
-    "url": "http://storiesfrom1000milesaway.wordpress.com",
-    "year": 2018,
-    "collegeId": "uwc-pearson-college"
-  },
-  {
     "id": 263,
     "firstName": "Lisa",
     "url": "http://costalisa.wordpress.com",
@@ -1876,25 +1575,11 @@
     "collegeId": "uwc-mahindra"
   },
   {
-    "id": 268,
-    "firstName": "Lovise",
-    "url": "http://loviseatrcn.simplesite.com/",
-    "year": 2022,
-    "collegeId": "uwc-red-cross-nordic"
-  },
-  {
     "id": 269,
     "firstName": "Luanga",
     "url": "https://www.instagram.com/kasintaz/",
     "year": 2021,
     "collegeId": "uwc-east-africa"
-  },
-  {
-    "id": 270,
-    "firstName": "Lubna",
-    "url": "http://unitingworlds.tumblr.com",
-    "year": 2016,
-    "collegeId": "uwc-usa"
   },
   {
     "id": 271,
@@ -1948,7 +1633,7 @@
   {
     "id": 278,
     "firstName": "Mai",
-    "url": "http://www.maiatlpc.blogspot.de",
+    "url": "https://maiatlpc.blogspot.de",
     "year": 2014,
     "collegeId": "uwc-li-po-chun"
   },
@@ -1962,7 +1647,7 @@
   {
     "id": 280,
     "firstName": "Maike",
-    "url": "http://www.maikeabroad.wordpress.com",
+    "url": "http://maikeabroad.wordpress.com",
     "year": 2016,
     "collegeId": "uwc-dilijan"
   },
@@ -2002,13 +1687,6 @@
     "collegeId": "uwc-changshu"
   },
   {
-    "id": 286,
-    "firstName": "Malene",
-    "url": "https://kinamalene.wordpress.com",
-    "year": 2018,
-    "collegeId": "uwc-changshu"
-  },
-  {
     "id": 287,
     "firstName": "Malia",
     "url": "http://maliaatac.blogspot.com",
@@ -2016,23 +1694,9 @@
     "collegeId": "uwc-atlantic"
   },
   {
-    "id": 288,
-    "firstName": "Mallika",
-    "url": "https://mallikaonthehill.wordpress.com/",
-    "year": 2020,
-    "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 289,
-    "firstName": "Mandy",
-    "url": "http://www.mandysantoso.com",
-    "year": 2016,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
     "id": 290,
     "firstName": "Marguerite",
-    "url": "www.margueriteopuwc.wordpress.com",
+    "url": "https://margueriteopuwc.wordpress.com",
     "year": 2018,
     "collegeId": "uwc-usa"
   },
@@ -2072,13 +1736,6 @@
     "collegeId": "uwc-mostar"
   },
   {
-    "id": 296,
-    "firstName": "Marie-Claude",
-    "url": "http://marieclaudecarignan.wordpress.com",
-    "year": 2017,
-    "collegeId": "uwc-pearson-college"
-  },
-  {
     "id": 297,
     "firstName": "Mariela",
     "url": "https://experienceuwc.wixsite.com/blogposts",
@@ -2114,20 +1771,6 @@
     "collegeId": "uwc-usa"
   },
   {
-    "id": 302,
-    "firstName": "Markus",
-    "url": "http://myafricanchapter.com",
-    "year": 2016,
-    "collegeId": "uwc-waterford-kamhlaba"
-  },
-  {
-    "id": 303,
-    "firstName": "Marlous",
-    "url": "https://marlouskieskamp.wordpress.com/",
-    "year": 2019,
-    "collegeId": "uwc-adriatic"
-  },
-  {
     "id": 304,
     "firstName": "Marta",
     "url": "http://escritoradementiras.wordpress.com/",
@@ -2135,30 +1778,9 @@
     "collegeId": "uwc-mostar"
   },
   {
-    "id": 305,
-    "firstName": "Masha",
-    "url": "http://mashadiscoverstheworld.tumblr.com/",
-    "year": 2015,
-    "collegeId": "uwc-atlantic"
-  },
-  {
-    "id": 306,
-    "firstName": "Masha",
-    "url": "https://www.mashasblog.com",
-    "year": 2021,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
-    "id": 307,
-    "firstName": "Matteo",
-    "url": "https://jonathan2765.wixsite.com/jonnygoestoindia",
-    "year": 2019,
-    "collegeId": "uwc-mahindra"
-  },
-  {
     "id": 308,
     "firstName": "Matthew",
-    "url": "http://www.matthewleeuwcad.wordpress.com/",
+    "url": "https://matthewleeuwcad.wordpress.com/",
     "year": 2017,
     "collegeId": "uwc-adriatic"
   },
@@ -2205,13 +1827,6 @@
     "collegeId": "uwc-usa"
   },
   {
-    "id": 315,
-    "firstName": "Michi",
-    "url": "http://mitchymotchymoo.tumblr.com",
-    "year": 2016,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
     "id": 316,
     "firstName": "Mies",
     "url": "http://miesbos.wordpress.com",
@@ -2254,13 +1869,6 @@
     "collegeId": "uwc-atlantic"
   },
   {
-    "id": 322,
-    "firstName": "Mohamed",
-    "url": "http://moudy1994.wordpress.com",
-    "year": 2013,
-    "collegeId": "uwc-pearson-college"
-  },
-  {
     "id": 323,
     "firstName": "Monique Tania",
     "url": "http://moniquesantoso17.wordpress.com/",
@@ -2277,7 +1885,7 @@
   {
     "id": 325,
     "firstName": "Morgan",
-    "url": "http://morganuwcUnited States.tumblr.com",
+    "url": "https://morganuwcusa.tumblr.com",
     "year": 2014,
     "collegeId": "uwc-usa"
   },
@@ -2301,20 +1909,6 @@
     "url": "http://mymy-ac.blogspot.de",
     "year": 2009,
     "collegeId": "uwc-atlantic"
-  },
-  {
-    "id": 329,
-    "firstName": "Myra",
-    "url": "http://meyraabroad.wordpress.com",
-    "year": 2016,
-    "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 330,
-    "firstName": "Nedo",
-    "url": "http://www.freehookupdatingn.tk/",
-    "year": 2017,
-    "collegeId": "uwc-adriatic"
   },
   {
     "id": 331,
@@ -2345,20 +1939,6 @@
     "collegeId": "uwc-usa"
   },
   {
-    "id": 335,
-    "firstName": "Niklas",
-    "url": "http://niklasroggenbuck.blogspot.de",
-    "year": 2015,
-    "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 336,
-    "firstName": "Nils",
-    "url": "http://uwc-stories.jimdo.com",
-    "year": 2013,
-    "collegeId": "uwc-usa"
-  },
-  {
     "id": 337,
     "firstName": "Nina",
     "url": "https://zarenasworld.wordpress.com/",
@@ -2380,13 +1960,6 @@
     "collegeId": "uwc-costa-rica"
   },
   {
-    "id": 340,
-    "firstName": "Noah",
-    "url": "http://my-uwc-stories.simplesite.com",
-    "year": 2020,
-    "collegeId": "uwc-pearson-college"
-  },
-  {
     "id": 341,
     "firstName": "Noëmi",
     "url": "http://adventuresatpcuwc.blogspot.se/",
@@ -2401,39 +1974,11 @@
     "collegeId": "uwc-robert-bosch-college"
   },
   {
-    "id": 343,
-    "firstName": "Obaida",
-    "url": "https://myboldscribbles.wordpress.com/",
-    "year": 2016,
-    "collegeId": "uwc-dilijan"
-  },
-  {
-    "id": 344,
-    "firstName": "Oda",
-    "url": "http://dreaminginhongkong.blogg.no",
-    "year": 2013,
-    "collegeId": "uwc-li-po-chun"
-  },
-  {
-    "id": 345,
-    "firstName": "Ola",
-    "url": "http://myararat.eu/",
-    "year": 2018,
-    "collegeId": "uwc-dilijan"
-  },
-  {
     "id": 346,
     "firstName": "Oliver",
     "url": "http://oliver-rcnuwc.blogspot.de",
     "year": 2014,
     "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 347,
-    "firstName": "Olivia",
-    "url": "https://lifeatlipochun.wordpress.com",
-    "year": 2020,
-    "collegeId": "uwc-li-po-chun"
   },
   {
     "id": 348,
@@ -2555,25 +2100,11 @@
     "collegeId": "uwc-mahindra"
   },
   {
-    "id": 365,
-    "firstName": "Raheem",
-    "url": "https://www.raheemidowu.com",
-    "year": 2021,
-    "collegeId": "uwc-dilijan"
-  },
-  {
     "id": 366,
     "firstName": "Rakel",
     "url": "https://mahindrakel.wordpress.com/",
     "year": 2018,
     "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 367,
-    "firstName": "Rakel",
-    "url": "http://rakeliverden.no",
-    "year": 2020,
-    "collegeId": "uwc-thailand"
   },
   {
     "id": 368,
@@ -2602,20 +2133,6 @@
     "url": "http://malaysianinarmenia.blogspot.com",
     "year": 2016,
     "collegeId": "uwc-dilijan"
-  },
-  {
-    "id": 372,
-    "firstName": "Rebecca",
-    "url": "http://beckyinuwcim.blogspot.de",
-    "year": 2012,
-    "collegeId": "uwc-mostar"
-  },
-  {
-    "id": 373,
-    "firstName": "Rebecca",
-    "url": "http://unitedworldbecca.tumblr.com",
-    "year": 2017,
-    "collegeId": "uwc-adriatic"
   },
   {
     "id": 374,
@@ -2660,13 +2177,6 @@
     "collegeId": "uwc-maastricht"
   },
   {
-    "id": 380,
-    "firstName": "Sahra",
-    "url": "http://www.sahragibson.org.uk/",
-    "year": 2016,
-    "collegeId": "uwc-adriatic"
-  },
-  {
     "id": 381,
     "firstName": "Salli",
     "url": "https://sallisblogg.blogspot.com",
@@ -2695,25 +2205,11 @@
     "collegeId": "uwc-costa-rica"
   },
   {
-    "id": 385,
-    "firstName": "Sara",
-    "url": "http://saartjenijhuis.wix.com/uwcm",
-    "year": 2017,
-    "collegeId": "uwc-maastricht"
-  },
-  {
     "id": 386,
     "firstName": "Sara",
-    "url": "http://www.parmigianaonthefjord.wordpress.com",
+    "url": "https://parmigianaonthefjord.wordpress.com",
     "year": 2019,
     "collegeId": "uwc-red-cross-nordic"
-  },
-  {
-    "id": 387,
-    "firstName": "Sara",
-    "url": "http://saraincanada.blogg.no",
-    "year": 2015,
-    "collegeId": "uwc-pearson-college"
   },
   {
     "id": 388,
@@ -2800,13 +2296,6 @@
     "collegeId": "uwc-pearson-college"
   },
   {
-    "id": 400,
-    "firstName": "Shobhit",
-    "url": "http://kumarmetamorphosis.blogspot.de",
-    "year": 2014,
-    "collegeId": "uwc-usa"
-  },
-  {
     "id": 401,
     "firstName": "Silva",
     "url": "http://uwcitasiaeng.wordpress.com",
@@ -2863,25 +2352,11 @@
     "collegeId": "uwc-mostar"
   },
   {
-    "id": 409,
-    "firstName": "Sophia",
-    "url": "http://sophiagoestoindia.jimdo.com",
-    "year": 2014,
-    "collegeId": "uwc-mahindra"
-  },
-  {
     "id": 410,
     "firstName": "Sophia",
     "url": "http://ichmachdieweltunsicher.wordpress.com",
     "year": 2018,
     "collegeId": "uwc-robert-bosch-college"
-  },
-  {
-    "id": 411,
-    "firstName": "Sophie",
-    "url": "http://sleepless-in-flekke.tumblr.com",
-    "year": 2014,
-    "collegeId": "uwc-red-cross-nordic"
   },
   {
     "id": 412,
@@ -2945,13 +2420,6 @@
     "url": "http://thidameetstheworld.wordpress.com/",
     "year": 2017,
     "collegeId": "uwc-adriatic"
-  },
-  {
-    "id": 421,
-    "firstName": "Susi",
-    "url": "https://exploringutopia.wordpress.com",
-    "year": 2019,
-    "collegeId": "uwc-robert-bosch-college"
   },
   {
     "id": 422,
@@ -3052,13 +2520,6 @@
     "collegeId": "uwc-mahindra"
   },
   {
-    "id": 436,
-    "firstName": "Tiana",
-    "url": "http://tianagoescostarica.com",
-    "year": 2018,
-    "collegeId": "uwc-costa-rica"
-  },
-  {
     "id": 437,
     "firstName": "Tiffany",
     "url": "http://adriaticvoyager.wordpress.com/",
@@ -3068,7 +2529,7 @@
   {
     "id": 438,
     "firstName": "Tiia",
-    "url": "http://www.tiia-thetimeofmylife.blogspot.de",
+    "url": "http://tiia-thetimeofmylife.blogspot.de",
     "year": 2015,
     "collegeId": "uwc-adriatic"
   },
@@ -3082,56 +2543,49 @@
   {
     "id": 440,
     "firstName": "Tom",
-    "url": "http://www.tomonthemove.tumblr.com",
+    "url": "https://tomonthemove.tumblr.com",
     "year": 2016,
     "collegeId": "uwc-usa"
   },
   {
     "id": 441,
     "firstName": "Trisha",
-    "url": "http://thekenyanhker.wordpress.com",
+    "url": "https://thekenyanhker.wordpress.com",
     "year": 2017,
     "collegeId": "uwc-li-po-chun"
   },
   {
-    "id": 442,
-    "firstName": "Tunç",
-    "url": "http://dreamingawayoverseas.wordpress.com",
-    "year": 2018,
-    "collegeId": "uwc-changshu"
-  },
-  {
     "id": 443,
     "firstName": "Tuva",
-    "url": "http://tuvabe.wordpress.com",
+    "url": "https://tuvabe.wordpress.com",
     "year": 2016,
     "collegeId": "uwc-maastricht"
   },
   {
     "id": 444,
     "firstName": "Valerie",
-    "url": "http://acvalerie.blogspot.com/",
+    "url": "https://acvalerie.blogspot.com/",
     "year": 2009,
     "collegeId": "uwc-atlantic"
   },
   {
     "id": 445,
     "firstName": "Veerle",
-    "url": "http://veerleschaap.wordpress.com",
+    "url": "https://veerleschaap.wordpress.com",
     "year": 2017,
     "collegeId": "uwc-adriatic"
   },
   {
     "id": 446,
     "firstName": "Vergianti",
-    "url": "http://vergiantiagustini.blogspot.de",
+    "url": "https://vergiantiagustini.blogspot.de",
     "year": 2015,
     "collegeId": "uwc-maastricht"
   },
   {
     "id": 447,
     "firstName": "Viivi",
-    "url": "http://www.viivimaailmalla.blogspot.com",
+    "url": "https://viivimaailmalla.blogspot.com",
     "year": 2016,
     "collegeId": "uwc-li-po-chun"
   },
@@ -3152,16 +2606,9 @@
   {
     "id": 450,
     "firstName": "Vilhelm",
-    "url": "http://www.alladventurefromhere.wordpress.com",
+    "url": "https://alladventurefromhere.wordpress.com",
     "year": 2017,
     "collegeId": "uwc-mahindra"
-  },
-  {
-    "id": 451,
-    "firstName": "Vilma",
-    "url": "http://vilmaatlipochun.wordpress.com",
-    "year": 2015,
-    "collegeId": "uwc-li-po-chun"
   },
   {
     "id": 452,
@@ -3169,13 +2616,6 @@
     "url": "https://instagram.com/in_tanzania_uwc?igshid=12t3xmxmbjnge",
     "year": 2021,
     "collegeId": "uwc-east-africa"
-  },
-  {
-    "id": 453,
-    "firstName": "Vojta",
-    "url": "https://uwcspirit.org/",
-    "year": 2023,
-    "collegeId": "uwc-costa-rica"
   },
   {
     "id": 454,
@@ -3199,13 +2639,6 @@
     "collegeId": "uwc-waterford-kamhlaba"
   },
   {
-    "id": 457,
-    "firstName": "Ximena",
-    "url": "http://ximenaatuwcUnited States.tumblr.com/",
-    "year": 2016,
-    "collegeId": "uwc-usa"
-  },
-  {
     "id": 458,
     "firstName": "Ximena",
     "url": "https://ximenagordillo.wordpress.com/",
@@ -3225,13 +2658,6 @@
     "url": "http://uwcyali.blogspot.co.il",
     "year": 2017,
     "collegeId": "uwc-atlantic"
-  },
-  {
-    "id": 461,
-    "firstName": "Yangzom",
-    "url": "http://mybeautifulblog2015.blogspot.no",
-    "year": 2017,
-    "collegeId": "uwc-red-cross-nordic"
   },
   {
     "id": 462,

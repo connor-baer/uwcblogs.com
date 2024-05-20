@@ -1,0 +1,31 @@
+name: Check links
+
+on:
+  workflow_dispatch:
+  schedule:
+    # Every Monday
+    - cron: '0 7 * * 1'
+
+permissions:
+  contents: read
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Check links
+        uses: ./
+        with:
+          milliseconds: 2000
