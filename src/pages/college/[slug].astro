@@ -2,10 +2,27 @@
 import type { InferGetStaticPropsType } from 'astro';
 import { db, College } from 'astro:db';
 
-// FIXME: Replace image with college-specific one
-import image from '../../assets/aidan-meyer-129877.jpg';
 import Layout from '../../layouts/split.astro';
 import BlogList from '../../components/BlogList.astro';
+import uwcAdriatic from '../../assets/uwc-adriatic.jpeg';
+import uwcAtlantic from '../../assets/uwc-atlantic.jpeg';
+import uwcChangshu from '../../assets/uwc-changshu.jpeg';
+import uwcCostaRica from '../../assets/uwc-costa-rica.jpeg';
+import uwcDilijan from '../../assets/uwc-dilijan.jpeg';
+import uwcEastAfrica from '../../assets/uwc-east-africa.jpeg';
+import uwcIsakJapan from '../../assets/uwc-isak-japan.jpeg';
+import uwcLiPoChun from '../../assets/uwc-li-po-chun.jpeg';
+import uwcMaastricht from '../../assets/uwc-maastricht.jpeg';
+import uwcMahindra from '../../assets/uwc-mahindra.jpeg';
+import uwcMostar from '../../assets/uwc-mostar.jpeg';
+import uwcPearsonCollege from '../../assets/uwc-pearson-college.jpeg';
+import uwcRedCrossNordic from '../../assets/uwc-red-cross-nordic.jpeg';
+import uwcRobertBoschCollege from '../../assets/uwc-robert-bosch-college.jpeg';
+import uwcSouthEastAsia from '../../assets/uwc-south-east-asia.jpeg';
+import uwcThailand from '../../assets/uwc-thailand.jpeg';
+import uwcUsa from '../../assets/uwc-usa.jpeg';
+import uwcWaterfordKamhlaba from '../../assets/uwc-waterford-kamhlaba.jpeg';
+import fallback from '../../assets/aidan-meyer-129877.jpg';
 
 export async function getStaticPaths() {
   const colleges = await db.select().from(College);
@@ -17,7 +34,29 @@ export async function getStaticPaths() {
 
 export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
+const images: { [key: string]: ImageMetadata } = {
+  'uwc-adriatic': uwcAdriatic,
+  'uwc-atlantic': uwcAtlantic,
+  'uwc-changshu': uwcChangshu,
+  'uwc-costa-rica': uwcCostaRica,
+  'uwc-dilijan': uwcDilijan,
+  'uwc-east-africa': uwcEastAfrica,
+  'uwc-isak-japan': uwcIsakJapan,
+  'uwc-li-po-chun': uwcLiPoChun,
+  'uwc-maastricht': uwcMaastricht,
+  'uwc-mahindra': uwcMahindra,
+  'uwc-mostar': uwcMostar,
+  'uwc-pearson-college': uwcPearsonCollege,
+  'uwc-red-cross-nordic': uwcRedCrossNordic,
+  'uwc-robert-bosch-college': uwcRobertBoschCollege,
+  'uwc-south-east-asia': uwcSouthEastAsia,
+  'uwc-thailand': uwcThailand,
+  'uwc-usa': uwcUsa,
+  'uwc-waterford-kamhlaba': uwcWaterfordKamhlaba,
+};
+
 const { slug, name, description } = Astro.props;
+const image = images[slug] || fallback;
 ---
 
 <Layout
