@@ -35,12 +35,12 @@ const languageCount = await db.select({ value: count() }).from(Language).get();
 
   {
     colleges.map((college) => (
-      <div data-college={college.name} class="college">
+      <section data-college={college.name} class="college">
         <h2 class="college-name">
           <a href={`/college/${college.slug}`}>{college.name}</a>
         </h2>
         <BlogList collegeId={college.slug} />
-      </div>
+      </section>
     ))
   }
 </Layout>
@@ -101,7 +101,7 @@ const languageCount = await db.select({ value: count() }).from(Language).get();
     text-decoration: underline;
     text-decoration-color: var(--color-default);
     text-decoration-thickness: 0.125em;
-    text-underline-offset: 0.25em;
+    text-underline-position: under;
   }
 
   /* Hide empty college groups */

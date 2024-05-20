@@ -9,7 +9,7 @@ import Base from './base.astro';
 
 export interface Props {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   action?: {
     label: string;
     href: string;
@@ -22,7 +22,6 @@ const { title, subtitle, action, image } = Astro.props;
 
 <Base title={title} description={subtitle}>
   <div class="content">
-    <a href="/">All blogs</a>
     <header>
       <div>
         <h1 class="title">{title}</h1>
@@ -60,6 +59,7 @@ const { title, subtitle, action, image } = Astro.props;
   footer {
     width: 100vw;
     padding: 0 12px;
+    margin-top: 64px;
   }
   @media (min-width: 37.5em) {
     .content,
