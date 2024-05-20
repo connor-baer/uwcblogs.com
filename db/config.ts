@@ -31,6 +31,7 @@ const Blog = defineTable({
     url: column.text(),
     year: column.number(),
     collegeId: column.text({ references: () => College.columns.slug }),
+    createdAt: column.date({ optional: true }),
   },
 });
 
@@ -43,6 +44,7 @@ const DraftBlog = defineTable({
     collegeId: column.text({ references: () => College.columns.slug }),
     language: column.text(),
     country: column.text(),
+    createdAt: column.date(),
   },
 });
 
