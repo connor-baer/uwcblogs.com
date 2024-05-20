@@ -21,7 +21,7 @@ export const server = {
         await db.insert(DraftBlog).values(data);
 
         if (typeof import.meta.env.NOTIFICATION_URL === 'string') {
-          await fetch(import.meta.env.NOTIFICATION_URL, {
+          fetch(import.meta.env.NOTIFICATION_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

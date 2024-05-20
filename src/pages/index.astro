@@ -31,7 +31,7 @@ const languageCount = await db.select({ value: count() }).from(Language).get();
       placeholder="Type to filter the blogs..."
     />
   </div>
-  <p id="summary" class="summary" aria-live="polite" aria-atomic="true"></p>
+  <p id="summary" class="summary" role="status"></p>
 
   {
     colleges.map((college) => (

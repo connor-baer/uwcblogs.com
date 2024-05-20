@@ -30,10 +30,3 @@ export function uniqueBy<
 
   return uniqueItems;
 }
-
-export function sortAlphabetically<Item extends Record<string, unknown>>(
-  items: Item[],
-  callbackFn: (item: Item) => string,
-) {
-  return items.sort((a, b) => callbackFn(a).localeCompare(callbackFn(b)));
-}

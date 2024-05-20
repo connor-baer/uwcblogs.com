@@ -3,21 +3,17 @@ import { db, College, Country, Language } from 'astro:db';
 import { actions, getActionProps } from 'astro:actions';
 import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
 
-import { sortAlphabetically } from '../lib/collection';
 import Layout from '../layouts/split.astro';
+import { getFieldErrors } from '../lib/form';
 
 export const prerender = false;
 
-const colleges = await db.select().from(College);
-const countries = await db.select().from(Country);
-const languages = await db.select().from(Language);
+const colleges = await db.select().from(College).orderBy(College.name);
+const countries = await db.select().from(Country).orderBy(Country.name);
+const languages = await db.select().from(Language).orderBy(Language.name);
 
-const collegeOptions = sortAlphabetically(colleges, ({ name }) => name);
-const countryOptions = sortAlphabetically(countries, ({ name }) => name);
-const languageOptions = sortAlphabetically(languages, ({ name }) => name);
-
-// const submission = Astro.getActionResult(actions.submit);
-// TODO: display errors
+const submission = Astro.getActionResult(actions.submit);
+const fieldErrors = getFieldErrors(submission);
 ---
 
 <Layout
@@ -28,17 +24,28 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
     alt: 'An open and empty journal rests on top of a map next to a camera and a pair of glasses.',
   }}
 >
+  <p id="form-success" class="form-success">
+    {
+      submission?.data?.success &&
+        `Thank you for your submission! We will review and publish your blog
+        within a few days.`
+    }
+  </p>
+
   <form method="POST">
     <input {...getActionProps(actions.submit)} />
     <div class="field">
-      <label for="first-name">What's your first name?</label>
+      <label for="firstName">What's your first name?</label>
       <input
         type="text"
-        id="first-name"
+        id="firstName"
         name="firstName"
         autocomplete="given-name"
-        required
+        aria-describedby="firstName-error"
       />
+      <p id="firstName-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.firstName?.join(', ')}
+      </p>
     </div>
     <div class="field">
       <label for="email">What's your email address?</label>
@@ -47,23 +54,44 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
         id="email"
         name="email"
         autocomplete="email"
-        required
+        aria-describedby="email-error"
       />
+      <p id="email-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.email?.join(', ')}
+      </p>
     </div>
     <div class="field">
       <label for="url">What's the link to your blog?</label>
-      <input type="url" id="url" name="url" autocomplete="url" required />
+      <input
+        type="url"
+        id="url"
+        name="url"
+        autocomplete="url"
+        required
+        aria-describedby="url-error"
+      />
+      <p id="url-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.url?.join(', ')}
+      </p>
     </div>
     <div class="field">
-      <label for="college">Which college do/did you attend?</label>
-      <select id="college" name="collegeId" required>
+      <label for="collegeId">Which college do/did you attend?</label>
+      <select
+        id="collegeId"
+        name="collegeId"
+        required
+        aria-describedby="collegeId-error"
+      >
         <option value="" selected disabled></option>
         {
-          collegeOptions.map((college) => (
+          colleges.map((college) => (
             <option value={college.slug}>{college.name}</option>
           ))
         }
       </select>
+      <p id="collegeId-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.collegeId?.join(', ')}
+      </p>
     </div>
     <div class="field">
       <label for="country">Which country are you from?</label>
@@ -75,10 +103,14 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
         list="country-list"
         required
         multiple
+        aria-describedby="country-error"
       />
       <datalist id="country-list">
-        {countryOptions.map((country) => <option value={country.name} />)}
+        {countries.map((country) => <option value={country.name} />)}
       </datalist>
+      <p id="country-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.country?.join(', ')}
+      </p>
     </div>
     <div class="field">
       <label for="language">Which language do you write in?</label>
@@ -88,11 +120,14 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
         name="language"
         list="language-list"
         required
-        multiple
+        multiplearia-describedby="language-error"
       />
       <datalist id="language-list">
-        {languageOptions.map((language) => <option value={language.name} />)}
+        {languages.map((language) => <option value={language.name} />)}
       </datalist>
+      <p id="language-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.language?.join(', ')}
+      </p>
     </div>
     <div class="field">
       <label for="year">Which year did/will you finish UWC?</label>
@@ -103,13 +138,25 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
         min={1962}
         max={new Date().getFullYear() + 5}
         required
+        aria-describedby="year-error"
       />
+      <p id="year-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.year?.join(', ')}
+      </p>
     </div>
     <button type="submit" class="action">Submit blog</button>
   </form>
 </Layout>
 
 <style>
+  .form-success {
+    padding: 0 16px;
+    margin-top: 0;
+    margin-bottom: 48px;
+    color: var(--color-success);
+    border-left: 4px solid var(--color-success);
+  }
+
   form {
     margin-bottom: 64px;
   }
@@ -162,6 +209,13 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
     outline: 2px solid var(--color-danger);
   }
 
+  .field .error {
+    margin-top: 4px;
+    margin-bottom: 0;
+    font-size: var(--font-size-s);
+    color: var(--color-danger);
+  }
+
   .action {
     display: inline-block;
     text-decoration: none;
@@ -187,14 +241,29 @@ const languageOptions = sortAlphabetically(languages, ({ name }) => name);
 </style>
 
 <script>
-  // import { actions } from 'astro:actions';
-  // const form = document.getElementsByTagName('form')[0];
-  // form?.addEventListener('submit', async (event) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.target as HTMLFormElement);
-  //   const result = await actions.submit(formData);
-  //   // handle result
-  //   console.log(result);
-  //   form.reset()
-  // });
+  import { actions } from 'astro:actions';
+  import { getFieldErrors } from '../lib/form';
+  const form = document.getElementsByTagName('form')[0];
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const formData = new FormData(event.target as HTMLFormElement);
+    const submission = await actions.submit.safe(formData);
+    const fieldErrors = getFieldErrors(submission);
+
+    if (fieldErrors) {
+      Object.entries(fieldErrors).forEach(([name, errors]) => {
+        const errorEl = document.getElementById(`${name}-error`)!;
+        errorEl.textContent = errors.join(', ');
+      });
+    } else {
+      const errorEls = document.getElementsByClassName('error');
+      [...errorEls].forEach((el) => {
+        el.textContent = null;
+      });
+      const successEl = document.getElementById(`form-success`)!;
+      successEl.textContent =
+        'Thank you for your submission! We will review and publish your blog within a few days.';
+      form.reset();
+    }
+  });
 </script>
