@@ -2,12 +2,16 @@
 import { db, eq, Blog } from 'astro:db';
 
 import { groupBy } from '../lib/collection';
+import { and } from 'astro:db';
 
 export type Props = { collegeId: string };
 
 const { collegeId } = Astro.props;
 
-const blogs = await db.select().from(Blog).where(eq(Blog.collegeId, collegeId));
+const blogs = await db
+  .select()
+  .from(Blog)
+  .where(and(eq(Blog.collegeId, collegeId), eq(Blog.draft, false)));
 
 const blogsByYear = Object.entries(
   groupBy(blogs, (blog) => blog.year as number),
