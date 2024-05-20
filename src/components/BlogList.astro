@@ -1,42 +1,13 @@
 ---
-import {
-  db,
-  eq,
-  Blog,
-  BlogsToCountries,
-  BlogsToLanguages,
-  Country,
-  Language,
-} from 'astro:db';
+import { db, eq, Blog } from 'astro:db';
 
-import { groupBy, uniqueBy } from '../lib/collection';
-import { joinList } from '../lib/intl';
+import { groupBy } from '../lib/collection';
 
 export type Props = { collegeId: string };
 
 const { collegeId } = Astro.props;
 
-const rows = await db
-  .select()
-  .from(Blog)
-  .where(eq(Blog.collegeId, collegeId))
-  .innerJoin(BlogsToCountries, eq(BlogsToCountries.blogId, Blog.id))
-  .innerJoin(Country, eq(BlogsToCountries.countryId, Country.code))
-  .innerJoin(BlogsToLanguages, eq(BlogsToLanguages.blogId, Blog.id))
-  .innerJoin(Language, eq(BlogsToLanguages.languageId, Language.code));
-
-const groupedRows = groupBy(rows, (row) => row.Blog.id!);
-
-const blogs = Object.values(groupedRows).map((group) => {
-  const blog = group[0]?.Blog;
-  const countries = uniqueBy(group, (row) => row.Country.code!).map(
-    (row) => row.Country.name,
-  );
-  const languages = uniqueBy(group, (row) => row.Language.code!).map(
-    (row) => row.Language.name,
-  );
-  return { ...blog, countries, languages };
-});
+const blogs = await db.select().from(Blog).where(eq(Blog.collegeId, collegeId));
 
 const blogsByYear = Object.entries(
   groupBy(blogs, (blog) => blog.year as number),
@@ -56,9 +27,9 @@ const blogsByYear = Object.entries(
             <li class="blog" data-blog={blog.id}>
               {/* prettier-ignore */}
               <a href={blog.url} target="_blank" class="first-name" data-name>{blog.firstName}</a>{' '}
-              <span data-countries>{joinList(blog.countries)}</span>
+              <span data-countries>{blog.countries}</span>
               {' – '}
-              <span data-languages>{joinList(blog.languages)}</span>
+              <span data-languages>{blog.languages}</span>
             </li>
           ))}
         </ul>

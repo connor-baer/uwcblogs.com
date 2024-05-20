@@ -1,5 +1,5 @@
 import { defineAction, z } from 'astro:actions';
-import { DraftBlog, db } from 'astro:db';
+import { db, Blog } from 'astro:db';
 
 export const server = {
   submit: defineAction({
@@ -9,19 +9,19 @@ export const server = {
       email: z.string().email(),
       url: z.string().url(),
       collegeId: z.string(),
-      country: z.string(),
-      language: z.string(),
+      countries: z.string(),
+      languages: z.string(),
       year: z
         .number()
         .min(1962)
         .max(new Date().getFullYear() + 5),
     }),
     handler: async (data) => {
-      const values = { ...data, createdAt: new Date() };
-      await db.insert(DraftBlog).values(values);
+      const values = { ...data, createdAt: new Date(), draft: true };
+      await db.insert(Blog).values(values);
 
       if (typeof import.meta.env.NOTIFICATION_URL === 'string') {
-        fetch(import.meta.env.NOTIFICATION_URL, {
+        await fetch(import.meta.env.NOTIFICATION_URL, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

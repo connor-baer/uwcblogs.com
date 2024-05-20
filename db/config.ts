@@ -9,56 +9,17 @@ const College = defineTable({
   },
 });
 
-const Country = defineTable({
-  columns: {
-    code: column.text({ primaryKey: true }),
-    name: column.text({ unique: true }),
-  },
-});
-
-const Language = defineTable({
-  columns: {
-    code: column.text({ primaryKey: true }),
-    name: column.text({ unique: true }),
-    nativeName: column.text(),
-  },
-});
-
 const Blog = defineTable({
   columns: {
     id: column.number({ primaryKey: true }),
     firstName: column.text(),
     url: column.text(),
-    year: column.number(),
     collegeId: column.text({ references: () => College.columns.slug }),
-    createdAt: column.date({ optional: true }),
-  },
-});
-
-const DraftBlog = defineTable({
-  columns: {
-    id: column.number({ primaryKey: true }),
-    firstName: column.text(),
-    url: column.text(),
+    countries: column.text(),
+    languages: column.text(),
     year: column.number(),
-    collegeId: column.text({ references: () => College.columns.slug }),
-    language: column.text(),
-    country: column.text(),
+    draft: column.boolean(),
     createdAt: column.date(),
-  },
-});
-
-const BlogsToCountries = defineTable({
-  columns: {
-    blogId: column.number({ references: () => Blog.columns.id }),
-    countryId: column.text({ references: () => Country.columns.code }),
-  },
-});
-
-const BlogsToLanguages = defineTable({
-  columns: {
-    blogId: column.number({ references: () => Blog.columns.id }),
-    languageId: column.text({ references: () => Language.columns.code }),
   },
 });
 
@@ -66,11 +27,6 @@ const BlogsToLanguages = defineTable({
 export default defineDb({
   tables: {
     Blog,
-    DraftBlog,
     College,
-    Country,
-    Language,
-    BlogsToCountries,
-    BlogsToLanguages,
   },
 });

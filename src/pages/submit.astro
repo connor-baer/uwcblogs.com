@@ -1,16 +1,22 @@
 ---
-import { db, College, Country, Language } from 'astro:db';
+import { db, College } from 'astro:db';
 import { actions, getActionProps } from 'astro:actions';
-import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
 
+import countries from '../../db/data/countries.json';
+import languages from '../../db/data/languages.json';
 import Layout from '../layouts/split.astro';
+import { sortAlphabetically } from '../lib/collection';
 import { getFieldErrors } from '../lib/form';
+import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
 
 export const prerender = false;
 
-const colleges = await db.select().from(College).orderBy(College.name);
-const countries = await db.select().from(Country).orderBy(Country.name);
-const languages = await db.select().from(Language).orderBy(Language.name);
+const colleges = await db
+  .select({ slug: College.slug, name: College.name })
+  .from(College)
+  .orderBy(College.name);
+const countryOptions = sortAlphabetically(countries, ({ name }) => name);
+const languageOptions = sortAlphabetically(languages, ({ name }) => name);
 
 const submission = Astro.getActionResult(actions.submit);
 const fieldErrors = getFieldErrors(submission);
@@ -42,6 +48,7 @@ const fieldErrors = getFieldErrors(submission);
         name="firstName"
         autocomplete="given-name"
         aria-describedby="firstName-error"
+        required
       />
       <p id="firstName-error" class="error" role="status" aria-live="polite">
         {fieldErrors?.firstName?.join(', ')}
@@ -55,6 +62,7 @@ const fieldErrors = getFieldErrors(submission);
         name="email"
         autocomplete="email"
         aria-describedby="email-error"
+        required
       />
       <p id="email-error" class="error" role="status" aria-live="polite">
         {fieldErrors?.email?.join(', ')}
@@ -94,39 +102,39 @@ const fieldErrors = getFieldErrors(submission);
       </p>
     </div>
     <div class="field">
-      <label for="country">Which country are you from?</label>
+      <label for="countries">Which country are you from?</label>
       <input
         type="text"
-        id="country"
-        name="country"
-        autocomplete="country"
-        list="country-list"
+        id="countries"
+        name="countries"
+        autocomplete="countries"
+        list="countries-list"
         required
         multiple
-        aria-describedby="country-error"
+        aria-describedby="countries-error"
       />
-      <datalist id="country-list">
-        {countries.map((country) => <option value={country.name} />)}
+      <datalist id="countries-list">
+        {countryOptions.map((country) => <option value={country.name} />)}
       </datalist>
-      <p id="country-error" class="error" role="status" aria-live="polite">
-        {fieldErrors?.country?.join(', ')}
+      <p id="countries-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.countries?.join(', ')}
       </p>
     </div>
     <div class="field">
-      <label for="language">Which language do you write in?</label>
+      <label for="languages">Which language do you write in?</label>
       <input
         type="text"
-        id="language"
-        name="language"
-        list="language-list"
+        id="languages"
+        name="languages"
+        list="languages-list"
         required
-        multiplearia-describedby="language-error"
+        multiplearia-describedby="languages-error"
       />
-      <datalist id="language-list">
-        {languages.map((language) => <option value={language.name} />)}
+      <datalist id="languages-list">
+        {languageOptions.map((language) => <option value={language.name} />)}
       </datalist>
-      <p id="language-error" class="error" role="status" aria-live="polite">
-        {fieldErrors?.language?.join(', ')}
+      <p id="languages-error" class="error" role="status" aria-live="polite">
+        {fieldErrors?.languages?.join(', ')}
       </p>
     </div>
     <div class="field">
@@ -263,6 +271,7 @@ const fieldErrors = getFieldErrors(submission);
       const successEl = document.getElementById(`form-success`)!;
       successEl.textContent =
         'Thank you for your submission! We will review and publish your blog within a few days.';
+      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
       form.reset();
     }
   });

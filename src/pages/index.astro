@@ -1,19 +1,20 @@
 ---
-import { db, count, College, Country, Blog, Language } from 'astro:db';
+import { db, College, Blog } from 'astro:db';
 
 import Layout from '../layouts/split.astro';
 import BlogList from '../components/BlogList.astro';
+import { countUniqueValues } from '../lib/collection';
 import image from '../assets/aidan-meyer-129877.jpg';
 
 const colleges = await db.select().from(College);
-const blogCount = await db.select({ value: count() }).from(Blog).get();
-const countryCount = await db.select({ value: count() }).from(Country).get();
-const languageCount = await db.select({ value: count() }).from(Language).get();
+const blogs = await db.select().from(Blog);
+const countryCount = countUniqueValues(blogs, (blog) => blog.countries);
+const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
 ---
 
 <Layout
   title="UWC Blogs"
-  subtitle={`A collection of ${blogCount?.value} blogs written by UWC students in ${languageCount?.value} languages from ${countryCount?.value} countries at the ${colleges.length} United World Colleges.`}
+  subtitle={`A collection of ${blogs.length} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${colleges.length} United World Colleges.`}
   action={{ label: 'Submit a blog', href: '/submit' }}
   image={{
     src: image,
