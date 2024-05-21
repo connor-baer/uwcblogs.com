@@ -4,9 +4,10 @@ import {
   type LocalImageProps,
   type RemoteImageProps,
 } from 'astro:assets';
+import type { HTMLAttributes } from 'astro/types';
 
 import Base from './base.astro';
-import type { HTMLAttributes } from 'astro/types';
+import fallbackImage from '../assets/aidan-meyer-129877.jpg';
 
 export interface Props {
   title: string;
@@ -15,10 +16,18 @@ export interface Props {
   action?: HTMLAttributes<'a'> & { label: string };
   image: LocalImageProps | RemoteImageProps;
   hideHomeLink?: boolean;
+  frontmatter?: Props;
 }
-
-const { title, subtitle, description, action, image, hideHomeLink } =
-  Astro.props;
+const { title, subtitle, description, action, image, hideHomeLink } = Astro
+  .props.frontmatter
+  ? {
+      ...Astro.props.frontmatter,
+      image: {
+        src: fallbackImage,
+        alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+      },
+    }
+  : Astro.props;
 const { label, ...attributes } = action || {};
 ---
 
