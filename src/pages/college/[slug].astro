@@ -34,37 +34,99 @@ export async function getStaticPaths() {
 
 export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
-const images: { [key: string]: ImageMetadata } = {
-  'uwc-adriatic': uwcAdriatic,
-  'uwc-atlantic': uwcAtlantic,
-  'uwc-changshu': uwcChangshu,
-  'uwc-costa-rica': uwcCostaRica,
-  'uwc-dilijan': uwcDilijan,
-  'uwc-east-africa': uwcEastAfrica,
-  'uwc-isak-japan': uwcIsakJapan,
-  'uwc-li-po-chun': uwcLiPoChun,
-  'uwc-maastricht': uwcMaastricht,
-  'uwc-mahindra': uwcMahindra,
-  'uwc-mostar': uwcMostar,
-  'uwc-pearson-college': uwcPearsonCollege,
-  'uwc-red-cross-nordic': uwcRedCrossNordic,
-  'uwc-robert-bosch-college': uwcRobertBoschCollege,
-  'uwc-south-east-asia': uwcSouthEastAsia,
-  'uwc-thailand': uwcThailand,
-  'uwc-usa': uwcUsa,
-  'uwc-waterford-kamhlaba': uwcWaterfordKamhlaba,
+const images: {
+  [key: string]: { src: ImageMetadata; alt: string };
+} = {
+  'uwc-adriatic': {
+    src: uwcAdriatic,
+    alt: 'An aerial shot of UWC Adriatic',
+  },
+  'uwc-atlantic': {
+    src: uwcAtlantic,
+    alt: 'A surfer with a light-blue surfboard is walking towards the sea',
+  },
+  'uwc-changshu': {
+    src: uwcChangshu,
+    alt: 'A boy is covering a part of his face with a fan',
+  },
+  'uwc-costa-rica': {
+    src: uwcCostaRica,
+    alt: 'A girl is carefully pouring a blue liquid into a glass as part of a chemistry experiment',
+  },
+  'uwc-dilijan': {
+    src: uwcDilijan,
+    alt: 'An aerial view of the UWC Dilijan school buildings',
+  },
+  'uwc-east-africa': {
+    src: uwcEastAfrica,
+    alt: 'A crowd of people dance with hands stretched upwards',
+  },
+  'uwc-isak-japan': {
+    src: uwcIsakJapan,
+    alt: 'Two girls smile to the camera',
+  },
+  'uwc-li-po-chun': {
+    src: uwcLiPoChun,
+    alt: 'A group of dancers with red fans perform in front of a black background',
+  },
+  'uwc-maastricht': {
+    src: uwcMaastricht,
+    alt: 'A group of students is posing with flags',
+  },
+  'uwc-mahindra': {
+    src: uwcMahindra,
+    alt: "A person is drawing a beautiful henna drawing on someone's hand",
+  },
+  'uwc-mostar': {
+    src: uwcMostar,
+    alt: 'A group of students with flags is posing in front of the UWC school building in Mostar',
+  },
+  'uwc-pearson-college': {
+    src: uwcPearsonCollege,
+    alt: 'A girl in a wide yellow dress is dancing in front of a mural',
+  },
+  'uwc-red-cross-nordic': {
+    src: uwcRedCrossNordic,
+    alt: 'Two students dressed as paramedics have their arms wrapped around each other',
+  },
+  'uwc-robert-bosch-college': {
+    src: uwcRobertBoschCollege,
+    alt: 'An aerial shot of the UWC Robert Bosch College',
+  },
+  'uwc-south-east-asia': {
+    src: uwcSouthEastAsia,
+    alt: 'A group of students and young children',
+  },
+  'uwc-thailand': {
+    src: uwcThailand,
+    alt: 'Three students are playing music on large drums',
+  },
+  'uwc-usa': {
+    src: uwcUsa,
+    alt: 'The UWC USA school building is illuminated by warm light at light',
+  },
+  'uwc-waterford-kamhlaba': {
+    src: uwcWaterfordKamhlaba,
+    alt: 'A diverse group of teenagers is smiling to the camera',
+  },
+  'fallback': {
+    src: fallback,
+    alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+  },
 };
 
-const { slug, name, description } = Astro.props;
-const image = images[slug] || fallback;
+const { slug, name, description, websiteUrl } = Astro.props;
+const image = images[slug] || images.fallback!;
 ---
 
 <Layout
   title={name}
   subtitle={description}
-  image={{
-    src: image,
-    alt: 'A boy is writing into his journal on top of a mountain.',
+  image={image}
+  action={{
+    label: 'Learn more',
+    href: websiteUrl,
+    target: '_blank',
   }}
 >
   <BlogList collegeId={slug} />
