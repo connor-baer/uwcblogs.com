@@ -1,5 +1,5 @@
 ---
-import { db, College, Blog } from 'astro:db';
+import { db, eq, College, Blog } from 'astro:db';
 
 import Layout from '../layouts/split.astro';
 import BlogList from '../components/BlogList.astro';
@@ -7,7 +7,7 @@ import { countUniqueValues } from '../lib/collection';
 import image from '../assets/aidan-meyer-129877.jpg';
 
 const colleges = await db.select().from(College);
-const blogs = await db.select().from(Blog);
+const blogs = await db.select().from(Blog).where(eq(Blog.draft, false));
 const countryCount = countUniqueValues(blogs, (blog) => blog.countries);
 const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
 ---
