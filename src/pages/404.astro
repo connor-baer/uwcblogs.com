@@ -1,8 +1,17 @@
 ---
-import Layout from '../layouts/base.astro';
+import Layout from '../layouts/split.astro';
+import image from '../assets/aidan-meyer-129877.jpg';
 ---
 
-<Layout title="Page not found">
-  <h1>Page not found</h1>
-  <a href="/">Return home</a>
-</Layout>
+<Layout
+  title="404 Not found"
+  subtitle="This page doesn't appear to exist."
+  image={{
+    src: image,
+    alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+  }}
+  action={{
+    label: 'Take me home',
+    href: '/',
+  }}
+/>

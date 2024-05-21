@@ -6,22 +6,22 @@ import {
 } from 'astro:assets';
 
 import Base from './base.astro';
+import type { HTMLAttributes } from 'astro/types';
 
 export interface Props {
   title: string;
   subtitle?: string;
-  action?: {
-    label: string;
-    href: string;
-  };
+  description?: string;
+  action?: HTMLAttributes<'a'> & { label: string };
   image: LocalImageProps | RemoteImageProps;
 }
 
-const { title, subtitle, action, image } = Astro.props;
+const { title, subtitle, description, action, image } = Astro.props;
+const { label, ...attributes } = action || {};
 ---
 
-<Base title={title} description={subtitle}>
-  <div class="content">
+<Base title={title} description={description || subtitle}>
+  <div class="left content">
     <header>
       <div>
         <h1 class="title">{title}</h1>
@@ -29,8 +29,8 @@ const { title, subtitle, action, image } = Astro.props;
       </div>
       {
         action && (
-          <a href={action.href} class="action">
-            {action.label}
+          <a {...attributes} class="action">
+            {label}
           </a>
         )
       }
@@ -44,9 +44,9 @@ const { title, subtitle, action, image } = Astro.props;
     {...image}
     widths={[400, 800, 1200, 1600, 2000]}
     sizes="(min-width: 56.25em) 50vw, 100vw"
-    class="image"
+    class="right"
   />
-  <footer>
+  <footer class="left">
     <span class="copyright"
       >© 2024 <a href="https://connorbaer.com">Connor Bär</a>. All rights
       reserved.</span
@@ -55,47 +55,52 @@ const { title, subtitle, action, image } = Astro.props;
 </Base>
 
 <style>
-  .content,
-  footer {
+  .content {
+    --header-margin: 9vh;
+
+    min-height: calc(100vh - var(--header-margin) - 122px);
+  }
+
+  @supports (margin: min(calc(12vh - 1rem), 6rem)) {
+    .content {
+      --header-margin: min(calc(12vh - 1rem), 6rem);
+    }
+  }
+
+  .left {
     width: 100vw;
-    padding: 0 12px;
-    margin-top: 64px;
+    padding-left: 12px;
+    padding-right: 12px;
   }
   @media (min-width: 37.5em) {
-    .content,
-    footer {
-      padding: 0 48px;
+    .left {
+      padding-left: 48px;
+      padding-right: 48px;
     }
   }
   @media (min-width: 56.25em) {
-    .content,
-    footer {
+    .left {
       width: 50vw;
-      padding: 0 16px;
+      padding-left: 16px;
+      padding-right: 16px;
     }
   }
   @media (min-width: 75em) {
-    .content,
-    footer {
-      padding: 0 48px;
+    .left {
+      padding-left: 48px;
+      padding-right: 48px;
     }
   }
 
   header {
-    margin-top: 9vh;
-    margin-bottom: 9vh;
-  }
-  @supports (margin: min(calc(12vh - 1rem), 6rem)) {
-    header {
-      margin-top: min(calc(12vh - 1rem), 6rem);
-      margin-bottom: min(calc(12vh - 1rem), 6rem);
-    }
+    margin-top: var(--header-margin);
+    margin-bottom: var(--header-margin);
   }
 
   .title,
   .subtitle {
-    margin-top: var(---spacing-xxl);
-    margin-bottom: var(---spacing-l);
+    margin-top: 0;
+    margin-bottom: 0;
     font-weight: var(--font-weight-bold);
     line-height: var(--line-height-s);
     overflow-wrap: break-word;
@@ -111,16 +116,7 @@ const { title, subtitle, action, image } = Astro.props;
 
   .title {
     color: var(--color-primary);
-    font-size: var(--font-size-xl);
-  }
-  @media (min-width: 37.5em) {
-    .title {
-      display: inline;
-    }
-    .title::after {
-      content: ' ';
-      display: inline;
-    }
+    font-size: var(--font-size-xxl);
   }
 
   .subtitle {
@@ -129,41 +125,16 @@ const { title, subtitle, action, image } = Astro.props;
     color: var(--color-default);
     margin-top: var(--spacing-s);
   }
-  @media (min-width: 37.5em) {
-    .subtitle {
-      font-size: var(--font-size-xl);
-      display: inline;
-      margin-top: 0;
-    }
-  }
 
   .action {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--color-primary);
-    background-color: var(--background-subtle);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-s);
-    padding: 12px 16px;
-    margin-top: 16px;
-    text-align: center;
-    border: none;
-    border-radius: 12px;
-    transition:
-      color var(--transition-micro),
-      background-color var(--transition-micro);
+    margin-top: var(--spacing-l);
   }
 
-  .action:hover {
-    color: white;
-    background-color: var(--color-primary);
-  }
-
-  .image {
+  .right {
     display: none;
   }
   @media (min-width: 56.25em) {
-    .image {
+    .right {
       display: block;
       position: fixed;
       top: 0;
@@ -180,7 +151,9 @@ const { title, subtitle, action, image } = Astro.props;
     align-items: center;
     justify-content: center;
     background-color: var(--background-subtle);
-    padding: 1rem;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 64px;
   }
 
   .copyright::after {
