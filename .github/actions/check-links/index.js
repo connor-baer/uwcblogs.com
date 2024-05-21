@@ -5,7 +5,7 @@ import ky from 'ky';
 async function run() {
   try {
     const queue = new PQueue({ concurrency: 5 });
-    const blogs = await ky.get('https://uwcblogs/blogs.json').json();
+    const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
 
     core.startGroup('Verifying links');
 

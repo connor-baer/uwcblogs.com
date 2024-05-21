@@ -27,5 +27,3 @@ jobs:
 
       - name: Check links
         uses: ./.github/actions/check-links
-        with:
-          milliseconds: 2000
