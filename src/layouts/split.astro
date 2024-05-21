@@ -22,7 +22,7 @@ const { title, subtitle, description, action, image, hideHomeLink } =
 const { label, ...attributes } = action || {};
 ---
 
-<Base title={title} description={description || subtitle}>
+<Base title={title} description={description || subtitle} image={image}>
   <div class="left content">
     {
       !hideHomeLink && (

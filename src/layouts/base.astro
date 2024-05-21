@@ -1,13 +1,20 @@
 ---
 import '../styles/theme.css';
 import '../styles/base.css';
+import {
+  getImage,
+  type LocalImageProps,
+  type RemoteImageProps,
+} from 'astro:assets';
 
 export interface Props {
   title: string;
   description?: string | undefined;
+  image?: LocalImageProps | RemoteImageProps;
 }
 
-const { title, description } = Astro.props;
+const { title, description, image } = Astro.props;
+const socialImage = image ? await getImage(image) : null;
 ---
 
 <html lang="en">
@@ -63,6 +70,22 @@ const { title, description } = Astro.props;
     />
     <title>{title}</title>
     {description && <meta name="description" content={description} />}
+    {
+      socialImage && (
+        <>
+          <meta property="og:image" content={socialImage.src} />
+          <meta property="og:image:alt" content={socialImage.attributes.alt} />
+          <meta
+            property="og:image:width"
+            content={socialImage.attributes.width}
+          />
+          <meta
+            property="og:image:height"
+            content={socialImage.attributes.height}
+          />
+        </>
+      )
+    }
   </head>
   <body>
     <slot />
