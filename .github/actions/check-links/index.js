@@ -44,7 +44,7 @@ async function run() {
       (response) => !response || response.status >= 300,
     );
 
-    core.info(`${success.length} urls responded successfully`, successes);
+    core.info(`${successes.length} urls responded successfully`, successes);
     core.warning(`${failures.length} urls responded with an error`, failures);
 
     if (failures.length > 0) {
