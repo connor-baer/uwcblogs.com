@@ -65,7 +65,7 @@ const { label, ...attributes } = action || {};
     {...image}
     widths={[400, 800, 1200, 1600, 2000]}
     sizes="(min-width: 56.25em) 50vw, 100vw"
-    class="right"
+    class="right image"
   />
   <footer class="left">
     <span class="copyright"
@@ -152,11 +152,15 @@ const { label, ...attributes } = action || {};
     font-size: var(--font-size-l);
     font-weight: var(--font-weight-regular);
     color: var(--color-default);
-    margin-top: var(--spacing-s);
+    margin-top: 12px;
   }
 
   .action {
-    margin-top: var(--spacing-l);
+    margin-top: 24px;
+  }
+
+  .image {
+    background-color: var(--background-image-placeholder);
   }
 
   .right {
@@ -189,7 +193,7 @@ const { label, ...attributes } = action || {};
     content: '·';
     display: inline-block;
     font-weight: var(--font-weight-bold);
-    padding-right: var(--spacing-s);
-    padding-left: var(--spacing-s);
+    padding-right: 12px;
+    padding-left: 12px;
   }
 </style>

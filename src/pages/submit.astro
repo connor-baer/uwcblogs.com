@@ -50,7 +50,12 @@ const fieldErrors = getFieldErrors(submission);
         aria-describedby="firstName-error"
         required
       />
-      <p id="firstName-error" class="error" role="status" aria-live="polite">
+      <p
+        id="firstName-error"
+        class="field-error"
+        role="status"
+        aria-live="polite"
+      >
         {fieldErrors?.firstName?.join(', ')}
       </p>
     </div>
@@ -64,7 +69,7 @@ const fieldErrors = getFieldErrors(submission);
         aria-describedby="email-error"
         required
       />
-      <p id="email-error" class="error" role="status" aria-live="polite">
+      <p id="email-error" class="field-error" role="status" aria-live="polite">
         {fieldErrors?.email?.join(', ')}
       </p>
     </div>
@@ -78,7 +83,7 @@ const fieldErrors = getFieldErrors(submission);
         required
         aria-describedby="url-error"
       />
-      <p id="url-error" class="error" role="status" aria-live="polite">
+      <p id="url-error" class="field-error" role="status" aria-live="polite">
         {fieldErrors?.url?.join(', ')}
       </p>
     </div>
@@ -97,7 +102,12 @@ const fieldErrors = getFieldErrors(submission);
           ))
         }
       </select>
-      <p id="collegeId-error" class="error" role="status" aria-live="polite">
+      <p
+        id="collegeId-error"
+        class="field-error"
+        role="status"
+        aria-live="polite"
+      >
         {fieldErrors?.collegeId?.join(', ')}
       </p>
     </div>
@@ -116,7 +126,12 @@ const fieldErrors = getFieldErrors(submission);
       <datalist id="countries-list">
         {countryOptions.map((country) => <option value={country.name} />)}
       </datalist>
-      <p id="countries-error" class="error" role="status" aria-live="polite">
+      <p
+        id="countries-error"
+        class="field-error"
+        role="status"
+        aria-live="polite"
+      >
         {fieldErrors?.countries?.join(', ')}
       </p>
     </div>
@@ -133,7 +148,12 @@ const fieldErrors = getFieldErrors(submission);
       <datalist id="languages-list">
         {languageOptions.map((language) => <option value={language.name} />)}
       </datalist>
-      <p id="languages-error" class="error" role="status" aria-live="polite">
+      <p
+        id="languages-error"
+        class="field-error"
+        role="status"
+        aria-live="polite"
+      >
         {fieldErrors?.languages?.join(', ')}
       </p>
     </div>
@@ -148,7 +168,7 @@ const fieldErrors = getFieldErrors(submission);
         required
         aria-describedby="year-error"
       />
-      <p id="year-error" class="error" role="status" aria-live="polite">
+      <p id="year-error" class="field-error" role="status" aria-live="polite">
         {fieldErrors?.year?.join(', ')}
       </p>
     </div>
@@ -172,57 +192,6 @@ const fieldErrors = getFieldErrors(submission);
   .field {
     margin-bottom: 16px;
   }
-  .field label {
-    display: block;
-    margin-bottom: 4px;
-    font-size: var(--font-size-s);
-  }
-  .field input,
-  .field select {
-    width: 100%;
-    padding: 12px 16px;
-    outline: 1px solid var(--color-border);
-    border-radius: var(--border-radius);
-    border: none;
-    transition: outline var(--transition-micro);
-    background-color: var(--background-default);
-    font-size: var(--font-size-m);
-    line-height: var(--line-height-s);
-  }
-  .field input[type='number'] {
-    appearance: textfield;
-  }
-  .field input::-webkit-outer-spin-button,
-  .field input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  .field select {
-    appearance: none;
-    background-color: transparent;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBmaWxsPSJncmF5IiBkPSJNMTAsMjMyLjdsNDkwLDUzNC41bDQ5MC01MzQuNUgxMHoiIC8+DQo8L3N2Zz4=');
-    background-repeat: no-repeat;
-    background-position: center right 16px;
-    background-size: 0.75em;
-  }
-  .field input:hover,
-  .field select:hover {
-    outline: 1px solid var(--color-default);
-  }
-  .field input:focus,
-  .field select:focus {
-    outline: 2px solid var(--color-primary);
-  }
-  .field input:user-invalid,
-  .field select:user-invalid {
-    outline: 2px solid var(--color-danger);
-  }
-
-  .field .error {
-    margin-top: 4px;
-    margin-bottom: 0;
-    font-size: var(--font-size-s);
-    color: var(--color-danger);
-  }
 
   .action {
     margin-top: 16px;
@@ -245,7 +214,7 @@ const fieldErrors = getFieldErrors(submission);
         errorEl.textContent = errors.join(', ');
       });
     } else {
-      const errorEls = document.getElementsByClassName('error');
+      const errorEls = document.getElementsByClassName('field-error');
       [...errorEls].forEach((el) => {
         el.textContent = null;
       });

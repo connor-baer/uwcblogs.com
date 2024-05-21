@@ -41,8 +41,6 @@ textarea {
   text-rendering: optimizeLegibility;
 }
 
-/* TODO: Add typography and form field classes */
-
 a {
   color: var(--color-primary);
   text-underline-position: under;
@@ -77,9 +75,68 @@ a:focus-visible {
   background-color: var(--color-primary);
 }
 
-.action[target="_blank"]::after {
+.action[target='_blank']::after {
   content: '↗';
   display: inline;
   font-family: var(--font-family-system);
   color: currentColor;
+}
+
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: var(--font-size-s);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 16px;
+  outline: 1px solid var(--color-border);
+  border-radius: var(--border-radius);
+  border: none;
+  transition: outline var(--transition-micro);
+  background-color: var(--background-default);
+  font-size: var(--font-size-m);
+  line-height: var(--line-height-s);
+}
+
+input[type='number'] {
+  appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+select {
+  appearance: none;
+  background-color: transparent;
+  background-image: url('data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPg0KICA8cGF0aCBmaWxsPSJncmF5IiBkPSJNMTAsMjMyLjdsNDkwLDUzNC41bDQ5MC01MzQuNUgxMHoiIC8+DQo8L3N2Zz4=');
+  background-repeat: no-repeat;
+  background-position: center right 16px;
+  background-size: 0.75em;
+}
+
+input:hover,
+select:hover {
+  outline: 1px solid var(--color-default);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--color-primary);
+}
+
+input:user-invalid,
+select:user-invalid {
+  outline: 2px solid var(--color-danger);
+}
+
+.field-error {
+  margin-top: 4px;
+  margin-bottom: 0;
+  font-size: var(--font-size-s);
+  color: var(--color-danger);
 }
