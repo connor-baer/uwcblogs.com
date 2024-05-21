@@ -1,0 +1,101 @@
+---
+import { db, College, Blog } from 'astro:db';
+
+import Layout from '../layouts/split.astro';
+import BlogList from '../components/BlogList.astro';
+import { countUniqueValues } from '../lib/collection';
+import image from '../assets/aidan-meyer-129877.jpg';
+
+const colleges = await db.select().from(College);
+const blogs = await db.select().from(Blog);
+const countryCount = countUniqueValues(blogs, (blog) => blog.countries);
+const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
+---
+
+<Layout
+  title="UWC Blogs"
+  subtitle={`A collection of ${blogs.length} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${colleges.length} United World Colleges.`}
+  action={{ label: 'Submit a blog', href: '/submit' }}
+  image={{
+    src: image,
+    alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+  }}
+  hideHomeLink
+>
+  <div class="search">
+    <label for="search">
+      Search by college, year, country, language, or name:
+    </label>
+    <input
+      id="search"
+      type="search"
+      name="q"
+      placeholder="Type to filter the blogs..."
+    />
+  </div>
+  <p id="summary" class="summary" role="status"></p>
+
+  {
+    colleges.map((college) => (
+      <section data-college={college.name} class="college">
+        <h2 class="college-name">
+          <a href={`/college/${college.slug}`}>{college.name}</a>
+        </h2>
+        <BlogList collegeId={college.slug} />
+      </section>
+    ))
+  }
+</Layout>
+
+<style>
+  .search {
+    padding-top: 12px;
+    padding-bottom: 16px;
+    background: var(--background-default);
+  }
+  .search:has(input:not(:placeholder-shown)),
+  .search:focus-within {
+    position: sticky;
+    top: 0;
+  }
+
+  .summary {
+    color: var(--color-subtle);
+    font-size: var(--font-size-s);
+    line-height: var(--line-height-l);
+    min-height: 28px;
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .college-name {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    margin-top: 48px;
+    margin-bottom: 24px;
+  }
+  .college-name a {
+    color: var(--color-default);
+    text-decoration: none;
+  }
+
+  .college-name a:hover,
+  .college-name a:focus {
+    text-decoration: underline;
+    text-decoration-color: var(--color-default);
+    text-decoration-thickness: 0.125em;
+    text-underline-position: under;
+  }
+
+  /* Hide empty college groups */
+  [data-college]:not(:has(.blog:not([hidden]))) {
+    display: none;
+  }
+</style>
+
+<script>
+  import { initSearch } from '../lib/search';
+
+  initSearch();
+</script>

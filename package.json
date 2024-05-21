@@ -1,18 +1,8 @@
 {
-  "name": "uwcblogs",
-  "version": "7.0.0",
+  "name": "uwcblogs.com",
   "description": "A collection of over 390 blogs written by UWC students in 28 languages from 77 countries at the 18 United World Colleges.",
-  "main": "server/index.js",
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "foundry run eslint . --ext .js,.jsx,.ts,.tsx",
-    "lint:fix": "yarn lint --fix",
-    "lint:ci": "yarn lint --format junit -o __reports__/eslint-results.xml",
-    "analyze": "ANALYZE=true yarn build",
-    "create:component": "foundry run plop component"
-  },
+  "type": "module",
+  "version": "8.0.0",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/connor-baer/uwcblogs.com.git"
@@ -29,37 +19,31 @@
     "url": "https://github.com/connor-baer/uwcblogs.com/issues"
   },
   "homepage": "https://uwcblogs.com",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "check": "astro check",
+    "sync": "astro sync",
+    "prebuild": "npm run check",
+    "build": "astro build --remote",
+    "preview": "astro preview",
+    "prelint": "npm run sync",
+    "lint": "foundry run eslint . --ext .js,.jsx,.json,.ts,.tsx",
+    "lint:fix": "npm run lint -- --fix"
+  },
   "dependencies": {
-    "@emotion/core": "^10.0.10",
-    "@emotion/styled": "^10.0.10",
-    "@madebyconnor/bamboo-ui": "^2.0.0-canary",
-    "@next/bundle-analyzer": "^10.0.0",
-    "akismet-api": "^5.1.0",
-    "classnames": "^2.2.5",
-    "contentful": "^7.14.8",
-    "contentful-management": "^6.1.2",
-    "emotion-theming": "^10.0.10",
-    "final-form": "^4.20.1",
-    "lodash": "^4.17.21",
-    "next": "^12.1.0",
-    "next-compose-plugins": "^2.1.1",
-    "open-color": "^1.4.0",
-    "p-memoize": "^4.0.1",
-    "prop-types": "^15.5.10",
-    "query-string": "^6.13.6",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-final-form": "^6.5.2",
-    "react-svg-loader": "^3.0.3",
-    "validator": "^13.7.0"
+    "@actions/core": "^1.10.1",
+    "@astrojs/check": "^0.7.0",
+    "@astrojs/db": "^0.11.3",
+    "@astrojs/vercel": "^7.6.0",
+    "astro": "^4.8.6",
+    "fuse.js": "^7.0.0",
+    "ky": "^1.2.4",
+    "p-queue": "^8.0.1",
+    "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.3",
-    "@emotion/babel-preset-css-prop": "^10.0.9",
-    "@sumup/foundry": "^3.1.1",
-    "@types/react": "^16.9.54",
-    "babel-plugin-lodash": "^3.3.2",
-    "react-test-renderer": "^17.0.1",
-    "typescript": "^4.0.5"
+    "@sumup-oss/foundry": "^8.0.0",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }

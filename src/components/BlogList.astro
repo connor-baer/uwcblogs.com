@@ -1,0 +1,72 @@
+---
+import { db, eq, Blog } from 'astro:db';
+
+import { groupBy } from '../lib/collection';
+import { and } from 'astro:db';
+
+export type Props = { collegeId: string };
+
+const { collegeId } = Astro.props;
+
+const blogs = await db
+  .select()
+  .from(Blog)
+  .where(and(eq(Blog.collegeId, collegeId), eq(Blog.draft, false)));
+
+const blogsByYear = Object.entries(
+  groupBy(blogs, (blog) => blog.year as number),
+).sort(
+  ([aYear], [bYear]) =>
+    (bYear as unknown as number) - (aYear as unknown as number),
+);
+---
+
+<ul role="list">
+  {
+    blogsByYear.map(([year, blogs]) => (
+      <li data-year={year}>
+        <h3 class="year">{year}</h3>
+        <ul role="list">
+          {blogs.map((blog) => (
+            <li class="blog" data-blog={blog.id}>
+              {/* prettier-ignore */}
+              <a href={blog.url} target="_blank" class="first-name" data-name>{blog.firstName}</a>{' '}
+              <span data-countries>{blog.countries}</span>
+              {' – '}
+              <span data-languages>{blog.languages}</span>
+            </li>
+          ))}
+        </ul>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .year {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-regular);
+    line-height: var(--line-height-m);
+    margin-top: 16px;
+    margin-bottom: 4px;
+  }
+
+  .blog {
+    line-height: var(--line-height-l);
+  }
+
+  .first-name {
+    font-weight: var(--font-weight-bold);
+    margin-right: 0.25em;
+  }
+
+  /* Hide empty year groups */
+  [data-year]:not(:has(.blog:not([hidden]))) {
+    display: none;
+  }
+</style>

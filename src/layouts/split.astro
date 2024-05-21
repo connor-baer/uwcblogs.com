@@ -1,0 +1,199 @@
+---
+import {
+  Image,
+  type LocalImageProps,
+  type RemoteImageProps,
+} from 'astro:assets';
+import type { HTMLAttributes } from 'astro/types';
+
+import Base from './base.astro';
+import fallbackImage from '../assets/aidan-meyer-129877.jpg';
+
+export interface Props {
+  title: string;
+  subtitle?: string;
+  description?: string;
+  action?: HTMLAttributes<'a'> & { label: string };
+  image: LocalImageProps | RemoteImageProps;
+  hideHomeLink?: boolean;
+  frontmatter?: Props;
+}
+const { title, subtitle, description, action, image, hideHomeLink } = Astro
+  .props.frontmatter
+  ? {
+      ...Astro.props.frontmatter,
+      image: {
+        src: fallbackImage,
+        alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+      },
+    }
+  : Astro.props;
+const { label, ...attributes } = action || {};
+---
+
+<Base title={title} description={description || subtitle} image={image}>
+  <div class="left content">
+    {
+      !hideHomeLink && (
+        <div class="home">
+          <span aria-hidden class="symbol">
+            ←
+          </span>
+          <a href="/">Home</a>
+        </div>
+      )
+    }
+    <header>
+      <div>
+        <h1 class="title">{title}</h1>
+        <p class="subtitle">{subtitle}</p>
+      </div>
+      {
+        action && (
+          <a {...attributes} class="action">
+            {label}
+          </a>
+        )
+      }
+    </header>
+
+    <slot />
+  </div>
+
+  <!-- @ts-expect-error -->
+  <Image
+    {...image}
+    widths={[400, 800, 1200, 1600, 2000]}
+    sizes="(min-width: 56.25em) 50vw, 100vw"
+    class="right image"
+  />
+  <footer class="left">
+    <span class="copyright"
+      >© 2024 <a href="https://connorbaer.com/projects/uwc-blogs">Connor Bär</a
+      >. All rights reserved.</span
+    ><a href="/disclaimer">Disclaimer</a>
+  </footer>
+</Base>
+
+<style>
+  .home {
+    padding-top: 16px;
+  }
+  .symbol {
+    font-family: var(--font-family-system);
+    color: var(--color-primary);
+  }
+
+  .content {
+    --header-margin: 9vh;
+
+    min-height: calc(100vh - var(--header-margin) - 122px);
+  }
+
+  @supports (margin: min(calc(12vh - 1rem), 6rem)) {
+    .content {
+      --header-margin: min(calc(12vh - 1rem), 6rem);
+    }
+  }
+
+  .left {
+    width: 100vw;
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+  @media (min-width: 37.5em) {
+    .left {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+  @media (min-width: 56.25em) {
+    .left {
+      width: 50vw;
+      padding-left: 16px;
+      padding-right: 16px;
+    }
+  }
+  @media (min-width: 75em) {
+    .left {
+      padding-left: 48px;
+      padding-right: 48px;
+    }
+  }
+
+  header {
+    margin-top: var(--header-margin);
+    margin-bottom: var(--header-margin);
+  }
+
+  .title,
+  .subtitle {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-weight: var(--font-weight-bold);
+    line-height: var(--line-height-s);
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+  @media (min-width: 37.5em) {
+    .title,
+    .subtitle {
+      overflow-wrap: normal;
+      hyphens: none;
+    }
+  }
+
+  .title {
+    color: var(--color-primary);
+    font-size: var(--font-size-xxl);
+  }
+
+  .subtitle {
+    font-size: var(--font-size-l);
+    font-weight: var(--font-weight-regular);
+    color: var(--color-default);
+    margin-top: 12px;
+  }
+
+  .action {
+    margin-top: 24px;
+  }
+
+  .image {
+    background-color: var(--background-image-placeholder);
+  }
+
+  .right {
+    display: none;
+  }
+  @media (min-width: 56.25em) {
+    .right {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 50vw;
+      height: 100vh;
+      object-fit: cover;
+    }
+  }
+
+  footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background-subtle);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    margin-top: 64px;
+  }
+
+  .copyright::after {
+    content: '·';
+    display: inline-block;
+    font-weight: var(--font-weight-bold);
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+</style>
