@@ -1,37 +1,3 @@
-@font-face {
-  font-family: 'Merriweather Sans';
-  font-style: normal;
-  font-weight: 300;
-  font-display: swap;
-  src: local('Merriweather Sans Light'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-300.woff2')
-      format('woff2'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-300.woff')
-      format('woff');
-}
-@font-face {
-  font-family: 'Merriweather Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: local('Merriweather Sans'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-regular.woff2')
-      format('woff2'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-regular.woff')
-      format('woff');
-}
-@font-face {
-  font-family: 'Merriweather Sans';
-  font-style: normal;
-  font-weight: 800;
-  font-display: swap;
-  src: local('Merriweather Sans Bold'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-800.woff2')
-      format('woff2'),
-    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-800.woff')
-      format('woff');
-}
-
 /**
  * Best practice from http://callmenick.com/post/the-new-box-sizing-reset
  * TLDR: It’s easier to override and a slight performance boost.
@@ -45,10 +11,6 @@
 html {
   box-sizing: border-box;
   font-size: 100%;
-}
-
-html [type='button'] {
-  appearance: none;
 }
 
 body {
@@ -77,4 +39,47 @@ textarea {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+/* TODO: Add typography and form field classes */
+
+a {
+  color: var(--color-primary);
+  text-underline-position: under;
+  text-decoration-color: var(--color-border);
+}
+
+a:hover,
+a:focus-visible {
+  text-decoration-color: var(--color-primary);
+  text-decoration-thickness: 0.125em;
+}
+
+.action {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-primary);
+  background-color: var(--background-subtle);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-s);
+  padding: 12px 16px;
+  text-align: center;
+  border: none;
+  border-radius: 12px;
+  transition:
+    color var(--transition-micro),
+    background-color var(--transition-micro);
+  cursor: pointer;
+}
+
+.action:hover {
+  color: white;
+  background-color: var(--color-primary);
+}
+
+.action[target="_blank"]::after {
+  content: '↗';
+  display: inline;
+  font-family: var(--font-family-system);
+  color: currentColor;
 }

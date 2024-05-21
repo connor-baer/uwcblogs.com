@@ -20,6 +20,7 @@ const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
     src: image,
     alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
   }}
+  hideHomeLink
 >
   <div class="search">
     <label for="search">
@@ -66,7 +67,7 @@ const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
     width: 100%;
     padding: 12px 16px;
     outline: 1px solid var(--color-border);
-    border-radius: var(--border-radius-s);
+    border-radius: var(--border-radius);
     border: none;
     transition: outline var(--transition-micro);
   }

@@ -14,14 +14,26 @@ export interface Props {
   description?: string;
   action?: HTMLAttributes<'a'> & { label: string };
   image: LocalImageProps | RemoteImageProps;
+  hideHomeLink?: boolean;
 }
 
-const { title, subtitle, description, action, image } = Astro.props;
+const { title, subtitle, description, action, image, hideHomeLink } =
+  Astro.props;
 const { label, ...attributes } = action || {};
 ---
 
 <Base title={title} description={description || subtitle}>
   <div class="left content">
+    {
+      !hideHomeLink && (
+        <div class="home">
+          <span aria-hidden class="symbol">
+            ←
+          </span>
+          <a href="/">Home</a>
+        </div>
+      )
+    }
     <header>
       <div>
         <h1 class="title">{title}</h1>
@@ -55,6 +67,14 @@ const { label, ...attributes } = action || {};
 </Base>
 
 <style>
+  .home {
+    padding-top: 16px;
+  }
+  .symbol {
+    font-family: var(--font-family-system);
+    color: var(--color-primary);
+  }
+
   .content {
     --header-margin: 9vh;
 

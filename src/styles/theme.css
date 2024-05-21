@@ -1,3 +1,33 @@
+@font-face {
+  font-family: 'Merriweather Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Merriweather Sans Light'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-300.woff2') format('woff2'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-300.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Merriweather Sans'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-regular.woff2') format('woff2'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Merriweather Sans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local('Merriweather Sans Bold'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-800.woff2') format('woff2'),
+    url('https://assets.connor.li/fonts/merriweather-sans-v11-latin-800.woff') format('woff');
+}
+
 :root {
   color-scheme: light;
 
@@ -13,11 +43,16 @@
   --font-weight-bold: 800;
 
   /* Font sizes */
-  --font-size-s: 0.875rem; /* 14px */
-  --font-size-m: 1.125rem; /* 18px */
-  --font-size-l: 1.5rem; /* 24px */
-  --font-size-xl: 2rem; /* 32px */
-  --font-size-xxl: 2.625rem; /* 42px */
+  --font-size-s: 0.875rem;
+  /* 14px */
+  --font-size-m: 1.125rem;
+  /* 18px */
+  --font-size-l: 1.5rem;
+  /* 24px */
+  --font-size-xl: 2rem;
+  /* 32px */
+  --font-size-xxl: 2.625rem;
+  /* 42px */
 
   /* Line heights */
   --line-height-s: 1.2;
@@ -25,147 +60,57 @@
   --line-height-l: 2;
 
   /* Spacings */
-  --spacing-xxs: 0.25rem; /* 4px */
-  --spacing-xs: 0.5rem; /* 8px */
-  --spacing-s: 0.75rem; /* 12px */
-  --spacing-m: 1rem; /* 16px */
-  --spacing-l: 1.5rem; /* 24px */
-  --spacing-xl: 2rem; /* 32px */
-  --spacing-xxl: 2.5rem; /* 48px */
-  --spacing-xxxl: 4rem; /* 54px */
-  --spacing-gutter: 1rem; /* 16px */
+  --spacing-xxs: 0.25rem;
+  /* 4px */
+  --spacing-xs: 0.5rem;
+  /* 8px */
+  --spacing-s: 0.75rem;
+  /* 12px */
+  --spacing-m: 1rem;
+  /* 16px */
+  --spacing-l: 1.5rem;
+  /* 24px */
+  --spacing-xl: 2rem;
+  /* 32px */
+  --spacing-xxl: 2.5rem;
+  /* 48px */
+  --spacing-xxxl: 4rem;
+  /* 54px */
+  --spacing-gutter: 1rem;
+  /* 16px */
 
-  --width-max: 90rem; /* 1440px */
-  --width-page: 50rem; /* 800px */
+  --width-max: 90rem;
+  /* 1440px */
+  --width-page: 50rem;
+  /* 800px */
 
-  /* Icon sizes */
-  --icon-size-m: 1rem; /* 16px */
-  --icon-size-l: 1.5rem; /* 24px */
-  --icon-size-xl: 3rem; /* 36px */
-
-  /* Border radii */
-  --border-radius-xs: 0.25rem; /* 4px */
-  --border-radius-s: 0.5rem; /* 8px */
-  --border-radius-m: 0.75rem; /* 12px */
-  --border-radius-l: 1rem; /* 16px */
-  --border-radius-circle: 100%;
-  --border-radius-pill: 999999px; /* HACK: By providing a very large absolute size, the browser picks the maximum size in one dimension. */
-
-  /* Z-indices */
-  --z-index-select: 9;
-  --z-index-autocomplete: 11;
-  --z-index-navigation: 99;
-  --z-index-loadingbar: 999;
+  /* Border radius */
+  --border-radius: 0.5rem;
+  /* 8px */
 
   /* Colors */
-  --base-hue: 195;
-  --base-saturation: 80%;
-  --base-alpha: 1;
-
-  --primary-0: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    95%,
-    var(--base-alpha)
-  );
-  --primary-1: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    91%,
-    var(--base-alpha)
-  );
-  --primary-2: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    82%,
-    var(--base-alpha)
-  );
-  --primary-3: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    72%,
-    var(--base-alpha)
-  );
-  --primary-4: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    64%,
-    var(--base-alpha)
-  );
-  --primary-5: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    57%,
-    var(--base-alpha)
-  );
-  --primary-6: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    52%,
-    var(--base-alpha)
-  );
-  --primary-7: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    47%,
-    var(--base-alpha)
-  );
-  --primary-8: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    43%,
-    var(--base-alpha)
-  );
-  --primary-9: hsla(
-    var(--base-hue),
-    var(--base-saturation),
-    38%,
-    var(--base-alpha)
-  );
-
-  --color-button-primary: #fff;
-  --background-button-primary: var(--primary-7);
-  --background-button-primary-hover: var(--primary-9);
-
-  --color-button-secondary: #212529;
-  --background-button-secondary: #f1f3f5;
-  --background-button-secondary-hover: #dee2e6;
-
-  --color-button-danger: #99123b;
-  --background-button-danger: #ffe3e3;
-  --background-button-danger-hover: #ffc9c9;
-
   --color-input: #868e96;
   --color-input-hover: #495057;
   --color-input-focus: #495057;
 
-  --color-focus-outline: var(--primary-3);
-  --color-shadow: rgba(12, 15, 20, 0.18);
   --color-border: #adb5bd;
   --color-default: #15191d;
   --background-default: #fff;
   --color-subtle: #495057;
   --background-subtle: #e9ecef;
-  --color-primary: #009b90;
-  --color-primary-hover: var(--primary-9);
+  --color-primary: #008d83;
   --color-danger: #99123b;
-  --color-success: #009b90;
+  --color-success: #008d83;
   --background-image-placeholder: #dee2e6;
-
-  /* Shadows */
-  --shadow-s: 0 0 2px 1px var(--color-shadow);
-  --shadow-m: 0 0 4px 1px var(--color-shadow);
-  --shadow-l: 0 0 8px 2px var(--color-shadow);
 
   /* Transitions */
   --transition-micro: 200ms cubic-bezier(0, 0, 0.2, 1);
-  --transition-standard: 500ms cubic-bezier(0, 0, 0.2, 1);
-  --transition-motion: 1000ms cubic-bezier(0, 0, 0.2, 1);
 }
 
 @media (min-width: 56.25em) {
   :root {
-    --spacing-gutter: 2rem; /* 32px */
+    --spacing-gutter: 2rem;
+    /* 32px */
   }
 }
 
@@ -174,30 +119,15 @@
     color-scheme: dark;
 
     /* Colors */
-    --color-button-primary: #000;
-    --background-button-primary: var(--primary-7);
-    --background-button-primary-hover: var(--primary-5);
-
-    --color-button-secondary: #f1f3f5;
-    --background-button-secondary-hover: #495057;
-    --background-button-secondary: #343a40;
-
-    --color-button-danger: #ffc9c9;
-    --background-button-danger: #521e23;
-    --background-button-danger-hover: #642b30;
-
     --color-input: #adb5bd;
     --color-input-hover: #dee2e6;
 
-    --color-focus-outline: var(--primary-9);
-    --color-shadow: rgba(243, 240, 235, 0.18);
     --color-border: #868e96;
     --color-default: #fff;
     --background-default: #15191d;
     --color-subtle: #dee2e6;
     --background-subtle: #212529;
-    --color-primary: var(--primary-7);
-    --color-primary-hover: var(--primary-5);
+    --color-primary: #00b8ab;
     --background-image-placeholder: #495057;
   }
 }
