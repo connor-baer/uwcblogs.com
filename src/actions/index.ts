@@ -17,7 +17,7 @@ export const server = {
         .max(new Date().getFullYear() + 5),
     }),
     handler: async (data) => {
-      const values = { ...data, createdAt: new Date(), draft: true };
+      const values = { ...data, draft: true };
       await db.insert(Blog).values(values);
 
       if (typeof import.meta.env.NOTIFICATION_URL === 'string') {

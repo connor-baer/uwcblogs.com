@@ -1,4 +1,4 @@
-import { defineDb, defineTable, column } from 'astro:db';
+import { defineDb, defineTable, column, NOW } from 'astro:db';
 
 const College = defineTable({
   columns: {
@@ -19,7 +19,7 @@ const Blog = defineTable({
     languages: column.text(),
     year: column.number(),
     draft: column.boolean(),
-    createdAt: column.date(),
+    createdAt: column.date({ default: NOW }),
   },
 });
 
