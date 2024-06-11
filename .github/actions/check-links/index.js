@@ -3,7 +3,16 @@ import PQueue from 'p-queue';
 import ky from 'ky';
 
 async function run() {
-  const queue = new PQueue({ concurrency: 5 });
+  const queue = new PQueue({
+    concurrency: 5,
+    timeout: 5000,
+    throwOnTimeout: true,
+  });
+
+  queue.on('error', (error) => {
+    console.error(error);
+  });
+
   const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
 
   core.startGroup('Verifying links');
