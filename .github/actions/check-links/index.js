@@ -53,6 +53,7 @@ async function run() {
   core.info(`${successes.length} urls responded successfully`);
 
   if (failures.length > 0) {
+    core.debug(JSON.stringify(failures, null, 2));
     core.setFailed(`${failures.length} urls returned errors`);
   }
 }
