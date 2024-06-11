@@ -3,15 +3,7 @@ import PQueue from 'p-queue';
 import ky from 'ky';
 
 async function run() {
-  const queue = new PQueue({
-    concurrency: 5,
-    timeout: 30000,
-    throwOnTimeout: true,
-  });
-
-  queue.on('error', (error) => {
-    console.error(error);
-  });
+  const queue = new PQueue({ concurrency: 5 });
 
   const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
 
@@ -26,9 +18,12 @@ async function run() {
         }
         core.debug(`Fetching ${blog.url}`);
         const response = await ky
-          .get(blog.url, { throwHttpErrors: false })
+          .get(blog.url, { throwHttpErrors: false, timeout: 30000 })
           .catch((error) => {
             let status = 500;
+            if (error instanceof TimeoutError) {
+              status = 504;
+            }
             if (
               error instanceof TypeError &&
               error.cause &&
