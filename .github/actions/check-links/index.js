@@ -20,6 +20,9 @@ async function run() {
         const response = await ky
           .get(blog.url, { throwHttpErrors: false, timeout: 30000 })
           .catch((error) => {
+            core.error(`Failed to fetch ${blog.url}`);
+            console.error(error);
+
             let status = 500;
             if (error instanceof TimeoutError) {
               status = 504;
@@ -32,8 +35,6 @@ async function run() {
             ) {
               status = 404;
             }
-            core.error(`Failed to fetch ${blog.url}`);
-            console.error(error);
             return { status };
           });
         return { ...blog, status: response.status };
