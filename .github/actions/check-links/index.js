@@ -5,7 +5,7 @@ import ky from 'ky';
 async function run() {
   const queue = new PQueue({
     concurrency: 5,
-    timeout: 5000,
+    timeout: 30000,
     throwOnTimeout: true,
   });
 
