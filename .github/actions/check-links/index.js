@@ -1,48 +1,45 @@
 import * as core from '@actions/core';
-import PQueue from 'p-queue';
+import pMap from 'p-map';
 import ky from 'ky';
 
 async function run() {
-  const queue = new PQueue({ concurrency: 5 });
-
   const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
 
   core.startGroup('Verifying links');
 
-  const responses = await Promise.all(
-    blogs.map(async (blog) =>
-      queue.add(async () => {
-        if (!URL.canParse(blog.url)) {
-          core.error(`Failed to parse ${blog.url}`);
-          return { ...blog, status: 400 };
-        }
-        core.debug(`Fetching ${blog.url}`);
-        const response = await ky
-          .get(blog.url, { throwHttpErrors: false, timeout: 30000 })
-          .catch((error) => {
-            core.error(`Failed to fetch ${blog.url}`);
-            console.error(error);
+  const responses = await pMap(
+    blogs,
+    async (blog) => {
+      core.debug(`Validating ${blog.url}`);
+      if (!URL.canParse(blog.url)) {
+        core.error(`Failed to parse ${blog.url}`);
+        return { ...blog, status: 400 };
+      }
+      core.debug(`Fetching ${blog.url}`);
+      const response = await ky
+        .get(blog.url, { throwHttpErrors: false, timeout: 30000 })
+        .catch((error) => {
+          core.error(`Failed to fetch ${blog.url}`);
+          console.error(error);
 
-            let status = 500;
-            if (error instanceof TimeoutError) {
-              status = 504;
-            }
-            if (
-              error instanceof TypeError &&
-              error.cause &&
-              typeof value === 'object' &&
-              error.cause.code === 'ENOTFOUND'
-            ) {
-              status = 404;
-            }
-            return { status };
-          });
-        return { ...blog, status: response.status };
-      }),
-    ),
+          let status = 500;
+          if (error instanceof TimeoutError) {
+            status = 504;
+          }
+          if (
+            error instanceof TypeError &&
+            error.cause &&
+            typeof value === 'object' &&
+            error.cause.code === 'ENOTFOUND'
+          ) {
+            status = 404;
+          }
+          return { status };
+        });
+      return { ...blog, status: response.status };
+    },
+    { concurrency: 5 },
   );
-
-  await queue.onIdle();
 
   core.endGroup();
 
