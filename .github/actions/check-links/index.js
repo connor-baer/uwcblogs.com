@@ -1,6 +1,6 @@
 import * as core from '@actions/core';
 import pMap from 'p-map';
-import ky from 'ky';
+import ky, { TimeoutError } from 'ky';
 
 async function run() {
   const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
