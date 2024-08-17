@@ -1,6 +1,6 @@
 ---
 import { db, College } from 'astro:db';
-import { actions, getActionProps } from 'astro:actions';
+import { actions } from 'astro:actions';
 
 import countries from '../../db/data/countries.json';
 import languages from '../../db/data/languages.json';
@@ -38,8 +38,7 @@ const fieldErrors = getFieldErrors(submission);
     }
   </p>
 
-  <form method="POST">
-    <input {...getActionProps(actions.submit)} />
+  <form method="POST" action={actions.submit}>
     <div class="field">
       <label for="firstName">What's your first name?</label>
       <input
@@ -205,13 +204,13 @@ const fieldErrors = getFieldErrors(submission);
   form?.addEventListener('submit', async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
-    const submission = await actions.submit.safe(formData);
+    const submission = await actions.submit(formData);
     const fieldErrors = getFieldErrors(submission);
 
     if (fieldErrors) {
       Object.entries(fieldErrors).forEach(([name, errors]) => {
         const errorEl = document.getElementById(`${name}-error`)!;
-        errorEl.textContent = errors.join(', ');
+        errorEl.textContent = errors ? errors.join(', ') : null;
       });
     } else {
       const errorEls = document.getElementsByClassName('field-error');
