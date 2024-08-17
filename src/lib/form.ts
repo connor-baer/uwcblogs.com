@@ -1,13 +1,9 @@
-import {
-  isInputError,
-  type ErrorInferenceObject,
-  type SafeResult,
-} from 'astro:actions';
+import { isInputError } from 'astro:actions';
 
-export function getFieldErrors<T extends ErrorInferenceObject, K>(
-  actionResult: SafeResult<T, K> | undefined,
+export function getFieldErrors<T extends { error: unknown }>(
+  actionResult: T | undefined,
 ) {
-  if (actionResult?.error && isInputError(actionResult.error)) {
+  if (isInputError(actionResult?.error)) {
     return actionResult.error.fields;
   }
   return undefined;
