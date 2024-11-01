@@ -43,7 +43,7 @@
     "typescript": "^5.6.2"
   },
   "devDependencies": {
-    "@sumup-oss/foundry": "^8.2.0",
+    "@sumup-oss/foundry": "^8.3.0",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
