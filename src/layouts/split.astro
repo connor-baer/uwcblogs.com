@@ -1,10 +1,7 @@
 ---
-import {
-  Image,
-  type LocalImageProps,
-  type RemoteImageProps,
-} from 'astro:assets';
+import { Image } from 'astro:assets';
 import type { HTMLAttributes } from 'astro/types';
+import type { UnresolvedImageTransform } from 'astro';
 
 import Base from './base.astro';
 import fallbackImage from '../assets/aidan-meyer-129877.jpg';
@@ -14,7 +11,7 @@ export interface Props {
   subtitle?: string;
   description?: string;
   action?: HTMLAttributes<'a'> & { label: string };
-  image: LocalImageProps | RemoteImageProps;
+  image: UnresolvedImageTransform;
   hideHomeLink?: boolean;
   frontmatter?: Props;
 }

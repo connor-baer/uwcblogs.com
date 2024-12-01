@@ -1,16 +1,13 @@
 ---
 import '../styles/theme.css';
 import '../styles/base.css';
-import {
-  getImage,
-  type LocalImageProps,
-  type RemoteImageProps,
-} from 'astro:assets';
+import { getImage } from 'astro:assets';
+import type { UnresolvedImageTransform } from 'astro';
 
 export interface Props {
   title: string;
   description?: string | undefined;
-  image?: LocalImageProps | RemoteImageProps;
+  image?: UnresolvedImageTransform;
 }
 
 const { title, description, image } = Astro.props;
