@@ -7,7 +7,4 @@ export default defineConfig({
   adapter: vercel(),
   site: 'https://uwcblogs.com',
   integrations: [db()],
-  security: {
-    checkOrigin: true,
-  },
 });
