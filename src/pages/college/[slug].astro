@@ -1,7 +1,8 @@
 ---
-import type { InferGetStaticPropsType } from 'astro';
-import { db, College } from 'astro:db';
+import { eq } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/d1';
 
+import { College } from '../../../db/schema';
 import Layout from '../../layouts/split.astro';
 import BlogList from '../../components/BlogList.astro';
 import uwcAdriatic from '../../assets/uwc-adriatic.jpeg';
@@ -24,15 +25,21 @@ import uwcUsa from '../../assets/uwc-usa.jpeg';
 import uwcWaterfordKamhlaba from '../../assets/uwc-waterford-kamhlaba.jpeg';
 import fallback from '../../assets/aidan-meyer-129877.jpg';
 
-export async function getStaticPaths() {
-  const colleges = await db.select().from(College);
-  return colleges.map((college) => ({
-    params: { slug: college.slug },
-    props: college,
-  }));
+const { slug } = Astro.params;
+
+if (!slug) {
+  return Astro.redirect('/404');
 }
 
-export type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+const db = drizzle(Astro.locals.runtime.env.DB);
+const [college] = await db
+  .select()
+  .from(College)
+  .where(eq(College.slug, Astro.params.slug as string));
+
+if (!college) {
+  return Astro.redirect('/404');
+}
 
 const images: {
   [key: string]: { src: ImageMetadata; alt: string };
@@ -109,14 +116,13 @@ const images: {
     src: uwcWaterfordKamhlaba,
     alt: 'A diverse group of teenagers is smiling to the camera',
   },
-  'fallback': {
-    src: fallback,
-    alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
-  },
 };
 
-const { slug, name, description, websiteUrl } = Astro.props;
-const image = images[slug] || images.fallback!;
+const { name, description, websiteUrl } = college;
+const image = images[slug] || {
+  src: fallback,
+  alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+};
 ---
 
 <Layout

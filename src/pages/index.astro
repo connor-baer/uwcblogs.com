@@ -1,10 +1,14 @@
 ---
-import { db, eq, College, Blog } from 'astro:db';
+import { eq } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/d1';
+import { Blog, College } from '../../db/schema';
 
 import Layout from '../layouts/split.astro';
 import BlogList from '../components/BlogList.astro';
 import { countUniqueValues } from '../lib/collection';
 import image from '../assets/aidan-meyer-129877.jpg';
+
+const db = drizzle(Astro.locals.runtime.env.DB);
 
 const colleges = await db.select().from(College);
 const blogs = await db.select().from(Blog).where(eq(Blog.draft, false));
