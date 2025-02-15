@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 import db from '@astrojs/db';
-import vercel from '@astrojs/vercel';
+import cloudflare from '@astrojs/cloudflare';
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: vercel(),
+  adapter: cloudflare(),
   site: 'https://uwcblogs.com',
   integrations: [db()],
 });
