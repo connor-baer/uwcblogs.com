@@ -3,7 +3,7 @@ name = "uwcblogs"
 pages_build_output_dir = "dist"
 compatibility_date = "2025-02-15"
 
-[[env.production.d1_databases]]
+[[d1_databases]]
 database_id = "76a8c5c2-3275-4298-bdfe-4d81fdfb6f1f"
 binding = "DB"
 database_name = "DB"
