@@ -1,9 +1,10 @@
 ---
-import { db, College } from 'astro:db';
 import { actions } from 'astro:actions';
+import { drizzle } from 'drizzle-orm/d1';
 
-import countries from '../../db/data/countries.json';
-import languages from '../../db/data/languages.json';
+import { College } from '../../db/schema';
+import countries from '../data/countries.json';
+import languages from '../data/languages.json';
 import Layout from '../layouts/split.astro';
 import { sortAlphabetically } from '../lib/collection';
 import { getFieldErrors } from '../lib/form';
@@ -11,6 +12,7 @@ import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
 
 export const prerender = false;
 
+const db = drizzle(Astro.locals.runtime.env.DB);
 const colleges = await db
   .select({ slug: College.slug, name: College.name })
   .from(College)

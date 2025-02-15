@@ -1,6 +1,8 @@
 import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
-import { db, Blog } from 'astro:db';
+import { drizzle } from 'drizzle-orm/d1';
+
+import { Blog } from '../../db/schema';
 
 export const server = {
   submit: defineAction({
@@ -17,7 +19,8 @@ export const server = {
         .min(1962)
         .max(new Date().getFullYear() + 5),
     }),
-    handler: async (data) => {
+    handler: async (data, context) => {
+      const db = drizzle(context.locals.runtime.env.DB);
       const values = { ...data, draft: true };
       await db.insert(Blog).values(values);
 

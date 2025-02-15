@@ -1,13 +1,15 @@
 ---
-import { db, eq, Blog } from 'astro:db';
+import { and, eq } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/d1';
 
 import { groupBy } from '../lib/collection';
-import { and } from 'astro:db';
+import { Blog } from '../../db/schema';
 
 export type Props = { collegeId: string };
 
 const { collegeId } = Astro.props;
 
+const db = drizzle(Astro.locals.runtime.env.DB);
 const blogs = await db
   .select()
   .from(Blog)
