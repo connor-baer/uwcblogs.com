@@ -2,8 +2,6 @@
 dist/
 # generated code
 .astro/
-.next/
-.vercel/
 
 # dependencies
 node_modules/
