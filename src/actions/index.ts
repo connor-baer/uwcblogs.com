@@ -2,7 +2,7 @@ import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
 import { drizzle } from 'drizzle-orm/d1';
 
-import { Blog } from '../../db/schema';
+import { Blog } from '../db/schema';
 
 export const server = {
   submit: defineAction({

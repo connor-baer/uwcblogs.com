@@ -65,10 +65,9 @@ const { label, ...attributes } = action || {};
     class="right image"
   />
   <footer class="left">
-    <span class="copyright"
-      >© 2024 <a href="https://connorbaer.com/projects/uwc-blogs">Connor Bär</a
-      >. All rights reserved.</span
-    ><a href="/disclaimer">Disclaimer</a>
+    <a href="https://connorbaer.com/projects/uwc-blogs">Made by Connor</a>
+    <span class="divider">·</span>
+    <a href="/disclaimer">Disclaimer</a>
   </footer>
 </Base>
 
@@ -199,8 +198,7 @@ const { label, ...attributes } = action || {};
     text-align: center;
   }
 
-  .copyright::after {
-    content: '·';
+  .divider {
     display: inline-block;
     font-weight: var(--font-weight-bold);
     padding-right: 12px;

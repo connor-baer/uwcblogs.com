@@ -2,8 +2,8 @@
 import { and, eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 
+import { Blog } from '../db/schema';
 import { groupBy } from '../lib/collection';
-import { Blog } from '../../db/schema';
 
 export type Props = { collegeId: string };
 

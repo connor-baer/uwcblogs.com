@@ -1,7 +1,11 @@
 # build output
 dist/
+
 # generated code
 .astro/
+
+# data
+*.sql
 
 # dependencies
 node_modules/
