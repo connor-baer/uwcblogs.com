@@ -14,10 +14,7 @@ export const server = {
       collegeId: z.string(),
       countries: z.string(),
       languages: z.string(),
-      year: z
-        .number()
-        .min(1962)
-        .max(new Date(Date.now()).getFullYear() + 5),
+      year: z.number().min(1962),
     }),
     handler: async (data, context) => {
       const db = drizzle(context.locals.runtime.env.DB);
