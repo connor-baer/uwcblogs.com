@@ -17,7 +17,7 @@ export const server = {
       year: z
         .number()
         .min(1962)
-        .max(new Date().getFullYear() + 5),
+        .max(new Date(Date.now()).getFullYear() + 5),
     }),
     handler: async (data, context) => {
       const db = drizzle(context.locals.runtime.env.DB);

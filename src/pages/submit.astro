@@ -165,7 +165,7 @@ const fieldErrors = getFieldErrors(submission);
         id="year"
         name="year"
         min={1962}
-        max={new Date().getFullYear() + 5}
+        max={new Date(Date.now()).getFullYear() + 5}
         required
         aria-describedby="year-error"
       />
