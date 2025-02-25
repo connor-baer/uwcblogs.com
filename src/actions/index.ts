@@ -20,6 +20,8 @@ export const server = {
         .max(new Date(Date.now()).getFullYear() + 5),
     }),
     handler: async (data, context) => {
+      console.log(Date.now());
+      console.log(new Date().getFullYear());
       const db = drizzle(context.locals.runtime.env.DB);
       const values = { ...data, draft: true };
       await db.insert(Blog).values(values);
