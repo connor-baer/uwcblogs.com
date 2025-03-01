@@ -40,7 +40,7 @@
     "fuse.js": "^7.1.0",
     "ky": "^1.7.5",
     "p-map": "^7.0.3",
-    "typescript": "^5.7.3"
+    "typescript": "^5.8.2"
   },
   "devDependencies": {
     "@sumup-oss/foundry": "^8.4.1",
