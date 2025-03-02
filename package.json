@@ -46,6 +46,6 @@
     "@sumup-oss/foundry": "^8.4.1",
     "drizzle-kit": "^0.30.5",
     "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^3.109.1"
+    "wrangler": "^3.111.0"
   }
 }
