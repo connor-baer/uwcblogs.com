@@ -1,8 +1,11 @@
 import * as core from '@actions/core';
-import pMap from 'p-map';
 import ky, { TimeoutError } from 'ky';
+import pMap from 'p-map';
 
 async function run() {
+  /**
+   * @type {{ url: string }[]}
+   */
   const blogs = await ky.get('https://uwcblogs.com/blogs.json').json();
 
   core.startGroup('Verifying links');
@@ -20,6 +23,7 @@ async function run() {
         .get(blog.url, { throwHttpErrors: false, timeout: 30000 })
         .catch((error) => {
           core.error(`Failed to fetch ${blog.url}`);
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
           core.error(error);
 
           let status = 500;
@@ -29,7 +33,7 @@ async function run() {
           if (
             error instanceof TypeError &&
             error.cause &&
-            typeof value === 'object' &&
+            typeof error.cause === 'object' &&
             error.cause.code === 'ENOTFOUND'
           ) {
             status = 404;
@@ -60,8 +64,9 @@ async function run() {
 
 run().catch((error) => {
   if ('message' in error) {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument, @typescript-eslint/no-unsafe-member-access
     core.setFailed(error.message);
   } else {
-    core.setFailed('Unknown error: ' + JSON.stringify(error));
+    core.setFailed(`Unknown error: ${JSON.stringify(error)}`);
   }
 });

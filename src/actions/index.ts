@@ -1,5 +1,6 @@
 import { defineAction } from 'astro:actions';
 import { z } from 'astro:schema';
+
 import { drizzle } from 'drizzle-orm/d1';
 
 import { Blog } from '../db/schema';
@@ -29,6 +30,7 @@ export const server = {
             chatId: import.meta.env.NOTIFICATION_CHAT_ID as string,
             message: `${data.firstName} submitted a new blog.`,
           }),
+          // biome-ignore lint/suspicious/noConsole: Fine for actions
         }).catch(console.error);
       }
       return { success: true };

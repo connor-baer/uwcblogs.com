@@ -1,6 +1,6 @@
 import type { APIRoute } from 'astro';
-import { drizzle } from 'drizzle-orm/d1';
 import { eq } from 'drizzle-orm';
+import { drizzle } from 'drizzle-orm/d1';
 
 import { Blog } from '../db/schema';
 

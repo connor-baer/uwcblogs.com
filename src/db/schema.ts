@@ -1,6 +1,6 @@
 import { sql } from 'drizzle-orm';
-import { sqliteTable as defineTable } from 'drizzle-orm/sqlite-core';
 import * as column from 'drizzle-orm/sqlite-core';
+import { sqliteTable as defineTable } from 'drizzle-orm/sqlite-core';
 
 export const College = defineTable('college', {
   slug: column.text().primaryKey(),
