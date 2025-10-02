@@ -28,8 +28,10 @@
     "build": "astro build --remote",
     "preview": "astro preview",
     "prelint": "npm run sync",
-    "lint": "foundry run eslint . --ext .js,.jsx,.json,.ts,.tsx",
-    "lint:fix": "npm run lint -- --fix"
+    "lint": "biome check --diagnostic-level=error && eslint . --quiet --concurrency=auto",
+    "lint:fix": "biome check --write --diagnostic-level=error && eslint . --fix --quiet --concurrency=auto",
+    "lint:ci": "biome ci --diagnostic-level=error && eslint . --quiet --concurrency=auto",
+    "lint:css": "stylelint '**/*.css' --quiet"
   },
   "dependencies": {
     "@actions/core": "^1.11.1",
