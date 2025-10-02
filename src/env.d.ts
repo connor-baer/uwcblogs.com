@@ -4,6 +4,8 @@ type ENV = {
 };
 
 type Runtime = import('@astrojs/cloudflare').Runtime<ENV>;
+
+// biome-ignore lint/style/noNamespace: Namespace augmentation
 declare namespace App {
   interface Locals extends Runtime {}
 }

@@ -7,7 +7,7 @@ export default defineConfig([
     languageOptions: {
       parserOptions: {
         projectService: {
-          allowDefaultProject: ['.github/actions/*'],
+          allowDefaultProject: ['.github/actions/check-links/*'],
         },
         tsconfigRootDir: import.meta.dirname,
       },
