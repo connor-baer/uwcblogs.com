@@ -38,9 +38,9 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/cloudflare": "^12.6.9",
     "astro": "^5.14.1",
-    "drizzle-orm": "^0.44.4",
+    "drizzle-orm": "^0.44.6",
     "fuse.js": "^7.1.0",
-    "ky": "^1.8.2",
+    "ky": "^1.11.0",
     "p-map": "^7.0.3",
     "typescript": "^5.9.3"
   },
@@ -48,6 +48,6 @@
     "@sumup-oss/foundry": "^9.0.2",
     "drizzle-kit": "^0.31.5",
     "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^4.40.3"
+    "wrangler": "^4.42.0"
   }
 }
