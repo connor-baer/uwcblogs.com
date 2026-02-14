@@ -9,6 +9,7 @@ export default defineConfig([
         projectService: {
           allowDefaultProject: ['.github/actions/check-links/*'],
         },
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         tsconfigRootDir: import.meta.dirname,
       },
     },
