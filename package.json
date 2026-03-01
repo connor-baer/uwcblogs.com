@@ -38,7 +38,7 @@
     "@astrojs/check": "^0.9.6",
     "@astrojs/cloudflare": "^12.6.12",
     "astro": "^5.18.0",
-    "drizzle-orm": "^0.44.6",
+    "drizzle-orm": "^0.45.1",
     "fuse.js": "^7.1.0",
     "ky": "^1.13.0",
     "p-map": "^7.0.4",
