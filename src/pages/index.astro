@@ -1,4 +1,6 @@
 ---
+import { env } from 'cloudflare:workers';
+
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 
@@ -8,7 +10,7 @@ import BlogList from '../components/BlogList.astro';
 import { countUniqueValues } from '../lib/collection';
 import image from '../assets/aidan-meyer-129877.jpg';
 
-const db = drizzle(Astro.locals.runtime.env.DB);
+const db = drizzle(env.DB);
 
 const colleges = await db.select().from(College);
 const blogs = await db.select().from(Blog).where(eq(Blog.draft, false));
@@ -19,10 +21,10 @@ const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
 <Layout
   title="UWC Blogs"
   subtitle={`A collection of ${blogs.length} blogs written by UWC students in ${languageCount} languages from ${countryCount} countries at the ${colleges.length} United World Colleges.`}
-  action={{ label: 'Submit a blog', href: '/submit' }}
+  action={{ label: "Submit a blog", href: "/submit" }}
   image={{
     src: image,
-    alt: 'A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.',
+    alt: "A teenager sits atop a rocky hill and writes into his journal. In the background, other teens are watching the golden sunset.",
   }}
   hideHomeLink
 >
@@ -99,7 +101,7 @@ const languageCount = countUniqueValues(blogs, (blog) => blog.languages);
 </style>
 
 <script>
-  import { initSearch } from '../lib/search';
+  import { initSearch } from "../lib/search";
 
   initSearch();
 </script>

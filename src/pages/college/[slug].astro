@@ -1,4 +1,6 @@
 ---
+import { env } from 'cloudflare:workers';
+
 import { eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 
@@ -31,7 +33,7 @@ if (!slug) {
   return Astro.redirect('/404');
 }
 
-const db = drizzle(Astro.locals.runtime.env.DB);
+const db = drizzle(env.DB);
 const [college] = await db
   .select()
   .from(College)
@@ -130,9 +132,9 @@ const image = images[slug] || {
   subtitle={description}
   image={image}
   action={{
-    label: 'Learn more',
+    label: "Learn more",
     href: websiteUrl,
-    target: '_blank',
+    target: "_blank",
   }}
 >
   <BlogList collegeId={slug} />
