@@ -1,6 +1,7 @@
 import { defineAction } from 'astro:actions';
-import { z } from 'astro:schema';
+import { env } from 'cloudflare:workers';
 
+import { z } from 'astro/zod';
 import { drizzle } from 'drizzle-orm/d1';
 
 import { Blog } from '../db/schema';
@@ -10,15 +11,15 @@ export const server = {
     accept: 'form',
     input: z.object({
       firstName: z.string(),
-      email: z.string().email(),
-      url: z.string().url(),
+      email: z.email(),
+      url: z.url(),
       collegeId: z.string(),
       countries: z.string(),
       languages: z.string(),
       year: z.number().min(1962),
     }),
-    handler: async (data, context) => {
-      const db = drizzle(context.locals.runtime.env.DB);
+    handler: async (data) => {
+      const db = drizzle(env.DB);
       const values = { ...data, draft: true };
       await db.insert(Blog).values(values);
 

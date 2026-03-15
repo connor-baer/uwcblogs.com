@@ -1,5 +1,7 @@
 ---
 import { actions } from 'astro:actions';
+import { env } from 'cloudflare:workers';
+
 import { drizzle } from 'drizzle-orm/d1';
 
 import { College } from '../db/schema';
@@ -12,7 +14,7 @@ import image from '../assets/photo-1452421822248-d4c2b47f0c81.jpg';
 
 export const prerender = false;
 
-const db = drizzle(Astro.locals.runtime.env.DB);
+const db = drizzle(env.DB);
 const colleges = await db
   .select({ slug: College.slug, name: College.name })
   .from(College)
@@ -29,7 +31,7 @@ const fieldErrors = getFieldErrors(submission);
   subtitle="Share your UWC experience with the world and gain more readers."
   image={{
     src: image,
-    alt: 'An open and empty journal rests on top of a map next to a camera and a pair of glasses.',
+    alt: "An open and empty journal rests on top of a map next to a camera and a pair of glasses.",
   }}
 >
   <p id="form-success" class="form-success">
@@ -57,7 +59,7 @@ const fieldErrors = getFieldErrors(submission);
         role="status"
         aria-live="polite"
       >
-        {fieldErrors?.firstName?.join(', ')}
+        {fieldErrors?.firstName?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -71,7 +73,7 @@ const fieldErrors = getFieldErrors(submission);
         required
       />
       <p id="email-error" class="field-error" role="status" aria-live="polite">
-        {fieldErrors?.email?.join(', ')}
+        {fieldErrors?.email?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -85,7 +87,7 @@ const fieldErrors = getFieldErrors(submission);
         aria-describedby="url-error"
       />
       <p id="url-error" class="field-error" role="status" aria-live="polite">
-        {fieldErrors?.url?.join(', ')}
+        {fieldErrors?.url?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -109,7 +111,7 @@ const fieldErrors = getFieldErrors(submission);
         role="status"
         aria-live="polite"
       >
-        {fieldErrors?.collegeId?.join(', ')}
+        {fieldErrors?.collegeId?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -133,7 +135,7 @@ const fieldErrors = getFieldErrors(submission);
         role="status"
         aria-live="polite"
       >
-        {fieldErrors?.countries?.join(', ')}
+        {fieldErrors?.countries?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -155,7 +157,7 @@ const fieldErrors = getFieldErrors(submission);
         role="status"
         aria-live="polite"
       >
-        {fieldErrors?.languages?.join(', ')}
+        {fieldErrors?.languages?.join(", ")}
       </p>
     </div>
     <div class="field">
@@ -170,7 +172,7 @@ const fieldErrors = getFieldErrors(submission);
         aria-describedby="year-error"
       />
       <p id="year-error" class="field-error" role="status" aria-live="polite">
-        {fieldErrors?.year?.join(', ')}
+        {fieldErrors?.year?.join(", ")}
       </p>
     </div>
     <button type="submit" class="action">Submit blog</button>
@@ -200,10 +202,10 @@ const fieldErrors = getFieldErrors(submission);
 </style>
 
 <script>
-  import { actions } from 'astro:actions';
-  import { getFieldErrors } from '../lib/form';
-  const form = document.getElementsByTagName('form')[0];
-  form?.addEventListener('submit', async (event) => {
+  import { actions } from "astro:actions";
+  import { getFieldErrors } from "../lib/form";
+  const form = document.getElementsByTagName("form")[0];
+  form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     const formData = new FormData(event.target as HTMLFormElement);
     const submission = await actions.submit(formData);
@@ -212,17 +214,17 @@ const fieldErrors = getFieldErrors(submission);
     if (fieldErrors) {
       Object.entries(fieldErrors).forEach(([name, errors]) => {
         const errorEl = document.getElementById(`${name}-error`)!;
-        errorEl.textContent = errors ? errors.join(', ') : null;
+        errorEl.textContent = errors ? errors.join(", ") : null;
       });
     } else {
-      const errorEls = document.getElementsByClassName('field-error');
+      const errorEls = document.getElementsByClassName("field-error");
       [...errorEls].forEach((el) => {
         el.textContent = null;
       });
       const successEl = document.getElementById(`form-success`)!;
       successEl.textContent =
-        'Thank you for your submission! We will review and publish your blog within a few days.';
-      successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        "Thank you for your submission! We will review and publish your blog within a few days.";
+      successEl.scrollIntoView({ behavior: "smooth", block: "center" });
       form.reset();
     }
   });

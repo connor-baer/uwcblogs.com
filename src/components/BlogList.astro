@@ -1,4 +1,6 @@
 ---
+import { env } from 'cloudflare:workers';
+
 import { and, eq } from 'drizzle-orm';
 import { drizzle } from 'drizzle-orm/d1';
 
@@ -9,7 +11,7 @@ export type Props = { collegeId: string };
 
 const { collegeId } = Astro.props;
 
-const db = drizzle(Astro.locals.runtime.env.DB);
+const db = drizzle(env.DB);
 const blogs = await db
   .select()
   .from(Blog)
@@ -32,9 +34,9 @@ const blogsByYear = Object.entries(
           {blogs.map((blog) => (
             <li class="blog" data-blog={blog.id}>
               {/* prettier-ignore */}
-              <a href={blog.url} target="_blank" class="first-name" data-name>{blog.firstName}</a>{' '}
+              <a href={blog.url} target="_blank" class="first-name" data-name>{blog.firstName}</a>{" "}
               <span data-countries>{blog.countries}</span>
-              {' – '}
+              {" – "}
               <span data-languages>{blog.languages}</span>
             </li>
           ))}

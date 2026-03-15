@@ -1,8 +1,10 @@
 # build output
 dist/
-
-# generated code
 .astro/
+.wrangler/
+
+# generated
+worker-configuration.d.ts
 
 # data
 *.sql
