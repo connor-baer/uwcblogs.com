@@ -1,0 +1,20 @@
+{
+  "compatibility_date": "2026-03-12",
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  "name": "uwcblogs",
+  "main": "@astrojs/cloudflare/entrypoints/server",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS"
+  },
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "database_id": "76a8c5c2-3275-4298-bdfe-4d81fdfb6f1f",
+      "binding": "DB",
+      "database_name": "DB"
+    }
+  ]
+}
