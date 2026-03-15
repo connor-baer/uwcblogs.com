@@ -35,19 +35,19 @@
   },
   "dependencies": {
     "@actions/core": "^3.0.0",
-    "@astrojs/check": "^0.9.6",
-    "@astrojs/cloudflare": "^12.6.12",
-    "astro": "^5.18.0",
+    "@astrojs/check": "^0.9.7",
+    "@astrojs/cloudflare": "^13.1.1",
+    "astro": "^6.0.4",
     "drizzle-orm": "^0.45.1",
     "fuse.js": "^7.1.0",
-    "ky": "^1.13.0",
+    "ky": "^1.14.3",
     "p-map": "^7.0.4",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@sumup-oss/foundry": "^9.0.6",
-    "drizzle-kit": "^0.31.8",
+    "drizzle-kit": "^0.31.9",
     "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^4.69.0"
+    "wrangler": "^4.73.0"
   }
 }
