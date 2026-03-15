@@ -22,8 +22,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "check": "astro check",
-    "sync": "astro sync",
+    "check": "npm run sync && astro check",
+    "sync": "npm run generate-types && astro sync",
     "prebuild": "npm run check",
     "build": "astro build --remote",
     "preview": "astro preview",
