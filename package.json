@@ -35,7 +35,7 @@
     "generate-types": "wrangler types"
   },
   "dependencies": {
-    "@actions/core": "^3.0.0",
+    "@actions/core": "^3.0.1",
     "@astrojs/check": "^0.9.9",
     "@astrojs/cloudflare": "^13.6.1",
     "astro": "^6.2.1",
