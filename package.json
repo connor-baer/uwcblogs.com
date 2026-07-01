@@ -46,7 +46,7 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@sumup-oss/foundry": "^10.0.0",
+    "@sumup-oss/foundry": "^10.1.0",
     "drizzle-kit": "^0.31.10",
     "prettier-plugin-astro": "^0.14.1",
     "wrangler": "^4.102.0"
