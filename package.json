@@ -37,8 +37,8 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@astrojs/check": "^0.9.9",
-    "@astrojs/cloudflare": "^13.6.1",
-    "astro": "^6.4.8",
+    "@astrojs/cloudflare": "^14.0.2",
+    "astro": "^7.0.4",
     "drizzle-orm": "^0.45.2",
     "fuse.js": "^7.1.0",
     "ky": "^1.14.3",
