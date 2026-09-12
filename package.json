@@ -37,18 +37,18 @@
   "dependencies": {
     "@actions/core": "^3.0.1",
     "@astrojs/check": "^0.9.10",
-    "@astrojs/cloudflare": "^14.2.5",
-    "astro": "^7.1.6",
+    "@astrojs/cloudflare": "^14.3.1",
+    "astro": "^7.3.2",
     "drizzle-orm": "^0.45.2",
     "fuse.js": "^7.5.0",
     "ky": "^1.14.3",
-    "p-map": "^7.0.5",
-    "typescript": "^5.9.3"
+    "p-map": "^7.0.7",
+    "typescript": "^6.0.0"
   },
   "devDependencies": {
     "@sumup-oss/foundry": "^10.1.0",
     "drizzle-kit": "^0.31.10",
-    "prettier-plugin-astro": "^0.14.1",
-    "wrangler": "^4.115.0"
+    "prettier-plugin-astro": "^1.0.0",
+    "wrangler": "^4.131.1"
   }
 }
