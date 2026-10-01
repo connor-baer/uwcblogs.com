@@ -47,7 +47,7 @@
   },
   "devDependencies": {
     "@sumup-oss/foundry": "^10.1.0",
-    "drizzle-kit": "^0.31.10",
+    "drizzle-kit": "^0.31.11",
     "prettier-plugin-astro": "^1.1.0",
     "wrangler": "^4.144.0"
   }
