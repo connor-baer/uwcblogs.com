@@ -38,7 +38,7 @@
     "@actions/core": "^3.0.1",
     "@astrojs/check": "^0.9.12",
     "@astrojs/cloudflare": "^14.4.3",
-    "astro": "^7.3.5",
+    "astro": "^7.4.12",
     "drizzle-orm": "^0.45.4",
     "fuse.js": "^7.5.0",
     "ky": "^2.1.0",
